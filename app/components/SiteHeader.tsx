@@ -19,11 +19,6 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
         </Link>
 
         <nav className="site-nav" aria-label="Primary navigation">
-          <span className="header-mascot" title="Licensed Pokémon mascot artwork">
-            {/* Licensed through the supplied TCGplayer authorization. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/mascots/pixel-pikachu-header.png" alt="Pixel-art Pikachu" />
-          </span>
           <Link href="/admin">Manage data</Link>
         </nav>
       </div>

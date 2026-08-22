@@ -709,11 +709,9 @@ export function CatalogApp({
             <span className="hero-mascot-scene__spark hero-mascot-scene__spark--one">✦</span>
             <span className="hero-mascot-scene__spark hero-mascot-scene__spark--two">+</span>
             <span className="hero-mascot-scene__spark hero-mascot-scene__spark--three">✦</span>
-            <div className="hero-mascot-scene__frame">
-              {/* Licensed through the supplied TCGplayer authorization. */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/mascots/pixel-pikachu-header.png" alt="" />
-            </div>
+            {/* Licensed through the supplied TCGplayer authorization. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="hero-mascot-scene__sprite" src="/mascots/pikachu-hero.png" alt="" />
           </div>
         </section>
 
