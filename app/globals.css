@@ -2910,25 +2910,17 @@ body {
 }
 
 .catalog-hero {
-  min-height: 250px;
-  padding: 52px 0 40px;
+  min-height: 0;
+  padding: 34px 0 22px;
 }
 
 .catalog-hero__intro {
-  position: relative;
-  max-width: 820px;
-  padding-left: 20px;
+  max-width: 740px;
+  padding-left: 0;
 }
 
 .catalog-hero__intro::before {
-  position: absolute;
-  top: 2px;
-  bottom: 2px;
-  left: 0;
-  width: 5px;
-  border-radius: 3px;
-  background: #e9a348;
-  content: "";
+  display: none;
 }
 
 .hero-kicker,
@@ -2954,7 +2946,7 @@ body {
 
 .catalog-hero h1 {
   max-width: 760px;
-  margin-top: 14px;
+  margin: 0 0 8px;
   color: #25324a;
   letter-spacing: -0.048em;
 }
@@ -3658,11 +3650,11 @@ body {
   }
 
   .catalog-hero {
-    padding-top: 34px;
+    padding: 24px 0 18px;
   }
 
   .catalog-hero__intro {
-    padding-left: 14px;
+    padding-left: 0;
   }
 
   .catalog-hero h1,

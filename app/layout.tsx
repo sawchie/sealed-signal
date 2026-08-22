@@ -21,23 +21,23 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    title: "Sealed Signal — Check the shelf. Know the signal.",
+    title: "Sealed Signal — Compare MSRP to resale values",
     description:
-      "A collector-built buy check for sealed Pokémon products, with transparent manual snapshots and fee-aware estimates.",
+      "A quick sealed Pokémon TCG buy check with transparent manual market snapshots.",
     siteName: "Sealed Signal",
     images: [
       {
         url: "/og.png",
         width: 1659,
         height: 948,
-        alt: "Sealed Signal — check the shelf, know the signal",
+        alt: "Sealed Signal — compare MSRP to resale values",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sealed Signal — Collector-Built Buy Checks",
-    description: "Fee-aware resale estimates and honest market snapshots for sealed Pokémon products.",
+    title: "Sealed Signal — Compare MSRP to resale values",
+    description: "Quick resale estimates and honest market snapshots for sealed Pokémon products.",
     images: ["/og.png"],
   },
   robots: {

@@ -19,11 +19,9 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
         </Link>
 
         <nav className="site-nav" aria-label="Primary navigation">
-          <Link href="/methodology">Methodology</Link>
           <Link href="/admin">Manage data</Link>
         </nav>
       </div>
     </header>
   );
 }
-

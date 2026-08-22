@@ -24,9 +24,10 @@ test("server-renders the resale catalog with honest price labeling", async () =>
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Collector-Built Pokémon TCG Buy Checks \| Sealed Signal<\/title>/i);
-  assert.match(html, /Check the shelf\. Know the signal/i);
-  assert.match(html, /Collector-built estimate desk · manual snapshots/i);
+  assert.match(html, /<title>Compare Pokémon TCG MSRP &amp; Resale \| Sealed Signal<\/title>/i);
+  assert.match(html, /Compare MSRP to resale values/i);
+  assert.match(html, /spot the best buys quickly/i);
+  assert.doesNotMatch(html, /Collector-built estimate desk|Check the shelf\. Know the signal/i);
   assert.match(html, /Destined Rivals Elite Trainer Box/i);
   assert.match(html, /product-images\/destined-rivals-etb\.jpg/i);
   assert.match(html, /Est\. profit/i);

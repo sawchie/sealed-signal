@@ -15,7 +15,6 @@ import {
 } from "@/lib/domain";
 import {
   centsFromInput,
-  formatCompactDate,
   formatMoney,
   formatPercent,
   formatRelativeDate,
@@ -191,16 +190,6 @@ function profitClass(value: number | null | undefined) {
   if (value > 0) return "metric--positive";
   if (value < 0) return "metric--negative";
   return "metric--muted";
-}
-
-function latestUpdate(products: ProductWithMarketPrice[]) {
-  const timestamps = products
-    .map((product) => product.marketPrice?.updatedAt)
-    .filter((value): value is string => Boolean(value))
-    .map((value) => Date.parse(value))
-    .filter(Number.isFinite);
-  if (!timestamps.length) return null;
-  return new Date(Math.max(...timestamps)).toISOString();
 }
 
 function CustomPurchaseInput({
@@ -491,199 +480,6 @@ function RangeFields({
   );
 }
 
-function AssumptionsPanel({
-  assumptions,
-  onChange,
-  onClose,
-}: {
-  assumptions: ProfitAssumptions;
-  onChange: (value: ProfitAssumptions) => void;
-  onClose: () => void;
-}) {
-  const sheetRef = useRef<HTMLElement>(null);
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const onCloseRef = useRef(onClose);
-
-  useEffect(() => {
-    onCloseRef.current = onClose;
-  }, [onClose]);
-
-  useEffect(() => {
-    const previousFocus = document.activeElement as HTMLElement | null;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    closeButtonRef.current?.focus();
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onCloseRef.current();
-        return;
-      }
-      if (event.key !== "Tab" || !sheetRef.current) return;
-
-      const focusable = Array.from(
-        sheetRef.current.querySelectorAll<HTMLElement>(
-          'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]',
-        ),
-      );
-      if (!focusable.length) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
-      previousFocus?.focus();
-    };
-  }, []);
-
-  const update = <Key extends keyof ProfitAssumptions>(
-    key: Key,
-    value: ProfitAssumptions[Key],
-  ) => onChange({ ...assumptions, [key]: value });
-
-  return (
-    <div className="sheet-backdrop" role="presentation">
-      <section
-        id="selling-assumptions"
-        ref={sheetRef}
-        className="assumptions-sheet"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="assumptions-title"
-      >
-        <div className="sheet-heading">
-          <div>
-            <span className="eyebrow">Estimate profile</span>
-            <h2 id="assumptions-title">Selling assumptions</h2>
-          </div>
-          <button ref={closeButtonRef} className="icon-button" type="button" onClick={onClose} aria-label="Close">
-            ×
-          </button>
-        </div>
-        <p className="sheet-intro">
-          Applied to every product. These are planning estimates, not a guarantee of your final payout.
-        </p>
-
-        <div className="form-stack">
-          <label className="field">
-            <span>Selling-platform fee</span>
-            <span className="field__control field__control--suffix">
-              <input
-                type="number"
-                min="0"
-                max="100"
-                step="0.01"
-                value={assumptions.sellingPlatformFeeRate * 100}
-                onChange={(event) =>
-                  update(
-                    "sellingPlatformFeeRate",
-                    Math.min(1, Math.max(0, Number(event.target.value) / 100 || 0)),
-                  )
-                }
-              />
-              <span>%</span>
-            </span>
-          </label>
-          <label className="field">
-            <span>Fixed selling fee</span>
-            <span className="field__control field__control--prefix">
-              <span>$</span>
-              <input
-                type="number"
-                min="0"
-                step="0.01"
-                value={(assumptions.fixedSellingFeeCents / 100).toFixed(2)}
-                onChange={(event) =>
-                  update("fixedSellingFeeCents", Math.max(0, Math.round((Number(event.target.value) || 0) * 100)))
-                }
-              />
-            </span>
-          </label>
-          <label className="field">
-            <span>Seller-paid shipping</span>
-            <span className="field__control field__control--prefix">
-              <span>$</span>
-              <input
-                type="number"
-                min="0"
-                step="0.01"
-                value={(assumptions.sellerShippingCostCents / 100).toFixed(2)}
-                onChange={(event) =>
-                  update(
-                    "sellerShippingCostCents",
-                    Math.max(0, Math.round((Number(event.target.value) || 0) * 100)),
-                  )
-                }
-              />
-            </span>
-          </label>
-          <label className="check-field">
-            <input
-              type="checkbox"
-              checked={assumptions.purchaseSalesTaxTreatment === "included-in-cost"}
-              onChange={(event) =>
-                update(
-                  "purchaseSalesTaxTreatment",
-                  event.target.checked ? "included-in-cost" : "excluded",
-                )
-              }
-            />
-            <span>
-              Add sales tax to purchase cost
-              <small>Leave off if your business purchases are tax-exempt.</small>
-            </span>
-          </label>
-          {assumptions.purchaseSalesTaxTreatment === "included-in-cost" && (
-            <label className="field">
-              <span>Sales-tax rate</span>
-              <span className="field__control field__control--suffix">
-                <input
-                  type="number"
-                  min="0"
-                  max="100"
-                  step="0.01"
-                  value={assumptions.purchaseSalesTaxRate * 100}
-                  onChange={(event) =>
-                    update(
-                      "purchaseSalesTaxRate",
-                      Math.min(1, Math.max(0, Number(event.target.value) / 100 || 0)),
-                    )
-                  }
-                />
-                <span>%</span>
-              </span>
-            </label>
-          )}
-        </div>
-
-        <div className="sheet-actions">
-          <button
-            className="button button--quiet"
-            type="button"
-            onClick={() => onChange({ ...DEFAULT_PROFIT_ASSUMPTIONS })}
-          >
-            Reset defaults
-          </button>
-          <button className="button button--primary" type="button" onClick={onClose}>
-            Apply profile
-          </button>
-        </div>
-      </section>
-    </div>
-  );
-}
-
 export function CatalogApp({
   initialProducts,
   relativeDateReference,
@@ -701,10 +497,9 @@ export function CatalogApp({
   const [sort, setSort] = useState<SortKey>("opportunity");
   const [view, setView] = useState<ViewMode>("grid");
   const [customPrices, setCustomPrices] = useState<Record<string, string>>({});
-  const [assumptions, setAssumptions] = useState<ProfitAssumptions>({
+  const [assumptions] = useState<ProfitAssumptions>({
     ...DEFAULT_PROFIT_ASSUMPTIONS,
   });
-  const [settingsOpen, setSettingsOpen] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [dataMode, setDataMode] = useState<"bundled" | "database">("bundled");
   const filtersRef = useRef<HTMLElement>(null);
@@ -913,17 +708,6 @@ export function CatalogApp({
     });
   }, [evaluated, category, setName, recommendation, numericFilters, quickFilter, sort]);
 
-  const summary = useMemo(() => {
-    const withEstimates = evaluated.filter((item) => item.estimate);
-    const roiTotal = withEstimates.reduce((total, item) => total + (item.estimate?.roiPercent ?? 0), 0);
-    return {
-      tracked: products.length,
-      strongBuys: evaluated.filter((item) => item.recommendation === "STRONG BUY").length,
-      averageRoi: withEstimates.length ? roiTotal / withEstimates.length : null,
-      latest: latestUpdate(products),
-    };
-  }, [products, evaluated]);
-
   const clearFilters = () => {
     setQuickFilter("all");
     setCategory("all");
@@ -945,52 +729,10 @@ export function CatalogApp({
       <main>
         <section className="catalog-hero" aria-labelledby="catalog-title">
           <div className="catalog-hero__intro">
-            <span className="hero-kicker">
-              <span className="status-pulse" aria-hidden="true" />
-              Collector-built estimate desk · manual snapshots
-            </span>
-            <h1 id="catalog-title">Check the shelf. Know the signal.</h1>
+            <h1 id="catalog-title">Compare MSRP to resale values.</h1>
             <p>
-              Spot the sealed product, enter the price in front of you, and see the fee-aware buy check before it leaves the shelf.
+              Scan sealed Pokémon TCG products, enter your shelf price, and spot the best buys quickly.
             </p>
-          </div>
-
-          <button
-            className="profile-button"
-            type="button"
-            onClick={() => setSettingsOpen(true)}
-            aria-haspopup="dialog"
-            aria-expanded={settingsOpen}
-            aria-controls="selling-assumptions"
-          >
-            <span className="profile-button__icon" aria-hidden="true">%</span>
-            <span>
-              <small>Fee profile</small>
-              <strong>
-                {(assumptions.sellingPlatformFeeRate * 100).toFixed(2)}% +{" "}
-                {formatMoney(assumptions.fixedSellingFeeCents)}
-              </strong>
-            </span>
-            <span aria-hidden="true">›</span>
-          </button>
-        </section>
-
-        <section className="summary-strip" aria-label="Catalog summary">
-          <div>
-            <span>Sealed products</span>
-            <strong>{summary.tracked}</strong>
-          </div>
-          <div>
-            <span>Strong buy signals</span>
-            <strong>{summary.strongBuys}</strong>
-          </div>
-          <div>
-            <span>Average ROI</span>
-            <strong>{formatPercent(summary.averageRoi)}</strong>
-          </div>
-          <div>
-            <span>Freshest snapshot</span>
-            <strong>{summary.latest ? formatCompactDate(summary.latest) : "Unavailable"}</strong>
           </div>
         </section>
 
@@ -1221,13 +963,6 @@ export function CatalogApp({
 
       <SiteFooter />
 
-      {settingsOpen && (
-        <AssumptionsPanel
-          assumptions={assumptions}
-          onChange={setAssumptions}
-          onClose={() => setSettingsOpen(false)}
-        />
-      )}
       {filtersOpen && <button className="sidebar-backdrop" type="button" tabIndex={-1} aria-hidden="true" aria-label="Close filters" onClick={() => setFiltersOpen(false)} />}
     </div>
   );

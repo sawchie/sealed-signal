@@ -3,9 +3,9 @@ import { CatalogApp } from "@/app/components/CatalogApp";
 import { seedProducts } from "@/data/products";
 
 export const metadata: Metadata = {
-  title: "Collector-Built Pokémon TCG Buy Checks",
+  title: "Compare Pokémon TCG MSRP & Resale",
   description:
-    "Identify sealed Pokémon TCG products and estimate fees, net proceeds, profit, ROI, and resale opportunity from the price you see in store.",
+    "Compare sealed Pokémon TCG MSRP and resale values, enter a shelf price, and find the best buys quickly.",
   alternates: { canonical: "/" },
   openGraph: { url: "/" },
 };
