@@ -32,7 +32,8 @@ test("server-renders the resale catalog with honest price labeling", async () =>
   assert.match(html, /product-images\/destined-rivals-etb\.jpg/i);
   assert.match(html, /Retail \/ MSRP/i);
   assert.match(html, /Market estimate/i);
-  assert.match(html, /Open buy check/i);
+  assert.match(html, /hero-mascot-scene/i);
+  assert.doesNotMatch(html, /2× MSRP/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|live price feed/i);
 });
 

@@ -17,7 +17,6 @@ import {
   centsFromInput,
   formatMoney,
   formatPercent,
-  formatRelativeDate,
 } from "@/lib/format";
 import { ProductImage } from "./ProductImage";
 import { SiteFooter } from "./SiteFooter";
@@ -235,15 +234,12 @@ function CustomPurchaseInput({
 
 function ProductCard({
   item,
-  relativeDateReference,
   priority,
 }: {
   item: EvaluatedProduct;
-  relativeDateReference: string;
   priority?: boolean;
 }) {
-  const { product, estimate, recommendation } = item;
-  const isDouble = estimate?.isAtLeastDoubleMsrp ?? false;
+  const { product, recommendation } = item;
 
   return (
     <article className="product-card">
@@ -260,7 +256,6 @@ function ProductCard({
           <span className="signal__dot" aria-hidden="true" />
           {signalLabel(recommendation)}
         </span>
-        {isDouble && <span className="double-badge">2× MSRP</span>}
       </div>
 
       <div className="product-card__body">
@@ -289,45 +284,12 @@ function ProductCard({
           </div>
           <div>
             <span>Market estimate</span>
-            <strong>{formatMoney(product.marketPrice?.amountCents, product.currency)}</strong>
+            <strong>
+              {product.marketPrice
+                ? formatMoney(product.marketPrice.amountCents, product.currency)
+                : "Unavailable"}
+            </strong>
           </div>
-        </div>
-
-        <div className="product-card__check">
-          <span>Open buy check</span>
-          <strong>
-            {estimate ? "Enter your shelf price" : "Market quote needed"}
-          </strong>
-          <span aria-hidden="true">→</span>
-        </div>
-
-        <div className="product-card__source">
-          {product.marketPrice ? (
-            <>
-              <span className="manual-tag">SNAPSHOT</span>
-              {product.marketPrice.source.url ? (
-                <a
-                  href={product.marketPrice.source.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  title={product.marketPrice.source.label}
-                >
-                  {product.marketPrice.source.label}
-                </a>
-              ) : (
-                <span>{product.marketPrice.source.label}</span>
-              )}
-              <span aria-hidden="true">·</span>
-              <time dateTime={product.marketPrice.updatedAt}>
-                {formatRelativeDate(
-                  product.marketPrice.updatedAt,
-                  relativeDateReference,
-                )}
-              </time>
-            </>
-          ) : (
-            <span>No verified market quote on file</span>
-          )}
         </div>
       </div>
     </article>
@@ -460,10 +422,8 @@ function RangeFields({
 
 export function CatalogApp({
   initialProducts,
-  relativeDateReference,
 }: {
   initialProducts: ProductWithMarketPrice[];
-  relativeDateReference: string;
 }) {
   const [products, setProducts] = useState(initialProducts);
   const [query, setQuery] = useState("");
@@ -709,41 +669,51 @@ export function CatalogApp({
           <div className="catalog-hero__intro">
             <h1 id="catalog-title">Compare MSRP to resale values.</h1>
             <p>
-              Scan sealed Pokémon TCG products, enter your shelf price, and spot the best buys quickly.
+              Scan sealed Pokémon TCG products, compare market estimates, and spot the best buys quickly.
             </p>
+
+            <section className="catalog-tools" aria-label="Catalog controls">
+              <label className="catalog-search">
+                <span aria-hidden="true" className="catalog-search__icon">⌕</span>
+                <span className="sr-only">Search products</span>
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder='Search “destined etb”, “charizard box”, “151”…'
+                  autoComplete="off"
+                />
+                {query && (
+                  <button type="button" onClick={() => setQuery("")} aria-label="Clear search">
+                    ×
+                  </button>
+                )}
+              </label>
+
+              <div className="quick-filter-row" aria-label="Quick filters">
+                {quickFilters.map((filter) => (
+                  <button
+                    key={filter.id}
+                    type="button"
+                    className={quickFilter === filter.id ? "is-active" : ""}
+                    aria-pressed={quickFilter === filter.id}
+                    onClick={() => setQuickFilter(filter.id)}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+            </section>
           </div>
-        </section>
-
-        <section className="catalog-tools" aria-label="Catalog controls">
-          <label className="catalog-search">
-            <span aria-hidden="true" className="catalog-search__icon">⌕</span>
-            <span className="sr-only">Search products</span>
-            <input
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder='Search “destined etb”, “charizard box”, “151”…'
-              autoComplete="off"
-            />
-            {query && (
-              <button type="button" onClick={() => setQuery("")} aria-label="Clear search">
-                ×
-              </button>
-            )}
-          </label>
-
-          <div className="quick-filter-row" aria-label="Quick filters">
-            {quickFilters.map((filter) => (
-              <button
-                key={filter.id}
-                type="button"
-                className={quickFilter === filter.id ? "is-active" : ""}
-                aria-pressed={quickFilter === filter.id}
-                onClick={() => setQuickFilter(filter.id)}
-              >
-                {filter.label}
-              </button>
-            ))}
+          <div className="hero-mascot-scene" aria-hidden="true">
+            <span className="hero-mascot-scene__spark hero-mascot-scene__spark--one">✦</span>
+            <span className="hero-mascot-scene__spark hero-mascot-scene__spark--two">+</span>
+            <span className="hero-mascot-scene__spark hero-mascot-scene__spark--three">✦</span>
+            <div className="hero-mascot-scene__frame">
+              {/* Licensed through the supplied TCGplayer authorization. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/mascots/pixel-pikachu-header.png" alt="" />
+            </div>
           </div>
         </section>
 
@@ -899,7 +869,6 @@ export function CatalogApp({
                     <ProductCard
                       key={item.product.id}
                       item={item}
-                      relativeDateReference={relativeDateReference}
                       priority={index < 3}
                     />
                   ))}

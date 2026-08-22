@@ -14,9 +14,6 @@ export const dynamic = "force-dynamic";
 
 export default function Home() {
   return (
-    <CatalogApp
-      initialProducts={seedProducts}
-      relativeDateReference={new Date().toISOString()}
-    />
+    <CatalogApp initialProducts={seedProducts} />
   );
 }
