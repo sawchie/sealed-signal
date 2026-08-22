@@ -235,18 +235,14 @@ function CustomPurchaseInput({
 
 function ProductCard({
   item,
-  customPrice,
-  onCustomPrice,
   relativeDateReference,
   priority,
 }: {
   item: EvaluatedProduct;
-  customPrice: string;
-  onCustomPrice: (value: string) => void;
   relativeDateReference: string;
   priority?: boolean;
 }) {
-  const { product, estimate, recommendation, customPriceInvalid } = item;
+  const { product, estimate, recommendation } = item;
   const isDouble = estimate?.isAtLeastDoubleMsrp ?? false;
 
   return (
@@ -297,30 +293,12 @@ function ProductCard({
           </div>
         </div>
 
-        <CustomPurchaseInput
-          product={product}
-          value={customPrice}
-          invalid={customPriceInvalid}
-          onChange={onCustomPrice}
-        />
-
-        <div className="profit-strip" aria-live="polite" aria-atomic="true">
-          <div className="profit-strip__primary">
-            <span>Est. profit</span>
-            <strong className={profitClass(estimate?.profitCents)}>
-              {formatMoney(estimate?.profitCents, product.currency)}
-            </strong>
-          </div>
-          <div>
-            <span>ROI</span>
-            <strong className={profitClass(estimate?.profitCents)}>
-              {formatPercent(estimate?.roiPercent)}
-            </strong>
-          </div>
-          <div>
-            <span>Net</span>
-            <strong>{formatMoney(estimate?.netProceedsCents, product.currency)}</strong>
-          </div>
+        <div className="product-card__check">
+          <span>Open buy check</span>
+          <strong>
+            {estimate ? "Enter your shelf price" : "Market quote needed"}
+          </strong>
+          <span aria-hidden="true">→</span>
         </div>
 
         <div className="product-card__source">
@@ -921,10 +899,6 @@ export function CatalogApp({
                     <ProductCard
                       key={item.product.id}
                       item={item}
-                      customPrice={customPrices[item.product.id] ?? ""}
-                      onCustomPrice={(value) =>
-                        setCustomPrices((current) => ({ ...current, [item.product.id]: value }))
-                      }
                       relativeDateReference={relativeDateReference}
                       priority={index < 3}
                     />
