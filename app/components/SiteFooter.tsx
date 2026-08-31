@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -8,8 +6,8 @@ export function SiteFooter() {
         <p>Independent collector tool; not affiliated with The Pokémon Company. Prices and outcomes are estimates.</p>
       </div>
       <div className="site-footer__links">
-        <Link href="/methodology">How pricing works</Link>
-        <Link href="/admin">Manage catalog</Link>
+        <a href="/methodology">How pricing works</a>
+        <a href="/admin">Manage catalog</a>
       </div>
     </footer>
   );

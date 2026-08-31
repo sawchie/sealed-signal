@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiteFooter } from "@/app/components/SiteFooter";
 import { SiteHeader } from "@/app/components/SiteHeader";
 import { DEFAULT_RECOMMENDATION_THRESHOLDS } from "@/lib/domain";
@@ -17,7 +16,11 @@ export default function MethodologyPage() {
     <div className="app-shell app-shell--detail">
       <SiteHeader compact />
       <main className="content-page">
-        <nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">Catalog</Link><span>/</span><span>Methodology</span></nav>
+        <nav className="breadcrumbs" aria-label="Breadcrumb">
+          {/* Native navigation avoids the production adapter swallowing client-side route clicks. */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+          <a href="/">Catalog</a><span>/</span><span>Methodology</span>
+        </nav>
         <header className="content-hero">
           <span className="hero-kicker"><span className="status-pulse" /> Transparent by default</span>
           <h1>Every signal should be explainable.</h1>

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type {
   ProfitAssumptions,
@@ -240,7 +239,7 @@ function ProductCard({
   const { product, estimate, recommendation } = item;
 
   return (
-    <Link
+    <a
       className={`product-card ${recommendationToneClass(recommendation)}`}
       href={`/products/${product.slug}`}
       aria-label={`Open details for ${product.name}`}
@@ -295,7 +294,7 @@ function ProductCard({
           </strong>
         </div>
       </div>
-    </Link>
+    </a>
   );
 }
 
@@ -338,7 +337,7 @@ function ProductTable({
                       productName={product.name}
                     />
                     <span>
-                      <Link href={`/products/${product.slug}`}>{product.name}</Link>
+                      <a href={`/products/${product.slug}`}>{product.name}</a>
                       <small>
                         {product.setName ?? "Mixed set"} · {product.category}
                       </small>
@@ -932,7 +931,7 @@ export function CatalogApp({
           <p>
             <strong>Decision support, not a promise.</strong> Market values are dated manual snapshots. Net and profit use your active fee profile and exclude income tax.
           </p>
-          <Link href="/methodology">View methodology →</Link>
+          <a href="/methodology">View methodology →</a>
         </section>
       </main>
 

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { ProductWithMarketPrice, Recommendation } from "@/lib/domain";
 import {
@@ -88,7 +87,9 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
   return (
     <main className="detail-main">
       <nav className="breadcrumbs" aria-label="Breadcrumb">
-        <Link href="/">Catalog</Link>
+        {/* Native navigation avoids the production adapter swallowing client-side route clicks. */}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a href="/">Catalog</a>
         <span aria-hidden="true">/</span>
         <span>{product.setName ?? "Mixed set"}</span>
         <span aria-hidden="true">/</span>
