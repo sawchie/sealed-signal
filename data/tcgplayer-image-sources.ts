@@ -37,6 +37,9 @@ export const TCGPLAYER_PRODUCT_IMAGE_SOURCES = {
   "phantasmal-flames-etb": 654136,
   "prismatic-surprise-box": 593466,
   "destined-rivals-kangaskhan-blister": 625683,
+  "black-bolt-etb": 630686,
+  "twilight-masquerade-etb": 543845,
+  "paldean-fates-booster-bundle": 528771,
 } as const;
 
 export function tcgplayerProductImage(id: string) {

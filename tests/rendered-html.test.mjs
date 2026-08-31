@@ -32,6 +32,11 @@ test("server-renders the resale catalog with honest price labeling", async () =>
   assert.match(html, /product-images\/destined-rivals-etb\.jpg/i);
   assert.match(html, /Retail \/ MSRP/i);
   assert.match(html, /Market estimate/i);
+  assert.match(html, /Filter by Pokémon set/i);
+  assert.match(html, /Est\. profit after default fees/i);
+  assert.match(html, /Black Bolt Elite Trainer Box/i);
+  assert.match(html, /Shrouded Fable Greninja ex Special Illustration Collection/i);
+  assert.match(html, /href="\/products\/destined-rivals-elite-trainer-box"[^>]*aria-label="Open details/i);
   assert.match(html, /hero-mascot-scene/i);
   assert.doesNotMatch(html, /2× MSRP/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|live price feed/i);
@@ -48,6 +53,8 @@ test("server-renders public product SEO pages and structured data", async () => 
   assert.match(html, /Price data/i);
   assert.match(html, /TCGIndex manual snapshot/i);
   assert.match(html, /Released\s*(?:<!-- -->)?\s*May 30, 2025/i);
+  assert.match(html, /Gross market spread/i);
+  assert.match(html, /Premium \/ discount vs retail/i);
   assert.doesNotMatch(html, /Released\s*(?:<!-- -->)?\s*May 29, 2025/i);
 });
 

@@ -49,6 +49,8 @@ export interface Product {
   imageUrl: string | null;
   /** Integer minor currency units. Null means unavailable, never zero. */
   msrpCents: number | null;
+  /** Optional provenance for the original retail/MSRP reference. */
+  retailPriceSource?: MarketPriceSource | null;
   currency: CurrencyCode;
   notes: string | null;
   active: boolean;
@@ -78,6 +80,8 @@ export interface MarketPriceQuote {
   updatedAt: IsoDateTime;
   /** Present only when the source really supplies a supporting sample. */
   sampleSize?: number | null;
+  /** Plain-language explanation of how this snapshot was selected. */
+  methodology?: string | null;
 }
 
 /** Canonical catalog/API aggregate. Missing market data is represented by null. */

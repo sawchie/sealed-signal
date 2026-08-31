@@ -6,6 +6,12 @@ export const RECOMMENDATIONS = [
 ] as const;
 
 export type Recommendation = (typeof RECOMMENDATIONS)[number];
+export type RecommendationTone = "positive" | "neutral" | "negative" | "unpriced";
+
+export type RecommendationPresentation = {
+  label: "STRONG BUY" | "BUY" | "FAIR" | "BAD BUY" | "NEEDS PRICE";
+  tone: RecommendationTone;
+};
 
 export interface RecommendationMetrics {
   profitCents: number;
@@ -132,6 +138,24 @@ export function getRecommendation(
   if (meetsThreshold(metrics, thresholds.buy)) return "BUY";
   if (meetsThreshold(metrics, thresholds.marginal)) return "MARGINAL";
   return "SKIP";
+}
+
+/** Keeps badge wording and color treatment driven by the same classification. */
+export function getRecommendationPresentation(
+  recommendation: Recommendation | null,
+): RecommendationPresentation {
+  switch (recommendation) {
+    case "STRONG BUY":
+      return { label: "STRONG BUY", tone: "positive" };
+    case "BUY":
+      return { label: "BUY", tone: "positive" };
+    case "MARGINAL":
+      return { label: "FAIR", tone: "neutral" };
+    case "SKIP":
+      return { label: "BAD BUY", tone: "negative" };
+    default:
+      return { label: "NEEDS PRICE", tone: "unpriced" };
+  }
 }
 
 /** Higher values sort better. */

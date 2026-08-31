@@ -5,8 +5,10 @@ import { useEffect, useMemo, useState } from "react";
 import type { ProductWithMarketPrice, Recommendation } from "@/lib/domain";
 import {
   DEFAULT_PROFIT_ASSUMPTIONS,
+  calculateRetailComparison,
   estimateProductProfit,
   getRecommendation,
+  getRecommendationPresentation,
 } from "@/lib/domain";
 import { centsFromInput, formatCompactDate, formatMoney, formatPercent } from "@/lib/format";
 import { ProductImage } from "./ProductImage";
@@ -33,12 +35,20 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
     fetch(`/api/products/${initialProduct.slug}`, { headers: { accept: "application/json" } })
       .then(async (response) => (response.ok ? response.json() : null))
       .then((payload) => {
-        if (payload?.product) setProduct(payload.product as ProductWithMarketPrice);
+        if (payload?.product) {
+          setProduct({
+            ...initialProduct,
+            ...(payload.product as ProductWithMarketPrice),
+            retailPriceSource:
+              (payload.product as ProductWithMarketPrice).retailPriceSource ??
+              initialProduct.retailPriceSource,
+          });
+        }
       })
       .catch(() => {
         // Keep the bundled, source-attributed fallback.
       });
-  }, [initialProduct.slug]);
+  }, [initialProduct]);
 
   const actualPurchaseCents = centsFromInput(purchasePrice);
   const purchaseInvalid = purchasePrice.trim() !== "" && actualPurchaseCents === null;
@@ -68,11 +78,12 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
   const recommendation = estimate
     ? getRecommendation({ profitCents: estimate.profitCents, roiPercent: estimate.roiPercent })
     : null;
-  const profitMetricClass = estimate
-    ? estimate.profitCents >= 0
-      ? "metric--positive"
-      : "metric--negative"
-    : "metric--muted";
+  const presentation = getRecommendationPresentation(recommendation);
+  const profitabilityClass = `profitability--${presentation.tone}`;
+  const retailComparison = calculateRetailComparison(
+    product.marketPrice?.amountCents ?? null,
+    product.msrpCents,
+  );
 
   return (
     <main className="detail-main">
@@ -94,7 +105,6 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
             productName={product.name}
             priority
           />
-          {estimate?.isAtLeastDoubleMsrp && <span className="double-badge">2× MSRP</span>}
         </div>
 
         <div className="detail-summary">
@@ -120,10 +130,10 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
             </div>
           </dl>
 
-          <div className={`detail-signal ${signalClass(recommendation)}`}>
+          <div className={`detail-signal ${signalClass(recommendation)} ${profitabilityClass}`}>
             <span>
               <small>Buy check</small>
-              <strong>{recommendation ?? "NEEDS PRICE"}</strong>
+              <strong>{presentation.label}</strong>
             </span>
             <p>
               {recommendation
@@ -159,13 +169,13 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
           <div className="detail-metrics" aria-live="polite" aria-atomic="true">
             <div className="detail-metric detail-metric--profit">
               <span>Estimated profit</span>
-              <strong className={profitMetricClass}>
+              <strong className={profitabilityClass}>
                 {formatMoney(estimate?.profitCents, product.currency)}
               </strong>
             </div>
             <div className="detail-metric">
               <span>ROI</span>
-              <strong>{formatPercent(estimate?.roiPercent)}</strong>
+              <strong className={profitabilityClass}>{formatPercent(estimate?.roiPercent)}</strong>
             </div>
             <div className="detail-metric">
               <span>Net proceeds</span>
@@ -186,6 +196,8 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
           </div>
           <dl className="calculation-list">
             <div><dt>Market estimate</dt><dd>{formatMoney(product.marketPrice?.amountCents, product.currency)}</dd></div>
+            <div><dt>Gross market spread</dt><dd>{formatMoney(retailComparison?.grossSpreadCents, product.currency)}</dd></div>
+            <div><dt>Premium / discount vs retail</dt><dd>{formatPercent(retailComparison?.premiumPercent)}</dd></div>
             <div><dt>Percentage selling fee</dt><dd>−{formatMoney(estimate?.percentageSellingFeeCents, product.currency)}</dd></div>
             <div><dt>Fixed selling fee</dt><dd>−{formatMoney(estimate?.fixedSellingFeeCents, product.currency)}</dd></div>
             <div><dt>Seller-paid shipping</dt><dd>−{formatMoney(estimate?.sellerShippingCostCents, product.currency)}</dd></div>
@@ -220,17 +232,25 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
               <div><dt>Retail / MSRP</dt><dd>{formatMoney(product.msrpCents, product.currency)}</dd></div>
               <div><dt>Market estimate</dt><dd>{formatMoney(product.marketPrice?.amountCents, product.currency)}</dd></div>
               <div>
-                <dt>Source</dt>
+                <dt>Market source</dt>
                 <dd>
                   {product.marketPrice?.source.url ? (
                     <a href={product.marketPrice.source.url} target="_blank" rel="noreferrer">{product.marketPrice.source.label} ↗</a>
                   ) : product.marketPrice?.source.label ?? "Unavailable"}
                 </dd>
               </div>
+              <div>
+                <dt>Retail source</dt>
+                <dd>
+                  {product.retailPriceSource?.url ? (
+                    <a href={product.retailPriceSource.url} target="_blank" rel="noreferrer">{product.retailPriceSource.label} ↗</a>
+                  ) : product.retailPriceSource?.label ?? "See product notes"}
+                </dd>
+              </div>
               <div><dt>Retrieved</dt><dd>{formatCompactDate(product.marketPrice?.updatedAt)}</dd></div>
-              <div><dt>Sales sample</dt><dd>{product.marketPrice?.sampleSize ? `${product.marketPrice.sampleSize} verified sales` : "Not supplied"}</dd></div>
+              <div><dt>Source sample</dt><dd>{product.marketPrice?.sampleSize ? `${product.marketPrice.sampleSize} comparable observations` : "Not supplied"}</dd></div>
             </dl>
-            <p>Retrieved date records our manual observation; it does not claim the source data was live at that moment.</p>
+            <p>{product.marketPrice?.methodology ?? "Retrieved date records our manual observation; it does not claim the source data was live at that moment."}</p>
           </section>
 
           <section className="detail-panel product-facts" aria-labelledby="facts-title">
@@ -246,11 +266,11 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
         </aside>
       </div>
 
-      <section className="future-panel" aria-label="Future market intelligence">
+      <section className="future-panel" aria-label="Market-data availability">
         <div>
-          <span className="eyebrow">Not tracked yet</span>
-          <h2>More context, when sources allow</h2>
-          <p>No pretend charts here. These stay clearly unavailable until a licensed source is connected.</p>
+          <span className="eyebrow">Source honesty</span>
+          <h2>Sold-data context without pretend charts</h2>
+          <p>Recent-sales-based marketplace estimates are shown when a dependable product match exists. Exact eBay sold comps remain unavailable until a completed-sales source is connected.</p>
         </div>
         <div className="future-slots">
           <span>Price history</span>

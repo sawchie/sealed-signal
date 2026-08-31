@@ -63,14 +63,13 @@ export default function MethodologyPage() {
 
           <article className="content-card content-card--wide">
             <span className="eyebrow">Market data integrity</span>
-            <h2>Manual snapshots today; licensed providers tomorrow</h2>
-            <p>V1 never fabricates a quote and never labels a stale or manual value as live. A quote stores source, retrieval time, currency, optional source URL, and optional sample size. Missing is a valid state.</p>
+            <h2>Recent-sales snapshots, never pretend live data</h2>
+            <p>Sealed Signal never fabricates a quote and never labels a dated observation as live. A quote stores its source, observation time, currency, optional source URL, methodology, and optional sample size. Missing is a valid state.</p>
             <div className="provider-list">
-              <a href="https://justtcg.com/docs/quickstart" target="_blank" rel="noreferrer"><strong>JustTCG</strong><span>Best current candidate after sealed-SKU coverage testing</span><b>Evaluate ↗</b></a>
-              <a href="https://docs.tcgplayer.com/docs/getting-started" target="_blank" rel="noreferrer"><strong>TCGplayer</strong><span>Useful only with existing approved API credentials</span><b>Docs ↗</b></a>
-              <a href="https://www.pricecharting.com/api-documentation" target="_blank" rel="noreferrer"><strong>PriceCharting</strong><span>Paid fallback; sealed coverage must be verified</span><b>Docs ↗</b></a>
-              <a href="https://developer.ebay.com/api-docs/buy/api-browse.html" target="_blank" rel="noreferrer"><strong>eBay Browse</strong><span>Active asks for context, not completed-sale market value</span><b>Docs ↗</b></a>
+              <a href="https://help.tcgplayer.com/hc/en-us/articles/213588017-TCGplayer-Market-Price" target="_blank" rel="noreferrer"><strong>TCGplayer Market Price</strong><span>Recent completed transactions, averaged across multiple sales with outlier resistance</span><b>Method ↗</b></a>
+              <a href="https://www.ebay.com/sch/i.html?_nkw=pokemon+sealed&_sacat=0&LH_Sold=1&LH_Complete=1" target="_blank" rel="noreferrer"><strong>eBay sold review</strong><span>Use only exact sealed-product matches; exclude open, damaged, wrong-quantity, and variant-mismatched listings</span><b>Review ↗</b></a>
             </div>
+            <p>When a vetted eBay sold sample is entered, the preferred estimate is a median of multiple recent exact matches. Automated completed-sales retrieval is not connected, so the site does not invent individual eBay comps.</p>
           </article>
 
           <article className="content-card content-card--wide">
@@ -91,6 +90,7 @@ export default function MethodologyPage() {
               <li>Whether a public marketplace snapshot matched the exact regional variant or case size.</li>
               <li>Income tax, storage cost, mileage, labor, or capital tied up while inventory sits.</li>
               <li>Whether retailer inventory is currently available; no restock monitoring is active.</li>
+              <li>Gross market spread is market minus retail. “Estimated profit” is different: it subtracts the active marketplace fee, fixed fee, seller shipping, and optional purchase tax.</li>
             </ul>
           </article>
         </div>

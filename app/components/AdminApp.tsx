@@ -124,11 +124,11 @@ function productPayload(editor: EditorState) {
 
 export function AdminApp() {
   const [adminKey, setAdminKey] = useState("");
-  const [products, setProducts] = useState<ProductWithMarketPrice[]>([]);
+  const [products, setProducts] = useState<ProductWithMarketPrice[]>(seedProducts);
   const [editor, setEditor] = useState<EditorState>(emptyEditor);
   const [connected, setConnected] = useState(false);
   const [busy, setBusy] = useState(false);
-  const [status, setStatus] = useState("Enter the local admin key to load the editable catalog.");
+  const [status, setStatus] = useState(`${seedProducts.length} bundled records available for inspection. Enter the admin key to edit D1 data.`);
   const [query, setQuery] = useState("");
 
   const request = async (path: string, init: RequestInit = {}) => {
@@ -293,20 +293,37 @@ export function AdminApp() {
       </header>
 
       {!connected ? (
-        <section className="admin-unlock" aria-labelledby="unlock-title">
-          <span aria-hidden="true">⌁</span>
-          <div>
-            <h2 id="unlock-title">Unlock local data management</h2>
-            <p>Set <code>ADMIN_API_KEY</code> in your local environment, then enter that value here. The key stays in memory and is never written to browser storage.</p>
-            <label>
-              <span>Admin key</span>
-              <input type="password" value={adminKey} onChange={(event) => setAdminKey(event.target.value)} autoComplete="off" />
-            </label>
-            <button className="button button--primary" type="button" disabled={!adminKey || busy} onClick={loadProducts}>
-              {busy ? "Checking…" : "Open data desk"}
-            </button>
-          </div>
-        </section>
+        <>
+          <section className="admin-unlock" aria-labelledby="unlock-title">
+            <span aria-hidden="true">⌁</span>
+            <div>
+              <h2 id="unlock-title">Unlock data management</h2>
+              <p>The bundled catalog is visible below. Enter the protected site administration key to add products or publish source-attributed price updates.</p>
+              <label>
+                <span>Admin key</span>
+                <input type="password" value={adminKey} onChange={(event) => setAdminKey(event.target.value)} autoComplete="off" />
+              </label>
+              <button className="button button--primary" type="button" disabled={!adminKey || busy} onClick={loadProducts}>
+                {busy ? "Checking…" : "Open editable data desk"}
+              </button>
+            </div>
+          </section>
+          <section className="admin-preview" aria-labelledby="bundled-preview-title">
+            <div className="admin-list__heading">
+              <div><span className="eyebrow">Read-only preview</span><h2 id="bundled-preview-title">Bundled products</h2></div>
+              <strong>{seedProducts.length}</strong>
+            </div>
+            <input className="admin-search" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Find a bundled product…" />
+            <div className="admin-product-list admin-product-list--preview">
+              {filteredProducts.map((product) => (
+                <a key={product.id} href={`/products/${product.slug}`}>
+                  <span><strong>{product.name}</strong><small>{product.setName ?? "Mixed set"} · {product.category}</small></span>
+                  <span><b>{formatMoney(product.marketPrice?.amountCents, product.currency)}</b><small>View details ↗</small></span>
+                </a>
+              ))}
+            </div>
+          </section>
+        </>
       ) : (
         <div className="admin-grid">
           <aside className="admin-list">

@@ -51,6 +51,11 @@ export interface ProductProfitEstimate extends ProfitCalculation {
   isAtLeastDoubleMsrp: boolean;
 }
 
+export interface RetailComparison {
+  grossSpreadCents: number;
+  premiumPercent: number;
+}
+
 export class ProfitValidationError extends RangeError {
   override readonly name = "ProfitValidationError";
 }
@@ -208,6 +213,22 @@ export function estimateProductProfit(
     isAtLeastDoubleMsrp: isAtLeastDoubleMsrp(
       input.marketPriceCents,
       input.msrpCents,
+    ),
+  };
+}
+
+/** Gross market-versus-retail comparison, kept distinct from fee-adjusted profit. */
+export function calculateRetailComparison(
+  marketPriceCents: number | null,
+  retailPriceCents: number | null,
+): RetailComparison | null {
+  if (marketPriceCents === null || retailPriceCents === null) return null;
+  assertIntegerCents(marketPriceCents, "marketPriceCents", { allowZero: false });
+  assertIntegerCents(retailPriceCents, "retailPriceCents", { allowZero: false });
+  return {
+    grossSpreadCents: marketPriceCents - retailPriceCents,
+    premiumPercent: roundToTwoDecimals(
+      ((marketPriceCents - retailPriceCents) / retailPriceCents) * 100,
     ),
   };
 }

@@ -3,12 +3,14 @@ import test from "node:test";
 
 import {
   calculateProfitability,
+  calculateRetailComparison,
   estimateProductProfit,
   isAtLeastDoubleMsrp,
   ProfitValidationError,
 } from "../lib/domain/profit.ts";
 import {
   getRecommendation,
+  getRecommendationPresentation,
   RecommendationValidationError,
 } from "../lib/domain/recommendation.ts";
 import {
@@ -169,6 +171,33 @@ test("classifies recommendation thresholds using ROI and dollar profit", () => {
     getRecommendation({ profitCents: 4_000, roiPercent: 7.99 }),
     "SKIP",
   );
+});
+
+test("keeps recommendation wording and color tone on one source of truth", () => {
+  assert.deepEqual(getRecommendationPresentation("STRONG BUY"), {
+    label: "STRONG BUY",
+    tone: "positive",
+  });
+  assert.deepEqual(getRecommendationPresentation("MARGINAL"), {
+    label: "FAIR",
+    tone: "neutral",
+  });
+  assert.deepEqual(getRecommendationPresentation("SKIP"), {
+    label: "BAD BUY",
+    tone: "negative",
+  });
+  assert.deepEqual(getRecommendationPresentation(null), {
+    label: "NEEDS PRICE",
+    tone: "unpriced",
+  });
+});
+
+test("keeps gross market spread distinct from fee-adjusted profit", () => {
+  assert.deepEqual(calculateRetailComparison(7_499, 4_999), {
+    grossSpreadCents: 2_500,
+    premiumPercent: 50.01,
+  });
+  assert.equal(calculateRetailComparison(null, 4_999), null);
 });
 
 test("recommendation thresholds are centrally configurable", () => {

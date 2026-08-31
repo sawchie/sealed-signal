@@ -12,6 +12,7 @@ import {
   DEFAULT_PROFIT_ASSUMPTIONS,
   estimateProductProfit,
   getRecommendation,
+  getRecommendationPresentation,
 } from "@/lib/domain";
 import {
   centsFromInput,
@@ -181,14 +182,11 @@ function signalClass(recommendation: Recommendation | null) {
 }
 
 function signalLabel(recommendation: Recommendation | null) {
-  return recommendation ?? "NEEDS PRICE";
+  return getRecommendationPresentation(recommendation).label;
 }
 
-function profitClass(value: number | null | undefined) {
-  if (value === null || value === undefined) return "metric--muted";
-  if (value > 0) return "metric--positive";
-  if (value < 0) return "metric--negative";
-  return "metric--muted";
+function recommendationToneClass(recommendation: Recommendation | null) {
+  return `profitability--${getRecommendationPresentation(recommendation).tone}`;
 }
 
 function CustomPurchaseInput({
@@ -239,10 +237,14 @@ function ProductCard({
   item: EvaluatedProduct;
   priority?: boolean;
 }) {
-  const { product, recommendation } = item;
+  const { product, estimate, recommendation } = item;
 
   return (
-    <article className="product-card">
+    <Link
+      className={`product-card ${recommendationToneClass(recommendation)}`}
+      href={`/products/${product.slug}`}
+      aria-label={`Open details for ${product.name}`}
+    >
       <div className="product-card__visual">
         <ProductImage
           src={product.imageUrl}
@@ -264,17 +266,11 @@ function ProductCard({
             <span className="eyebrow">
               {product.setName ?? "Mixed set"} · {product.category}
             </span>
-            <h2>
-              <Link href={`/products/${product.slug}`}>{product.name}</Link>
-            </h2>
+            <h2>{product.name}</h2>
           </div>
-          <Link
-            className="detail-arrow"
-            href={`/products/${product.slug}`}
-            aria-label={`View details for ${product.name}`}
-          >
+          <span className="detail-arrow" aria-hidden="true">
             ↗
-          </Link>
+          </span>
         </div>
 
         <div className="price-pair">
@@ -282,7 +278,7 @@ function ProductCard({
             <span>Retail / MSRP</span>
             <strong>{formatMoney(product.msrpCents, product.currency)}</strong>
           </div>
-          <div>
+          <div className="price-pair__market">
             <span>Market estimate</span>
             <strong>
               {product.marketPrice
@@ -291,8 +287,15 @@ function ProductCard({
             </strong>
           </div>
         </div>
+        <div className="card-opportunity" aria-label="Fee-adjusted buy check">
+          <span>Est. profit after default fees</span>
+          <strong>
+            {formatMoney(estimate?.profitCents, product.currency)}
+            <small>{estimate ? formatPercent(estimate.roiPercent) + " ROI" : "Price needed"}</small>
+          </strong>
+        </div>
       </div>
-    </article>
+    </Link>
   );
 }
 
@@ -354,10 +357,10 @@ function ProductTable({
                   />
                 </td>
                 <td>{formatMoney(estimate?.netProceedsCents, product.currency)}</td>
-                <td className={profitClass(estimate?.profitCents)}>
+                <td className={recommendationToneClass(recommendation)}>
                   {formatMoney(estimate?.profitCents, product.currency)}
                 </td>
-                <td className={profitClass(estimate?.profitCents)}>
+                <td className={recommendationToneClass(recommendation)}>
                   {formatPercent(estimate?.roiPercent)}
                 </td>
                 <td>
@@ -458,7 +461,13 @@ export function CatalogApp({
         if (cancelled || !payload) return;
         const rows = payload.products ?? payload.data ?? [];
         if (rows.length) {
-          setProducts(rows.filter((product) => product.active));
+          const persisted = rows.filter((product) => product.active);
+          const persistedBySlug = new Map(persisted.map((product) => [product.slug, product]));
+          const bundledSlugs = new Set(initialProducts.map((product) => product.slug));
+          setProducts([
+            ...initialProducts.map((product) => persistedBySlug.get(product.slug) ?? product),
+            ...persisted.filter((product) => !bundledSlugs.has(product.slug)),
+          ]);
           setDataMode("database");
         }
       })
@@ -469,7 +478,7 @@ export function CatalogApp({
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [initialProducts]);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 680px)");
@@ -715,6 +724,31 @@ export function CatalogApp({
           </div>
         </section>
 
+        <nav className="set-filter-strip" aria-label="Filter by Pokémon set">
+          <span>Sets</span>
+          <div>
+            <button
+              type="button"
+              className={setName === "all" ? "is-active" : ""}
+              aria-pressed={setName === "all"}
+              onClick={() => setSetName("all")}
+            >
+              All sets
+            </button>
+            {sets.map((value) => (
+              <button
+                key={value}
+                type="button"
+                className={setName === value ? "is-active" : ""}
+                aria-pressed={setName === value}
+                onClick={() => setSetName(value)}
+              >
+                {value}
+              </button>
+            ))}
+          </div>
+        </nav>
+
         <div className="catalog-layout">
           <aside
             id="catalog-filters"
@@ -809,7 +843,7 @@ export function CatalogApp({
                 </h2>
                 <p aria-live="polite">
                   {visibleProducts.length} {visibleProducts.length === 1 ? "product" : "products"} ·{" "}
-                  {dataMode === "database" ? "editable catalog" : "manual starter catalog"}
+                  {dataMode === "database" ? "editable + bundled catalog" : "manual bundled catalog"}
                 </p>
               </div>
               <div className="toolbar-actions">

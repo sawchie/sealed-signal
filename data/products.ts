@@ -5,6 +5,7 @@ import type {
   ProductWithMarketPrice,
 } from "@/lib/domain/types";
 import { tcgplayerProductImage } from "@/data/tcgplayer-image-sources";
+import { expandedSeedProducts } from "@/data/expanded-products";
 
 const TCGPLAYER_SNAPSHOT = "2026-08-01T12:00:00.000Z";
 const TCGINDEX_SNAPSHOT = "2026-08-22T06:00:00.000Z";
@@ -800,7 +801,12 @@ const productsWithImages = products.map((product) => ({
   imageUrl: product.imageUrl ?? tcgplayerProductImage(product.id),
 }));
 
-export const seedProducts = productsWithImages.filter((product) => product.active);
+export const seedProducts = [...productsWithImages, ...expandedSeedProducts]
+  .filter((product) => product.active)
+  .map((product) => ({
+    ...product,
+    imageUrl: product.imageUrl ?? tcgplayerProductImage(product.id),
+  }));
 
 export function getSeedProductBySlug(slug: string) {
   return seedProducts.find((product) => product.slug === slug) ?? null;
