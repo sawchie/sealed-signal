@@ -54,6 +54,13 @@ export interface MarketPriceWrite {
   observedAt?: string;
 }
 
+export interface RetailPriceSourceWrite {
+  id: string;
+  kind: MarketPriceSourceKind;
+  label: string;
+  url?: string | null;
+}
+
 export interface ProductCreate {
   slug: string;
   name: string;
@@ -65,6 +72,7 @@ export interface ProductCreate {
   releaseDate?: string | null;
   imageUrl?: string | null;
   msrpCents?: number | null;
+  retailPriceSource?: RetailPriceSourceWrite | null;
   currency?: string;
   notes?: string | null;
   active?: boolean;
@@ -82,6 +90,7 @@ export interface ProductUpdate {
   releaseDate?: string | null;
   imageUrl?: string | null;
   msrpCents?: number | null;
+  retailPriceSource?: RetailPriceSourceWrite | null;
   currency?: string;
   notes?: string | null;
   active?: boolean;
@@ -116,6 +125,10 @@ interface JoinedProductRow {
   release_date: string | null;
   image_url: string | null;
   msrp_cents: number | null;
+  retail_source_id: string | null;
+  retail_source_kind: string | null;
+  retail_source_name: string | null;
+  retail_source_url: string | null;
   currency: string;
   notes: string | null;
   active: number;
@@ -147,6 +160,10 @@ const PRODUCT_SELECT = `
   p.release_date,
   p.image_url,
   p.msrp_cents,
+  p.retail_source_id,
+  p.retail_source_kind,
+  p.retail_source_name,
+  p.retail_source_url,
   p.currency,
   p.notes,
   p.active,
@@ -374,6 +391,19 @@ function toProduct(row: JoinedProductRow): CatalogProduct {
     releaseDate: row.release_date,
     imageUrl: row.image_url,
     msrpCents: row.msrp_cents,
+    retailPriceSource:
+      row.retail_source_id && row.retail_source_name
+        ? {
+            id: row.retail_source_id,
+            label: row.retail_source_name,
+            kind: marketSourceKind(
+              row.retail_source_kind,
+              row.retail_source_id,
+              "retail-reference",
+            ),
+            ...(row.retail_source_url ? { url: row.retail_source_url } : {}),
+          }
+        : null,
     currency: row.currency,
     notes: row.notes,
     active: Boolean(row.active),
@@ -543,9 +573,10 @@ export async function createProduct(input: ProductCreate): Promise<CatalogProduc
       .prepare(`
         INSERT INTO products (
           id, slug, name, short_name, set_name, series, category, release_date,
-          image_url, msrp_cents, currency, notes, active, search_text,
-          created_at, updated_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          image_url, msrp_cents, retail_source_id, retail_source_kind,
+          retail_source_name, retail_source_url, currency, notes, active,
+          search_text, created_at, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `)
       .bind(
         id,
@@ -558,6 +589,10 @@ export async function createProduct(input: ProductCreate): Promise<CatalogProduc
         input.releaseDate ?? null,
         input.imageUrl?.trim() || null,
         input.msrpCents ?? null,
+        input.retailPriceSource?.id ?? null,
+        input.retailPriceSource?.kind ?? null,
+        input.retailPriceSource?.label ?? null,
+        input.retailPriceSource?.url ?? null,
         currency,
         input.notes?.trim() || null,
         input.active === false ? 0 : 1,
@@ -612,6 +647,10 @@ export async function updateProductBySlug(
       patch.releaseDate !== undefined ? patch.releaseDate : existing.releaseDate,
     imageUrl: patch.imageUrl !== undefined ? patch.imageUrl : existing.imageUrl,
     msrpCents: patch.msrpCents !== undefined ? patch.msrpCents : existing.msrpCents,
+    retailPriceSource:
+      patch.retailPriceSource !== undefined
+        ? patch.retailPriceSource
+        : existing.retailPriceSource,
     currency: (patch.currency ?? existing.currency).toUpperCase(),
     notes: patch.notes !== undefined ? patch.notes : existing.notes,
     active: patch.active ?? existing.active,
@@ -626,7 +665,8 @@ export async function updateProductBySlug(
         UPDATE products SET
           slug = ?, name = ?, short_name = ?, set_name = ?, series = ?,
           category = ?, release_date = ?, image_url = ?, msrp_cents = ?,
-          currency = ?, notes = ?, active = ?, search_text = ?, updated_at = ?
+          retail_source_id = ?, retail_source_kind = ?, retail_source_name = ?,
+          retail_source_url = ?, currency = ?, notes = ?, active = ?, search_text = ?, updated_at = ?
         WHERE id = ?
       `)
       .bind(
@@ -639,6 +679,10 @@ export async function updateProductBySlug(
         merged.releaseDate ?? null,
         merged.imageUrl?.trim() || null,
         merged.msrpCents,
+        merged.retailPriceSource?.id ?? null,
+        merged.retailPriceSource?.kind ?? null,
+        merged.retailPriceSource?.label ?? null,
+        merged.retailPriceSource?.url ?? null,
         merged.currency,
         merged.notes?.trim() || null,
         merged.active ? 1 : 0,

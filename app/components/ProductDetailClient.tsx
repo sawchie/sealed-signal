@@ -267,18 +267,16 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
         </aside>
       </div>
 
-      <section className="future-panel" aria-label="Market-data availability">
+      <section className="source-context" aria-labelledby="source-context-title">
         <div>
-          <span className="eyebrow">Source honesty</span>
-          <h2>Sold-data context without pretend charts</h2>
-          <p>Recent-sales-based marketplace estimates are shown when a dependable product match exists. Exact eBay sold comps remain unavailable until a completed-sales source is connected.</p>
+          <h2 id="source-context-title">Read the snapshot, then check the source.</h2>
+          <p>
+            This is a dated product-level estimate, not a live offer. TCGplayer market prices summarize
+            completed marketplace transactions; exact eBay sold comps appear only when a vetted sample
+            has actually been recorded.
+          </p>
         </div>
-        <div className="future-slots">
-          <span>Price history</span>
-          <span>Recent sold listings</span>
-          <span>Retail availability</span>
-          <span>30 / 90 day averages</span>
-        </div>
+        <a href="/methodology">See pricing methodology <span aria-hidden="true">→</span></a>
       </section>
     </main>
   );

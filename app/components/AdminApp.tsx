@@ -21,6 +21,8 @@ type EditorState = {
   releaseDate: string;
   imageUrl: string;
   msrp: string;
+  retailSource: string;
+  retailSourceUrl: string;
   currency: string;
   notes: string;
   active: boolean;
@@ -42,6 +44,8 @@ const emptyEditor: EditorState = {
   releaseDate: "",
   imageUrl: "",
   msrp: "",
+  retailSource: "",
+  retailSourceUrl: "",
   currency: "USD",
   notes: "",
   active: true,
@@ -64,6 +68,8 @@ function editorFromProduct(product: ProductWithMarketPrice): EditorState {
     releaseDate: product.releaseDate ?? "",
     imageUrl: product.imageUrl ?? "",
     msrp: product.msrpCents ? (product.msrpCents / 100).toFixed(2) : "",
+    retailSource: product.retailPriceSource?.label ?? "",
+    retailSourceUrl: product.retailPriceSource?.url ?? "",
     currency: product.currency,
     notes: product.notes ?? "",
     active: product.active,
@@ -100,6 +106,14 @@ function productPayload(editor: EditorState) {
     releaseDate: optional(editor.releaseDate),
     imageUrl: optional(editor.imageUrl),
     msrpCents: dollarsToCents(editor.msrp),
+    retailPriceSource: editor.retailSource.trim()
+      ? {
+          id: "local-retail-manual",
+          kind: "manual",
+          label: editor.retailSource.trim(),
+          url: optional(editor.retailSourceUrl),
+        }
+      : null,
     currency: editor.currency.toUpperCase(),
     notes: optional(editor.notes),
     active: editor.active,
@@ -222,6 +236,7 @@ export function AdminApp() {
           releaseDate: product.releaseDate,
           imageUrl: product.imageUrl,
           msrpCents: product.msrpCents,
+          retailPriceSource: product.retailPriceSource ?? null,
           currency: product.currency,
           notes: product.notes,
           active: product.active,
@@ -375,6 +390,12 @@ export function AdminApp() {
               <label className="field field--wide"><span>Aliases — one per line</span><textarea rows={3} value={editor.aliases} onChange={(event) => setEditor({ ...editor, aliases: event.target.value })} placeholder={"destined etb\nsv10 etb\nteam rocket box"} /></label>
               <label className="field field--wide"><span>Image URL or local /public path</span><input value={editor.imageUrl} onChange={(event) => setEditor({ ...editor, imageUrl: event.target.value })} placeholder="Use only an image you have rights to publish" /></label>
             </div>
+
+            <fieldset className="admin-price-source">
+              <legend>Retail / MSRP provenance</legend>
+              <label className="field"><span>Source label</span><input value={editor.retailSource} onChange={(event) => setEditor({ ...editor, retailSource: event.target.value })} placeholder="Pokémon Center catalog" /></label>
+              <label className="field field--wide"><span>Source URL</span><input type="url" value={editor.retailSourceUrl} onChange={(event) => setEditor({ ...editor, retailSourceUrl: event.target.value })} placeholder="https://…" /></label>
+            </fieldset>
 
             <fieldset className="admin-price-source">
               <legend>Market-price provenance</legend>

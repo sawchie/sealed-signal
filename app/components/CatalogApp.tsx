@@ -14,9 +14,7 @@ import {
   getRecommendationPresentation,
 } from "@/lib/domain";
 import {
-  centsFromInput,
   formatMoney,
-  formatPercent,
 } from "@/lib/format";
 import { ProductImage } from "./ProductImage";
 import { SiteFooter } from "./SiteFooter";
@@ -57,7 +55,6 @@ type EvaluatedProduct = {
   product: ProductWithMarketPrice;
   estimate: ProductProfitEstimate | null;
   recommendation: Recommendation | null;
-  customPriceInvalid: boolean;
   searchScore: number;
 };
 
@@ -188,47 +185,6 @@ function recommendationToneClass(recommendation: Recommendation | null) {
   return `profitability--${getRecommendationPresentation(recommendation).tone}`;
 }
 
-function CustomPurchaseInput({
-  product,
-  value,
-  invalid,
-  onChange,
-  compact = false,
-}: {
-  product: ProductWithMarketPrice;
-  value: string;
-  invalid: boolean;
-  onChange: (value: string) => void;
-  compact?: boolean;
-}) {
-  const helpId = `purchase-help-${product.id.replace(/[^a-zA-Z0-9_-]/g, "-")}`;
-
-  return (
-    <label className={`purchase-input${compact ? " purchase-input--compact" : ""}`}>
-      <span>{compact ? "Buy at" : "Shelf price"}</span>
-      <span className="purchase-input__field">
-        <span aria-hidden="true">$</span>
-        <input
-          value={value}
-          onChange={(event) => onChange(event.target.value)}
-          placeholder={
-            product.msrpCents === null ? "Enter price" : (product.msrpCents / 100).toFixed(2)
-          }
-          inputMode="decimal"
-          aria-label={`Actual purchase price for ${product.name}`}
-          aria-invalid={invalid}
-          aria-describedby={compact ? undefined : helpId}
-        />
-      </span>
-      {!compact && (
-        <small id={helpId} className={invalid ? "form-error" : ""}>
-          {invalid ? "Enter a valid positive price" : "Blank uses MSRP"}
-        </small>
-      )}
-    </label>
-  );
-}
-
 function ProductCard({
   item,
   priority,
@@ -236,7 +192,7 @@ function ProductCard({
   item: EvaluatedProduct;
   priority?: boolean;
 }) {
-  const { product, estimate, recommendation } = item;
+  const { product, recommendation } = item;
 
   return (
     <a
@@ -286,13 +242,6 @@ function ProductCard({
             </strong>
           </div>
         </div>
-        <div className="card-opportunity" aria-label="Fee-adjusted buy check">
-          <span>Est. profit after default fees</span>
-          <strong>
-            {formatMoney(estimate?.profitCents, product.currency)}
-            <small>{estimate ? formatPercent(estimate.roiPercent) + " ROI" : "Price needed"}</small>
-          </strong>
-        </div>
       </div>
     </a>
   );
@@ -300,12 +249,8 @@ function ProductCard({
 
 function ProductTable({
   items,
-  customPrices,
-  onCustomPrice,
 }: {
   items: EvaluatedProduct[];
-  customPrices: Record<string, string>;
-  onCustomPrice: (id: string, value: string) => void;
 }) {
   return (
     <div className="product-table-wrap">
@@ -315,16 +260,13 @@ function ProductTable({
             <th scope="col">Product</th>
             <th scope="col">MSRP</th>
             <th scope="col">Market</th>
-            <th scope="col">Buy at</th>
-            <th scope="col">Net</th>
-            <th scope="col">Profit</th>
-            <th scope="col">ROI</th>
             <th scope="col">Signal</th>
+            <th scope="col"><span className="sr-only">Details</span></th>
           </tr>
         </thead>
         <tbody>
           {items.map((item) => {
-            const { product, estimate, recommendation } = item;
+            const { product, recommendation } = item;
             return (
               <tr key={product.id}>
                 <td>
@@ -347,27 +289,12 @@ function ProductTable({
                 <td>{formatMoney(product.msrpCents, product.currency)}</td>
                 <td>{formatMoney(product.marketPrice?.amountCents, product.currency)}</td>
                 <td>
-                  <CustomPurchaseInput
-                    compact
-                    product={product}
-                    value={customPrices[product.id] ?? ""}
-                    invalid={item.customPriceInvalid}
-                    onChange={(value) => onCustomPrice(product.id, value)}
-                  />
-                </td>
-                <td>{formatMoney(estimate?.netProceedsCents, product.currency)}</td>
-                <td className={recommendationToneClass(recommendation)}>
-                  {formatMoney(estimate?.profitCents, product.currency)}
-                </td>
-                <td className={recommendationToneClass(recommendation)}>
-                  {formatPercent(estimate?.roiPercent)}
-                </td>
-                <td>
                   <span className={`signal signal--small ${signalClass(recommendation)}`}>
                     <span className="signal__dot" aria-hidden="true" />
                     {signalLabel(recommendation)}
                   </span>
                 </td>
+                <td><a href={`/products/${product.slug}`} aria-label={`Open details for ${product.name}`}>Open ↗</a></td>
               </tr>
             );
           })}
@@ -436,7 +363,6 @@ export function CatalogApp({
   const [numericFilters, setNumericFilters] = useState(initialNumericFilters);
   const [sort, setSort] = useState<SortKey>("opportunity");
   const [view, setView] = useState<ViewMode>("grid");
-  const [customPrices, setCustomPrices] = useState<Record<string, string>>({});
   const [assumptions] = useState<ProfitAssumptions>({
     ...DEFAULT_PROFIT_ASSUMPTIONS,
   });
@@ -541,25 +467,18 @@ export function CatalogApp({
 
   const evaluated = useMemo(() => {
     return products.map<EvaluatedProduct>((product) => {
-      const rawCustomPrice = customPrices[product.id] ?? "";
-      const parsedCustomPrice = centsFromInput(rawCustomPrice);
-      const customPriceInvalid = rawCustomPrice.trim() !== "" && parsedCustomPrice === null;
       let estimate: ProductProfitEstimate | null = null;
 
-      if (!customPriceInvalid) {
-        try {
-          estimate = estimateProductProfit(
-            {
-              msrpCents: product.msrpCents,
-              marketPriceCents: product.marketPrice?.amountCents ?? null,
-              customPurchasePriceCents:
-                rawCustomPrice.trim() === "" ? null : parsedCustomPrice,
-            },
-            assumptions,
-          );
-        } catch {
-          estimate = null;
-        }
+      try {
+        estimate = estimateProductProfit(
+          {
+            msrpCents: product.msrpCents,
+            marketPriceCents: product.marketPrice?.amountCents ?? null,
+          },
+          assumptions,
+        );
+      } catch {
+        estimate = null;
       }
 
       return {
@@ -568,11 +487,10 @@ export function CatalogApp({
         recommendation: estimate
           ? getRecommendation({ profitCents: estimate.profitCents, roiPercent: estimate.roiPercent })
           : null,
-        customPriceInvalid,
         searchScore: scoreSearch(product, query),
       };
     });
-  }, [products, customPrices, assumptions, query]);
+  }, [products, assumptions, query]);
 
   const visibleProducts = useMemo(() => {
     const msrpMin = parseFilter(numericFilters.msrpMin);
@@ -905,13 +823,7 @@ export function CatalogApp({
                   ))}
                 </div>
               ) : (
-                <ProductTable
-                  items={visibleProducts}
-                  customPrices={customPrices}
-                  onCustomPrice={(id, value) =>
-                    setCustomPrices((current) => ({ ...current, [id]: value }))
-                  }
-                />
+                <ProductTable items={visibleProducts} />
               )
             ) : (
               <div className="empty-state">

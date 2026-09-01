@@ -10,7 +10,9 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a className="brand" href="/" aria-label="Sealed Signal home">
           <span className="brand__mark" aria-hidden="true">
-            ⚡
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M13.6 1.8 5.3 13h5.5l-.7 9.2L18.7 10h-5.6l.5-8.2Z" />
+            </svg>
           </span>
           <span>
             <span className="brand__name">Sealed Signal</span>

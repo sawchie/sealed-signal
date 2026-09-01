@@ -32,6 +32,10 @@ async function initialize(): Promise<void> {
         release_date TEXT,
         image_url TEXT,
         msrp_cents INTEGER,
+        retail_source_id TEXT,
+        retail_source_kind TEXT,
+        retail_source_name TEXT,
+        retail_source_url TEXT,
         currency TEXT DEFAULT 'USD' NOT NULL,
         notes TEXT,
         active INTEGER DEFAULT 1 NOT NULL,
@@ -102,4 +106,20 @@ async function initialize(): Promise<void> {
     ),
     d1.prepare("PRAGMA optimize"),
   ]);
+
+  const productColumns = await d1
+    .prepare("PRAGMA table_info(products)")
+    .all<{ name: string }>();
+  const existingColumns = new Set((productColumns.results ?? []).map(({ name }) => name));
+  const retailColumns = [
+    ["retail_source_id", "TEXT"],
+    ["retail_source_kind", "TEXT"],
+    ["retail_source_name", "TEXT"],
+    ["retail_source_url", "TEXT"],
+  ] as const;
+  for (const [name, type] of retailColumns) {
+    if (!existingColumns.has(name)) {
+      await d1.prepare(`ALTER TABLE products ADD COLUMN ${name} ${type}`).run();
+    }
+  }
 }

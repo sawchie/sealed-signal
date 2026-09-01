@@ -7,6 +7,7 @@ import {
   type MarketPriceWrite,
   type ProductCreate,
   type ProductUpdate,
+  type RetailPriceSourceWrite,
 } from "../../../db/repository";
 
 export class RequestValidationError extends Error {
@@ -225,6 +226,31 @@ export function parseMarketPrice(value: unknown): MarketPriceWrite | null {
   };
 }
 
+export function parseRetailPriceSource(value: unknown): RetailPriceSourceWrite | null {
+  if (value === null) return null;
+  if (!isObject(value)) {
+    throw new RequestValidationError("retailPriceSource must be an object or null.");
+  }
+  const id = stringValue(value, "id", { required: true, max: 80 }) as string;
+  const label = stringValue(value, "label", { required: true, max: 160 }) as string;
+  const kind = stringValue(value, "kind", { required: true, max: 20 }) as string;
+  if (!["manual", "api", "marketplace", "aggregate"].includes(kind)) {
+    throw new RequestValidationError(
+      "retailPriceSource.kind must be manual, api, marketplace, or aggregate.",
+    );
+  }
+  const url = webUrl(
+    stringValue(value, "url", { nullable: true, max: 2_000 }),
+    "retailPriceSource.url",
+  );
+  return {
+    id,
+    label,
+    kind: kind as RetailPriceSourceWrite["kind"],
+    ...(url !== undefined ? { url } : {}),
+  };
+}
+
 export async function parseMarketPriceRequest(
   request: Request,
 ): Promise<MarketPriceWrite | null> {
@@ -260,6 +286,9 @@ function productFields(object: Record<string, unknown>) {
   );
   const marketPrice = Object.hasOwn(object, "marketPrice")
     ? parseMarketPrice(object.marketPrice)
+    : undefined;
+  const retailPriceSource = Object.hasOwn(object, "retailPriceSource")
+    ? parseRetailPriceSource(object.retailPriceSource)
     : undefined;
 
   return {
@@ -305,6 +334,7 @@ function productFields(object: Record<string, unknown>) {
           }),
         }
       : {}),
+    ...(retailPriceSource !== undefined ? { retailPriceSource } : {}),
     ...(currencyValue(object) ? { currency: currencyValue(object) } : {}),
     ...(stringValue(object, "notes", { nullable: true, max: 5_000 }) !== undefined
       ? { notes: stringValue(object, "notes", { nullable: true, max: 5_000 }) }

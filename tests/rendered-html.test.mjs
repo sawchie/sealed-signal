@@ -33,7 +33,7 @@ test("server-renders the resale catalog with honest price labeling", async () =>
   assert.match(html, /Retail \/ MSRP/i);
   assert.match(html, /Market estimate/i);
   assert.match(html, /Filter by Pokémon set/i);
-  assert.match(html, /Est\. profit after default fees/i);
+  assert.doesNotMatch(html, /Est\. profit after default fees/i);
   assert.match(html, /Black Bolt Elite Trainer Box/i);
   assert.match(html, /Shrouded Fable Greninja ex Special Illustration Collection/i);
   assert.match(html, /href="\/products\/destined-rivals-elite-trainer-box"[^>]*aria-label="Open details/i);
@@ -55,7 +55,20 @@ test("server-renders public product SEO pages and structured data", async () => 
   assert.match(html, /Released\s*(?:<!-- -->)?\s*May 30, 2025/i);
   assert.match(html, /Gross market spread/i);
   assert.match(html, /Premium \/ discount vs retail/i);
+  assert.match(html, /Read the snapshot, then check the source/i);
+  assert.doesNotMatch(html, /Price history|30 \/ 90 day averages/i);
   assert.doesNotMatch(html, /Released\s*(?:<!-- -->)?\s*May 29, 2025/i);
+});
+
+test("renders newly completed retail and market provenance", async () => {
+  const response = await render("/products/destined-rivals-three-pack-blister-kangaskhan");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /\$14\.99/);
+  assert.match(html, /\$48\.78/);
+  assert.match(html, /Target first-party retail/);
+  assert.match(html, /exact Kangaskhan three-pack blister/i);
 });
 
 test("robots metadata keeps admin and APIs out of public indexing", async () => {
