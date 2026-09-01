@@ -75,16 +75,6 @@ export default function MethodologyPage() {
             <p>When a vetted eBay sold sample is entered, the preferred estimate is a median of multiple recent exact matches. Automated completed-sales retrieval is not connected, so the site does not invent individual eBay comps.</p>
           </article>
 
-          <article className="content-card content-card--wide">
-            <span className="eyebrow">Product imagery</span>
-            <h2>Authorized product photos, stored locally</h2>
-            <p>
-              Seeded products use locally stored TCGplayer catalog imagery under Sealed Signal&apos;s written
-              authorization. Each asset is mapped to its TCGplayer catalog product ID, and the illustrated
-              reference remains available when a future product has no rights-cleared image.
-            </p>
-          </article>
-
           <article className="content-card content-card--wide caution-card">
             <span className="eyebrow">Known limits</span>
             <h2>What this estimate does not know</h2>

@@ -71,6 +71,15 @@ test("renders newly completed retail and market provenance", async () => {
   assert.match(html, /exact Kangaskhan three-pack blister/i);
 });
 
+test("keeps private product-image policy off the public methodology page", async () => {
+  const response = await render("/methodology");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /Every signal should be explainable/i);
+  assert.doesNotMatch(html, /Product imagery|Authorized product photos|written authorization/i);
+});
+
 test("robots metadata keeps admin and APIs out of public indexing", async () => {
   const response = await render("/robots.txt");
   assert.equal(response.status, 200);
