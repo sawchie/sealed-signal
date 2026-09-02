@@ -4400,6 +4400,19 @@ body {
   background: #f1ece2;
 }
 
+.product-card__visual .product-image img {
+  padding: 9px;
+  object-position: center;
+}
+
+.table-product .product-image img {
+  padding: 3px;
+}
+
+.detail-visual .product-image img {
+  padding: 28px;
+}
+
 .product-image {
   --image-surface: #efe7d9;
   --image-card: #fffaf0;

@@ -43,5 +43,5 @@ export const TCGPLAYER_PRODUCT_IMAGE_SOURCES = {
 } as const;
 
 export function tcgplayerProductImage(id: string) {
-  return id in TCGPLAYER_PRODUCT_IMAGE_SOURCES ? `/product-images/${id}.jpg` : null;
+  return id in TCGPLAYER_PRODUCT_IMAGE_SOURCES ? `/product-images/cutouts/${id}.webp` : null;
 }
