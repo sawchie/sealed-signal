@@ -30,6 +30,8 @@ test("server-renders the resale catalog with honest price labeling", async () =>
   assert.doesNotMatch(html, /Collector-built estimate desk|Check the shelf\. Know the signal/i);
   assert.match(html, /Destined Rivals Elite Trainer Box/i);
   assert.match(html, /product-images\/cutouts\/destined-rivals-etb\.webp/i);
+  assert.match(html, /product-images\/cutouts\/temporal-forces-booster-box\.webp/i);
+  assert.doesNotMatch(html, /product-image__fallback/i);
   assert.match(html, /Retail \/ MSRP/i);
   assert.match(html, /Market estimate/i);
   assert.match(html, /Filter by Pokémon set/i);
