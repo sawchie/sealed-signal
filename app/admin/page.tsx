@@ -4,7 +4,7 @@ import { SiteHeader } from "@/app/components/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Manage Product Data",
-  description: "Protected local product and manual market-price administration for Sealed Signal.",
+  description: "Protected product and market-price administration for PokeScratch.",
   robots: { index: false, follow: false },
 };
 
@@ -16,4 +16,3 @@ export default function AdminPage() {
     </div>
   );
 }
-

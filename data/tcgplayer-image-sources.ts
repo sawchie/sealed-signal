@@ -1,5 +1,5 @@
 /**
- * Local copies of product imagery authorized for Sealed Signal by TCGplayer.
+ * Local copies of product imagery for PokeScratch, using the supplied TCGplayer authorization.
  * Each local asset keeps the catalog product ID it came from for provenance.
  */
 export const TCGPLAYER_PRODUCT_IMAGE_SOURCES = {

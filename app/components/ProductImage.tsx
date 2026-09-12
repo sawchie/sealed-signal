@@ -59,8 +59,8 @@ export function ProductImage({
   priority = false,
   className = "",
 }: ProductImageProps) {
-  const [failed, setFailed] = useState(false);
-  const showFallback = !src || failed;
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
+  const showFallback = !src || failedSrc === src;
   const theme = getPackageTheme(setName);
   const referenceName = setName ?? productName ?? "Sealed product";
 
@@ -91,7 +91,8 @@ export function ProductImage({
           alt={alt}
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : "auto"}
-          onError={() => setFailed(true)}
+          decoding="async"
+          onError={() => setFailedSrc(src)}
         />
       )}
     </div>

@@ -8,6 +8,10 @@ export function resolvePublicProduct(
   persisted: ProductWithMarketPrice | null,
   bundled: ProductWithMarketPrice | null,
 ): ProductWithMarketPrice | null {
-  if (persisted) return persisted.active ? persisted : null;
+  if (persisted) {
+    if (!persisted.active) return null;
+    const newerQuote = bundled?.marketPrice && bundled.marketPrice.updatedAt > (persisted.marketPrice?.updatedAt ?? "");
+    return newerQuote ? { ...persisted, marketPrice: bundled.marketPrice, imageUrl: persisted.imageUrl ?? bundled.imageUrl, retailPriceSource: persisted.retailPriceSource ?? bundled.retailPriceSource } : persisted;
+  }
   return bundled;
 }

@@ -6,6 +6,7 @@ import type {
 } from "@/lib/domain/types";
 import { tcgplayerProductImage } from "@/data/tcgplayer-image-sources";
 import { expandedSeedProducts } from "@/data/expanded-products";
+import catalogImport from "./catalog-import.json";
 
 const TCGPLAYER_SNAPSHOT = "2026-08-01T12:00:00.000Z";
 const TCGINDEX_SNAPSHOT = "2026-08-22T06:00:00.000Z";
@@ -854,12 +855,38 @@ const productsWithImages = products.map((product) => ({
   imageUrl: product.imageUrl ?? tcgplayerProductImage(product.id),
 }));
 
-export const seedProducts = [...productsWithImages, ...expandedSeedProducts]
+const originalProducts = [...productsWithImages, ...expandedSeedProducts]
   .filter((product) => product.active)
   .map((product) => ({
     ...product,
     imageUrl: product.imageUrl ?? tcgplayerProductImage(product.id),
   }));
+
+export const catalogPriceUpdatedAt = catalogImport.providerUpdatedAt;
+const originals = new Map(originalProducts.map(product => [product.id, product]));
+const importedProducts: ProductWithMarketPrice[] = catalogImport.items.map(item => {
+  const previous = originals.get(item.id);
+  return {
+    id: item.id, slug: item.slug,
+    aliases: [item.category === "Elite Trainer Box" ? "etb" : item.category === "Pokémon Center Elite Trainer Box" ? "pc etb" : ""].filter(Boolean),
+    setName: item.setName, series: item.series, category: item.category,
+    releaseDate: item.releaseDate, msrpCents: item.msrpCents,
+    retailPriceSource: item.retailSourceUrl ? { id: "celadon-retail-reference", label: "Celadon Info MSRP reference", kind: "aggregate", url: item.retailSourceUrl } : null,
+    currency: "USD", notes: null, active: true,
+    ...previous,
+    // Keep established IDs, URLs, verified retail metadata and admin compatibility.
+    // Name disambiguation follows the exact provider product ID, never fuzzy matching.
+    name: item.name, shortName: item.shortName,
+    imageUrl: item.imageUrl,
+    marketPrice: item.marketCents === null ? previous?.marketPrice ?? null : {
+      productId: item.id, amountCents: item.marketCents, currency: "USD",
+      source: { id: "tcgplayer-tcgcsv", label: "TCGplayer via TCGCSV", kind: "aggregate", url: item.sourceUrl },
+      updatedAt: catalogPriceUpdatedAt,
+    },
+  };
+});
+const importedIds = new Set(importedProducts.map(product => product.id));
+export const seedProducts = [...importedProducts, ...originalProducts.filter(product => !importedIds.has(product.id))];
 
 export function getSeedProductBySlug(slug: string) {
   return seedProducts.find((product) => product.slug === slug) ?? null;

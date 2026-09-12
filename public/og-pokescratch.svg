@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="PokeScratch — compare retail and market values for sealed Pokémon TCG products">
+  <rect width="1200" height="630" fill="#080b16"/>
+  <path d="M64 138h1072M64 528h1072" stroke="#30334b"/>
+  <circle cx="88" cy="89" r="22" fill="none" stroke="#c68bff" stroke-width="4"/>
+  <path d="M66 89h44" stroke="#c68bff" stroke-width="4"/>
+  <circle cx="88" cy="89" r="7" fill="#080b16" stroke="#c68bff" stroke-width="4"/>
+  <g font-family="Arial, sans-serif">
+    <text x="128" y="104" font-size="38" font-weight="700" fill="#fff">PokeScratch</text>
+    <text x="64" y="266" font-size="76" font-weight="700" letter-spacing="-2" fill="#fff">Compare retail.</text>
+    <text x="64" y="356" font-size="76" font-weight="700" letter-spacing="-2" fill="#c68bff">Find your next pickup.</text>
+    <text x="67" y="429" font-size="26" fill="#b9b8cc">Sealed Pokémon TCG · Retail and market comparisons</text>
+    <text x="67" y="576" font-size="23" fill="#c68bff">pokescratch.com</text>
+  </g>
+</svg>

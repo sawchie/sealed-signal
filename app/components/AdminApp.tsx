@@ -159,6 +159,7 @@ export function AdminApp() {
       error?: string;
       product?: ProductWithMarketPrice;
       products?: ProductWithMarketPrice[];
+      total?: number;
     };
     if (!response.ok) throw new Error(payload.error ?? `Request failed (${response.status})`);
     return payload;
@@ -168,10 +169,16 @@ export function AdminApp() {
     setBusy(true);
     setStatus("Checking the protected catalog…");
     try {
-      const payload = await request("/api/products?status=all&limit=200");
-      setProducts(payload.products ?? []);
+      const rows: ProductWithMarketPrice[] = [];
+      for (;;) {
+        const payload = await request(`/api/products?status=all&limit=200&offset=${rows.length}`);
+        const page = payload.products ?? [];
+        rows.push(...page);
+        if (page.length < 200 || rows.length >= (payload.total ?? Infinity)) break;
+      }
+      setProducts(rows);
       setConnected(true);
-      setStatus(`${payload.products?.length ?? 0} database records loaded. Your key remains only in this page.`);
+      setStatus(`${rows.length} database records loaded. Your key remains only in this page.`);
     } catch (error) {
       setConnected(false);
       setStatus(error instanceof Error ? error.message : "Could not open product administration.");

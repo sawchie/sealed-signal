@@ -19,12 +19,13 @@ import {
 import { ProductImage } from "./ProductImage";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
+import { catalogPriceUpdatedAt } from "@/data/products";
 
 type ViewMode = "grid" | "table";
 type QuickFilter =
   | "all"
   | "strong"
-  | "double"
+  | "box"
   | "etb"
   | "bundle"
   | "tin"
@@ -72,7 +73,7 @@ const initialNumericFilters: NumericFilters = {
 const quickFilters: Array<{ id: QuickFilter; label: string }> = [
   { id: "all", label: "All products" },
   { id: "strong", label: "Strong buys" },
-  { id: "double", label: "2×+ MSRP" },
+  { id: "box", label: "Booster boxes" },
   { id: "etb", label: "ETBs" },
   { id: "bundle", label: "Booster bundles" },
   { id: "tin", label: "Tins" },
@@ -218,10 +219,8 @@ function ProductCard({
       <div className="product-card__body">
         <div className="product-card__identity">
           <div>
-            <span className="eyebrow">
-              {product.setName ?? "Mixed set"} · {product.category}
-            </span>
             <h2>{product.name}</h2>
+            {product.setName && !product.name.toLowerCase().includes(product.setName.toLowerCase()) && <p className="product-card__metadata">{product.setName}</p>}
           </div>
           <span className="detail-arrow" aria-hidden="true">
             ↗
@@ -354,7 +353,7 @@ export function CatalogApp({
 }: {
   initialProducts: ProductWithMarketPrice[];
 }) {
-  const [products, setProducts] = useState(initialProducts);
+  const products = initialProducts;
   const [query, setQuery] = useState("");
   const [quickFilter, setQuickFilter] = useState<QuickFilter>("all");
   const [category, setCategory] = useState("all");
@@ -367,43 +366,10 @@ export function CatalogApp({
     ...DEFAULT_PROFIT_ASSUMPTIONS,
   });
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [dataMode, setDataMode] = useState<"bundled" | "database">("bundled");
+  const [pageSize, setPageSize] = useState({ key: "", count: 48 });
   const filtersRef = useRef<HTMLElement>(null);
   const filterCloseRef = useRef<HTMLButtonElement>(null);
   const filterTriggerRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/products?limit=200", { headers: { accept: "application/json" } })
-      .then(async (response) => {
-        if (!response.ok) return null;
-        return (await response.json()) as {
-          products?: ProductWithMarketPrice[];
-          data?: ProductWithMarketPrice[];
-        };
-      })
-      .then((payload) => {
-        if (cancelled || !payload) return;
-        const rows = payload.products ?? payload.data ?? [];
-        if (rows.length) {
-          const persisted = rows.filter((product) => product.active);
-          const persistedBySlug = new Map(persisted.map((product) => [product.slug, product]));
-          const bundledSlugs = new Set(initialProducts.map((product) => product.slug));
-          setProducts([
-            ...initialProducts.map((product) => persistedBySlug.get(product.slug) ?? product),
-            ...persisted.filter((product) => !bundledSlugs.has(product.slug)),
-          ]);
-          setDataMode("database");
-        }
-      })
-      .catch(() => {
-        // The bundled, attributed data remains the deliberate offline fallback.
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [initialProducts]);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 680px)");
@@ -510,7 +476,7 @@ export function CatalogApp({
       if (recommendation !== "all" && item.recommendation !== recommendation) return false;
 
       if (quickFilter === "strong" && item.recommendation !== "STRONG BUY") return false;
-      if (quickFilter === "double" && !estimate?.isAtLeastDoubleMsrp) return false;
+      if (quickFilter === "box" && product.category !== "Booster Box") return false;
       if (
         quickFilter === "etb" &&
         product.category !== "Elite Trainer Box" &&
@@ -547,7 +513,7 @@ export function CatalogApp({
         case "market-desc":
           return nullLast(a.product.marketPrice?.amountCents, b.product.marketPrice?.amountCents);
         case "msrp-asc":
-          return -nullLast(a.product.msrpCents, b.product.msrpCents);
+          return nullLast(a.product.msrpCents == null ? null : -a.product.msrpCents, b.product.msrpCents == null ? null : -b.product.msrpCents);
         case "msrp-desc":
           return nullLast(a.product.msrpCents, b.product.msrpCents);
         case "release-desc":
@@ -586,21 +552,32 @@ export function CatalogApp({
     recommendation !== "all" ||
     Object.values(numericFilters).some(Boolean);
 
+  const pageKey = JSON.stringify([query, quickFilter, category, setName, recommendation, numericFilters, sort]);
+  const shownCount = pageSize.key === pageKey ? pageSize.count : 48;
+  const displayedProducts = visibleProducts.slice(0, shownCount);
+
   return (
-    <div className="app-shell">
+    <div className="app-shell app-shell--catalog">
       <SiteHeader />
 
       <main>
         <section className="catalog-hero" aria-labelledby="catalog-title">
           <div className="catalog-hero__intro">
-            <h1 id="catalog-title">Compare MSRP to resale values.</h1>
+            <h1 id="catalog-title">
+              Compare retail.<br /><span>Find your next pickup.</span>
+            </h1>
             <p>
-              Scan sealed Pokémon TCG products, compare market estimates, and spot the best buys quickly.
+              Sealed Pokémon. Retail prices. A clearer picture of the market.
             </p>
 
             <section className="catalog-tools" aria-label="Catalog controls">
               <label className="catalog-search">
-                <span aria-hidden="true" className="catalog-search__icon">⌕</span>
+                <span aria-hidden="true" className="catalog-search__icon">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <circle cx="10.8" cy="10.8" r="6.4" />
+                    <path d="m15.6 15.6 4 4" />
+                  </svg>
+                </span>
                 <span className="sr-only">Search products</span>
                 <input
                   type="search"
@@ -611,7 +588,9 @@ export function CatalogApp({
                 />
                 {query && (
                   <button type="button" onClick={() => setQuery("")} aria-label="Clear search">
-                    ×
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="m7 7 10 10M17 7 7 17" />
+                    </svg>
                   </button>
                 )}
               </label>
@@ -632,39 +611,14 @@ export function CatalogApp({
             </section>
           </div>
           <div className="hero-mascot-scene" aria-hidden="true">
-            <span className="hero-mascot-scene__spark hero-mascot-scene__spark--one">✦</span>
-            <span className="hero-mascot-scene__spark hero-mascot-scene__spark--two">+</span>
-            <span className="hero-mascot-scene__spark hero-mascot-scene__spark--three">✦</span>
+            <span className="hero-mascot-scene__spark hero-mascot-scene__spark--one" />
+            <span className="hero-mascot-scene__spark hero-mascot-scene__spark--two" />
+            <span className="hero-mascot-scene__spark hero-mascot-scene__spark--three" />
             {/* Licensed through the supplied TCGplayer authorization. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="hero-mascot-scene__sprite" src="/mascots/pikachu-hero.png" alt="" />
           </div>
         </section>
-
-        <nav className="set-filter-strip" aria-label="Filter by Pokémon set">
-          <span>Sets</span>
-          <div>
-            <button
-              type="button"
-              className={setName === "all" ? "is-active" : ""}
-              aria-pressed={setName === "all"}
-              onClick={() => setSetName("all")}
-            >
-              All sets
-            </button>
-            {sets.map((value) => (
-              <button
-                key={value}
-                type="button"
-                className={setName === value ? "is-active" : ""}
-                aria-pressed={setName === value}
-                onClick={() => setSetName(value)}
-              >
-                {value}
-              </button>
-            ))}
-          </div>
-        </nav>
 
         <div className="catalog-layout">
           <aside
@@ -676,10 +630,7 @@ export function CatalogApp({
             aria-modal={filtersOpen ? true : undefined}
           >
             <div className="sidebar-heading">
-              <div>
-                <span className="eyebrow">Refine</span>
-                <h2 id="catalog-filters-title">Filters</h2>
-              </div>
+              <h2 id="catalog-filters-title">Refine the shelf</h2>
               <button ref={filterCloseRef} className="mobile-only icon-button" type="button" onClick={() => setFiltersOpen(false)} aria-label="Close filters">
                 ×
               </button>
@@ -756,14 +707,21 @@ export function CatalogApp({
             <div className="results-toolbar">
               <div>
                 <h2 id="results-title">
-                  {query ? `Results for “${query}”` : "Best resale opportunities"}
+                  {query ? `Results for “${query}”` : "The sealed shelf"}
                 </h2>
                 <p aria-live="polite">
-                  {visibleProducts.length} {visibleProducts.length === 1 ? "product" : "products"} ·{" "}
-                  {dataMode === "database" ? "editable + bundled catalog" : "manual bundled catalog"}
+                  {visibleProducts.length} sealed {visibleProducts.length === 1 ? "product" : "products"}
+                  <span className="catalog-price-date"> · Prices updated <time dateTime={catalogPriceUpdatedAt}>{new Date(catalogPriceUpdatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</time></span>
                 </p>
               </div>
               <div className="toolbar-actions">
+                <label className="sort-field catalog-set-select">
+                  <span className="sr-only">Filter by Pokémon set</span>
+                  <select value={setName} onChange={event => setSetName(event.target.value)}>
+                    <option value="all">All sets</option>
+                    {sets.map(value => <option key={value} value={value}>{value}</option>)}
+                  </select>
+                </label>
                 <button
                   ref={filterTriggerRef}
                   className={`filter-button${hasAdvancedFilters ? " has-filters" : ""}`}
@@ -796,7 +754,12 @@ export function CatalogApp({
                     aria-pressed={view === "grid"}
                     onClick={() => setView("grid")}
                   >
-                    ▦
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="4" y="4" width="6" height="6" rx="1" />
+                      <rect x="14" y="4" width="6" height="6" rx="1" />
+                      <rect x="4" y="14" width="6" height="6" rx="1" />
+                      <rect x="14" y="14" width="6" height="6" rx="1" />
+                    </svg>
                   </button>
                   <button
                     type="button"
@@ -805,7 +768,9 @@ export function CatalogApp({
                     aria-pressed={view === "table"}
                     onClick={() => setView("table")}
                   >
-                    ≡
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M5 7h14M5 12h14M5 17h14" />
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -814,7 +779,7 @@ export function CatalogApp({
             {visibleProducts.length ? (
               view === "grid" ? (
                 <div className="product-grid">
-                  {visibleProducts.map((item, index) => (
+                  {displayedProducts.map((item, index) => (
                     <ProductCard
                       key={item.product.id}
                       item={item}
@@ -823,7 +788,7 @@ export function CatalogApp({
                   ))}
                 </div>
               ) : (
-                <ProductTable items={visibleProducts} />
+                <ProductTable items={displayedProducts} />
               )
             ) : (
               <div className="empty-state">
@@ -835,16 +800,11 @@ export function CatalogApp({
                 </button>
               </div>
             )}
+            {visibleProducts.length > shownCount && <button className="button catalog-load-more" type="button" onClick={() => setPageSize({ key: pageKey, count: shownCount + 48 })}>Show more products <span>({Math.min(shownCount, visibleProducts.length)} of {visibleProducts.length})</span></button>}
           </section>
         </div>
 
-        <section className="estimate-note" aria-label="Estimate disclaimer">
-          <span aria-hidden="true">i</span>
-          <p>
-            <strong>Decision support, not a promise.</strong> Market values are dated manual snapshots. Net and profit use your active fee profile and exclude income tax.
-          </p>
-          <a href="/methodology">View methodology →</a>
-        </section>
+        <p className="catalog-update">TCGplayer market snapshots via TCGCSV, not live pricing. Product pages show individual sources and dates.</p>
       </main>
 
       <SiteFooter />

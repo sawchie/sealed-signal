@@ -43,3 +43,7 @@ yarn-error.log*
 /outputs/
 /work/
 *.tsbuildinfo
+/.catalog-cache/
+/.impeccable/review/
+/.sites-runtime/
+__pycache__/

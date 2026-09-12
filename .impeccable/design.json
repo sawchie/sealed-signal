@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-12T02:38:33Z",
+  "title": "Design System: PokeScratch",
+  "extensions": {
+    "shadows": [
+      {"name":"card-hover","value":"0 12px 24px #0005","purpose":"Interactive card lift"},
+      {"name":"product-photo","value":"0 10px 9px #0006","purpose":"Ground product cutouts"}
+    ],
+    "breakpoints": [
+      {"name":"three-columns","value":"1150px"},
+      {"name":"two-columns","value":"800px"},
+      {"name":"one-column","value":"600px"}
+    ]
+  },
+  "components": [
+    {"name":"Quick filter","kind":"button","html":"<button class=\"ds-filter\">Booster boxes</button>","css":".ds-filter{background:#101321;color:#c8c4d6;border:1px solid #30334b;border-radius:5px;min-height:42px;padding:8px 13px;font:600 12px monospace}.ds-filter:hover{border-color:#b881f4}.ds-filter:focus-visible{outline:2px solid #8be5ef;outline-offset:4px}"},
+    {"name":"Catalog search","kind":"input","html":"<input class=\"ds-search\" type=\"search\" aria-label=\"Search products\" placeholder=\"Search products…\">","css":".ds-search{height:50px;border:1px solid #45405c;border-radius:6px;background:#101321;color:#fff;padding:0 16px;font:14px sans-serif}.ds-search::placeholder{color:#aaa6bc}.ds-search:focus-visible{outline:2px solid #8be5ef;outline-offset:4px}"},
+    {"name":"Navigation","kind":"nav","html":"<nav class=\"ds-nav\"><a href=\"/\">Catalog</a><a href=\"/admin\">Manage data</a></nav>","css":".ds-nav{display:flex;gap:12px}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;color:#c8c4d6;font:650 13px sans-serif;text-decoration:none}.ds-nav a:hover{color:white;text-decoration:underline}.ds-nav a:focus-visible{outline:2px solid #8be5ef;outline-offset:4px}"},
+    {"name":"Recommendation","kind":"chip","html":"<span class=\"ds-signal\">STRONG BUY</span>","css":".ds-signal{padding:6px 8px;border:1px solid #00e7b1;border-radius:4px;background:#07352f;color:#79ffd8;font:600 9px monospace}"},
+    {"name":"Product card","kind":"card","html":"<a class=\"ds-card\" href=\"/\"><h2>Product name</h2><p>Retail / MSRP · Market estimate</p></a>","css":".ds-card{display:block;background:#101421;color:#fff;text-decoration:none;border:1px solid #30334b;border-radius:7px;padding:16px;font-family:sans-serif}.ds-card h2{font-size:15px;line-height:1.4}.ds-card p{color:#b6b2c7;font-size:10px}.ds-card:hover{border-color:#b881f4;box-shadow:0 12px 24px #0005}.ds-card:focus-visible{outline:2px solid #8be5ef;outline-offset:4px}"}
+  ],
+  "narrative": {
+    "northStar":"Arcade After Dark",
+    "overview":"Photo-led sealed Pokémon comparison catalog with a navy ground, purple accents and large paired retail/market figures. The high-resolution Concept04 mascot is still incomplete.",
+    "keyCharacteristics":["Real product photography","Readable paired prices","Semantic recommendation colors"],
+    "dos":["Keep the real update date visible near the results heading","Preserve native product links and keyboard focus"],
+    "donts":["Do not duplicate product names as eyebrows","Do not invent prices or stock availability","Do not describe the pending mascot as complete"]
+  }
+}

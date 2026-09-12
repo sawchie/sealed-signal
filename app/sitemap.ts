@@ -19,16 +19,22 @@ async function getSitemapProducts(): Promise<SitemapProduct[]> {
 
   try {
     const { listProducts } = await import("@/db/repository");
-    const persisted = await listProducts({ activeOnly: false, limit: 200 });
-    for (const product of persisted.products) {
+    let offset = 0;
+    for (;;) {
+      const persisted = await listProducts({ activeOnly: false, limit: 200, offset });
+      for (const product of persisted.products) {
+      const bundledDate = products.get(product.slug)?.lastModified;
       products.delete(product.slug);
       if (product.active) {
         products.set(product.slug, {
           slug: product.slug,
           lastModified:
-            product.marketPrice?.updatedAt ?? product.updatedAt ?? product.releaseDate ?? undefined,
+            [bundledDate, product.marketPrice?.updatedAt, product.updatedAt, product.releaseDate].filter(Boolean).sort().at(-1) ?? undefined,
         });
       }
+      }
+      offset += persisted.products.length;
+      if (!persisted.products.length || offset >= persisted.total) break;
     }
   } catch {
     // The bundled catalog remains indexable before a D1 binding is provisioned.
@@ -38,11 +44,11 @@ async function getSitemapProducts(): Promise<SitemapProduct[]> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pokescratch.com";
   const products = await getSitemapProducts();
   return [
     { url: baseUrl, changeFrequency: "daily", priority: 1 },
-    { url: `${baseUrl}/methodology`, changeFrequency: "monthly", priority: 0.5 },
+    ...["about", "contact", "privacy"].map(path => ({ url: `${baseUrl}/${path}`, changeFrequency: "monthly" as const, priority: 0.4 })),
     ...products.map((product) => ({
       url: `${baseUrl}/products/${product.slug}`,
       lastModified: product.lastModified,

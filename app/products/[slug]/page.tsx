@@ -76,15 +76,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
     category: product.category,
     releaseDate: product.releaseDate ?? undefined,
     image: product.imageUrl ?? undefined,
-    offers: product.msrpCents
-      ? {
-          "@type": "Offer",
-          priceCurrency: product.currency,
-          price: (product.msrpCents / 100).toFixed(2),
-          availability: "https://schema.org/OutOfStock",
-          description: "Reference retail / MSRP only; retailer availability is not tracked.",
-        }
-      : undefined,
   };
 
   return (

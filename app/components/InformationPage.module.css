@@ -1,0 +1,8 @@
+.page { width: min(100%, 820px); margin: 0 auto; padding: 36px 24px 56px; }
+.page h1 { margin: 0 0 28px; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; }
+.content { font-size: 1rem; line-height: 1.75; overflow-wrap: anywhere; }
+.content p { margin: 0 0 20px; }
+.content h2 { font-size: 1.3rem; margin: 32px 0 12px; line-height: 1.35; }
+.content a { color: #d2a2ff; text-decoration: underline; text-underline-offset: 3px; }
+.content li { margin: 8px 0; }
+@media (max-width: 600px) { .page { padding: 28px 16px 40px; } }

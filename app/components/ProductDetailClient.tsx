@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { ProductWithMarketPrice, Recommendation } from "@/lib/domain";
 import {
   DEFAULT_PROFIT_ASSUMPTIONS,
@@ -18,7 +18,7 @@ function signalClass(recommendation: Recommendation | null) {
 }
 
 export function ProductDetailClient({ initialProduct }: { initialProduct: ProductWithMarketPrice }) {
-  const [product, setProduct] = useState(initialProduct);
+  const product = initialProduct;
   const [purchasePrice, setPurchasePrice] = useState("");
   const [feeRate, setFeeRate] = useState(
     (DEFAULT_PROFIT_ASSUMPTIONS.sellingPlatformFeeRate * 100).toString(),
@@ -29,25 +29,6 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
   const [shipping, setShipping] = useState("0.00");
   const [includeTax, setIncludeTax] = useState(false);
   const [taxRate, setTaxRate] = useState("0");
-
-  useEffect(() => {
-    fetch(`/api/products/${initialProduct.slug}`, { headers: { accept: "application/json" } })
-      .then(async (response) => (response.ok ? response.json() : null))
-      .then((payload) => {
-        if (payload?.product) {
-          setProduct({
-            ...initialProduct,
-            ...(payload.product as ProductWithMarketPrice),
-            retailPriceSource:
-              (payload.product as ProductWithMarketPrice).retailPriceSource ??
-              initialProduct.retailPriceSource,
-          });
-        }
-      })
-      .catch(() => {
-        // Keep the bundled, source-attributed fallback.
-      });
-  }, [initialProduct]);
 
   const actualPurchaseCents = centsFromInput(purchasePrice);
   const purchaseInvalid = purchasePrice.trim() !== "" && actualPurchaseCents === null;
@@ -248,10 +229,9 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
                   ) : product.retailPriceSource?.label ?? "See product notes"}
                 </dd>
               </div>
-              <div><dt>Retrieved</dt><dd>{formatCompactDate(product.marketPrice?.updatedAt)}</dd></div>
+              <div><dt>Price updated</dt><dd>{formatCompactDate(product.marketPrice?.updatedAt)}</dd></div>
               <div><dt>Source sample</dt><dd>{product.marketPrice?.sampleSize ? `${product.marketPrice.sampleSize} comparable observations` : "Not supplied"}</dd></div>
             </dl>
-            <p>{product.marketPrice?.methodology ?? "Retrieved date records our manual observation; it does not claim the source data was live at that moment."}</p>
           </section>
 
           <section className="detail-panel product-facts" aria-labelledby="facts-title">
@@ -267,17 +247,6 @@ export function ProductDetailClient({ initialProduct }: { initialProduct: Produc
         </aside>
       </div>
 
-      <section className="source-context" aria-labelledby="source-context-title">
-        <div>
-          <h2 id="source-context-title">Read the snapshot, then check the source.</h2>
-          <p>
-            This is a dated product-level estimate, not a live offer. TCGplayer market prices summarize
-            completed marketplace transactions; exact eBay sold comps appear only when a vetted sample
-            has actually been recorded.
-          </p>
-        </div>
-        <a href="/methodology">See pricing methodology <span aria-hidden="true">→</span></a>
-      </section>
     </main>
   );
 }

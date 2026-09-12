@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import catalogImport from "../data/catalog-import.json" with { type: "json" };
 
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 
@@ -24,9 +25,12 @@ test("server-renders the resale catalog with honest price labeling", async () =>
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Compare Pokémon TCG MSRP &amp; Resale \| Sealed Signal<\/title>/i);
-  assert.match(html, /Compare MSRP to resale values/i);
-  assert.match(html, /spot the best buys quickly/i);
+  assert.match(html, /<title>Compare Pokémon TCG MSRP &amp; Resale \| PokeScratch<\/title>/i);
+  assert.match(html, /Compare retail/i);
+  assert.match(html, /Find your next pickup/i);
+  assert.match(html, /Prices updated/i);
+  assert.match(html, /name="google-site-verification" content="jdFlPWY8SbBX1yV3QyYEIdBePdE9PkerC7gzGrQR350"/);
+  assert.match(html, new RegExp(catalogImport.providerUpdatedAt));
   assert.doesNotMatch(html, /Collector-built estimate desk|Check the shelf\. Know the signal/i);
   assert.match(html, /Destined Rivals Elite Trainer Box/i);
   assert.match(html, /product-images\/cutouts\/destined-rivals-etb\.webp/i);
@@ -37,8 +41,11 @@ test("server-renders the resale catalog with honest price labeling", async () =>
   assert.match(html, /Filter by Pokémon set/i);
   assert.doesNotMatch(html, /Est\. profit after default fees/i);
   assert.match(html, /Black Bolt Elite Trainer Box/i);
-  assert.match(html, /Shrouded Fable Greninja ex Special Illustration Collection/i);
-  assert.match(html, /href="\/products\/destined-rivals-elite-trainer-box"[^>]*aria-label="Open details/i);
+  assert.match(html, /Greninja ex Special Illustration Collection/i);
+  assert.match(html, /href="\/products\/[^"]+"[^>]*aria-label="Open details/i);
+  assert.doesNotMatch(html, /href="\/methodology"/i);
+  assert.equal((html.match(/class="product-card /g) ?? []).length, 48);
+  assert.match(html, /Show more products/);
   assert.match(html, /hero-mascot-scene/i);
   assert.doesNotMatch(html, /2× MSRP/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|live price feed/i);
@@ -53,11 +60,11 @@ test("server-renders public product SEO pages and structured data", async () => 
   assert.match(html, /application\/ld\+json/i);
   assert.match(html, /Resale estimate/i);
   assert.match(html, /Price data/i);
-  assert.match(html, /TCGIndex manual snapshot/i);
+  assert.match(html, /TCGplayer via TCGCSV/i);
   assert.match(html, /Released\s*(?:<!-- -->)?\s*May 30, 2025/i);
   assert.match(html, /Gross market spread/i);
   assert.match(html, /Premium \/ discount vs retail/i);
-  assert.match(html, /Read the snapshot, then check the source/i);
+  assert.doesNotMatch(html, /Read the snapshot, then check the source|schema.org\/OutOfStock/i);
   assert.doesNotMatch(html, /Price history|30 \/ 90 day averages/i);
   assert.doesNotMatch(html, /Released\s*(?:<!-- -->)?\s*May 29, 2025/i);
 });
@@ -68,18 +75,25 @@ test("renders newly completed retail and market provenance", async () => {
   const html = await response.text();
 
   assert.match(html, /\$14\.99/);
-  assert.match(html, /\$48\.78/);
+  const quote = catalogImport.items.find(item => item.id === "destined-rivals-kangaskhan-blister");
+  assert.ok(html.includes(`$${(quote.marketCents / 100).toFixed(2)}`));
   assert.match(html, /Target first-party retail/);
-  assert.match(html, /exact Kangaskhan three-pack blister/i);
+  assert.match(html, /TCGplayer via TCGCSV/i);
 });
 
-test("keeps private product-image policy off the public methodology page", async () => {
+test("removed methodology route redirects to the catalog", async () => {
   const response = await render("/methodology");
+  assert.equal(response.status, 308);
+  assert.equal(response.headers.get("location"), "/");
+});
+
+test("new catalog entries have working detail routes", async () => {
+  const product = catalogImport.items.find(item => !item.existingId && item.releaseDate && item.marketCents);
+  const response = await render(`/products/${product.slug}`);
   assert.equal(response.status, 200);
   const html = await response.text();
-
-  assert.match(html, /Every signal should be explainable/i);
-  assert.doesNotMatch(html, /Product imagery|Authorized product photos|written authorization/i);
+  assert.ok(html.includes(product.imageUrl));
+  assert.match(html, /Released|Gross market spread|TCGplayer via TCGCSV/);
 });
 
 test("robots metadata keeps admin and APIs out of public indexing", async () => {
@@ -88,4 +102,23 @@ test("robots metadata keeps admin and APIs out of public indexing", async () => 
   const body = await response.text();
   assert.match(body, /Disallow: \/admin/i);
   assert.match(body, /Disallow: \/api\//i);
+  assert.match(body, /https:\/\/pokescratch.com\/sitemap.xml/);
+});
+
+test("public branding and contact pages use PokeScratch", async () => {
+  for (const path of ["/", "/admin", "/about", "/contact", "/privacy"]) {
+    const response = await render(path);
+    assert.equal(response.status, 200, path);
+    const html = await response.text();
+    assert.doesNotMatch(html, /Sealed Signal/i, path);
+    assert.match(html, /PokeScratch/i);
+  }
+});
+
+test("sitemap lists the expanded catalog on the public domain", async () => {
+  const response = await render("/sitemap.xml");
+  assert.equal(response.status, 200);
+  const body = await response.text();
+  assert.doesNotMatch(body, /localhost|\/methodology/);
+  assert.equal((body.match(/<loc>/g) ?? []).length, catalogImport.items.length + 4);
 });

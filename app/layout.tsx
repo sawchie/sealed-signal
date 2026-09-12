@@ -1,18 +1,21 @@
 import type { Metadata, Viewport } from "next";
+import "@fontsource-variable/space-grotesk";
 import "./globals.css";
 import "./neon-override.css";
+import "./catalog-theme.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pokescratch.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Sealed Signal — Pokémon Resale Desk",
-    template: "%s | Sealed Signal",
+    default: "PokeScratch — Pokémon Sealed Catalog",
+    template: "%s | PokeScratch",
   },
   description:
     "A fast, fee-aware decision tool for sealed Pokémon TCG resale opportunities.",
-  applicationName: "Sealed Signal",
+  applicationName: "PokeScratch",
+  verification: { google: "jdFlPWY8SbBX1yV3QyYEIdBePdE9PkerC7gzGrQR350" },
   icons: { icon: "/favicon.svg" },
   keywords: [
     "Pokémon TCG MSRP",
@@ -22,24 +25,24 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    title: "Sealed Signal — Compare MSRP to resale values",
+    title: "PokeScratch — Compare retail and market values",
     description:
       "A quick sealed Pokémon TCG buy check with transparent manual market snapshots.",
-    siteName: "Sealed Signal",
+    siteName: "PokeScratch",
     images: [
       {
-        url: "/og.png",
-        width: 1659,
-        height: 948,
-        alt: "Sealed Signal — compare MSRP to resale values",
+        url: "/og-pokescratch.png",
+        width: 1200,
+        height: 630,
+        alt: "PokeScratch — compare retail and market values",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sealed Signal — Compare MSRP to resale values",
+    title: "PokeScratch — Compare retail and market values",
     description: "Quick resale estimates and honest market snapshots for sealed Pokémon products.",
-    images: ["/og.png"],
+    images: ["/og-pokescratch.png"],
   },
   robots: {
     index: true,

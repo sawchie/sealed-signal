@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Sealed Signal">
-  <rect width="32" height="32" rx="9" fill="#f4c15d"/>
-  <rect x="2.5" y="2.5" width="27" height="27" rx="7" fill="none" stroke="#a96b2e"/>
-  <text x="16" y="20" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="900" letter-spacing=".4" fill="#26334a">SS</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PokeScratch">
+  <rect width="32" height="32" rx="7" fill="#080b16"/>
+  <circle cx="16" cy="16" r="11" fill="none" stroke="#c68bff" stroke-width="2"/>
+  <path d="M5 16h22" stroke="#c68bff" stroke-width="2"/>
+  <circle cx="16" cy="16" r="4" fill="#080b16" stroke="#c68bff" stroke-width="2"/>
 </svg>
