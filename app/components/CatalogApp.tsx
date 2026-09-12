@@ -614,13 +614,20 @@ export function CatalogApp({
             <span className="hero-mascot-scene__spark hero-mascot-scene__spark--one" />
             <span className="hero-mascot-scene__spark hero-mascot-scene__spark--two" />
             <span className="hero-mascot-scene__spark hero-mascot-scene__spark--three" />
-            {/* Licensed through the supplied TCGplayer authorization. */}
+            {/* Exact user-selected Concept 04 crop, mirrored left; no surrounding UI. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="hero-mascot-scene__sprite" src="/mascots/pikachu-hero.png" alt="" />
+            <img className="hero-mascot-scene__sprite" src="/mascots/pikachu-concept04-crop.png" width="203" height="188" alt="" />
           </div>
         </section>
 
         <div className="catalog-layout">
+          <aside className="set-rail" aria-labelledby="set-rail-title">
+            <h2 id="set-rail-title">Browse by set</h2>
+            <div className="set-rail__list" role="group" aria-label="Filter products by set">
+              <button type="button" aria-pressed={setName === "all"} onClick={() => setSetName("all")}>All sets</button>
+              {sets.map(value => <button key={value} type="button" aria-pressed={setName === value} onClick={() => setSetName(value)}>{value}</button>)}
+            </div>
+          </aside>
           <aside
             id="catalog-filters"
             ref={filtersRef}

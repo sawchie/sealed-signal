@@ -41,7 +41,7 @@ spacing:
 
 Creative North Star: **Arcade After Dark**. A dark navy gallery with restrained purple and cyan accents. Real sealed-product photography leads; complete names and paired retail/market values make comparison immediate. This documents the built catalog and shared header, not a replacement for the existing detail/admin composition.
 
-The requested Concept 04 high-resolution, left-facing mascot remains unfinished after image-generation failures. The existing pixel mascot is retained, without an enclosing card.
+The mascot uses the exact user-selected Concept 04 pixels, cropped, background-extracted, and mirrored left. It is a 203×188 transparent asset without surrounding text or a card. A higher-resolution restoration remains unavailable after image-generation failures; this asset is not represented as new high-resolution detail.
 
 ## Colors
 
@@ -56,6 +56,8 @@ Space Grotesk provides the display, names, and price figures. Compact existing m
 Centered maximum 1440px catalog/header; 32px desktop gutters, 16px mobile. Four gallery columns, three at 1150px, two at 800px, one at 600px. Search precedes a horizontal quick-filter row. Results count and actual price-update date sit above the gallery. Set/sort use compact selects; mobile sorting gets its own full-width row.
 
 The desktop hero pairs copy with the right-hand mascot. Mobile uses a compact mascot beside the headline. Decorative overflow is clipped locally, never globally hidden over the controls.
+
+At widths of 1100px or more, the catalog adds a 188px sticky left rail of dynamically derived set-filter buttons, with a bounded scrolling list and an All sets reset. It shares the existing set state with dropdowns; search, sorting, quick filters, and advanced filters remain composed. Smaller screens retain the set dropdown and filter drawer.
 
 ## Elevation & Depth
 

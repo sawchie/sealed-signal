@@ -75,6 +75,9 @@ test("server-renders the resale catalog with honest price labeling", async () =>
   assert.equal((html.match(/class="product-card /g) ?? []).length, 48);
   assert.match(html, /Show more products/);
   assert.match(html, /hero-mascot-scene/i);
+  assert.match(html, /mascots\/pikachu-concept04-crop\.png/);
+  assert.match(html, /Browse by set/);
+  assert.match(html, /aria-label="Filter products by set"/);
   assert.doesNotMatch(html, /2× MSRP/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|live price feed/i);
 });
