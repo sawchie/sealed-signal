@@ -56,13 +56,13 @@ Space Grotesk provides the display, names, and price figures. Compact existing m
 
 ## Layout
 
-Centered maximum 1440px catalog/header; 32px desktop gutters, 16px mobile. Four gallery columns, three at 1150px, two at 800px, one at 600px. Search precedes a horizontal quick-filter row. Results count and actual price-update date sit above the gallery. Set/sort use compact selects; mobile sorting gets its own full-width row.
+Centered maximum 1440px catalog/header; 32px desktop gutters, 16px mobile. Four gallery columns, three at 1150px, two at 800px, one at 600px. Search precedes wrapping product-type buttons: all options stay visible without horizontal scrolling. Results count and actual price-update date sit above the gallery. Set/sort use compact selects; mobile sorting gets its own full-width row.
 
 The desktop hero pairs copy with the right-hand mascot. Mobile uses a compact mascot beside the headline. The existing cutout sits on a shallow oval collector display plinth, with a restrained purple rim and contact shadow. Its foot-aligned reflection is vertically compressed to 55%, kept at 20% opacity, and faded over the surface rather than left floating below it. The plinth uses local material tones (#34324c, #181c2d, and the existing navy surface), not a new semantic palette. No arcade grid or enclosing panel. Both images reuse one cached asset and are decorative. Decorative overflow is clipped locally, never globally hidden over the controls; the plinth contracts to the mascot width on mobile.
 
-At widths of 1100px or more, the catalog adds a 188px sticky left rail of dynamically derived set-filter buttons, with a bounded scrolling list and an All sets reset. It shares the existing set state with dropdowns; search, sorting, quick filters, and advanced filters remain composed. Smaller screens retain the set dropdown and filter drawer.
+At widths of 1100px or more, the gallery row pairs a 188px sticky left rail with the products, so “Browse by set” starts at the top of the first cards rather than beside the controls. The rail uses the viewport height minus 40px, without the old 680px cap, with a visible reserved scrollbar and bottom breathing room. Its dynamically derived buttons share the existing set state with dropdowns; search, sorting, product types, buying signals, and advanced filters remain composed. Smaller screens retain the set dropdown and filter drawer.
 
-The All products / Saved switch sits above the results heading with a saved-item count. Its row wraps when space is constrained. In Saved, the opening-preference checkbox and browser-only storage explanation remain visible above the results.
+The All products / Saved switch sits above the results heading with a saved-item count. Beside it, separate wrapping buying-signal buttons use the centralized Strong Buy / Buy / Fair / Bad Buy labels and green/yellow/red tones. All signals resets only that choice. The existing advanced recommendation select stays synchronized. In Saved, the opening-preference checkbox and browser-only storage explanation remain visible above the results.
 
 ## Elevation & Depth
 

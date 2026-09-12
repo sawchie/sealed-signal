@@ -12,6 +12,7 @@ import {
   estimateProductProfit,
   getRecommendation,
   getRecommendationPresentation,
+  RECOMMENDATIONS,
 } from "@/lib/domain";
 import {
   formatMoney,
@@ -25,7 +26,6 @@ import { SAVED_PRODUCTS_KEY, emptySavedProducts, parseSavedProducts, type SavedP
 type ViewMode = "grid" | "table";
 type QuickFilter =
   | "all"
-  | "strong"
   | "box"
   | "etb"
   | "bundle"
@@ -72,8 +72,7 @@ const initialNumericFilters: NumericFilters = {
 };
 
 const quickFilters: Array<{ id: QuickFilter; label: string }> = [
-  { id: "all", label: "All products" },
-  { id: "strong", label: "Strong buys" },
+  { id: "all", label: "All types" },
   { id: "box", label: "Booster boxes" },
   { id: "etb", label: "ETBs" },
   { id: "bundle", label: "Booster bundles" },
@@ -520,7 +519,6 @@ export function CatalogApp({
       if (setName !== "all" && product.setName !== setName) return false;
       if (recommendation !== "all" && item.recommendation !== recommendation) return false;
 
-      if (quickFilter === "strong" && item.recommendation !== "STRONG BUY") return false;
       if (quickFilter === "box" && product.category !== "Booster Box") return false;
       if (
         quickFilter === "etb" &&
@@ -609,10 +607,10 @@ export function CatalogApp({
         <section className="catalog-hero" aria-labelledby="catalog-title">
           <div className="catalog-hero__intro">
             <h1 id="catalog-title">
-              Compare retail.<br /><span>Find your next pickup.</span>
+              What’s that box<br /><span>going for?</span>
             </h1>
             <p>
-              Sealed Pokémon. Retail prices. A clearer picture of the market.
+              Retail vs. TCGplayer market prices for sealed Pokémon. Check the gap before you buy.
             </p>
 
             <section className="catalog-tools" aria-label="Catalog controls">
@@ -640,7 +638,7 @@ export function CatalogApp({
                 )}
               </label>
 
-              <div className="quick-filter-row" aria-label="Quick filters">
+              <div className="quick-filter-row" role="group" aria-label="Product types">
                 {quickFilters.map((filter) => (
                   <button
                     key={filter.id}
@@ -669,13 +667,6 @@ export function CatalogApp({
         </section>
 
         <div className="catalog-layout">
-          <aside className="set-rail" aria-labelledby="set-rail-title">
-            <h2 id="set-rail-title">Browse by set</h2>
-            <div className="set-rail__list" role="group" aria-label="Filter products by set">
-              <button type="button" aria-pressed={setName === "all"} onClick={() => setSetName("all")}>All sets</button>
-              {sets.map(value => <button key={value} type="button" aria-pressed={setName === value} onClick={() => setSetName(value)}>{value}</button>)}
-            </div>
-          </aside>
           <aside
             id="catalog-filters"
             ref={filtersRef}
@@ -713,10 +704,7 @@ export function CatalogApp({
               <span>Recommendation</span>
               <select value={recommendation} onChange={(event) => setRecommendation(event.target.value)}>
                 <option value="all">All signals</option>
-                <option value="STRONG BUY">Strong buy</option>
-                <option value="BUY">Buy</option>
-                <option value="MARGINAL">Marginal</option>
-                <option value="SKIP">Skip</option>
+                {RECOMMENDATIONS.map(value => <option key={value} value={value}>{signalLabel(value)}</option>)}
               </select>
             </label>
 
@@ -763,6 +751,10 @@ export function CatalogApp({
               <div className="saved-switch" role="group" aria-label="Catalog list">
                 <button type="button" aria-pressed={!savedOnly} onClick={() => setSavedOnly(false)}>All products</button>
                 <button ref={savedSwitchRef} type="button" aria-pressed={savedOnly} onClick={() => setSavedOnly(true)}><HeartIcon /> Saved <span>{savedCount}</span></button>
+              </div>
+              <div className="buying-filter" role="group" aria-label="Buying signals">
+                <button type="button" aria-pressed={recommendation === "all"} onClick={() => setRecommendation("all")}>All signals</button>
+                {RECOMMENDATIONS.map(value => <button key={value} type="button" className={recommendationToneClass(value)} aria-pressed={recommendation === value} onClick={() => setRecommendation(value)}>{signalLabel(value)}</button>)}
               </div>
               {savedOnly && <label className="saved-preference"><input type="checkbox" checked={saved.openSaved} onChange={event => persistSaved({ ...saved, openSaved: event.target.checked }, "Opening preference saved.")} />Open to Saved next time</label>}
             </div>
@@ -841,6 +833,15 @@ export function CatalogApp({
               </div>
             </div>
 
+            <div className="catalog-browse">
+              <aside className="set-rail" aria-labelledby="set-rail-title">
+                <h2 id="set-rail-title">Browse by set</h2>
+                <div className="set-rail__list" role="group" aria-label="Filter products by set">
+                  <button type="button" aria-pressed={setName === "all"} onClick={() => setSetName("all")}>All sets</button>
+                  {sets.map(value => <button key={value} type="button" aria-pressed={setName === value} onClick={() => setSetName(value)}>{value}</button>)}
+                </div>
+              </aside>
+              <div className="catalog-products">
             {visibleProducts.length ? (
               view === "grid" ? (
                 <div className="product-grid">
@@ -868,6 +869,8 @@ export function CatalogApp({
               </div>
             )}
             {visibleProducts.length > shownCount && <button className="button catalog-load-more" type="button" onClick={() => setPageSize({ key: pageKey, count: shownCount + 48 })}>Show more products <span>({Math.min(shownCount, visibleProducts.length)} of {visibleProducts.length})</span></button>}
+              </div>
+            </div>
           </section>
         </div>
 

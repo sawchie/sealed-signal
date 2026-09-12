@@ -30,8 +30,8 @@ body { background: #080b16; }
 .app-shell--catalog .catalog-search input { font-size: 14px; }
 .app-shell--catalog .catalog-search input::placeholder { color: #aaa6bc; }
 .app-shell--catalog .catalog-search button { min-width: 44px; min-height: 44px; background: transparent; }
-.app-shell--catalog .quick-filter-row { gap: 8px; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: thin; padding: 12px 0 4px; }
-.app-shell--catalog .quick-filter-row button { min-height: 42px; flex: 0 0 auto; padding: 8px 13px; border-radius: 5px; font-size: 12px; background: #101321; }
+.app-shell--catalog .quick-filter-row { gap: 8px; overflow: visible; flex-wrap: wrap; padding: 12px 0 4px; }
+.app-shell--catalog .quick-filter-row button { min-height: 44px; flex: 0 0 auto; padding: 8px 13px; border-radius: 5px; font-size: 12px; background: #101321; }
 .app-shell--catalog .quick-filter-row button.is-active { background: #7941c6; border-color: #bc88f9; color: #fff; box-shadow: none; }
 .app-shell--catalog .hero-mascot-scene { min-height: 248px; padding-bottom: 44px; background: none; overflow: clip; pointer-events: none; }
 .app-shell--catalog .hero-mascot-scene::before { content: none; }
@@ -45,12 +45,13 @@ body { background: #080b16; }
    clipping a full-height upside-down duplicate under the character. */
 .hero-mascot-scene__reflection img { display: block; width: 100%; height: auto; transform: translateY(-100%) scaleY(-.55); transform-origin: center bottom; filter: blur(.6px); }
 .app-shell--catalog .catalog-layout { display: block; padding: 16px 0 28px; }
+.catalog-products { min-width: 0; }
 .set-rail { display: none; }
 @media (min-width: 1100px) {
-  .app-shell--catalog .catalog-layout { display: grid; grid-template-columns: 188px minmax(0, 1fr); gap: 26px; align-items: start; }
-  .set-rail { display: block; position: sticky; top: 20px; min-width: 0; }
+  .catalog-browse { display: grid; grid-template-columns: 188px minmax(0, 1fr); gap: 26px; align-items: start; }
+  .set-rail { display: flex; flex-direction: column; position: sticky; top: 20px; min-width: 0; max-height: calc(100dvh - 40px); }
   .set-rail h2 { font-size: 1rem; font-weight: 600; margin: 0 0 16px; color: #f5f5ff; }
-  .set-rail__list { display: flex; flex-direction: column; gap: 4px; max-height: min(680px, calc(100dvh - 95px)); overflow-y: auto; padding: 4px 8px 4px 4px; scrollbar-width: thin; scrollbar-color: #765494 #101421; }
+  .set-rail__list { display: flex; flex-direction: column; gap: 4px; min-height: 0; overflow-y: auto; padding: 4px 8px 12px 4px; scrollbar-gutter: stable; scrollbar-width: auto; scrollbar-color: #765494 #101421; }
   .set-rail__list button { min-height: 44px; flex-shrink: 0; padding: 10px 12px; text-align: left; font-size: .875rem; line-height: 1.35; color: #bfc6db; background: transparent; border: 1px solid transparent; border-radius: 5px; }
   .set-rail__list button:hover { background: #181a2b; color: white; }
   .set-rail__list button[aria-pressed="true"] { background: #281b3d; border-color: #9f6fd0; color: #ecdfff; font-weight: 600; }
@@ -80,7 +81,14 @@ body { background: #080b16; }
 .save-heart[aria-pressed="true"] .save-heart__shine { fill: #fff0f6; }
 .save-heart:hover { color: #ffb7d2; border-color: #ffb7d2; }
 .saved-toolbar, .saved-switch, .table-save-actions { display: flex; align-items: center; gap: 12px; }
-.saved-toolbar { justify-content: space-between; flex-wrap: wrap; margin-bottom: 18px; }
+.saved-toolbar { justify-content: flex-start; flex-wrap: wrap; column-gap: 28px; margin-bottom: 18px; }
+.buying-filter { display: flex; flex-wrap: wrap; gap: 6px; }
+.buying-filter button { min-height: 44px; padding: 9px 12px; color: #bfc6db; background: transparent; border: 1px solid #48405b; border-radius: 5px; font-size: .8125rem; }
+.buying-filter button[aria-pressed="true"] { color: #fff; background: #382349; border-color: #c68bff; }
+.buying-filter .profitability--positive[aria-pressed="true"] { color: #55edaa; border-color: #55edaa; background: #10251f; }
+.buying-filter .profitability--neutral[aria-pressed="true"] { color: #ffd56c; border-color: #ffd56c; background: #292317; }
+.buying-filter .profitability--negative[aria-pressed="true"] { color: #ff8fae; border-color: #ff8fae; background: #2c1724; }
+.buying-filter button:hover { border-color: #c68bff; }
 .saved-switch { gap: 4px; }
 .saved-switch button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 9px 14px; color: #c9c3db; background: transparent; border: 1px solid #48405b; border-radius: 5px; font-size: .875rem; }
 .saved-switch button[aria-pressed="true"] { color: #fff; background: #382349; border-color: #c68bff; }
@@ -141,6 +149,7 @@ input, textarea { caret-color: #d5a8ff; }
   .hero-mascot-scene__figure::before { left: 0; width: 100%; }
   .app-shell--catalog .catalog-tools { background: transparent; }
   .app-shell--catalog .catalog-search input { font-size: 13px; }
+  .app-shell--catalog .quick-filter-row button { padding-inline: 11px; }
   .app-shell--catalog .product-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .app-shell--catalog .product-card__visual { height: 275px; }
   .app-shell--catalog .product-card__body { padding: 16px 18px 20px; }

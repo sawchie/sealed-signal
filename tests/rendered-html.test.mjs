@@ -54,8 +54,13 @@ test("server-renders the resale catalog with honest price labeling", async () =>
 
   const html = await response.text();
   assert.match(html, /<title>Compare Pokémon TCG MSRP &amp; Resale \| PokeScratch<\/title>/i);
-  assert.match(html, /Compare retail/i);
-  assert.match(html, /Find your next pickup/i);
+  assert.match(html, /What’s that box/i);
+  assert.match(html, /going for\?/i);
+  const typeControls = html.match(/class="quick-filter-row"[\s\S]*?<\/div>/)?.[0] ?? "";
+  assert.match(typeControls, /All types/);
+  assert.doesNotMatch(typeControls, /Strong buy/i);
+  assert.match(html, /aria-label="Buying signals"/);
+  assert.match(html, /class="catalog-browse"/);
   assert.match(html, /Latest market update/i);
   assert.match(html, /name="google-site-verification" content="jdFlPWY8SbBX1yV3QyYEIdBePdE9PkerC7gzGrQR350"/);
   assert.match(html, new RegExp(catalogImport.providerUpdatedAt));
