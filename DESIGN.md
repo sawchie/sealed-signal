@@ -64,7 +64,7 @@ At widths of 1100px or more, the gallery row pairs a 188px sticky left rail with
 
 The All products / Saved switch sits above the results heading with a saved-item count. Beside it, separate wrapping buying-signal buttons use the centralized Strong Buy / Buy / Fair / Bad Buy labels and green/yellow/red tones. All signals resets only that choice. The existing advanced recommendation select stays synchronized. In Saved, the opening-preference checkbox and browser-only storage explanation remain visible above the results.
 
-On desktop, these controls, saved help, results heading, and sorting/view controls share the product column's left edge, using the same rail-width and gap variables as the gallery. The hero search and product-type buttons retain their original left edge. The active Filters button uses the purple selected-control treatment with white text; the drawer explicitly uses a navy surface and dark native controls, preventing old light-theme colors from leaking through.
+On desktop, one horizontal command bar sits above the gallery: the shelf heading, count, and sorting/filter/view controls align left with Browse by set; the All products/Saved and buying-signal controls sit beside them, separated by a thin vertical divider. Saved preferences and browser-only notes stay with the right-hand group. Below 1100px the groups stack in reading order without a divider. The hero search and product-type buttons retain their original left edge. The active Filters button uses the purple selected-control treatment with white text; the drawer explicitly uses a navy surface and dark native controls, preventing old light-theme colors from leaking through.
 
 ## Elevation & Depth
 

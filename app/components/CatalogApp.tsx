@@ -747,20 +747,7 @@ export function CatalogApp({
           </aside>
 
           <section className="catalog-results" aria-labelledby="results-title">
-            <div className="saved-toolbar">
-              <div className="saved-switch" role="group" aria-label="Catalog list">
-                <button type="button" aria-pressed={!savedOnly} onClick={() => setSavedOnly(false)}>All products</button>
-                <button ref={savedSwitchRef} type="button" aria-pressed={savedOnly} onClick={() => setSavedOnly(true)}><HeartIcon /> Saved <span>{savedCount}</span></button>
-              </div>
-              <div className="buying-filter" role="group" aria-label="Buying signals">
-                <button type="button" aria-pressed={recommendation === "all"} onClick={() => setRecommendation("all")}>All signals</button>
-                {RECOMMENDATIONS.map(value => <button key={value} type="button" className={recommendationToneClass(value)} aria-pressed={recommendation === value} onClick={() => setRecommendation(value)}>{signalLabel(value)}</button>)}
-              </div>
-              {savedOnly && <label className="saved-preference"><input type="checkbox" checked={saved.openSaved} onChange={event => persistSaved({ ...saved, openSaved: event.target.checked }, "Opening preference saved.")} />Open to Saved next time</label>}
-            </div>
-            {savedOnly && <p className="saved-help">Saved on this browser only. Clearing site data removes this list.</p>}
-            <p className="sr-only" role="status">{saveMessage}</p>
-            {saveMessage.includes("unavailable") && <p className="saved-help">{saveMessage}</p>}
+            <div className="catalog-command-bar">
             <div className="results-toolbar">
               <div>
                 <h2 id="results-title">
@@ -830,6 +817,26 @@ export function CatalogApp({
                     </svg>
                   </button>
                 </div>
+              </div>
+            </div>
+
+              <div className="catalog-list-controls">
+                <div className="saved-toolbar">
+                  <div className="saved-switch" role="group" aria-label="Catalog list">
+                    <button type="button" aria-pressed={!savedOnly} onClick={() => setSavedOnly(false)}>All products</button>
+                    <button ref={savedSwitchRef} type="button" aria-pressed={savedOnly} onClick={() => setSavedOnly(true)}><HeartIcon /> Saved <span>{savedCount}</span></button>
+                  </div>
+                  <div className="buying-filter" role="group" aria-label="Buying signals">
+                    <button type="button" aria-pressed={recommendation === "all"} onClick={() => setRecommendation("all")}>All signals</button>
+                    {RECOMMENDATIONS.map(value => <button key={value} type="button" className={recommendationToneClass(value)} aria-pressed={recommendation === value} onClick={() => setRecommendation(value)}>{signalLabel(value)}</button>)}
+                  </div>
+                </div>
+                {savedOnly && <div className="saved-details">
+                  <label className="saved-preference"><input type="checkbox" checked={saved.openSaved} onChange={event => persistSaved({ ...saved, openSaved: event.target.checked }, "Opening preference saved.")} />Open to Saved next time</label>
+                  <p className="saved-help">Saved on this browser only. Clearing site data removes this list.</p>
+                </div>}
+                <p className="sr-only" role="status">{saveMessage}</p>
+                {saveMessage.includes("unavailable") && <p className="saved-help">{saveMessage}</p>}
               </div>
             </div>
 
