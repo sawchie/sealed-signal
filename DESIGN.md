@@ -55,7 +55,7 @@ Space Grotesk provides the display, names, and price figures. Compact existing m
 
 Centered maximum 1440px catalog/header; 32px desktop gutters, 16px mobile. Four gallery columns, three at 1150px, two at 800px, one at 600px. Search precedes a horizontal quick-filter row. Results count and actual price-update date sit above the gallery. Set/sort use compact selects; mobile sorting gets its own full-width row.
 
-The desktop hero pairs copy with the right-hand mascot. Mobile uses a compact mascot beside the headline. Decorative overflow is clipped locally, never globally hidden over the controls.
+The desktop hero pairs copy with the right-hand mascot. Mobile uses a compact mascot beside the headline. The transparent cutout sits over a soft, vertically mirrored reflection that fades into the page; no arcade grid or enclosing panel. Both images reuse one cached asset and are decorative. Decorative overflow is clipped locally, never globally hidden over the controls.
 
 At widths of 1100px or more, the catalog adds a 188px sticky left rail of dynamically derived set-filter buttons, with a bounded scrolling list and an All sets reset. It shares the existing set state with dropdowns; search, sorting, quick filters, and advanced filters remain composed. Smaller screens retain the set dropdown and filter drawer.
 

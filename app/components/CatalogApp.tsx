@@ -611,12 +611,15 @@ export function CatalogApp({
             </section>
           </div>
           <div className="hero-mascot-scene" aria-hidden="true">
-            <span className="hero-mascot-scene__spark hero-mascot-scene__spark--one" />
-            <span className="hero-mascot-scene__spark hero-mascot-scene__spark--two" />
-            <span className="hero-mascot-scene__spark hero-mascot-scene__spark--three" />
-            {/* Exact user-selected Concept 04 crop, mirrored left; no surrounding UI. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="hero-mascot-scene__sprite" src="/mascots/pikachu-concept04-crop.png" width="203" height="188" alt="" />
+            <div className="hero-mascot-scene__figure">
+              {/* Reuse the transparent Concept 04 cutout for both the subject and its reflection. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="hero-mascot-scene__sprite" src="/mascots/pikachu-concept04-crop.png" width="203" height="188" alt="" />
+              <div className="hero-mascot-scene__reflection">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/mascots/pikachu-concept04-crop.png" width="203" height="188" alt="" />
+              </div>
+            </div>
           </div>
         </section>
 

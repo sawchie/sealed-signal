@@ -27,10 +27,12 @@ body { background: #080b16; }
 .app-shell--catalog .quick-filter-row { gap: 8px; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: thin; padding: 12px 0 4px; }
 .app-shell--catalog .quick-filter-row button { min-height: 42px; flex: 0 0 auto; padding: 8px 13px; border-radius: 5px; font-size: 12px; background: #101321; }
 .app-shell--catalog .quick-filter-row button.is-active { background: #7941c6; border-color: #bc88f9; color: #fff; box-shadow: none; }
-.app-shell--catalog .hero-mascot-scene { min-height: 230px; background: none; overflow: clip; }
-.app-shell--catalog .hero-mascot-scene::before { content: ""; position: absolute; inset: 45% 0 0; background-image: linear-gradient(#5c387733 1px, transparent 1px), linear-gradient(90deg, #5c387733 1px, transparent 1px); background-size: 30px 30px; transform: perspective(200px) rotateX(40deg); }
-.app-shell--catalog .hero-mascot-scene__sprite { width: 220px; height: auto; image-rendering: auto; mix-blend-mode: normal; filter: drop-shadow(0 15px 15px #0008); transform: none; }
-.app-shell--catalog .hero-mascot-scene__spark { display: none; }
+.app-shell--catalog .hero-mascot-scene { min-height: 230px; padding-bottom: 28px; background: none; overflow: clip; pointer-events: none; }
+.app-shell--catalog .hero-mascot-scene::before { content: none; }
+.hero-mascot-scene__figure { position: relative; width: 220px; }
+.app-shell--catalog .hero-mascot-scene__sprite { display: block; width: 100%; height: auto; image-rendering: auto; mix-blend-mode: normal; filter: drop-shadow(0 7px 7px #0007); transform: none; }
+.hero-mascot-scene__reflection { position: absolute; top: 94%; left: 0; width: 100%; height: 27%; overflow: hidden; opacity: .28; mask-image: linear-gradient(to bottom, #000, transparent); -webkit-mask-image: linear-gradient(to bottom, #000, transparent); }
+.hero-mascot-scene__reflection img { display: block; width: 100%; height: auto; transform: scaleY(-1); filter: blur(.4px); }
 .app-shell--catalog .catalog-layout { display: block; padding: 16px 0 28px; }
 .set-rail { display: none; }
 @media (min-width: 1100px) {
@@ -84,13 +86,13 @@ input, textarea { caret-color: #d5a8ff; }
 @media (max-width: 1150px) {
   .app-shell--catalog .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .app-shell--catalog .catalog-hero { grid-template-columns: minmax(0, 1fr) 220px; gap: 24px; }
-  .app-shell--catalog .hero-mascot-scene__sprite { width: 210px; }
+  .hero-mascot-scene__figure { width: 210px; }
   .app-shell--catalog .results-toolbar { align-items: flex-start; flex-direction: column; gap: 12px; }
 }
 @media (max-width: 800px) {
   .app-shell--catalog .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .app-shell--catalog .catalog-hero { grid-template-columns: minmax(0, 1fr) 160px; gap: 16px; }
-  .app-shell--catalog .hero-mascot-scene__sprite { width: 160px; }
+  .hero-mascot-scene__figure { width: 160px; }
   .app-shell--catalog .price-pair strong, .app-shell--catalog .price-pair > div:last-child strong { font-size: 25px; }
 }
 @media (max-width: 600px) {
@@ -105,7 +107,7 @@ input, textarea { caret-color: #d5a8ff; }
   .app-shell--catalog .catalog-hero h1 { max-width: calc(100% - 110px); font-size: 31px; line-height: 1.12; text-wrap: initial; }
   .app-shell--catalog .catalog-hero p { max-width: 235px; font-size: 13px; min-height: 40px; }
   .app-shell--catalog .hero-mascot-scene { position: absolute; top: 26px; right: -4px; width: 106px; min-height: 122px; opacity: 1; z-index: 0; }
-  .app-shell--catalog .hero-mascot-scene__sprite { width: 106px; }
+  .hero-mascot-scene__figure { width: 106px; }
   .app-shell--catalog .catalog-tools { background: transparent; }
   .app-shell--catalog .catalog-search input { font-size: 13px; }
   .app-shell--catalog .product-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
