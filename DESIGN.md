@@ -98,3 +98,9 @@ Content typography uses rem values: headings `clamp(2rem, 4vw, 3rem)`, section h
 The calculator pairs labeled fieldsets, optional costs, inline validation, and tabular `2.5rem` purple cost-per-pack results. Incomplete results stay an em dash; cyan comparisons describe pack costs, not profitability. Differences and ties use displayed-cent precision. All inputs remain in browser memory.
 
 Content has a centered 1100px maximum width. At 700px, purchase panels stack and gutters become 16px. At 800px, native navigation becomes a Menu disclosure with Escape restoring summary focus. Product details add copy/correction actions and up to three real active same-set products without expanding browse cards.
+
+## September 2026 buy-check refinement
+
+The current refinement supersedes earlier mobile sizing and navigation notes above without changing the Arcade After Dark identity. Below 600px, cards use a compact 112px packaging column with name and paired prices alongside; desktop remains photo-led. Mobile signal/sort controls move into Refine, while types and the set selector remain directly accessible. One reference-price/cost disclosure sits near the catalog controls. Active filters are individually removable.
+
+Detail places actual purchase price before the verdict, with a small expandable packaging image on mobile. Errors are explicit pink text plus field semantics, never a changed price classification. Defaults, optional saved costs, maximum-buy scenarios, exact-product facts and real recorded history share the existing navy panels and readable content typography. Saved market targets use collector pink, independently of profitability. All local-only behaviors disclose their limits at the action, not via a permanent warning banner. Manage catalog moves to the footer. Comparison links contain the entered values and restore both products; the calculator is no longer memory-only.

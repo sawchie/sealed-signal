@@ -107,11 +107,14 @@ test("server-renders public product SEO pages and structured data", async () => 
   assert.match(html, /Resale estimate/i);
   assert.match(html, /Price data/i);
   assert.match(html, /TCGplayer via TCGCSV/i);
-  assert.match(html, /Released\s*(?:<!-- -->)?\s*May 30, 2025/i);
+  assert.match(html, /Release<\/dt><dd>May 30, 2025/i);
   assert.match(html, /Gross market spread/i);
-  assert.match(html, /Premium \/ discount vs retail/i);
+  assert.match(html, /Premium \/ discount vs reference/i);
   assert.doesNotMatch(html, /Read the snapshot, then check the source|schema.org\/OutOfStock/i);
-  assert.doesNotMatch(html, /Price history|30 \/ 90 day averages/i);
+  assert.match(html, /Recorded market history/i);
+  assert.match(html, /Maximum purchase price, before tax/i);
+  assert.match(html, /Price you are paying/i);
+  assert.doesNotMatch(html, /30 \/ 90 day averages/i);
   assert.doesNotMatch(html, /Released\s*(?:<!-- -->)?\s*May 29, 2025/i);
 });
 

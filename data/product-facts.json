@@ -1,0 +1,4458 @@
+{
+  "tcg-692939": {
+    "sourceProductId": 692939,
+    "sourceUrl": "https://www.tcgplayer.com/product/692939/pokemon-me05-pitch-black-pitch-black-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "196214157514"
+  },
+  "tcg-692942": {
+    "sourceProductId": 692942,
+    "sourceUrl": "https://www.tcgplayer.com/product/692942/pokemon-me05-pitch-black-pitch-black-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "196214157484"
+  },
+  "tcg-692946": {
+    "sourceProductId": 692946,
+    "sourceUrl": "https://www.tcgplayer.com/product/692946/pokemon-me05-pitch-black-pitch-black-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "196214157446"
+  },
+  "tcg-692947": {
+    "sourceProductId": 692947,
+    "sourceUrl": "https://www.tcgplayer.com/product/692947/pokemon-me05-pitch-black-pitch-black-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "196214157422"
+  },
+  "tcg-692949": {
+    "sourceProductId": 692949,
+    "sourceUrl": "https://www.tcgplayer.com/product/692949/pokemon-me05-pitch-black-pitch-black-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-684444": {
+    "sourceProductId": 684444,
+    "sourceUrl": "https://www.tcgplayer.com/product/684444/pokemon-me04-chaos-rising-chaos-rising-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214154186"
+  },
+  "tcg-684450": {
+    "sourceProductId": 684450,
+    "sourceUrl": "https://www.tcgplayer.com/product/684450/pokemon-me04-chaos-rising-chaos-rising-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Fennekin"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214154117"
+  },
+  "tcg-684452": {
+    "sourceProductId": 684452,
+    "sourceUrl": "https://www.tcgplayer.com/product/684452/pokemon-me04-chaos-rising-chaos-rising-pokemon-center-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-684454": {
+    "sourceProductId": 684454,
+    "sourceUrl": "https://www.tcgplayer.com/product/684454/pokemon-me04-chaos-rising-chaos-rising-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214154131"
+  },
+  "tcg-684456": {
+    "sourceProductId": 684456,
+    "sourceUrl": "https://www.tcgplayer.com/product/684456/pokemon-me04-chaos-rising-chaos-rising-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214154162"
+  },
+  "perfect-order-booster-box": {
+    "sourceProductId": 672394,
+    "sourceUrl": "https://www.tcgplayer.com/product/672394/pokemon-me03-perfect-order-perfect-order-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "perfect-order-booster-bundle": {
+    "sourceProductId": 672396,
+    "sourceUrl": "https://www.tcgplayer.com/product/672396/pokemon-me03-perfect-order-perfect-order-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-672400": {
+    "sourceProductId": 672400,
+    "sourceUrl": "https://www.tcgplayer.com/product/672400/pokemon-me03-perfect-order-perfect-order-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "perfect-order-etb": {
+    "sourceProductId": 672401,
+    "sourceUrl": "https://www.tcgplayer.com/product/672401/pokemon-me03-perfect-order-perfect-order-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "perfect-order-pc-etb": {
+    "sourceProductId": 672404,
+    "sourceUrl": "https://www.tcgplayer.com/product/672404/pokemon-me03-perfect-order-perfect-order-pokemon-center-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-666906": {
+    "sourceProductId": 666906,
+    "sourceUrl": "https://www.tcgplayer.com/product/666906/pokemon-me-ascended-heroes-mega-evolution-ascended-heroes-collection-erika-3-tab",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [
+      "1 × Erika’s Tangela"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-666907": {
+    "sourceProductId": 666907,
+    "sourceUrl": "https://www.tcgplayer.com/product/666907/pokemon-me-ascended-heroes-mega-evolution-ascended-heroes-collection-larry-3-tab",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [
+      "1 × Larry’s Komala"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214131781"
+  },
+  "tcg-666908": {
+    "sourceProductId": 666908,
+    "sourceUrl": "https://www.tcgplayer.com/product/666908/pokemon-me-ascended-heroes-mega-evolution-ascended-heroes-tech-sticker-collection-charmander",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "1 × Charmander"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-666909": {
+    "sourceProductId": 666909,
+    "sourceUrl": "https://www.tcgplayer.com/product/666909/pokemon-me-ascended-heroes-mega-evolution-ascended-heroes-tech-sticker-collection-gastly",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "1 × Gastly"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "ascended-heroes-etb": {
+    "sourceProductId": 668496,
+    "sourceUrl": "https://www.tcgplayer.com/product/668496/pokemon-me-ascended-heroes-ascended-heroes-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214114845"
+  },
+  "ascended-heroes-pc-etb": {
+    "sourceProductId": 668497,
+    "sourceUrl": "https://www.tcgplayer.com/product/668497/pokemon-me-ascended-heroes-ascended-heroes-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-668530": {
+    "sourceProductId": 668530,
+    "sourceUrl": "https://www.tcgplayer.com/product/668530/pokemon-me-ascended-heroes-ascended-heroes-mini-tins-5-pack",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-668531": {
+    "sourceProductId": 668531,
+    "sourceUrl": "https://www.tcgplayer.com/product/668531/pokemon-me-ascended-heroes-ascended-heroes-mini-tin-pikachu-and-tepig",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "ascended-heroes-mini-tin": {
+    "sourceProductId": 668532,
+    "sourceUrl": "https://www.tcgplayer.com/product/668532/pokemon-me-ascended-heroes-ascended-heroes-mini-tin-riolu-and-darumaka",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-668533": {
+    "sourceProductId": 668533,
+    "sourceUrl": "https://www.tcgplayer.com/product/668533/pokemon-me-ascended-heroes-ascended-heroes-mini-tin-zorua-and-cramorant",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-668534": {
+    "sourceProductId": 668534,
+    "sourceUrl": "https://www.tcgplayer.com/product/668534/pokemon-me-ascended-heroes-ascended-heroes-mini-tin-togepi-and-totodile",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-668535": {
+    "sourceProductId": 668535,
+    "sourceUrl": "https://www.tcgplayer.com/product/668535/pokemon-me-ascended-heroes-ascended-heroes-mini-tin-clefairy-and-chikorita",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-668536": {
+    "sourceProductId": 668536,
+    "sourceUrl": "https://www.tcgplayer.com/product/668536/pokemon-me-ascended-heroes-premium-poster-collection-mega-lucario",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [
+      "1 × Mega Lucario ex or Mega Gardevoir ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-668537": {
+    "sourceProductId": 668537,
+    "sourceUrl": "https://www.tcgplayer.com/product/668537/pokemon-me-ascended-heroes-premium-poster-collection-mega-gardevoir",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [
+      "1 × Mega Lucario ex or Mega Gardevoir ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-668541": {
+    "sourceProductId": 668541,
+    "sourceUrl": "https://www.tcgplayer.com/product/668541/pokemon-me-ascended-heroes-ascended-heroes-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-672391": {
+    "sourceProductId": 672391,
+    "sourceUrl": "https://www.tcgplayer.com/product/672391/pokemon-me-ascended-heroes-ascended-heroes-first-partners-deluxe-pin-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "3 × Chikorita, Tepig, and Totodile"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214141421"
+  },
+  "tcg-672733": {
+    "sourceProductId": 672733,
+    "sourceUrl": "https://www.tcgplayer.com/product/672733/pokemon-me-ascended-heroes-ascended-heroes-mega-meganium-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Meganium ex,",
+      "1 × Mega Meganium ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214141469"
+  },
+  "tcg-672734": {
+    "sourceProductId": 672734,
+    "sourceUrl": "https://www.tcgplayer.com/product/672734/pokemon-me-ascended-heroes-ascended-heroes-mega-emboar-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Emboar ex",
+      "1 × Mega Emboar ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214141469"
+  },
+  "tcg-672735": {
+    "sourceProductId": 672735,
+    "sourceUrl": "https://www.tcgplayer.com/product/672735/pokemon-me-ascended-heroes-ascended-heroes-mega-feraligatr-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Feraligatr ex",
+      "1 × Mega Feraligatr ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214141469"
+  },
+  "tcg-692541": {
+    "sourceProductId": 692541,
+    "sourceUrl": "https://www.tcgplayer.com/product/692541/pokemon-me-ascended-heroes-costco-ascended-heroes-mega-ex-box-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Meganium ex, Mega Emboar ex, or Mega Feraligatr ex",
+      "1 × Mega Meganium ex, Mega Emboar ex, or Mega Feraligatr ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-702496": {
+    "sourceProductId": 702496,
+    "sourceUrl": "https://www.tcgplayer.com/product/702496/pokemon-me-ascended-heroes-ascended-heroes-tin-mega-emboar-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Emboar ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214150430"
+  },
+  "tcg-702497": {
+    "sourceProductId": 702497,
+    "sourceUrl": "https://www.tcgplayer.com/product/702497/pokemon-me-ascended-heroes-ascended-heroes-tin-mega-feraligatr-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Feraligatr ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214150430"
+  },
+  "tcg-702498": {
+    "sourceProductId": 702498,
+    "sourceUrl": "https://www.tcgplayer.com/product/702498/pokemon-me-ascended-heroes-ascended-heroes-tin-mega-meganium-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Meganium ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214150430"
+  },
+  "tcg-706959": {
+    "sourceProductId": 706959,
+    "sourceUrl": "https://www.tcgplayer.com/product/706959/pokemon-me-ascended-heroes-ascended-heroes-focused-fighters-premium-collection-sams-club",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 14,
+    "promos": [
+      "2 × Mega Hawlucha ex and Team Rocket's Mewtwo ex:",
+      "2 × N's Zekrom and N's Reshiram:"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-654135": {
+    "sourceProductId": 654135,
+    "sourceUrl": "https://www.tcgplayer.com/product/654135/pokemon-me02-phantasmal-flames-phantasmal-flames-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Charcadet with a Pokémon Center logo",
+      "1 × Charcadet"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "phantasmal-flames-etb": {
+    "sourceProductId": 654136,
+    "sourceUrl": "https://www.tcgplayer.com/product/654136/pokemon-me02-phantasmal-flames-phantasmal-flames-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Charcadet"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214124813"
+  },
+  "tcg-654137": {
+    "sourceProductId": 654137,
+    "sourceUrl": "https://www.tcgplayer.com/product/654137/pokemon-me02-phantasmal-flames-phantasmal-flames-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214143357"
+  },
+  "tcg-654160": {
+    "sourceProductId": 654160,
+    "sourceUrl": "https://www.tcgplayer.com/product/654160/pokemon-me02-phantasmal-flames-phantasmal-flames-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214143371"
+  },
+  "tcg-662725": {
+    "sourceProductId": 662725,
+    "sourceUrl": "https://www.tcgplayer.com/product/662725/pokemon-me02-phantasmal-flames-phantasmal-flames-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-644279": {
+    "sourceProductId": 644279,
+    "sourceUrl": "https://www.tcgplayer.com/product/644279/pokemon-me01-mega-evolution-mega-evolution-elite-trainer-box-mega-gardevoir",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Riolu or Alakazam"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214114845"
+  },
+  "tcg-644282": {
+    "sourceProductId": 644282,
+    "sourceUrl": "https://www.tcgplayer.com/product/644282/pokemon-me01-mega-evolution-mega-evolution-pokemon-center-elite-trainer-box-exclusive-mega-lucario",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Riolu or Alakazam with a Pokémon Center logo",
+      "1 × Riolu or Alakazam"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-644298": {
+    "sourceProductId": 644298,
+    "sourceUrl": "https://www.tcgplayer.com/product/644298/pokemon-me01-mega-evolution-mega-evolution-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "1096214136144"
+  },
+  "tcg-644300": {
+    "sourceProductId": 644300,
+    "sourceUrl": "https://www.tcgplayer.com/product/644300/pokemon-me01-mega-evolution-mega-evolution-enhanced-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [
+      "1 × Bulbasaur"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-644362": {
+    "sourceProductId": 644362,
+    "sourceUrl": "https://www.tcgplayer.com/product/644362/pokemon-me01-mega-evolution-mega-evolution-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214115545"
+  },
+  "tcg-644363": {
+    "sourceProductId": 644363,
+    "sourceUrl": "https://www.tcgplayer.com/product/644363/pokemon-me01-mega-evolution-mega-evolution-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214114982"
+  },
+  "tcg-648394": {
+    "sourceProductId": 648394,
+    "sourceUrl": "https://www.tcgplayer.com/product/648394/pokemon-me01-mega-evolution-mega-evolution-elite-trainer-box-mega-lucario",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Riolu or Alakazam"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214114845"
+  },
+  "tcg-648415": {
+    "sourceProductId": 648415,
+    "sourceUrl": "https://www.tcgplayer.com/product/648415/pokemon-me01-mega-evolution-mega-evolution-pokemon-center-elite-trainer-box-exclusive-mega-gardevoir",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Riolu or Alakazam with a Pokémon Center logo",
+      "1 × Riolu or Alakazam"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-649394": {
+    "sourceProductId": 649394,
+    "sourceUrl": "https://www.tcgplayer.com/product/649394/pokemon-me01-mega-evolution-mega-heroes-mini-tin-mega-gardevoir",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214132214"
+  },
+  "tcg-649395": {
+    "sourceProductId": 649395,
+    "sourceUrl": "https://www.tcgplayer.com/product/649395/pokemon-me01-mega-evolution-mega-heroes-mini-tin-mega-kangaskhan",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214132214"
+  },
+  "tcg-649397": {
+    "sourceProductId": 649397,
+    "sourceUrl": "https://www.tcgplayer.com/product/649397/pokemon-me01-mega-evolution-mega-heroes-mini-tin-mega-latias",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214132214"
+  },
+  "tcg-649400": {
+    "sourceProductId": 649400,
+    "sourceUrl": "https://www.tcgplayer.com/product/649400/pokemon-me01-mega-evolution-mega-heroes-mini-tin-mega-lucario",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214132214"
+  },
+  "tcg-649401": {
+    "sourceProductId": 649401,
+    "sourceUrl": "https://www.tcgplayer.com/product/649401/pokemon-me01-mega-evolution-mega-heroes-mini-tin-mega-venusaur",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214132214"
+  },
+  "black-bolt-binder-collection": {
+    "sourceProductId": 630430,
+    "sourceUrl": "https://www.tcgplayer.com/product/630430/pokemon-sv-black-bolt-black-bolt-binder-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "black-bolt-booster-bundle": {
+    "sourceProductId": 630431,
+    "sourceUrl": "https://www.tcgplayer.com/product/630431/pokemon-sv-black-bolt-black-bolt-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-630438": {
+    "sourceProductId": 630438,
+    "sourceUrl": "https://www.tcgplayer.com/product/630438/pokemon-sv-black-bolt-unova-mini-tin-garbodor-and-amoonguss",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-630439": {
+    "sourceProductId": 630439,
+    "sourceUrl": "https://www.tcgplayer.com/product/630439/pokemon-sv-black-bolt-unova-mini-tin-chandelure-and-zorua",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-630440": {
+    "sourceProductId": 630440,
+    "sourceUrl": "https://www.tcgplayer.com/product/630440/pokemon-sv-black-bolt-unova-mini-tin-krookodile-and-excadrill",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-630441": {
+    "sourceProductId": 630441,
+    "sourceUrl": "https://www.tcgplayer.com/product/630441/pokemon-sv-black-bolt-unova-mini-tin-volcarona-and-emolga",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-630442": {
+    "sourceProductId": 630442,
+    "sourceUrl": "https://www.tcgplayer.com/product/630442/pokemon-sv-black-bolt-unova-mini-tin-lilligant-and-whimsicot",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-630443": {
+    "sourceProductId": 630443,
+    "sourceUrl": "https://www.tcgplayer.com/product/630443/pokemon-sv-black-bolt-unova-mini-tin-mienshao-and-klinklang",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-630444": {
+    "sourceProductId": 630444,
+    "sourceUrl": "https://www.tcgplayer.com/product/630444/pokemon-sv-black-bolt-unova-mini-tin-alomomola-and-axew",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-630445": {
+    "sourceProductId": 630445,
+    "sourceUrl": "https://www.tcgplayer.com/product/630445/pokemon-sv-black-bolt-unova-mini-tin-elektross-and-galvantula",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "unova-poster-collection": {
+    "sourceProductId": 630612,
+    "sourceUrl": "https://www.tcgplayer.com/product/630612/pokemon-sv-black-bolt-unova-poster-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [
+      "3 × Snivy, Tepig and Oshawott"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-630614": {
+    "sourceProductId": 630614,
+    "sourceUrl": "https://www.tcgplayer.com/product/630614/pokemon-sv-black-bolt-black-bolt-tech-sticker-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "1 × Reuniclus or Gothitelle"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-630615": {
+    "sourceProductId": 630615,
+    "sourceUrl": "https://www.tcgplayer.com/product/630615/pokemon-sv-black-bolt-unova-victini-illustration-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "black-bolt-etb": {
+    "sourceProductId": 630686,
+    "sourceUrl": "https://www.tcgplayer.com/product/630686/pokemon-sv-black-bolt-black-bolt-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Thundurus"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "black-bolt-pc-etb": {
+    "sourceProductId": 630687,
+    "sourceUrl": "https://www.tcgplayer.com/product/630687/pokemon-sv-black-bolt-black-bolt-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-668632": {
+    "sourceProductId": 668632,
+    "sourceUrl": "https://www.tcgplayer.com/product/668632/pokemon-sv-black-bolt-unova-heavy-hitters-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [
+      "2 × Zekrom ex and Reshiram ex",
+      "2 × Victini and Zoroark",
+      "1 × Kyurem ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-685926": {
+    "sourceProductId": 685926,
+    "sourceUrl": "https://www.tcgplayer.com/product/685926/pokemon-sv-black-bolt-black-bolt-binder-and-unova-poster-collection-sams-club",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "white-flare-pc-etb": {
+    "sourceProductId": 630688,
+    "sourceUrl": "https://www.tcgplayer.com/product/630688/pokemon-sv-white-flare-white-flare-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "white-flare-etb": {
+    "sourceProductId": 630689,
+    "sourceUrl": "https://www.tcgplayer.com/product/630689/pokemon-sv-white-flare-white-flare-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "white-flare-binder-collection": {
+    "sourceProductId": 630695,
+    "sourceUrl": "https://www.tcgplayer.com/product/630695/pokemon-sv-white-flare-white-flare-binder-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "white-flare-booster-bundle": {
+    "sourceProductId": 630696,
+    "sourceUrl": "https://www.tcgplayer.com/product/630696/pokemon-sv-white-flare-white-flare-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-630700": {
+    "sourceProductId": 630700,
+    "sourceUrl": "https://www.tcgplayer.com/product/630700/pokemon-sv-white-flare-white-flare-tech-sticker-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "1 × Reuniclus or Gothitelle"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-685927": {
+    "sourceProductId": 685927,
+    "sourceUrl": "https://www.tcgplayer.com/product/685927/pokemon-sv-white-flare-white-flare-binder-and-unova-poster-collection-sams-club",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "destined-rivals-pc-etb": {
+    "sourceProductId": 624675,
+    "sourceUrl": "https://www.tcgplayer.com/product/624675/pokemon-sv10-destined-rivals-destined-rivals-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "destined-rivals-etb": {
+    "sourceProductId": 624676,
+    "sourceUrl": "https://www.tcgplayer.com/product/624676/pokemon-sv10-destined-rivals-destined-rivals-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Team Rocket’s Wobbuffet"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650859526"
+  },
+  "tcg-624679": {
+    "sourceProductId": 624679,
+    "sourceUrl": "https://www.tcgplayer.com/product/624679/pokemon-sv10-destined-rivals-destined-rivals-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "destined-rivals-sleeved-pack": {
+    "sourceProductId": 624684,
+    "sourceUrl": "https://www.tcgplayer.com/product/624684/pokemon-sv10-destined-rivals-destined-rivals-sleeved-booster-pack",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214111233"
+  },
+  "tcg-625670": {
+    "sourceProductId": 625670,
+    "sourceUrl": "https://www.tcgplayer.com/product/625670/pokemon-sv10-destined-rivals-destined-rivals-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214111387"
+  },
+  "tcg-625677": {
+    "sourceProductId": 625677,
+    "sourceUrl": "https://www.tcgplayer.com/product/625677/pokemon-sv10-destined-rivals-destined-rivals-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214111561"
+  },
+  "destined-rivals-kangaskhan-blister": {
+    "sourceProductId": 625683,
+    "sourceUrl": "https://www.tcgplayer.com/product/625683/pokemon-sv10-destined-rivals-destined-rivals-3-pack-blister-kangaskhan",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214111332"
+  },
+  "tcg-610929": {
+    "sourceProductId": 610929,
+    "sourceUrl": "https://www.tcgplayer.com/product/610929/pokemon-sv09-journey-together-journey-together-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × N’s Zorua with a Pokémon Center logo",
+      "1 × N’s Zorua"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "journey-together-etb": {
+    "sourceProductId": 610930,
+    "sourceUrl": "https://www.tcgplayer.com/product/610930/pokemon-sv09-journey-together-journey-together-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × N’s Zorua"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "journey-together-booster-box": {
+    "sourceProductId": 610931,
+    "sourceUrl": "https://www.tcgplayer.com/product/610931/pokemon-sv09-journey-together-journey-together-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "journey-together-booster-bundle": {
+    "sourceProductId": 610953,
+    "sourceUrl": "https://www.tcgplayer.com/product/610953/pokemon-sv09-journey-together-journey-together-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-610954": {
+    "sourceProductId": 610954,
+    "sourceUrl": "https://www.tcgplayer.com/product/610954/pokemon-sv09-journey-together-journey-together-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-623628": {
+    "sourceProductId": 623628,
+    "sourceUrl": "https://www.tcgplayer.com/product/623628/pokemon-sv09-journey-together-journey-together-enhanced-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [
+      "1 × N’s Reshiram"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593324": {
+    "sourceProductId": 593324,
+    "sourceUrl": "https://www.tcgplayer.com/product/593324/pokemon-sv-prismatic-evolutions-prismatic-evolutions-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Eevee with a Pokémon Center logo",
+      "1 × Eevee"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "prismatic-evolutions-etb": {
+    "sourceProductId": 593355,
+    "sourceUrl": "https://www.tcgplayer.com/product/593355/pokemon-sv-prismatic-evolutions-prismatic-evolutions-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Eevee"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593356": {
+    "sourceProductId": 593356,
+    "sourceUrl": "https://www.tcgplayer.com/product/593356/pokemon-sv-prismatic-evolutions-prismatic-evolutions-binder-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593359": {
+    "sourceProductId": 593359,
+    "sourceUrl": "https://www.tcgplayer.com/product/593359/pokemon-sv-prismatic-evolutions-prismatic-evolutions-poster-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "3 × Flareon, Vaporeon, and Jolteon"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593450": {
+    "sourceProductId": 593450,
+    "sourceUrl": "https://www.tcgplayer.com/product/593450/pokemon-sv-prismatic-evolutions-prismatic-evolutions-tech-sticker-collection-sylveon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "1 × Leafeon, Glaceon, or Sylveon"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593451": {
+    "sourceProductId": 593451,
+    "sourceUrl": "https://www.tcgplayer.com/product/593451/pokemon-sv-prismatic-evolutions-prismatic-evolutions-tech-sticker-collection-glaceon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "1 × Leafeon, Glaceon, or Sylveon"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593453": {
+    "sourceProductId": 593453,
+    "sourceUrl": "https://www.tcgplayer.com/product/593453/pokemon-sv-prismatic-evolutions-prismatic-evolutions-tech-sticker-collection-leafeon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "1 × Leafeon, Glaceon, or Sylveon"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593455": {
+    "sourceProductId": 593455,
+    "sourceUrl": "https://www.tcgplayer.com/product/593455/pokemon-sv-prismatic-evolutions-prismatic-evolutions-mini-tin-vaporeon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593456": {
+    "sourceProductId": 593456,
+    "sourceUrl": "https://www.tcgplayer.com/product/593456/pokemon-sv-prismatic-evolutions-prismatic-evolutions-mini-tin-jolteon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593457": {
+    "sourceProductId": 593457,
+    "sourceUrl": "https://www.tcgplayer.com/product/593457/pokemon-sv-prismatic-evolutions-prismatic-evolutions-mini-tin-flareon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593458": {
+    "sourceProductId": 593458,
+    "sourceUrl": "https://www.tcgplayer.com/product/593458/pokemon-sv-prismatic-evolutions-prismatic-evolutions-mini-tin-espeon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "prismatic-evolutions-mini-tin": {
+    "sourceProductId": 593459,
+    "sourceUrl": "https://www.tcgplayer.com/product/593459/pokemon-sv-prismatic-evolutions-prismatic-evolutions-mini-tin-umbreon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593460": {
+    "sourceProductId": 593460,
+    "sourceUrl": "https://www.tcgplayer.com/product/593460/pokemon-sv-prismatic-evolutions-prismatic-evolutions-mini-tin-leafeon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593461": {
+    "sourceProductId": 593461,
+    "sourceUrl": "https://www.tcgplayer.com/product/593461/pokemon-sv-prismatic-evolutions-prismatic-evolutions-mini-tin-glaceon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-593462": {
+    "sourceProductId": 593462,
+    "sourceUrl": "https://www.tcgplayer.com/product/593462/pokemon-sv-prismatic-evolutions-prismatic-evolutions-mini-tin-sylveon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "prismatic-surprise-box": {
+    "sourceProductId": 593466,
+    "sourceUrl": "https://www.tcgplayer.com/product/593466/pokemon-sv-prismatic-evolutions-prismatic-evolutions-surprise-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-600518": {
+    "sourceProductId": 600518,
+    "sourceUrl": "https://www.tcgplayer.com/product/600518/pokemon-sv-prismatic-evolutions-prismatic-evolutions-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-606881": {
+    "sourceProductId": 606881,
+    "sourceUrl": "https://www.tcgplayer.com/product/606881/pokemon-sv-prismatic-evolutions-prismatic-evolutions-accessory-pouch-special-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214112551"
+  },
+  "prismatic-super-premium": {
+    "sourceProductId": 622770,
+    "sourceUrl": "https://www.tcgplayer.com/product/622770/pokemon-sv-prismatic-evolutions-prismatic-evolutions-super-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 15,
+    "promos": [
+      "1 × Eevee ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "196214112568"
+  },
+  "tcg-650799": {
+    "sourceProductId": 650799,
+    "sourceUrl": "https://www.tcgplayer.com/product/650799/pokemon-sv-prismatic-evolutions-prismatic-evolutions-premium-figure-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Espeon ex",
+      "1 × Umbreon ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214112766"
+  },
+  "tcg-670607": {
+    "sourceProductId": 670607,
+    "sourceUrl": "https://www.tcgplayer.com/product/670607/pokemon-sv-prismatic-evolutions-prismatic-evolutions-elite-trainer-box-dollar-general-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Eevee"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-678555": {
+    "sourceProductId": 678555,
+    "sourceUrl": "https://www.tcgplayer.com/product/678555/pokemon-sv-prismatic-evolutions-prismatic-evolutions-booster-bundle-plus-surprise-box-bundle-sams-club",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-565599": {
+    "sourceProductId": 565599,
+    "sourceUrl": "https://www.tcgplayer.com/product/565599/pokemon-sv08-surging-sparks-surging-sparks-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650859571"
+  },
+  "surging-sparks-booster-box": {
+    "sourceProductId": 565606,
+    "sourceUrl": "https://www.tcgplayer.com/product/565606/pokemon-sv08-surging-sparks-surging-sparks-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650423123"
+  },
+  "tcg-565629": {
+    "sourceProductId": 565629,
+    "sourceUrl": "https://www.tcgplayer.com/product/565629/pokemon-sv08-surging-sparks-surging-sparks-booster-bundle-lgs",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650859502"
+  },
+  "surging-sparks-etb": {
+    "sourceProductId": 565630,
+    "sourceUrl": "https://www.tcgplayer.com/product/565630/pokemon-sv08-surging-sparks-surging-sparks-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Magneton"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650859526"
+  },
+  "surging-sparks-pc-etb": {
+    "sourceProductId": 565632,
+    "sourceUrl": "https://www.tcgplayer.com/product/565632/pokemon-sv08-surging-sparks-surging-sparks-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Magneton with a Pokémon Center logo",
+      "1 × Magneton"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-679564": {
+    "sourceProductId": 679564,
+    "sourceUrl": "https://www.tcgplayer.com/product/679564/pokemon-sv08-surging-sparks-surging-sparks-booster-bundle-retail",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650859915"
+  },
+  "tcg-557330": {
+    "sourceProductId": 557330,
+    "sourceUrl": "https://www.tcgplayer.com/product/557330/pokemon-sv07-stellar-crown-stellar-crown-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650859274"
+  },
+  "stellar-crown-pc-etb": {
+    "sourceProductId": 557340,
+    "sourceUrl": "https://www.tcgplayer.com/product/557340/pokemon-sv07-stellar-crown-stellar-crown-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Noctowl with a Pokémon Center logo",
+      "1 × Noctowl"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "stellar-crown-booster-bundle": {
+    "sourceProductId": 557345,
+    "sourceUrl": "https://www.tcgplayer.com/product/557345/pokemon-sv07-stellar-crown-stellar-crown-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650878558"
+  },
+  "stellar-crown-etb": {
+    "sourceProductId": 557350,
+    "sourceUrl": "https://www.tcgplayer.com/product/557350/pokemon-sv07-stellar-crown-stellar-crown-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Noctowl with a Pokémon Center logo",
+      "1 × Noctowl"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "stellar-crown-booster-box": {
+    "sourceProductId": 557354,
+    "sourceUrl": "https://www.tcgplayer.com/product/557354/pokemon-sv07-stellar-crown-stellar-crown-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "shrouded-fable-pc-etb": {
+    "sourceProductId": 552998,
+    "sourceUrl": "https://www.tcgplayer.com/product/552998/pokemon-sv-shrouded-fable-shrouded-fable-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Pecharunt with a Pokémon Center logo",
+      "1 × Pecharunt"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "shrouded-fable-etb": {
+    "sourceProductId": 552999,
+    "sourceUrl": "https://www.tcgplayer.com/product/552999/pokemon-sv-shrouded-fable-shrouded-fable-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Pecharunt"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "shrouded-fable-kingambit-collection": {
+    "sourceProductId": 553000,
+    "sourceUrl": "https://www.tcgplayer.com/product/553000/pokemon-sv-shrouded-fable-kingambit-illustration-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Kingambit"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-553001": {
+    "sourceProductId": 553001,
+    "sourceUrl": "https://www.tcgplayer.com/product/553001/pokemon-sv-shrouded-fable-kingdra-ex-special-illustration-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Kingdra ex or Greninja ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "shrouded-fable-greninja-collection": {
+    "sourceProductId": 553002,
+    "sourceUrl": "https://www.tcgplayer.com/product/553002/pokemon-sv-shrouded-fable-greninja-ex-special-illustration-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Kingdra ex or Greninja ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-553010": {
+    "sourceProductId": 553010,
+    "sourceUrl": "https://www.tcgplayer.com/product/553010/pokemon-sv-shrouded-fable-shrouded-fable-mini-tin-zoroark",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-553011": {
+    "sourceProductId": 553011,
+    "sourceUrl": "https://www.tcgplayer.com/product/553011/pokemon-sv-shrouded-fable-shrouded-fable-mini-tin-munkidori",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-553012": {
+    "sourceProductId": 553012,
+    "sourceUrl": "https://www.tcgplayer.com/product/553012/pokemon-sv-shrouded-fable-shrouded-fable-mini-tin-okidogi",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-553018": {
+    "sourceProductId": 553018,
+    "sourceUrl": "https://www.tcgplayer.com/product/553018/pokemon-sv-shrouded-fable-shrouded-fable-mini-tin-fezandipiti",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-553023": {
+    "sourceProductId": 553023,
+    "sourceUrl": "https://www.tcgplayer.com/product/553023/pokemon-sv-shrouded-fable-shrouded-fable-mini-tin-dusknoir",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "shrouded-fable-booster-bundle": {
+    "sourceProductId": 553031,
+    "sourceUrl": "https://www.tcgplayer.com/product/553031/pokemon-sv-shrouded-fable-shrouded-fable-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "twilight-masquerade-pc-etb": {
+    "sourceProductId": 543844,
+    "sourceUrl": "https://www.tcgplayer.com/product/543844/pokemon-sv06-twilight-masquerade-twilight-masquerade-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Teal Mask Ogerpon with a Pokémon Center logo",
+      "1 × Teal Mask Ogerpon"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "twilight-masquerade-etb": {
+    "sourceProductId": 543845,
+    "sourceUrl": "https://www.tcgplayer.com/product/543845/pokemon-sv06-twilight-masquerade-twilight-masquerade-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Teal Mask Ogerpon"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "twilight-masquerade-booster-box": {
+    "sourceProductId": 543846,
+    "sourceUrl": "https://www.tcgplayer.com/product/543846/pokemon-sv06-twilight-masquerade-twilight-masquerade-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "twilight-masquerade-booster-bundle": {
+    "sourceProductId": 543852,
+    "sourceUrl": "https://www.tcgplayer.com/product/543852/pokemon-sv06-twilight-masquerade-twilight-masquerade-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650854125"
+  },
+  "tcg-544386": {
+    "sourceProductId": 544386,
+    "sourceUrl": "https://www.tcgplayer.com/product/544386/pokemon-sv06-twilight-masquerade-twilight-masquerade-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650858031"
+  },
+  "temporal-forces-etb-walking-wake": {
+    "sourceProductId": 532845,
+    "sourceUrl": "https://www.tcgplayer.com/product/532845/pokemon-sv05-temporal-forces-temporal-forces-elite-trainer-box-walking-wake",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Walking Wake"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "temporal-forces-etb-iron-leaves": {
+    "sourceProductId": 532848,
+    "sourceUrl": "https://www.tcgplayer.com/product/532848/pokemon-sv05-temporal-forces-temporal-forces-elite-trainer-box-iron-leaves-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Iron Leaves"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "temporal-forces-pc-etb-iron-leaves": {
+    "sourceProductId": 532853,
+    "sourceUrl": "https://www.tcgplayer.com/product/532853/pokemon-sv05-temporal-forces-temporal-forces-pokemon-center-elite-trainer-box-exclusive-iron-leaves",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Iron Thorns with a Pokémon Center logo",
+      "1 × Iron Thorns"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "temporal-forces-booster-box": {
+    "sourceProductId": 536225,
+    "sourceUrl": "https://www.tcgplayer.com/product/536225/pokemon-sv05-temporal-forces-temporal-forces-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-537411": {
+    "sourceProductId": 537411,
+    "sourceUrl": "https://www.tcgplayer.com/product/537411/pokemon-sv05-temporal-forces-temporal-forces-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "temporal-forces-pc-etb-walking-wake": {
+    "sourceProductId": 538775,
+    "sourceUrl": "https://www.tcgplayer.com/product/538775/pokemon-sv05-temporal-forces-temporal-forces-pokemon-center-elite-trainer-box-exclusive-walking-wake",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Iron Thorns with a Pokémon Center logo",
+      "1 × Iron Thorns"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-541017": {
+    "sourceProductId": 541017,
+    "sourceUrl": "https://www.tcgplayer.com/product/541017/pokemon-sv05-temporal-forces-temporal-forces-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650854125"
+  },
+  "paldean-fates-pc-etb": {
+    "sourceProductId": 528039,
+    "sourceUrl": "https://www.tcgplayer.com/product/528039/pokemon-sv-paldean-fates-paldean-fates-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Shiny Mimikyu with a Pokémon Center logo",
+      "1 × Shiny Mimikyu"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "paldean-fates-etb": {
+    "sourceProductId": 528040,
+    "sourceUrl": "https://www.tcgplayer.com/product/528040/pokemon-sv-paldean-fates-paldean-fates-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Shiny Mimikyu"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528043": {
+    "sourceProductId": 528043,
+    "sourceUrl": "https://www.tcgplayer.com/product/528043/pokemon-sv-paldean-fates-paldean-fates-tech-sticker-collection-fidough",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "1 × Shiny Fidough"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528044": {
+    "sourceProductId": 528044,
+    "sourceUrl": "https://www.tcgplayer.com/product/528044/pokemon-sv-paldean-fates-paldean-fates-tech-sticker-collection-maschiff",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "1 × Shiny Maschiff"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528045": {
+    "sourceProductId": 528045,
+    "sourceUrl": "https://www.tcgplayer.com/product/528045/pokemon-sv-paldean-fates-paldean-fates-tech-sticker-collection-greavard",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "1 × Shiny Greavard"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528049": {
+    "sourceProductId": 528049,
+    "sourceUrl": "https://www.tcgplayer.com/product/528049/pokemon-sv-paldean-fates-paldean-fates-mini-tin-smoliv",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528050": {
+    "sourceProductId": 528050,
+    "sourceUrl": "https://www.tcgplayer.com/product/528050/pokemon-sv-paldean-fates-paldean-fates-mini-tin-flamigo",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528051": {
+    "sourceProductId": 528051,
+    "sourceUrl": "https://www.tcgplayer.com/product/528051/pokemon-sv-paldean-fates-paldean-fates-mini-tin-maushold",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528052": {
+    "sourceProductId": 528052,
+    "sourceUrl": "https://www.tcgplayer.com/product/528052/pokemon-sv-paldean-fates-paldean-fates-mini-tin-tinkatink",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528055": {
+    "sourceProductId": 528055,
+    "sourceUrl": "https://www.tcgplayer.com/product/528055/pokemon-sv-paldean-fates-paldean-fates-mini-tin-finizen",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "paldean-fates-charizard-tin": {
+    "sourceProductId": 528056,
+    "sourceUrl": "https://www.tcgplayer.com/product/528056/pokemon-sv-paldean-fates-paldean-fates-tin-charizard-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Shiny Great Tusk ex, Shiny Iron Treads ex, or Shiny Charizard ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528057": {
+    "sourceProductId": 528057,
+    "sourceUrl": "https://www.tcgplayer.com/product/528057/pokemon-sv-paldean-fates-paldean-fates-tin-great-tusk-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Shiny Great Tusk ex, Shiny Iron Treads ex, or Shiny Charizard ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528058": {
+    "sourceProductId": 528058,
+    "sourceUrl": "https://www.tcgplayer.com/product/528058/pokemon-sv-paldean-fates-paldean-fates-tin-iron-treads-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Shiny Great Tusk ex, Shiny Iron Treads ex, or Shiny Charizard ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528079": {
+    "sourceProductId": 528079,
+    "sourceUrl": "https://www.tcgplayer.com/product/528079/pokemon-sv-paldean-fates-paldean-fates-premium-collection-meowscarada-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [
+      "1 × Shiny Meowscarada ex, Shiny Skeledirge ex, or Shiny Quaquaval ex",
+      "1 × Shiny Floragato, Shiny Crocalor, or Shiny Quaxwell",
+      "1 × Shiny Sprigatito, Shiny Fuecoco, or Shiny Quaxly"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528080": {
+    "sourceProductId": 528080,
+    "sourceUrl": "https://www.tcgplayer.com/product/528080/pokemon-sv-paldean-fates-paldean-fates-premium-collection-skeledirge-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [
+      "1 × Shiny Meowscarada ex, Shiny Skeledirge ex, or Shiny Quaquaval ex",
+      "1 × Shiny Floragato, Shiny Crocalor, or Shiny Quaxwell",
+      "1 × Shiny Sprigatito, Shiny Fuecoco, or Shiny Quaxly"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-528082": {
+    "sourceProductId": 528082,
+    "sourceUrl": "https://www.tcgplayer.com/product/528082/pokemon-sv-paldean-fates-paldean-fates-premium-collection-quaquaval-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [
+      "1 × Shiny Meowscarada ex, Shiny Skeledirge ex, or Shiny Quaquaval ex",
+      "1 × Shiny Floragato, Shiny Crocalor, or Shiny Quaxwell",
+      "1 × Shiny Sprigatito, Shiny Fuecoco, or Shiny Quaxly"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "paldean-fates-booster-bundle": {
+    "sourceProductId": 528771,
+    "sourceUrl": "https://www.tcgplayer.com/product/528771/pokemon-sv-paldean-fates-paldean-fates-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650856174"
+  },
+  "tcg-665113": {
+    "sourceProductId": 665113,
+    "sourceUrl": "https://www.tcgplayer.com/product/665113/pokemon-sv-paldean-fates-paldean-fates-great-tusk-ex-and-iron-treads-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214150043"
+  },
+  "tcg-512801": {
+    "sourceProductId": 512801,
+    "sourceUrl": "https://www.tcgplayer.com/product/512801/pokemon-sv04-paradox-rift-paradox-rift-pokemon-center-elite-trainer-box-exclusive-iron-valiant",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Scream Tail or Iron Bundle",
+      "1 × the Pokémon Center logo"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive",
+    "upc": "0820650854163"
+  },
+  "tcg-512809": {
+    "sourceProductId": 512809,
+    "sourceUrl": "https://www.tcgplayer.com/product/512809/pokemon-sv04-paradox-rift-paradox-rift-pokemon-center-elite-trainer-box-exclusive-roaring-moon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Scream Tail or Iron Bundle",
+      "1 × the Pokémon Center logo"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive",
+    "upc": "0820650854163"
+  },
+  "tcg-512813": {
+    "sourceProductId": 512813,
+    "sourceUrl": "https://www.tcgplayer.com/product/512813/pokemon-sv04-paradox-rift-paradox-rift-elite-trainer-box-iron-valiant",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Scream Tail or Iron Bundle"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650854163"
+  },
+  "tcg-512815": {
+    "sourceProductId": 512815,
+    "sourceUrl": "https://www.tcgplayer.com/product/512815/pokemon-sv04-paradox-rift-paradox-rift-elite-trainer-box-roaring-moon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Scream Tail or Iron Bundle"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650854163"
+  },
+  "tcg-512820": {
+    "sourceProductId": 512820,
+    "sourceUrl": "https://www.tcgplayer.com/product/512820/pokemon-sv04-paradox-rift-paradox-rift-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650854125"
+  },
+  "tcg-512821": {
+    "sourceProductId": 512821,
+    "sourceUrl": "https://www.tcgplayer.com/product/512821/pokemon-sv04-paradox-rift-paradox-rift-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650863998"
+  },
+  "tcg-514068": {
+    "sourceProductId": 514068,
+    "sourceUrl": "https://www.tcgplayer.com/product/514068/pokemon-sv04-paradox-rift-paradox-rift-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-514070": {
+    "sourceProductId": 514070,
+    "sourceUrl": "https://www.tcgplayer.com/product/514070/pokemon-sv04-paradox-rift-paradox-rift-build-and-battle-stadium",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650854224"
+  },
+  "151-pc-etb": {
+    "sourceProductId": 501999,
+    "sourceUrl": "https://www.pokemon.com/us/pokemon-tcg/product-gallery/scarlet-violet-151-pokemon-center-elite-trainer-box",
+    "sourceLabel": "Official Pokémon product gallery",
+    "packCount": 11,
+    "promos": [
+      "1 × Snorlax (Pokémon Center stamp)",
+      "1 × Snorlax (standard promo)"
+    ],
+    "language": "English (US product)",
+    "edition": "Pokémon Center exclusive",
+    "releaseDate": "2023-09-22"
+  },
+  "151-booster-bundle": {
+    "sourceProductId": 502000,
+    "sourceUrl": "https://www.tcgplayer.com/product/502000/pokemon-sv-scarlet-and-violet-151-151-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-502001": {
+    "sourceProductId": 502001,
+    "sourceUrl": "https://www.tcgplayer.com/product/502001/pokemon-sv-scarlet-and-violet-151-151-poster-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "3 × Bulbasaur, Charmander, and Squirtle"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-502004": {
+    "sourceProductId": 502004,
+    "sourceUrl": "https://www.tcgplayer.com/product/502004/pokemon-sv-scarlet-and-violet-151-151-binder-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-502005": {
+    "sourceProductId": 502005,
+    "sourceUrl": "https://www.tcgplayer.com/product/502005/pokemon-sv-scarlet-and-violet-151-151-ultra-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 16,
+    "promos": [
+      "1 × Mew ex",
+      "1 × Mewtwo"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-502006": {
+    "sourceProductId": 502006,
+    "sourceUrl": "https://www.tcgplayer.com/product/502006/pokemon-sv-scarlet-and-violet-151-151-alakazam-ex-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Alakazam ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-502007": {
+    "sourceProductId": 502007,
+    "sourceUrl": "https://www.tcgplayer.com/product/502007/pokemon-sv-scarlet-and-violet-151-151-zapdos-ex-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Zapdos ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-503313": {
+    "sourceProductId": 503313,
+    "sourceUrl": "https://www.pokemon.com/us/pokemon-tcg/product-gallery/scarlet-violet-151-elite-trainer-box",
+    "sourceLabel": "Official Pokémon product gallery",
+    "packCount": 9,
+    "promos": [
+      "1 × Snorlax"
+    ],
+    "language": "English (US product)",
+    "edition": null,
+    "releaseDate": "2023-09-22"
+  },
+  "tcg-522699": {
+    "sourceProductId": 522699,
+    "sourceUrl": "https://www.tcgplayer.com/product/522699/pokemon-sv-scarlet-and-violet-151-151-mini-tin-arcanine-and-omanyte",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-522700": {
+    "sourceProductId": 522700,
+    "sourceUrl": "https://www.tcgplayer.com/product/522700/pokemon-sv-scarlet-and-violet-151-151-mini-tin-dragonite-and-vileplume",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-522701": {
+    "sourceProductId": 522701,
+    "sourceUrl": "https://www.tcgplayer.com/product/522701/pokemon-sv-scarlet-and-violet-151-151-mini-tin-electabuzz-and-magnemites",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-522702": {
+    "sourceProductId": 522702,
+    "sourceUrl": "https://www.tcgplayer.com/product/522702/pokemon-sv-scarlet-and-violet-151-151-mini-tin-gengar-and-poliwag",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-522703": {
+    "sourceProductId": 522703,
+    "sourceUrl": "https://www.tcgplayer.com/product/522703/pokemon-sv-scarlet-and-violet-151-151-mini-tin-hitmonlee-and-kadabra",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-522704": {
+    "sourceProductId": 522704,
+    "sourceUrl": "https://www.tcgplayer.com/product/522704/pokemon-sv-scarlet-and-violet-151-151-mini-tin-machamp-and-cubone",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-522705": {
+    "sourceProductId": 522705,
+    "sourceUrl": "https://www.tcgplayer.com/product/522705/pokemon-sv-scarlet-and-violet-151-151-mini-tin-magneton-and-ekans",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-522706": {
+    "sourceProductId": 522706,
+    "sourceUrl": "https://www.tcgplayer.com/product/522706/pokemon-sv-scarlet-and-violet-151-151-mini-tin-hitmonchan-and-meowth",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-522707": {
+    "sourceProductId": 522707,
+    "sourceUrl": "https://www.tcgplayer.com/product/522707/pokemon-sv-scarlet-and-violet-151-151-mini-tin-weezing-and-scyther",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-522708": {
+    "sourceProductId": 522708,
+    "sourceUrl": "https://www.tcgplayer.com/product/522708/pokemon-sv-scarlet-and-violet-151-151-mini-tin-slowpoke-and-sandshrew",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "blooming-waters-premium": {
+    "sourceProductId": 609597,
+    "sourceUrl": "https://www.tcgplayer.com/product/609597/pokemon-sv-scarlet-and-violet-151-blooming-waters-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 12,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "151-sams-mini-tin-bundle": {
+    "sourceProductId": 662302,
+    "sourceUrl": "https://www.tcgplayer.com/product/662302/pokemon-sv-scarlet-and-violet-151-sams-club-151-4-mini-tins-plus-4-promo-cards-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214134478"
+  },
+  "tcg-692583": {
+    "sourceProductId": 692583,
+    "sourceUrl": "https://www.tcgplayer.com/product/692583/pokemon-sv-scarlet-and-violet-151-costco-scarlet-and-violet-151-zapdos-ex-and-alakazam-ex-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-501257": {
+    "sourceProductId": 501257,
+    "sourceUrl": "https://www.tcgplayer.com/product/501257/pokemon-sv03-obsidian-flames-obsidian-flames-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 36,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650863745"
+  },
+  "tcg-501263": {
+    "sourceProductId": 501263,
+    "sourceUrl": "https://www.tcgplayer.com/product/501263/pokemon-sv03-obsidian-flames-obsidian-flames-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650853876"
+  },
+  "tcg-501264": {
+    "sourceProductId": 501264,
+    "sourceUrl": "https://www.tcgplayer.com/product/501264/pokemon-sv03-obsidian-flames-obsidian-flames-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Charmander"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "820650853913"
+  },
+  "tcg-501266": {
+    "sourceProductId": 501266,
+    "sourceUrl": "https://www.tcgplayer.com/product/501266/pokemon-sv03-obsidian-flames-obsidian-flames-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-501267": {
+    "sourceProductId": 501267,
+    "sourceUrl": "https://www.tcgplayer.com/product/501267/pokemon-sv03-obsidian-flames-obsidian-flames-build-and-battle-stadium",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650853975"
+  },
+  "tcg-501268": {
+    "sourceProductId": 501268,
+    "sourceUrl": "https://www.tcgplayer.com/product/501268/pokemon-sv03-obsidian-flames-obsidian-flames-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650863967"
+  },
+  "tcg-557084": {
+    "sourceProductId": 557084,
+    "sourceUrl": "https://www.tcgplayer.com/product/557084/pokemon-sv03-obsidian-flames-obsidian-flames-single-blister-pack-annihilape",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-557085": {
+    "sourceProductId": 557085,
+    "sourceUrl": "https://www.tcgplayer.com/product/557085/pokemon-sv03-obsidian-flames-obsidian-flames-single-blister-pack-kingambit",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-557086": {
+    "sourceProductId": 557086,
+    "sourceUrl": "https://www.tcgplayer.com/product/557086/pokemon-sv03-obsidian-flames-obsidian-flames-single-blister-pack-houndstone",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-557087": {
+    "sourceProductId": 557087,
+    "sourceUrl": "https://www.tcgplayer.com/product/557087/pokemon-sv03-obsidian-flames-obsidian-flames-single-blister-pack-revavroom",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-493973": {
+    "sourceProductId": 493973,
+    "sourceUrl": "https://www.tcgplayer.com/product/493973/pokemon-sv02-paldea-evolved-paldea-evolved-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Pikachu with a Pokémon Center logo",
+      "1 × Pikachu"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-493974": {
+    "sourceProductId": 493974,
+    "sourceUrl": "https://www.tcgplayer.com/product/493974/pokemon-sv02-paldea-evolved-paldea-evolved-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Pikachu"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-493975": {
+    "sourceProductId": 493975,
+    "sourceUrl": "https://www.tcgplayer.com/product/493975/pokemon-sv02-paldea-evolved-paldea-evolved-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650863493"
+  },
+  "tcg-496914": {
+    "sourceProductId": 496914,
+    "sourceUrl": "https://www.tcgplayer.com/product/496914/pokemon-sv02-paldea-evolved-paldea-evolved-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-496929": {
+    "sourceProductId": 496929,
+    "sourceUrl": "https://www.tcgplayer.com/product/496929/pokemon-sv02-paldea-evolved-paldea-evolved-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-496935": {
+    "sourceProductId": 496935,
+    "sourceUrl": "https://www.tcgplayer.com/product/496935/pokemon-sv02-paldea-evolved-paldea-evolved-build-and-battle-stadium",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-476452": {
+    "sourceProductId": 476452,
+    "sourceUrl": "https://www.tcgplayer.com/product/476452/pokemon-sv01-scarlet-and-violet-base-set-scarlet-and-violet-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650863240"
+  },
+  "tcg-478253": {
+    "sourceProductId": 478253,
+    "sourceUrl": "https://www.tcgplayer.com/product/478253/pokemon-sv01-scarlet-and-violet-base-set-scarlet-and-violet-build-and-battle-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650853463"
+  },
+  "tcg-478257": {
+    "sourceProductId": 478257,
+    "sourceUrl": "https://www.tcgplayer.com/product/478257/pokemon-sv01-scarlet-and-violet-base-set-scarlet-and-violet-build-and-battle-stadium",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650853470"
+  },
+  "tcg-478258": {
+    "sourceProductId": 478258,
+    "sourceUrl": "https://www.tcgplayer.com/product/478258/pokemon-sv01-scarlet-and-violet-base-set-scarlet-and-violet-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650853371"
+  },
+  "tcg-478335": {
+    "sourceProductId": 478335,
+    "sourceUrl": "https://www.tcgplayer.com/product/478335/pokemon-sv01-scarlet-and-violet-base-set-scarlet-and-violet-elite-trainer-box-koraidon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Koraidon"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650853418"
+  },
+  "tcg-478336": {
+    "sourceProductId": 478336,
+    "sourceUrl": "https://www.tcgplayer.com/product/478336/pokemon-sv01-scarlet-and-violet-base-set-scarlet-and-violet-elite-trainer-box-miraidon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Miraidon"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650853418"
+  },
+  "tcg-478756": {
+    "sourceProductId": 478756,
+    "sourceUrl": "https://www.tcgplayer.com/product/478756/pokemon-sv01-scarlet-and-violet-base-set-scarlet-and-violet-pokemon-center-elite-trainer-box-exclusive-miraidon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Miraidon with a Pokémon Center logo",
+      "1 × Miraidon"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-478758": {
+    "sourceProductId": 478758,
+    "sourceUrl": "https://www.tcgplayer.com/product/478758/pokemon-sv01-scarlet-and-violet-base-set-scarlet-and-violet-pokemon-center-elite-trainer-box-exclusive-koraidon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [
+      "1 × Koraidon with a Pokémon Center logo",
+      "1 × Koraidon"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-453470": {
+    "sourceProductId": 453470,
+    "sourceUrl": "https://www.tcgplayer.com/product/453470/pokemon-swsh-crown-zenith-crown-zenith-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [
+      "1 × Lucario VSTAR"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "820650851476"
+  },
+  "tcg-454246": {
+    "sourceProductId": 454246,
+    "sourceUrl": "https://www.tcgplayer.com/product/454246/pokemon-swsh-crown-zenith-crown-zenith-pokemon-center-elite-trainer-box-plus",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 12,
+    "promos": [
+      "1 × Lucario VSTAR"
+    ],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-527562": {
+    "sourceProductId": 527562,
+    "sourceUrl": "https://www.tcgplayer.com/product/527562/pokemon-swsh-crown-zenith-crown-zenith-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "crown-zenith-sea-sky": {
+    "sourceProductId": 563307,
+    "sourceUrl": "https://www.tcgplayer.com/product/563307/pokemon-swsh-crown-zenith-sea-and-sky-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 14,
+    "promos": [
+      "1 × Rayquaza V",
+      "1 × Kyogre V"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-283389": {
+    "sourceProductId": 283389,
+    "sourceUrl": "https://www.tcgplayer.com/product/283389/pokemon-swsh12-silver-tempest-silver-tempest-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650860911"
+  },
+  "tcg-283396": {
+    "sourceProductId": 283396,
+    "sourceUrl": "https://www.tcgplayer.com/product/283396/pokemon-swsh12-silver-tempest-silver-tempest-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650851544"
+  },
+  "tcg-283401": {
+    "sourceProductId": 283401,
+    "sourceUrl": "https://www.tcgplayer.com/product/283401/pokemon-swsh12-silver-tempest-silver-tempest-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650851070"
+  },
+  "tcg-285860": {
+    "sourceProductId": 285860,
+    "sourceUrl": "https://www.tcgplayer.com/product/285860/pokemon-swsh12-silver-tempest-silver-tempest-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-277324": {
+    "sourceProductId": 277324,
+    "sourceUrl": "https://www.tcgplayer.com/product/277324/pokemon-swsh11-lost-origin-lost-origin-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-277335": {
+    "sourceProductId": 277335,
+    "sourceUrl": "https://www.tcgplayer.com/product/277335/pokemon-swsh11-lost-origin-lost-origin-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650850714"
+  },
+  "tcg-277336": {
+    "sourceProductId": 277336,
+    "sourceUrl": "https://www.tcgplayer.com/product/277336/pokemon-swsh11-lost-origin-lost-origin-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-278819": {
+    "sourceProductId": 278819,
+    "sourceUrl": "https://www.tcgplayer.com/product/278819/pokemon-swsh11-lost-origin-lost-origin-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650851469"
+  },
+  "tcg-265519": {
+    "sourceProductId": 265519,
+    "sourceUrl": "https://www.tcgplayer.com/product/265519/pokemon-swsh10-astral-radiance-astral-radiance-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-265527": {
+    "sourceProductId": 265527,
+    "sourceUrl": "https://www.tcgplayer.com/product/265527/pokemon-swsh10-astral-radiance-astral-radiance-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-265528": {
+    "sourceProductId": 265528,
+    "sourceUrl": "https://www.tcgplayer.com/product/265528/pokemon-swsh10-astral-radiance-astral-radiance-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-256138": {
+    "sourceProductId": 256138,
+    "sourceUrl": "https://www.tcgplayer.com/product/256138/pokemon-swsh09-brilliant-stars-brilliant-stars-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-256140": {
+    "sourceProductId": 256140,
+    "sourceUrl": "https://www.tcgplayer.com/product/256140/pokemon-swsh09-brilliant-stars-brilliant-stars-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-256141": {
+    "sourceProductId": 256141,
+    "sourceUrl": "https://www.tcgplayer.com/product/256141/pokemon-swsh09-brilliant-stars-brilliant-stars-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-247654": {
+    "sourceProductId": 247654,
+    "sourceUrl": "https://www.tcgplayer.com/product/247654/pokemon-swsh08-fusion-strike-fusion-strike-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650829161"
+  },
+  "tcg-247671": {
+    "sourceProductId": 247671,
+    "sourceUrl": "https://www.tcgplayer.com/product/247671/pokemon-swsh08-fusion-strike-fusion-strike-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650809330"
+  },
+  "tcg-247673": {
+    "sourceProductId": 247673,
+    "sourceUrl": "https://www.tcgplayer.com/product/247673/pokemon-swsh08-fusion-strike-fusion-strike-pokemon-center-elite-trainer-box-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive",
+    "upc": "820650809941"
+  },
+  "tcg-242434": {
+    "sourceProductId": 242434,
+    "sourceUrl": "https://www.tcgplayer.com/product/242434/pokemon-swsh07-evolving-skies-evolving-skies-elite-trainer-box-flareon-jolteon-umbreon-leafeon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650828942"
+  },
+  "tcg-242436": {
+    "sourceProductId": 242436,
+    "sourceUrl": "https://www.tcgplayer.com/product/242436/pokemon-swsh07-evolving-skies-evolving-skies-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650818776"
+  },
+  "tcg-242443": {
+    "sourceProductId": 242443,
+    "sourceUrl": "https://www.tcgplayer.com/product/242443/pokemon-swsh07-evolving-skies-evolving-skies-elite-trainer-box-glaceon-vaporeon-sylveon-espeon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650828942"
+  },
+  "tcg-245352": {
+    "sourceProductId": 245352,
+    "sourceUrl": "https://www.tcgplayer.com/product/245352/pokemon-swsh07-evolving-skies-evolving-skies-pokemon-center-elite-trainer-box-glaceon-vaporeon-sylveon-espeon-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-245376": {
+    "sourceProductId": 245376,
+    "sourceUrl": "https://www.tcgplayer.com/product/245376/pokemon-swsh07-evolving-skies-evolving-skies-pokemon-center-elite-trainer-box-jolteon-flareon-umbreon-leafeon-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive"
+  },
+  "tcg-236258": {
+    "sourceProductId": 236258,
+    "sourceUrl": "https://www.tcgplayer.com/product/236258/pokemon-swsh06-chilling-reign-chilling-reign-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650818462"
+  },
+  "tcg-236260": {
+    "sourceProductId": 236260,
+    "sourceUrl": "https://www.tcgplayer.com/product/236260/pokemon-swsh06-chilling-reign-chilling-reign-elite-trainer-box-ice-rider-calyrex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650808630"
+  },
+  "tcg-236261": {
+    "sourceProductId": 236261,
+    "sourceUrl": "https://www.tcgplayer.com/product/236261/pokemon-swsh06-chilling-reign-chilling-reign-elite-trainer-box-shadow-rider-calyrex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650808630"
+  },
+  "tcg-247281": {
+    "sourceProductId": 247281,
+    "sourceUrl": "https://www.tcgplayer.com/product/247281/pokemon-swsh06-chilling-reign-chilling-reign-pokemon-center-elite-trainer-box-ice-rider-calyrex-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive",
+    "upc": "0820650808630"
+  },
+  "tcg-247282": {
+    "sourceProductId": 247282,
+    "sourceUrl": "https://www.tcgplayer.com/product/247282/pokemon-swsh06-chilling-reign-chilling-reign-pokemon-center-elite-trainer-box-shadow-rider-calyrex-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": "Pokémon Center exclusive",
+    "upc": "0820650808630"
+  },
+  "tcg-229277": {
+    "sourceProductId": 229277,
+    "sourceUrl": "https://www.tcgplayer.com/product/229277/pokemon-swsh05-battle-styles-battle-styles-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650818189"
+  },
+  "tcg-229284": {
+    "sourceProductId": 229284,
+    "sourceUrl": "https://www.tcgplayer.com/product/229284/pokemon-swsh05-battle-styles-battle-styles-elite-trainer-box-single-strike-urshifu-red",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650808357"
+  },
+  "tcg-229285": {
+    "sourceProductId": 229285,
+    "sourceUrl": "https://www.tcgplayer.com/product/229285/pokemon-swsh05-battle-styles-battle-styles-elite-trainer-box-rapid-strike-urshifu-blue",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650808357"
+  },
+  "tcg-221313": {
+    "sourceProductId": 221313,
+    "sourceUrl": "https://www.tcgplayer.com/product/221313/pokemon-swsh04-vivid-voltage-vivid-voltage-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-221752": {
+    "sourceProductId": 221752,
+    "sourceUrl": "https://www.tcgplayer.com/product/221752/pokemon-swsh04-vivid-voltage-vivid-voltage-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650807688"
+  },
+  "tcg-222986": {
+    "sourceProductId": 222986,
+    "sourceUrl": "https://www.tcgplayer.com/product/222986/pokemon-swsh04-vivid-voltage-sword-and-shield-elite-trainer-box-plus-zamazenta",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 12,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-222987": {
+    "sourceProductId": 222987,
+    "sourceUrl": "https://www.tcgplayer.com/product/222987/pokemon-swsh04-vivid-voltage-sword-and-shield-elite-trainer-box-plus-zacian",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 12,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-216853": {
+    "sourceProductId": 216853,
+    "sourceUrl": "https://www.tcgplayer.com/product/216853/pokemon-swsh03-darkness-ablaze-darkness-ablaze-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-216856": {
+    "sourceProductId": 216856,
+    "sourceUrl": "https://www.tcgplayer.com/product/216856/pokemon-swsh03-darkness-ablaze-darkness-ablaze-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650807312"
+  },
+  "tcg-210561": {
+    "sourceProductId": 210561,
+    "sourceUrl": "https://www.tcgplayer.com/product/210561/pokemon-swsh02-rebel-clash-rebel-clash-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650816819"
+  },
+  "tcg-210572": {
+    "sourceProductId": 210572,
+    "sourceUrl": "https://www.tcgplayer.com/product/210572/pokemon-swsh02-rebel-clash-rebel-clash-elite-trainer-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650807008"
+  },
+  "tcg-206027": {
+    "sourceProductId": 206027,
+    "sourceUrl": "https://www.tcgplayer.com/product/206027/pokemon-swsh01-sword-and-shield-base-set-sword-and-shield-booster-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650806513"
+  },
+  "tcg-206038": {
+    "sourceProductId": 206038,
+    "sourceUrl": "https://www.tcgplayer.com/product/206038/pokemon-swsh01-sword-and-shield-base-set-sword-and-shield-elite-trainer-box-zacian",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650806704"
+  },
+  "tcg-206039": {
+    "sourceProductId": 206039,
+    "sourceUrl": "https://www.tcgplayer.com/product/206039/pokemon-swsh01-sword-and-shield-base-set-sword-and-shield-elite-trainer-box-zamazenta",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650806704"
+  },
+  "tcg-497177": {
+    "sourceProductId": 497177,
+    "sourceUrl": "https://www.tcgplayer.com/product/497177/pokemon-miscellaneous-cards-and-products-annihilape-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Annihilape ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650852459"
+  },
+  "tcg-497389": {
+    "sourceProductId": 497389,
+    "sourceUrl": "https://www.tcgplayer.com/product/497389/pokemon-miscellaneous-cards-and-products-paldea-legends-tin-miraidon-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Koraidon ex or Miraidon ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-497390": {
+    "sourceProductId": 497390,
+    "sourceUrl": "https://www.tcgplayer.com/product/497390/pokemon-miscellaneous-cards-and-products-paldea-legends-tin-koraidon-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Koraidon ex or Miraidon ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-497728": {
+    "sourceProductId": 497728,
+    "sourceUrl": "https://www.tcgplayer.com/product/497728/pokemon-miscellaneous-cards-and-products-lucario-vstar-special-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Lucario V",
+      "1 × Lucario VSTAR"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-497853": {
+    "sourceProductId": 497853,
+    "sourceUrl": "https://www.tcgplayer.com/product/497853/pokemon-miscellaneous-cards-and-products-pokemon-tcg-back-to-school-eraser-blister-lechonk",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650829529"
+  },
+  "tcg-497856": {
+    "sourceProductId": 497856,
+    "sourceUrl": "https://www.tcgplayer.com/product/497856/pokemon-miscellaneous-cards-and-products-pokemon-tcg-back-to-school-eraser-blister-smoliv",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650829529"
+  },
+  "tcg-497870": {
+    "sourceProductId": 497870,
+    "sourceUrl": "https://www.tcgplayer.com/product/497870/pokemon-miscellaneous-cards-and-products-summer-2023-collectors-chest-tin",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650808449"
+  },
+  "tcg-503300": {
+    "sourceProductId": 503300,
+    "sourceUrl": "https://www.tcgplayer.com/product/503300/pokemon-miscellaneous-cards-and-products-collectors-pin-two-pack-blisters-jirachi",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-504330": {
+    "sourceProductId": 504330,
+    "sourceUrl": "https://www.tcgplayer.com/product/504330/pokemon-miscellaneous-cards-and-products-paldea-partners-tin-meowscarada-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650806773"
+  },
+  "tcg-504431": {
+    "sourceProductId": 504431,
+    "sourceUrl": "https://www.tcgplayer.com/product/504431/pokemon-miscellaneous-cards-and-products-paldea-partners-tin-skeledirge-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650806773"
+  },
+  "tcg-504438": {
+    "sourceProductId": 504438,
+    "sourceUrl": "https://www.tcgplayer.com/product/504438/pokemon-miscellaneous-cards-and-products-paldea-partners-tin-quaquaval-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650806773"
+  },
+  "tcg-516576": {
+    "sourceProductId": 516576,
+    "sourceUrl": "https://www.tcgplayer.com/product/516576/pokemon-miscellaneous-cards-and-products-charizard-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [
+      "1 × Charizard ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-516577": {
+    "sourceProductId": 516577,
+    "sourceUrl": "https://www.tcgplayer.com/product/516577/pokemon-miscellaneous-cards-and-products-roaring-moon-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Roaring Moon ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-516578": {
+    "sourceProductId": 516578,
+    "sourceUrl": "https://www.tcgplayer.com/product/516578/pokemon-miscellaneous-cards-and-products-iron-valiant-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Iron Valiant ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-516647": {
+    "sourceProductId": 516647,
+    "sourceUrl": "https://www.tcgplayer.com/product/516647/pokemon-miscellaneous-cards-and-products-fall-2023-collector-chest",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650871153"
+  },
+  "tcg-516987": {
+    "sourceProductId": 516987,
+    "sourceUrl": "https://www.tcgplayer.com/product/516987/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-lure-ball",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-520353": {
+    "sourceProductId": 520353,
+    "sourceUrl": "https://www.tcgplayer.com/product/520353/pokemon-miscellaneous-cards-and-products-evolving-powers-premium-collection-target-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 7,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650854934"
+  },
+  "tcg-526914": {
+    "sourceProductId": 526914,
+    "sourceUrl": "https://www.tcgplayer.com/product/526914/pokemon-miscellaneous-cards-and-products-gyarados-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650854927"
+  },
+  "tcg-527801": {
+    "sourceProductId": 527801,
+    "sourceUrl": "https://www.tcgplayer.com/product/527801/pokemon-miscellaneous-cards-and-products-oinkologne-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650874901"
+  },
+  "tcg-529698": {
+    "sourceProductId": 529698,
+    "sourceUrl": "https://www.tcgplayer.com/product/529698/pokemon-miscellaneous-cards-and-products-heavy-hitters-premium-collection-fall-2023",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 14,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-530756": {
+    "sourceProductId": 530756,
+    "sourceUrl": "https://www.tcgplayer.com/product/530756/pokemon-miscellaneous-cards-and-products-yu-nagaba-x-pokemon-eevees-special-promo-pack",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-531572": {
+    "sourceProductId": 531572,
+    "sourceUrl": "https://www.tcgplayer.com/product/531572/pokemon-miscellaneous-cards-and-products-mabosstiff-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mabosstiff ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-532025": {
+    "sourceProductId": 532025,
+    "sourceUrl": "https://www.tcgplayer.com/product/532025/pokemon-miscellaneous-cards-and-products-paldea-adventure-chest",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [
+      "7 × Pikachu, Sprigatito ex, Pawmi, Pawmo, Pawmot ex, Tandemaus, and Maushold ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-532385": {
+    "sourceProductId": 532385,
+    "sourceUrl": "https://www.tcgplayer.com/product/532385/pokemon-miscellaneous-cards-and-products-combined-powers-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 11,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-532539": {
+    "sourceProductId": 532539,
+    "sourceUrl": "https://www.tcgplayer.com/product/532539/pokemon-miscellaneous-cards-and-products-sinnoh-stars-mini-tins-5-pack",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-532560": {
+    "sourceProductId": 532560,
+    "sourceUrl": "https://www.tcgplayer.com/product/532560/pokemon-miscellaneous-cards-and-products-kleavor-vstar-special-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Kleavor V",
+      "1 × Kleavor VSTAR"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-539305": {
+    "sourceProductId": 539305,
+    "sourceUrl": "https://www.tcgplayer.com/product/539305/pokemon-miscellaneous-cards-and-products-armarouge-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [
+      "1 × Armarouge ex",
+      "2 × Charcadet and Ceruledge"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-541168": {
+    "sourceProductId": 541168,
+    "sourceUrl": "https://www.tcgplayer.com/product/541168/pokemon-miscellaneous-cards-and-products-pokemon-stacking-tin-psychic",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650870804"
+  },
+  "tcg-541171": {
+    "sourceProductId": 541171,
+    "sourceUrl": "https://www.tcgplayer.com/product/541171/pokemon-miscellaneous-cards-and-products-pokemon-stacking-tin-metal",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650870804"
+  },
+  "tcg-541175": {
+    "sourceProductId": 541175,
+    "sourceUrl": "https://www.tcgplayer.com/product/541175/pokemon-miscellaneous-cards-and-products-pokemon-stacking-tin-dragon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650870804"
+  },
+  "tcg-543172": {
+    "sourceProductId": 543172,
+    "sourceUrl": "https://www.tcgplayer.com/product/543172/pokemon-miscellaneous-cards-and-products-knock-out-collection-shaymin-zeraora-and-marshadow",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650852084"
+  },
+  "tcg-544239": {
+    "sourceProductId": 544239,
+    "sourceUrl": "https://www.tcgplayer.com/product/544239/pokemon-miscellaneous-cards-and-products-paradox-clash-tin-walking-wake-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Walking Wake ex or Iron Leaves ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "820650806773"
+  },
+  "tcg-544241": {
+    "sourceProductId": 544241,
+    "sourceUrl": "https://www.tcgplayer.com/product/544241/pokemon-miscellaneous-cards-and-products-paradox-clash-tin-iron-leaves-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Walking Wake ex or Iron Leaves ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "820650806773"
+  },
+  "tcg-545403": {
+    "sourceProductId": 545403,
+    "sourceUrl": "https://www.tcgplayer.com/product/545403/pokemon-miscellaneous-cards-and-products-iono-premium-tournament-collection-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650857485"
+  },
+  "tcg-546458": {
+    "sourceProductId": 546458,
+    "sourceUrl": "https://www.tcgplayer.com/product/546458/pokemon-miscellaneous-cards-and-products-grafaiai-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Grafaiai ex",
+      "1 × Shroodle"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-547129": {
+    "sourceProductId": 547129,
+    "sourceUrl": "https://www.tcgplayer.com/product/547129/pokemon-miscellaneous-cards-and-products-palafin-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Palafin ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-549452": {
+    "sourceProductId": 549452,
+    "sourceUrl": "https://www.tcgplayer.com/product/549452/pokemon-miscellaneous-cards-and-products-pokemon-tcg-back-to-school-eraser-blister-2024-gengar",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650829529"
+  },
+  "tcg-549453": {
+    "sourceProductId": 549453,
+    "sourceUrl": "https://www.tcgplayer.com/product/549453/pokemon-miscellaneous-cards-and-products-pokemon-tcg-back-to-school-eraser-blister-2024-bellibolt",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650829529"
+  },
+  "tcg-549454": {
+    "sourceProductId": 549454,
+    "sourceUrl": "https://www.tcgplayer.com/product/549454/pokemon-miscellaneous-cards-and-products-back-to-school-2024-collector-chest",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650871153"
+  },
+  "tcg-551456": {
+    "sourceProductId": 551456,
+    "sourceUrl": "https://www.tcgplayer.com/product/551456/pokemon-miscellaneous-cards-and-products-costco-galar-pals-mini-tins-5-pack",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650851568"
+  },
+  "tcg-554179": {
+    "sourceProductId": 554179,
+    "sourceUrl": "https://www.tcgplayer.com/product/554179/pokemon-miscellaneous-cards-and-products-vibrant-paldea-mini-tin-dachsbun",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650867675"
+  },
+  "tcg-554180": {
+    "sourceProductId": 554180,
+    "sourceUrl": "https://www.tcgplayer.com/product/554180/pokemon-miscellaneous-cards-and-products-vibrant-paldea-mini-tin-espathra",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650867675"
+  },
+  "tcg-554181": {
+    "sourceProductId": 554181,
+    "sourceUrl": "https://www.tcgplayer.com/product/554181/pokemon-miscellaneous-cards-and-products-vibrant-paldea-mini-tin-arboliva",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650867675"
+  },
+  "tcg-554182": {
+    "sourceProductId": 554182,
+    "sourceUrl": "https://www.tcgplayer.com/product/554182/pokemon-miscellaneous-cards-and-products-vibrant-paldea-mini-tin-palafin",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650867675"
+  },
+  "tcg-554183": {
+    "sourceProductId": 554183,
+    "sourceUrl": "https://www.tcgplayer.com/product/554183/pokemon-miscellaneous-cards-and-products-vibrant-paldea-mini-tin-ceruledge",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650867675"
+  },
+  "tcg-558746": {
+    "sourceProductId": 558746,
+    "sourceUrl": "https://www.tcgplayer.com/product/558746/pokemon-miscellaneous-cards-and-products-dark-powers-ex-special-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650412035"
+  },
+  "charizard-ex-super-premium": {
+    "sourceProductId": 560625,
+    "sourceUrl": "https://www.tcgplayer.com/product/560625/pokemon-miscellaneous-cards-and-products-charizard-ex-super-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [
+      "1 × Charizard ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "820650878190"
+  },
+  "tcg-561521": {
+    "sourceProductId": 561521,
+    "sourceUrl": "https://www.tcgplayer.com/product/561521/pokemon-miscellaneous-cards-and-products-houndstone-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Houndstone ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650412974"
+  },
+  "tcg-562354": {
+    "sourceProductId": 562354,
+    "sourceUrl": "https://www.tcgplayer.com/product/562354/pokemon-miscellaneous-cards-and-products-paradox-destinies-tin-iron-crown-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Iron Crown ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650858406"
+  },
+  "tcg-562356": {
+    "sourceProductId": 562356,
+    "sourceUrl": "https://www.tcgplayer.com/product/562356/pokemon-miscellaneous-cards-and-products-paradox-destinies-tin-iron-boulder-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Iron Boulder ex,"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650858406"
+  },
+  "tcg-562357": {
+    "sourceProductId": 562357,
+    "sourceUrl": "https://www.tcgplayer.com/product/562357/pokemon-miscellaneous-cards-and-products-paradox-destinies-tin-raging-bolt-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Raging Bolt ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650858406"
+  },
+  "tcg-562358": {
+    "sourceProductId": 562358,
+    "sourceUrl": "https://www.tcgplayer.com/product/562358/pokemon-miscellaneous-cards-and-products-paradox-destinies-tin-gouging-fire-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Gouging Fire ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650858406"
+  },
+  "tcg-563857": {
+    "sourceProductId": 563857,
+    "sourceUrl": "https://www.tcgplayer.com/product/563857/pokemon-miscellaneous-cards-and-products-tera-brawlers-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-575185": {
+    "sourceProductId": 575185,
+    "sourceUrl": "https://www.tcgplayer.com/product/575185/pokemon-miscellaneous-cards-and-products-paradox-fury-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "terapagos-ex-upc": {
+    "sourceProductId": 575198,
+    "sourceUrl": "https://www.tcgplayer.com/product/575198/pokemon-miscellaneous-cards-and-products-terapagos-ex-ultra-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 18,
+    "promos": [
+      "1 × Terapagos ex",
+      "1 × Lapras ex",
+      "1 × Cinderace ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "820650878664"
+  },
+  "tcg-575706": {
+    "sourceProductId": 575706,
+    "sourceUrl": "https://www.tcgplayer.com/product/575706/pokemon-miscellaneous-cards-and-products-fall-2024-collector-chest",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650413179"
+  },
+  "tcg-575897": {
+    "sourceProductId": 575897,
+    "sourceUrl": "https://www.tcgplayer.com/product/575897/pokemon-miscellaneous-cards-and-products-bloodmoon-ursaluna-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Bloodmoon Ursaluna ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0820650413186"
+  },
+  "tcg-576482": {
+    "sourceProductId": 576482,
+    "sourceUrl": "https://www.tcgplayer.com/product/576482/pokemon-miscellaneous-cards-and-products-ogerpon-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [
+      "1 × Teal Mask Ogerpon ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "820650433191"
+  },
+  "tcg-583521": {
+    "sourceProductId": 583521,
+    "sourceUrl": "https://www.tcgplayer.com/product/583521/pokemon-miscellaneous-cards-and-products-paradox-wisdom-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 7,
+    "promos": [
+      "3 × Iron Leaves ex, Iron Crown ex, and Iron Boulder ex",
+      "1 × Iron Crown ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-583776": {
+    "sourceProductId": 583776,
+    "sourceUrl": "https://www.tcgplayer.com/product/583776/pokemon-miscellaneous-cards-and-products-jirachi-v-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650851223"
+  },
+  "tcg-587365": {
+    "sourceProductId": 587365,
+    "sourceUrl": "https://www.tcgplayer.com/product/587365/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-poke-ball-q4-2024",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-587366": {
+    "sourceProductId": 587366,
+    "sourceUrl": "https://www.tcgplayer.com/product/587366/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-great-ball-q4-2024",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-587367": {
+    "sourceProductId": 587367,
+    "sourceUrl": "https://www.tcgplayer.com/product/587367/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-premier-ball-q4-2024",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-587368": {
+    "sourceProductId": 587368,
+    "sourceUrl": "https://www.tcgplayer.com/product/587368/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-ultra-ball-q4-2024",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-587369": {
+    "sourceProductId": 587369,
+    "sourceUrl": "https://www.tcgplayer.com/product/587369/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-moon-ball-q4-2024",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "151-costco-mini-tins": {
+    "sourceProductId": 587746,
+    "sourceUrl": "https://www.tcgplayer.com/product/587746/pokemon-miscellaneous-cards-and-products-costco-pokemon-scarlet-and-violet-151-mini-tin-5-pack-meowth",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650413612"
+  },
+  "tcg-587747": {
+    "sourceProductId": 587747,
+    "sourceUrl": "https://www.tcgplayer.com/product/587747/pokemon-miscellaneous-cards-and-products-costco-pokemon-scarlet-and-violet-151-mini-tin-5-pack-magneton",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650413612"
+  },
+  "tcg-587750": {
+    "sourceProductId": 587750,
+    "sourceUrl": "https://www.tcgplayer.com/product/587750/pokemon-miscellaneous-cards-and-products-costco-pokemon-collector-3-pack-scarlet-and-violet-151-etb-plus-paldea-legends-tins",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650413223"
+  },
+  "tcg-591145": {
+    "sourceProductId": 591145,
+    "sourceUrl": "https://www.tcgplayer.com/product/591145/pokemon-miscellaneous-cards-and-products-triple-whammy-tin-tyranitar",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-591146": {
+    "sourceProductId": 591146,
+    "sourceUrl": "https://www.tcgplayer.com/product/591146/pokemon-miscellaneous-cards-and-products-triple-whammy-tin-darkrai",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-591147": {
+    "sourceProductId": 591147,
+    "sourceUrl": "https://www.tcgplayer.com/product/591147/pokemon-miscellaneous-cards-and-products-triple-whammy-tin-slaking",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-594414": {
+    "sourceProductId": 594414,
+    "sourceUrl": "https://www.tcgplayer.com/product/594414/pokemon-miscellaneous-cards-and-products-dragonite-dragons-tin-walgreens-exclusive",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650809859"
+  },
+  "tcg-594491": {
+    "sourceProductId": 594491,
+    "sourceUrl": "https://www.tcgplayer.com/product/594491/pokemon-miscellaneous-cards-and-products-greninja-ex-ultra-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 16,
+    "promos": [
+      "3 × Greninja"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-594495": {
+    "sourceProductId": 594495,
+    "sourceUrl": "https://www.tcgplayer.com/product/594495/pokemon-miscellaneous-cards-and-products-legendary-warriors-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 14,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-594539": {
+    "sourceProductId": 594539,
+    "sourceUrl": "https://www.tcgplayer.com/product/594539/pokemon-miscellaneous-cards-and-products-tera-team-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-594729": {
+    "sourceProductId": 594729,
+    "sourceUrl": "https://www.tcgplayer.com/product/594729/pokemon-miscellaneous-cards-and-products-costco-pokemon-scarlet-and-violet-paldean-fates-mini-tin-5-pack",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650413636"
+  },
+  "tcg-594896": {
+    "sourceProductId": 594896,
+    "sourceUrl": "https://www.tcgplayer.com/product/594896/pokemon-miscellaneous-cards-and-products-grand-adventure-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × art of Liko and Sprigatito from Pokémon Horizons: The Series",
+      "1 × art of Roy and Fuecoco from Pokémon Horizons: The Series",
+      "1 × Terapagos & Friends"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "196214112216"
+  },
+  "tcg-596517": {
+    "sourceProductId": 596517,
+    "sourceUrl": "https://www.tcgplayer.com/product/596517/pokemon-miscellaneous-cards-and-products-tsareena-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650412042"
+  },
+  "tcg-596518": {
+    "sourceProductId": 596518,
+    "sourceUrl": "https://www.tcgplayer.com/product/596518/pokemon-miscellaneous-cards-and-products-tyranitar-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650412059"
+  },
+  "tcg-603323": {
+    "sourceProductId": 603323,
+    "sourceUrl": "https://www.tcgplayer.com/product/603323/pokemon-miscellaneous-cards-and-products-knock-out-collection-iron-jugulis",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650855870"
+  },
+  "tcg-604493": {
+    "sourceProductId": 604493,
+    "sourceUrl": "https://www.tcgplayer.com/product/604493/pokemon-miscellaneous-cards-and-products-decidueye-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-606605": {
+    "sourceProductId": 606605,
+    "sourceUrl": "https://www.tcgplayer.com/product/606605/pokemon-miscellaneous-cards-and-products-meddling-sparks-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-616291": {
+    "sourceProductId": 616291,
+    "sourceUrl": "https://www.tcgplayer.com/product/616291/pokemon-miscellaneous-cards-and-products-azure-legends-tin-dialga-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Kyogre ex, Xerneas ex, or Dialga ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-616292": {
+    "sourceProductId": 616292,
+    "sourceUrl": "https://www.tcgplayer.com/product/616292/pokemon-miscellaneous-cards-and-products-azure-legends-tin-kyogre-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Kyogre ex, Xerneas ex, or Dialga ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-616293": {
+    "sourceProductId": 616293,
+    "sourceUrl": "https://www.tcgplayer.com/product/616293/pokemon-miscellaneous-cards-and-products-azure-legends-tin-xerneas-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Kyogre ex, Xerneas ex, or Dialga ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-616294": {
+    "sourceProductId": 616294,
+    "sourceUrl": "https://www.tcgplayer.com/product/616294/pokemon-miscellaneous-cards-and-products-pokemon-stacking-tin-treasures-of-ruin",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-616295": {
+    "sourceProductId": 616295,
+    "sourceUrl": "https://www.tcgplayer.com/product/616295/pokemon-miscellaneous-cards-and-products-pokemon-stacking-tin-paradox-pokemon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-616296": {
+    "sourceProductId": 616296,
+    "sourceUrl": "https://www.tcgplayer.com/product/616296/pokemon-miscellaneous-cards-and-products-pokemon-stacking-tin-ogerpon",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-616303": {
+    "sourceProductId": 616303,
+    "sourceUrl": "https://www.tcgplayer.com/product/616303/pokemon-miscellaneous-cards-and-products-hops-zacian-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Hop's Zacian ex 2 foil cards featuring Hap's Wootoo and Hop's Dubwool"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "196214120808"
+  },
+  "tcg-616304": {
+    "sourceProductId": 616304,
+    "sourceUrl": "https://www.tcgplayer.com/product/616304/pokemon-miscellaneous-cards-and-products-ionos-bellibolt-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [
+      "1 × Iono’s Bellibolt ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-616305": {
+    "sourceProductId": 616305,
+    "sourceUrl": "https://www.tcgplayer.com/product/616305/pokemon-miscellaneous-cards-and-products-charizard-ex-special-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Charizard ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-616737": {
+    "sourceProductId": 616737,
+    "sourceUrl": "https://www.tcgplayer.com/product/616737/pokemon-miscellaneous-cards-and-products-retail-exclusive-pokemon-paldean-fates-mini-tins-plus-poke-ball-tin",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-621096": {
+    "sourceProductId": 621096,
+    "sourceUrl": "https://www.tcgplayer.com/product/621096/pokemon-miscellaneous-cards-and-products-paradox-powers-ex-special-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-623647": {
+    "sourceProductId": 623647,
+    "sourceUrl": "https://www.tcgplayer.com/product/623647/pokemon-miscellaneous-cards-and-products-slashing-legends-tin-koraidon-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Koraidon ex or Zacian ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "slashing-legends-zacian-tin": {
+    "sourceProductId": 623648,
+    "sourceUrl": "https://www.tcgplayer.com/product/623648/pokemon-miscellaneous-cards-and-products-slashing-legends-tin-zacian-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Koraidon ex or Zacian ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-625038": {
+    "sourceProductId": 625038,
+    "sourceUrl": "https://www.tcgplayer.com/product/625038/pokemon-miscellaneous-cards-and-products-2-booster-packs-and-jirachi-collectors-pin",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-625049": {
+    "sourceProductId": 625049,
+    "sourceUrl": "https://www.tcgplayer.com/product/625049/pokemon-miscellaneous-cards-and-products-2-booster-packs-and-celebi-collectors-pin",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-625050": {
+    "sourceProductId": 625050,
+    "sourceUrl": "https://www.tcgplayer.com/product/625050/pokemon-miscellaneous-cards-and-products-2-booster-packs-and-latias-collectors-pin",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-625051": {
+    "sourceProductId": 625051,
+    "sourceUrl": "https://www.tcgplayer.com/product/625051/pokemon-miscellaneous-cards-and-products-2-booster-packs-and-latios-collectors-pin",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-625695": {
+    "sourceProductId": 625695,
+    "sourceUrl": "https://www.tcgplayer.com/product/625695/pokemon-miscellaneous-cards-and-products-team-rockets-mewtwo-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Team Rocket's Mewtwo ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "196214124073"
+  },
+  "tcg-625906": {
+    "sourceProductId": 625906,
+    "sourceUrl": "https://www.tcgplayer.com/product/625906/pokemon-miscellaneous-cards-and-products-ex-tin-keldeo",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-625952": {
+    "sourceProductId": 625952,
+    "sourceUrl": "https://www.tcgplayer.com/product/625952/pokemon-miscellaneous-cards-and-products-cynthias-garchomp-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [
+      "1 × Cynthia's Garchomp ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "196214109247"
+  },
+  "tcg-626605": {
+    "sourceProductId": 626605,
+    "sourceUrl": "https://www.tcgplayer.com/product/626605/pokemon-miscellaneous-cards-and-products-lillie-premium-tournament-collection-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [
+      "1 × Lillie’s Clefairy ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214109018"
+  },
+  "tcg-628493": {
+    "sourceProductId": 628493,
+    "sourceUrl": "https://www.tcgplayer.com/product/628493/pokemon-miscellaneous-cards-and-products-knock-out-collection-alakazam",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650858260"
+  },
+  "tcg-628494": {
+    "sourceProductId": 628494,
+    "sourceUrl": "https://www.tcgplayer.com/product/628494/pokemon-miscellaneous-cards-and-products-knock-out-collection-chien-pao",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "820650858260"
+  },
+  "tcg-629647": {
+    "sourceProductId": 629647,
+    "sourceUrl": "https://www.tcgplayer.com/product/629647/pokemon-miscellaneous-cards-and-products-masks-of-ogerpon-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214129948"
+  },
+  "tcg-633085": {
+    "sourceProductId": 633085,
+    "sourceUrl": "https://www.tcgplayer.com/product/633085/pokemon-miscellaneous-cards-and-products-paldea-friends-mini-tins-5-pack",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-635621": {
+    "sourceProductId": 635621,
+    "sourceUrl": "https://www.tcgplayer.com/product/635621/pokemon-miscellaneous-cards-and-products-venusaur-ex-and-blastoise-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [
+      "1 × Venusaur ex",
+      "1 × Blastoise ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-636740": {
+    "sourceProductId": 636740,
+    "sourceUrl": "https://www.tcgplayer.com/product/636740/pokemon-miscellaneous-cards-and-products-costco-pokemon-prismatic-evolutions-2-pack-trainer-box-and-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Eevee"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-644852": {
+    "sourceProductId": 644852,
+    "sourceUrl": "https://www.tcgplayer.com/product/644852/pokemon-miscellaneous-cards-and-products-prismatic-evolutions-elite-trainer-box-and-pokeball-sams-club",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 9,
+    "promos": [
+      "1 × Eevee"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-648365": {
+    "sourceProductId": 648365,
+    "sourceUrl": "https://www.tcgplayer.com/product/648365/pokemon-miscellaneous-cards-and-products-prismatic-evolutions-lucario-ex-and-tyranitar-ex-premium-collection-sams-club",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 14,
+    "promos": [
+      "2 × Lucario ex and Tyranitar ex",
+      "2 × Lucario and Tyranitar"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-649193": {
+    "sourceProductId": 649193,
+    "sourceUrl": "https://www.tcgplayer.com/product/649193/pokemon-miscellaneous-cards-and-products-team-rocket-tin-team-rockets-mewtwo-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Team Rocket’s Mewtwo ex, Team Rocket’s Nidoking ex, or Team Rocket’s Persian ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214119628"
+  },
+  "tcg-649194": {
+    "sourceProductId": 649194,
+    "sourceUrl": "https://www.tcgplayer.com/product/649194/pokemon-miscellaneous-cards-and-products-team-rocket-tin-team-rockets-nidoking-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Team Rocket’s Mewtwo ex, Team Rocket’s Nidoking ex, or Team Rocket’s Persian ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214119628"
+  },
+  "tcg-649195": {
+    "sourceProductId": 649195,
+    "sourceUrl": "https://www.tcgplayer.com/product/649195/pokemon-miscellaneous-cards-and-products-team-rocket-tin-team-rockets-persian-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Team Rocket’s Mewtwo ex, Team Rocket’s Nidoking ex, or Team Rocket’s Persian ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214119628"
+  },
+  "tcg-650229": {
+    "sourceProductId": 650229,
+    "sourceUrl": "https://www.tcgplayer.com/product/650229/pokemon-miscellaneous-cards-and-products-blaziken-ex-and-volcanion-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [
+      "1 × Blaziken ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-650397": {
+    "sourceProductId": 650397,
+    "sourceUrl": "https://www.tcgplayer.com/product/650397/pokemon-miscellaneous-cards-and-products-costco-pokemon-surging-sparks-2-pack-trainer-box-and-booster-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [
+      "1 × Magneton"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-650885": {
+    "sourceProductId": 650885,
+    "sourceUrl": "https://www.tcgplayer.com/product/650885/pokemon-miscellaneous-cards-and-products-costco-pokemon-pokemon-holiday-calendar-and-great-ball-bundle",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-653192": {
+    "sourceProductId": 653192,
+    "sourceUrl": "https://www.tcgplayer.com/product/653192/pokemon-miscellaneous-cards-and-products-snorlax-and-lapras-vmax-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-653199": {
+    "sourceProductId": 653199,
+    "sourceUrl": "https://www.tcgplayer.com/product/653199/pokemon-miscellaneous-cards-and-products-hydreigon-ex-and-dragapult-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [
+      "1 × Dragapult ex",
+      "1 × Hydreigon ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "196214129962"
+  },
+  "tcg-653892": {
+    "sourceProductId": 653892,
+    "sourceUrl": "https://www.tcgplayer.com/product/653892/pokemon-miscellaneous-cards-and-products-costco-prismatic-evolutions-8-pack-mini-tins",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-653899": {
+    "sourceProductId": 653899,
+    "sourceUrl": "https://www.tcgplayer.com/product/653899/pokemon-miscellaneous-cards-and-products-salamence-ex-and-reshiram-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [
+      "1 × Salamence ex",
+      "1 × Reshiram ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214129955"
+  },
+  "tcg-654188": {
+    "sourceProductId": 654188,
+    "sourceUrl": "https://www.tcgplayer.com/product/654188/pokemon-miscellaneous-cards-and-products-mega-latias-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Latias ex",
+      "1 × Mega Latias ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214130562"
+  },
+  "mega-kangaskhan-ex-box": {
+    "sourceProductId": 654211,
+    "sourceUrl": "https://www.tcgplayer.com/product/654211/pokemon-miscellaneous-cards-and-products-mega-kangaskhan-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Kangaskhan ex",
+      "1 × Mega Kangaskhan ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214134546"
+  },
+  "tcg-654212": {
+    "sourceProductId": 654212,
+    "sourceUrl": "https://www.tcgplayer.com/product/654212/pokemon-miscellaneous-cards-and-products-mega-venusaur-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [
+      "1 × Mega Venusaur ex",
+      "1 × Mega Venusaur ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214134522"
+  },
+  "mega-charizard-x-upc": {
+    "sourceProductId": 654213,
+    "sourceUrl": "https://www.tcgplayer.com/product/654213/pokemon-miscellaneous-cards-and-products-mega-charizard-x-ex-ultra-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 18,
+    "promos": [
+      "1 × Mega Charizard X ex",
+      "1 × Oricorio ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214130685"
+  },
+  "tcg-654593": {
+    "sourceProductId": 654593,
+    "sourceUrl": "https://www.tcgplayer.com/product/654593/pokemon-miscellaneous-cards-and-products-fall-2025-collector-chest",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214134539"
+  },
+  "tcg-655739": {
+    "sourceProductId": 655739,
+    "sourceUrl": "https://www.tcgplayer.com/product/655739/pokemon-miscellaneous-cards-and-products-lugia-ex-and-latias-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [
+      "1 × Lugia ex",
+      "1 × Latias ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-655747": {
+    "sourceProductId": 655747,
+    "sourceUrl": "https://www.tcgplayer.com/product/655747/pokemon-miscellaneous-cards-and-products-mimikyu-ex-and-alcremie-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 10,
+    "promos": [
+      "1 × Mimikyu ex",
+      "1 × Alcremie ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-656487": {
+    "sourceProductId": 656487,
+    "sourceUrl": "https://www.tcgplayer.com/product/656487/pokemon-miscellaneous-cards-and-products-mega-lucario-ex-premium-figure-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 5,
+    "promos": [
+      "1 × Mega Lucario ex",
+      "1 × Mega Lucario ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214134553"
+  },
+  "tcg-656950": {
+    "sourceProductId": 656950,
+    "sourceUrl": "https://www.tcgplayer.com/product/656950/pokemon-miscellaneous-cards-and-products-greninja-ex-and-kingdra-ex-special-collection-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [
+      "1 × Greninja ex",
+      "1 × Kingdra ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214109018"
+  },
+  "tcg-656955": {
+    "sourceProductId": 656955,
+    "sourceUrl": "https://www.tcgplayer.com/product/656955/pokemon-miscellaneous-cards-and-products-archaludon-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Archaludon ex",
+      "1 × Duraludon"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-656997": {
+    "sourceProductId": 656997,
+    "sourceUrl": "https://www.tcgplayer.com/product/656997/pokemon-miscellaneous-cards-and-products-team-rockets-moltres-ex-ultra-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 18,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-657884": {
+    "sourceProductId": 657884,
+    "sourceUrl": "https://www.tcgplayer.com/product/657884/pokemon-miscellaneous-cards-and-products-latias-ex-special-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [
+      "1 × Latias ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214129740"
+  },
+  "tcg-662745": {
+    "sourceProductId": 662745,
+    "sourceUrl": "https://www.tcgplayer.com/product/662745/pokemon-miscellaneous-cards-and-products-black-kyurem-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Black Kyurem ex",
+      "1 × Zekrom"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-662750": {
+    "sourceProductId": 662750,
+    "sourceUrl": "https://www.tcgplayer.com/product/662750/pokemon-miscellaneous-cards-and-products-melmetal-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Melmetal ex",
+      "1 × Meltan"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-662758": {
+    "sourceProductId": 662758,
+    "sourceUrl": "https://www.tcgplayer.com/product/662758/pokemon-miscellaneous-cards-and-products-blaziken-ex-special-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [
+      "1 × Blaziken ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-662770": {
+    "sourceProductId": 662770,
+    "sourceUrl": "https://www.tcgplayer.com/product/662770/pokemon-miscellaneous-cards-and-products-snorlax-ex-and-blissey-ex-special-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [
+      "1 × Snorlax ex",
+      "1 × Blissey ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-664092": {
+    "sourceProductId": 664092,
+    "sourceUrl": "https://www.tcgplayer.com/product/664092/pokemon-miscellaneous-cards-and-products-incineroar-ex-and-torterra-ex-special-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [
+      "1 × Incineroar ex",
+      "1 × Torterra ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214129870"
+  },
+  "tcg-665038": {
+    "sourceProductId": 665038,
+    "sourceUrl": "https://www.tcgplayer.com/product/665038/pokemon-miscellaneous-cards-and-products-lugia-ex-special-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 6,
+    "promos": [
+      "1 × Lugia ex"
+    ],
+    "language": null,
+    "edition": null
+  },
+  "tcg-666512": {
+    "sourceProductId": 666512,
+    "sourceUrl": "https://www.tcgplayer.com/product/666512/pokemon-miscellaneous-cards-and-products-reshiram-ex-box",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Reshiram ex",
+      "1 × Reshiram"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214130494"
+  },
+  "tcg-668362": {
+    "sourceProductId": 668362,
+    "sourceUrl": "https://www.tcgplayer.com/product/668362/pokemon-miscellaneous-cards-and-products-alola-trio-pin-blister",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0820650801723"
+  },
+  "tcg-668590": {
+    "sourceProductId": 668590,
+    "sourceUrl": "https://www.tcgplayer.com/product/668590/pokemon-miscellaneous-cards-and-products-pokemon-day-2026-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 3,
+    "promos": [
+      "1 × Pikachu with a Pokémon Day stamp"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214141537"
+  },
+  "tcg-668648": {
+    "sourceProductId": 668648,
+    "sourceUrl": "https://www.tcgplayer.com/product/668648/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-repeat-ball",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-670782": {
+    "sourceProductId": 670782,
+    "sourceUrl": "https://www.tcgplayer.com/product/670782/pokemon-miscellaneous-cards-and-products-knock-out-collection-kyogre",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214132610"
+  },
+  "tcg-670783": {
+    "sourceProductId": 670783,
+    "sourceUrl": "https://www.tcgplayer.com/product/670783/pokemon-miscellaneous-cards-and-products-knock-out-collection-suicune",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0496214132610"
+  },
+  "tcg-671249": {
+    "sourceProductId": 671249,
+    "sourceUrl": "https://www.tcgplayer.com/product/671249/pokemon-miscellaneous-cards-and-products-mega-charizard-tin-mega-charizard-y",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Charizard X ex or Mega Charizard Y ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214147539"
+  },
+  "tcg-671250": {
+    "sourceProductId": 671250,
+    "sourceUrl": "https://www.tcgplayer.com/product/671250/pokemon-miscellaneous-cards-and-products-mega-charizard-tin-mega-charizard-x",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Charizard X ex or Mega Charizard Y ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214147539"
+  },
+  "tcg-682939": {
+    "sourceProductId": 682939,
+    "sourceUrl": "https://www.tcgplayer.com/product/682939/pokemon-miscellaneous-cards-and-products-mega-zygarde-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [
+      "1 × Mega Zygarde ex",
+      "1 × Mega Zygarde ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214153349"
+  },
+  "tcg-685575": {
+    "sourceProductId": 685575,
+    "sourceUrl": "https://www.tcgplayer.com/product/685575/pokemon-miscellaneous-cards-and-products-lumiose-city-mini-tin-salamence-and-litleo",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214155787"
+  },
+  "tcg-685576": {
+    "sourceProductId": 685576,
+    "sourceUrl": "https://www.tcgplayer.com/product/685576/pokemon-miscellaneous-cards-and-products-lumiose-city-mini-tin-meganium-and-meowstic",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214155787"
+  },
+  "tcg-685577": {
+    "sourceProductId": 685577,
+    "sourceUrl": "https://www.tcgplayer.com/product/685577/pokemon-miscellaneous-cards-and-products-lumiose-city-mini-tin-emboar-and-inkay",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214155787"
+  },
+  "tcg-685578": {
+    "sourceProductId": 685578,
+    "sourceUrl": "https://www.tcgplayer.com/product/685578/pokemon-miscellaneous-cards-and-products-lumiose-city-mini-tin-feraligatr-and-budew",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214155787"
+  },
+  "tcg-685579": {
+    "sourceProductId": 685579,
+    "sourceUrl": "https://www.tcgplayer.com/product/685579/pokemon-miscellaneous-cards-and-products-lumiose-city-mini-tin-gallade-and-goomy",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 2,
+    "promos": [],
+    "language": null,
+    "edition": null,
+    "upc": "0196214155787"
+  },
+  "tcg-686298": {
+    "sourceProductId": 686298,
+    "sourceUrl": "https://www.tcgplayer.com/product/686298/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-moon-ball",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-686437": {
+    "sourceProductId": 686437,
+    "sourceUrl": "https://www.tcgplayer.com/product/686437/pokemon-miscellaneous-cards-and-products-mega-moonlit-tin-mega-gengar-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Gengar ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214155879"
+  },
+  "tcg-686438": {
+    "sourceProductId": 686438,
+    "sourceUrl": "https://www.tcgplayer.com/product/686438/pokemon-miscellaneous-cards-and-products-mega-moonlit-tin-mega-clefable-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Clefable ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214155879"
+  },
+  "tcg-688964": {
+    "sourceProductId": 688964,
+    "sourceUrl": "https://www.tcgplayer.com/product/688964/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-poke-ball-q4-2025",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-688965": {
+    "sourceProductId": 688965,
+    "sourceUrl": "https://www.tcgplayer.com/product/688965/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-ultra-ball-q4-2025",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-688966": {
+    "sourceProductId": 688966,
+    "sourceUrl": "https://www.tcgplayer.com/product/688966/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-great-ball-q4-2025",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-688967": {
+    "sourceProductId": 688967,
+    "sourceUrl": "https://www.tcgplayer.com/product/688967/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-premier-ball-q4-2025",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-688968": {
+    "sourceProductId": 688968,
+    "sourceUrl": "https://www.tcgplayer.com/product/688968/pokemon-miscellaneous-cards-and-products-pokemon-poke-ball-tin-repeat-ball-q4-2025",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": null,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-690199": {
+    "sourceProductId": 690199,
+    "sourceUrl": "https://www.tcgplayer.com/product/690199/pokemon-miscellaneous-cards-and-products-fusion-strike-elite-trainer-box-and-6-bonus-cards-sams-club",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [],
+    "language": null,
+    "edition": null
+  },
+  "tcg-690660": {
+    "sourceProductId": 690660,
+    "sourceUrl": "https://www.tcgplayer.com/product/690660/pokemon-miscellaneous-cards-and-products-mega-greninja-ex-premium-collection",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 8,
+    "promos": [
+      "1 × Mega Greninja ex",
+      "1 × Mega Greninja ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214155923"
+  },
+  "tcg-702505": {
+    "sourceProductId": 702505,
+    "sourceUrl": "https://www.tcgplayer.com/product/702505/pokemon-miscellaneous-cards-and-products-mega-forces-tin-mega-dragonite-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Dragonite ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214157910"
+  },
+  "tcg-702506": {
+    "sourceProductId": 702506,
+    "sourceUrl": "https://www.tcgplayer.com/product/702506/pokemon-miscellaneous-cards-and-products-mega-forces-tin-mega-darkrai-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Darkrai ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214157910"
+  },
+  "tcg-702507": {
+    "sourceProductId": 702507,
+    "sourceUrl": "https://www.tcgplayer.com/product/702507/pokemon-miscellaneous-cards-and-products-mega-forces-tin-mega-zeraora-ex",
+    "sourceLabel": "TCGplayer product specifications",
+    "packCount": 4,
+    "promos": [
+      "1 × Mega Zeraora ex"
+    ],
+    "language": null,
+    "edition": null,
+    "upc": "0196214157910"
+  }
+}

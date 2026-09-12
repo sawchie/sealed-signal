@@ -8,6 +8,9 @@ import { SiteHeader } from "@/app/components/SiteHeader";
 import { getSeedProductBySlug, seedProducts } from "@/data/products";
 import { resolvePublicProduct } from "@/lib/catalog-resolution";
 import { formatMoney } from "@/lib/format";
+import { productFacts } from "@/lib/product-facts";
+import { PriceHistory } from "@/app/components/PriceHistory";
+import type { PriceObservation } from "@/lib/price-history";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -70,6 +73,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const product = await getPublicProductBySlug(slug);
   if (!product) notFound();
 
+  let history: PriceObservation[] = [];
+  let historyUnavailable = false;
+  try { const { getProductPriceHistory } = await import("@/db/repository"); history = await getProductPriceHistory(product.id); }
+  catch { historyUnavailable = true; }
+  if (product.marketPrice && !history.some(row => row.observedAt === product.marketPrice!.updatedAt && row.provider === product.marketPrice!.source.id)) history.push({ amountCents: product.marketPrice.amountCents, observedAt: product.marketPrice.updatedAt, source: product.marketPrice.source.label, sourceUrl: product.marketPrice.source.url ?? null, provider: product.marketPrice.source.id, currency: product.marketPrice.currency });
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -82,7 +91,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="app-shell app-shell--detail">
       <SiteHeader compact />
-      <ProductDetailClient initialProduct={product} />
+      <ProductDetailClient initialProduct={product} facts={productFacts(product.id)} now={new Date().toISOString()} />
+      <div className="detail-history-wrap"><PriceHistory observations={history} currency={product.currency} unavailable={historyUnavailable} /></div>
       <ProductExtras product={product} />
       <SiteFooter />
       <script

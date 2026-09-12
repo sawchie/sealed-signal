@@ -1,5 +1,6 @@
 import { getD1 } from "./index";
 import { ensureCatalogSchema } from "./initialize";
+import type { PriceObservation } from "../lib/price-history";
 import type {
   MarketPriceQuote,
   MarketPriceSourceKind,
@@ -19,6 +20,15 @@ export const catalogSorts = [
 export type CatalogSort = (typeof catalogSorts)[number];
 export interface CatalogMarketPrice extends MarketPriceQuote {
   methodology?: string;
+}
+
+/** Indexed, bounded history for one public product; never loads histories across the whole shelf. */
+export async function getProductPriceHistory(productId: string): Promise<PriceObservation[]> {
+  const db = getD1();
+  await ensureCatalogSchema();
+  const result = await db.prepare(`SELECT amount_cents AS amountCents, currency, observed_at AS observedAt, source_name AS source, source_url AS sourceUrl, provider_key AS provider FROM market_price_snapshots WHERE product_id = ? ORDER BY observed_at DESC, created_at DESC, id DESC LIMIT 180`).bind(productId).all<PriceObservation>();
+  // Reverse also preserves the repository's tie-break order for same-time revisions.
+  return result.results.reverse();
 }
 
 export interface CatalogProduct extends ProductWithMarketPrice {

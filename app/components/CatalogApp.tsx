@@ -22,6 +22,9 @@ import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 import { SaveHeart, HeartIcon } from "./SaveHeart";
 import { SAVED_PRODUCTS_KEY, emptySavedProducts, parseSavedProducts, type SavedProducts } from "@/lib/saved-products";
+import { BROWSE_SESSION_KEY, categoryMatches, readCatalogState, writeCatalogState } from "@/lib/catalog-state";
+import { priceFreshness } from "@/lib/buy-check";
+import { WatchAlerts } from "./WatchAlerts";
 
 type ViewMode = "grid" | "table";
 type QuickFilter =
@@ -32,6 +35,7 @@ type QuickFilter =
   | "tin"
   | "collection";
 type SortKey =
+  | "relevance"
   | "opportunity"
   | "profit-desc"
   | "roi-desc"
@@ -79,6 +83,7 @@ const quickFilters: Array<{ id: QuickFilter; label: string }> = [
   { id: "tin", label: "Tins" },
   { id: "collection", label: "Collection boxes" },
 ];
+const quickCategories: Record<QuickFilter, string> = { all: "all", box: "Booster Box", etb: "group:etb", bundle: "Booster Bundle", tin: "group:tin", collection: "group:collection" };
 
 const recommendationRank: Record<Recommendation, number> = {
   "STRONG BUY": 4,
@@ -191,11 +196,13 @@ function ProductCard({
   priority,
   saved,
   onToggle,
+  returnTo,
 }: {
   item: EvaluatedProduct;
   priority?: boolean;
   saved: boolean;
   onToggle: () => void;
+  returnTo: string;
 }) {
   const { product, recommendation } = item;
 
@@ -203,7 +210,7 @@ function ProductCard({
     <article className={`product-card ${recommendationToneClass(recommendation)}`}>
     <SaveHeart name={product.name} saved={saved} onToggle={onToggle} />
     <a className="product-card__link"
-      href={`/products/${product.slug}`}
+      href={`/products/${product.slug}?return=${encodeURIComponent(returnTo)}`}
       aria-label={`Open details for ${product.name}`}
     >
       <div className="product-card__visual">
@@ -234,7 +241,7 @@ function ProductCard({
 
         <div className="price-pair">
           <div>
-            <span>Retail / MSRP</span>
+            <span>Reference retail</span>
             <strong>{formatMoney(product.msrpCents, product.currency)}</strong>
           </div>
           <div className="price-pair__market">
@@ -256,10 +263,16 @@ function ProductTable({
   items,
   savedSlugs,
   onToggle,
+  returnTo,
+  showMetrics,
+  now,
 }: {
   items: EvaluatedProduct[];
   savedSlugs: Set<string>;
   onToggle: (slug: string) => void;
+  returnTo: string;
+  showMetrics: boolean;
+  now: string;
 }) {
   return (
     <div className="product-table-wrap">
@@ -267,8 +280,9 @@ function ProductTable({
         <thead>
           <tr>
             <th scope="col">Product</th>
-            <th scope="col">MSRP</th>
+            <th scope="col">Reference retail</th>
             <th scope="col">Market</th>
+            {showMetrics && <><th scope="col">Net profit at reference</th><th scope="col">ROI</th><th scope="col">Price age</th></>}
             <th scope="col">Signal</th>
             <th scope="col"><span className="sr-only">Save and details</span></th>
           </tr>
@@ -288,7 +302,7 @@ function ProductTable({
                       productName={product.name}
                     />
                     <span>
-                      <a href={`/products/${product.slug}`}>{product.name}</a>
+                      <a href={`/products/${product.slug}?return=${encodeURIComponent(returnTo)}`}>{product.name}</a>
                       <small>
                         {product.setName ?? "Mixed set"} · {product.category}
                       </small>
@@ -297,13 +311,14 @@ function ProductTable({
                 </td>
                 <td>{formatMoney(product.msrpCents, product.currency)}</td>
                 <td>{formatMoney(product.marketPrice?.amountCents, product.currency)}</td>
+                {showMetrics && <><td>{formatMoney(item.estimate?.profitCents, product.currency)}</td><td>{item.estimate ? `${item.estimate.roiPercent}%` : "Unavailable"}</td><td>{priceFreshness(product.marketPrice?.updatedAt, now)}</td></>}
                 <td>
                   <span className={`signal signal--small ${signalClass(recommendation)}`}>
                     <span className="signal__dot" aria-hidden="true" />
                     {signalLabel(recommendation)}
                   </span>
                 </td>
-                <td><div className="table-save-actions"><SaveHeart name={product.name} saved={savedSlugs.has(product.slug)} onToggle={() => onToggle(product.slug)} /><a href={`/products/${product.slug}`} aria-label={`Open details for ${product.name}`}>Open ↗</a></div></td>
+                <td><div className="table-save-actions"><SaveHeart name={product.name} saved={savedSlugs.has(product.slug)} onToggle={() => onToggle(product.slug)} /><a href={`/products/${product.slug}?return=${encodeURIComponent(returnTo)}`} aria-label={`Open details for ${product.name}`}>Open ↗</a></div></td>
               </tr>
             );
           })}
@@ -360,14 +375,17 @@ function RangeFields({
 
 export function CatalogApp({
   initialProducts,
+  now,
 }: {
   initialProducts: ProductWithMarketPrice[];
+  now: string;
 }) {
   const products = initialProducts;
   const [saved, setSaved] = useState<SavedProducts>(emptySavedProducts);
   const [savedOnly, setSavedOnly] = useState(false);
   const savedSwitchRef = useRef<HTMLButtonElement>(null);
   const [saveMessage, setSaveMessage] = useState("");
+  const [showSaveNotice, setShowSaveNotice] = useState(false);
   const savedSlugs = useMemo(() => new Set(saved.slugs), [saved.slugs]);
   const savedCount = products.filter(product => savedSlugs.has(product.slug)).length;
   const catalogPriceUpdatedAt = products.reduce((latest, product) => product.marketPrice && product.marketPrice.updatedAt > latest ? product.marketPrice.updatedAt : latest, "");
@@ -377,7 +395,7 @@ export function CatalogApp({
       // Browser preferences are unavailable during SSR; restore once after hydration.
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setSaved(stored);
-      setSavedOnly(stored.openSaved && stored.slugs.some(slug => initialProducts.some(product => product.slug === slug)));
+      if (!new URLSearchParams(window.location.search).has("list") && !window.location.search) setSavedOnly(stored.openSaved && stored.slugs.some(slug => initialProducts.some(product => product.slug === slug)));
     } catch { setSaveMessage("Browser storage is unavailable. Your saved items will last only for this visit."); }
     const sync = (event: StorageEvent) => {
       if (event.key === SAVED_PRODUCTS_KEY || event.key === null) setSaved(parseSavedProducts(event.newValue));
@@ -394,22 +412,42 @@ export function CatalogApp({
     let current = saved;
     try { const raw = localStorage.getItem(SAVED_PRODUCTS_KEY); if (raw !== null) current = parseSavedProducts(raw); } catch { /* In-memory fallback. */ }
     const removing = current.slugs.includes(slug);
+    if (!removing) {
+      try { if (!localStorage.getItem("pokescratch:saved-notice:v1")) { setShowSaveNotice(true); localStorage.setItem("pokescratch:saved-notice:v1", "shown"); } } catch { /* The existing storage-failure message explains visit-only saving. */ }
+    }
     if (removing && savedOnly) savedSwitchRef.current?.focus();
     persistSaved({ ...current, slugs: removing ? current.slugs.filter(value => value !== slug) : [...current.slugs, slug] }, removing ? "Removed from saved items." : "Saved on this device.");
   };
   const [query, setQuery] = useState("");
-  const [quickFilter, setQuickFilter] = useState<QuickFilter>("all");
   const [category, setCategory] = useState("all");
+  const quickFilter = quickFilters.find(filter => quickCategories[filter.id] === category)?.id;
   const [setName, setSetName] = useState("all");
   const [recommendation, setRecommendation] = useState("all");
   const [numericFilters, setNumericFilters] = useState(initialNumericFilters);
-  const [sort, setSort] = useState<SortKey>("opportunity");
+  const [sort, setSort] = useState<SortKey>("relevance");
   const [view, setView] = useState<ViewMode>("grid");
   const [assumptions] = useState<ProfitAssumptions>({
     ...DEFAULT_PROFIT_ASSUMPTIONS,
   });
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [pageSize, setPageSize] = useState({ key: "", count: 48 });
+  const [browseReady, setBrowseReady] = useState(false);
+  const [showTableMetrics, setShowTableMetrics] = useState(false);
+  const restoreScroll = useRef<number | null>(null);
+  useEffect(() => {
+    const restore = () => {
+      const state = readCatalogState(window.location.search);
+      setQuery(state.query); setCategory(state.category); setSetName(state.setName); setRecommendation(state.recommendation);
+      setNumericFilters(state.numeric); setSort(state.sort as SortKey); setView(window.matchMedia("(max-width: 680px)").matches ? "grid" : state.view);
+      if (window.location.search) setSavedOnly(state.savedOnly);
+      setPageSize({ key: JSON.stringify([state.query, state.category, state.setName, state.recommendation, state.numeric, state.sort, state.savedOnly]), count: state.count });
+      try { const previous = JSON.parse(sessionStorage.getItem(BROWSE_SESSION_KEY) ?? "null"); if (previous?.url === `${location.pathname}${location.search}` && Number.isFinite(previous.y)) restoreScroll.current = Math.max(0, previous.y); } catch { /* URL state still works without storage. */ }
+      setBrowseReady(true);
+    };
+    restore();
+    window.addEventListener("popstate", restore);
+    return () => window.removeEventListener("popstate", restore);
+  }, []);
   const filtersRef = useRef<HTMLElement>(null);
   const filterCloseRef = useRef<HTMLButtonElement>(null);
   const filterTriggerRef = useRef<HTMLButtonElement>(null);
@@ -515,20 +553,9 @@ export function CatalogApp({
       const { product, estimate } = item;
       if (savedOnly && !savedSlugs.has(product.slug)) return false;
       if (item.searchScore <= 0) return false;
-      if (category !== "all" && product.category !== category) return false;
+      if (!categoryMatches(product.category, category)) return false;
       if (setName !== "all" && product.setName !== setName) return false;
       if (recommendation !== "all" && item.recommendation !== recommendation) return false;
-
-      if (quickFilter === "box" && product.category !== "Booster Box") return false;
-      if (
-        quickFilter === "etb" &&
-        product.category !== "Elite Trainer Box" &&
-        product.category !== "Pokémon Center Elite Trainer Box"
-      )
-        return false;
-      if (quickFilter === "bundle" && product.category !== "Booster Bundle") return false;
-      if (quickFilter === "tin" && !product.category.includes("Tin")) return false;
-      if (quickFilter === "collection" && !product.category.includes("Collection")) return false;
 
       return (
         inRange(product.msrpCents, msrpMin, msrpMax) &&
@@ -549,6 +576,9 @@ export function CatalogApp({
       };
 
       switch (sort) {
+        case "relevance":
+          if (query.trim() && a.searchScore !== b.searchScore) return b.searchScore - a.searchScore;
+          return nullLast(aEstimate?.profitCents, bEstimate?.profitCents);
         case "profit-desc":
           return nullLast(aEstimate?.profitCents, bEstimate?.profitCents);
         case "roi-desc":
@@ -579,10 +609,9 @@ export function CatalogApp({
         }
       }
     });
-  }, [evaluated, category, setName, recommendation, numericFilters, quickFilter, sort, savedOnly, savedSlugs]);
+  }, [evaluated, category, setName, recommendation, numericFilters, sort, savedOnly, savedSlugs, query]);
 
   const clearFilters = () => {
-    setQuickFilter("all");
     setCategory("all");
     setSetName("all");
     setRecommendation("all");
@@ -595,9 +624,25 @@ export function CatalogApp({
     recommendation !== "all" ||
     Object.values(numericFilters).some(Boolean);
 
-  const pageKey = JSON.stringify([query, quickFilter, category, setName, recommendation, numericFilters, sort, savedOnly]);
+  const pageKey = JSON.stringify([query, category, setName, recommendation, numericFilters, sort, savedOnly]);
   const shownCount = pageSize.key === pageKey ? pageSize.count : 48;
   const displayedProducts = visibleProducts.slice(0, shownCount);
+  const returnTo = writeCatalogState({ query, category, setName, recommendation, numeric: numericFilters, sort, view, savedOnly, count: shownCount });
+  useEffect(() => {
+    if (!browseReady) return;
+    window.history.replaceState(window.history.state, "", returnTo);
+    const savePosition = () => { try { sessionStorage.setItem(BROWSE_SESSION_KEY, JSON.stringify({ url: returnTo, y: window.scrollY })); } catch { /* Navigation remains available. */ } };
+    const frame = requestAnimationFrame(() => { if (restoreScroll.current !== null) { window.scrollTo(0, restoreScroll.current); restoreScroll.current = null; } });
+    window.addEventListener("pagehide", savePosition);
+    document.addEventListener("click", savePosition, true);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener("pagehide", savePosition); document.removeEventListener("click", savePosition, true); };
+  }, [returnTo, browseReady]);
+  const activeFilters = [
+    ...(category !== "all" ? [{ label: quickFilters.find(f => quickCategories[f.id] === category)?.label ?? category, clear: () => setCategory("all") }] : []),
+    ...(setName !== "all" ? [{ label: setName, clear: () => setSetName("all") }] : []),
+    ...(recommendation !== "all" ? [{ label: signalLabel(recommendation as Recommendation), clear: () => setRecommendation("all") }] : []),
+    ...Object.entries(numericFilters).filter(([, value]) => value).map(([key, value]) => ({ label: `${key.replace("msrp", "Reference retail").replace("profit", "Net profit").replace("roi", "ROI").replace("market", "Market").replace(/Min$/, " ≥").replace(/Max$/, " ≤")}: ${value}`, clear: () => setNumericFilters(current => ({ ...current, [key]: "" })) })),
+  ];
 
   return (
     <div className="app-shell app-shell--catalog">
@@ -645,7 +690,7 @@ export function CatalogApp({
                     type="button"
                     className={quickFilter === filter.id ? "is-active" : ""}
                     aria-pressed={quickFilter === filter.id}
-                    onClick={() => setQuickFilter(filter.id)}
+                    onClick={() => setCategory(quickCategories[filter.id])}
                   >
                     {filter.label}
                   </button>
@@ -686,6 +731,9 @@ export function CatalogApp({
               <span>Product type</span>
               <select value={category} onChange={(event) => setCategory(event.target.value)}>
                 <option value="all">All types</option>
+                <option value="group:etb">All ETBs (standard + Pokémon Center)</option>
+                <option value="group:tin">All tins</option>
+                <option value="group:collection">All collections</option>
                 {categories.map((value) => (
                   <option key={value} value={value}>{value}</option>
                 ))}
@@ -744,6 +792,7 @@ export function CatalogApp({
             <button className="clear-filters" type="button" onClick={clearFilters} disabled={!hasAdvancedFilters}>
               Reset filters
             </button>
+            <label className="select-field mobile-refine-sort"><span>Sort products</span><select value={sort} onChange={e => setSort(e.target.value as SortKey)}><option value="relevance">Search relevance / reference spread</option><option value="opportunity">Strongest signal at reference</option><option value="profit-desc">Highest estimated profit</option><option value="roi-desc">Highest ROI</option><option value="msrp-asc">Lowest reference retail</option><option value="msrp-desc">Highest reference retail</option><option value="market-desc">Highest market value</option><option value="updated-desc">Latest price update</option><option value="release-desc">Newest release</option><option value="alpha">Alphabetical</option></select></label>
           </aside>
 
           <section className="catalog-results" aria-labelledby="results-title">
@@ -774,12 +823,13 @@ export function CatalogApp({
                   aria-expanded={filtersOpen}
                   aria-controls="catalog-filters"
                 >
-                  Filters {hasAdvancedFilters ? "•" : ""}
+                  Refine {activeFilters.length ? `(${activeFilters.length})` : ""}
                 </button>
-                <label className="sort-field">
+                <label className="sort-field desktop-sort">
                   <span className="sr-only">Sort products</span>
                   <select value={sort} onChange={(event) => setSort(event.target.value as SortKey)}>
-                    <option value="opportunity">Best opportunity</option>
+                    <option value="relevance">Relevance / profit</option>
+                    <option value="opportunity">Strongest signal at reference</option>
                     <option value="profit-desc">Highest estimated profit</option>
                     <option value="roi-desc">Highest ROI</option>
                     <option value="market-desc">Highest market value</option>
@@ -820,10 +870,18 @@ export function CatalogApp({
               </div>
             </div>
 
+            <div className="catalog-context">
+              <p>Signals assume buying at reference retail, not an available offer.</p><details><summary>What’s included?</summary><p>Reference retail may be original MSRP or a sourced retail price, not current availability. Signals include {DEFAULT_PROFIT_ASSUMPTIONS.sellingPlatformFeeRate * 100}% + {formatMoney(DEFAULT_PROFIT_ASSUMPTIONS.fixedSellingFeeCents, "USD")} selling fees, {formatMoney(DEFAULT_PROFIT_ASSUMPTIONS.sellerShippingCostCents, "USD")} shipping and {DEFAULT_PROFIT_ASSUMPTIONS.purchaseSalesTaxTreatment === "excluded" ? "no purchase tax" : `${DEFAULT_PROFIT_ASSUMPTIONS.purchaseSalesTaxRate * 100}% purchase tax`}. Open a product to check your actual price. Bad Buy means below our resale thresholds, not a judgment on collecting it.</p></details>
+              {!!activeFilters.length && <div className="active-filters" aria-label="Active filters">{activeFilters.map(filter => <button type="button" key={filter.label} onClick={filter.clear} aria-label={`Remove filter ${filter.label}`}>{filter.label}<span aria-hidden="true"> ×</span></button>)}<button type="button" onClick={clearFilters}>Clear filters</button></div>}
+              {view === "table" && <label className="saved-preference"><input type="checkbox" checked={showTableMetrics} onChange={e => setShowTableMetrics(e.target.checked)} />Show net profit, ROI and price age</label>}
+              <WatchAlerts products={products.map(product => ({ slug: product.slug, name: product.name, marketCents: product.marketPrice?.amountCents ?? null, updatedAt: product.marketPrice?.updatedAt ?? null }))} now={now} />
+            </div>
+
               <div className="catalog-list-controls">
                 <div className="saved-details">
                   {savedOnly && <label className="saved-preference"><input type="checkbox" checked={saved.openSaved} onChange={event => persistSaved({ ...saved, openSaved: event.target.checked }, "Opening preference saved.")} />Open to Saved next time</label>}
                   {saveMessage.includes("unavailable") && <p className="saved-help">{saveMessage}</p>}
+                  {showSaveNotice && <p className="saved-help">Saved on this browser only. <button className="button button--quiet" type="button" onClick={() => setShowSaveNotice(false)}>Got it</button></p>}
                 </div>
                 <div className="saved-toolbar">
                   <div className="saved-switch" role="group" aria-label="Catalog list">
@@ -858,11 +916,12 @@ export function CatalogApp({
                       priority={index < 3}
                       saved={savedSlugs.has(item.product.slug)}
                       onToggle={() => toggleSaved(item.product.slug)}
+                      returnTo={returnTo}
                     />
                   ))}
                 </div>
               ) : (
-                <ProductTable items={displayedProducts} savedSlugs={savedSlugs} onToggle={toggleSaved} />
+                <ProductTable items={displayedProducts} savedSlugs={savedSlugs} onToggle={toggleSaved} returnTo={returnTo} showMetrics={showTableMetrics} now={now} />
               )
             ) : (
               <div className="empty-state">
