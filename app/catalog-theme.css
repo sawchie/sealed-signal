@@ -33,12 +33,17 @@ body { background: #080b16; }
 .app-shell--catalog .quick-filter-row { gap: 8px; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: thin; padding: 12px 0 4px; }
 .app-shell--catalog .quick-filter-row button { min-height: 42px; flex: 0 0 auto; padding: 8px 13px; border-radius: 5px; font-size: 12px; background: #101321; }
 .app-shell--catalog .quick-filter-row button.is-active { background: #7941c6; border-color: #bc88f9; color: #fff; box-shadow: none; }
-.app-shell--catalog .hero-mascot-scene { min-height: 230px; padding-bottom: 28px; background: none; overflow: clip; pointer-events: none; }
+.app-shell--catalog .hero-mascot-scene { min-height: 248px; padding-bottom: 44px; background: none; overflow: clip; pointer-events: none; }
 .app-shell--catalog .hero-mascot-scene::before { content: none; }
-.hero-mascot-scene__figure { position: relative; width: 220px; }
+.hero-mascot-scene__figure { position: relative; width: 220px; isolation: isolate; }
+/* A shallow collector display plinth, not a box around the character. */
+.hero-mascot-scene__figure::before { content: ""; position: absolute; z-index: -1; top: 85%; left: -12%; width: 124%; height: 36%; border-radius: 50%; background: radial-gradient(ellipse at 50% 20%, #34324c, #181c2d 60%, #101421 85%); box-shadow: inset 0 1px 0 #c68bff70, inset 0 -3px 0 #080b16, 0 8px 12px #0005; }
+.hero-mascot-scene__figure::after { content: ""; position: absolute; z-index: 2; top: 93%; left: 19%; width: 59%; height: 3%; border-radius: 50%; background: #07091190; filter: blur(2px); }
 .app-shell--catalog .hero-mascot-scene__sprite { display: block; width: 100%; height: auto; image-rendering: auto; mix-blend-mode: normal; filter: drop-shadow(0 7px 7px #0007); transform: none; }
-.hero-mascot-scene__reflection { position: absolute; top: 94%; left: 0; width: 100%; height: 27%; overflow: hidden; opacity: .28; mask-image: linear-gradient(to bottom, #000, transparent); -webkit-mask-image: linear-gradient(to bottom, #000, transparent); }
-.hero-mascot-scene__reflection img { display: block; width: 100%; height: auto; transform: scaleY(-1); filter: blur(.4px); }
+.hero-mascot-scene__reflection { position: absolute; z-index: 1; top: 92%; left: 0; width: 100%; height: 26%; overflow: hidden; opacity: .2; mask-image: linear-gradient(to bottom, #000, #0006 40%, transparent); -webkit-mask-image: linear-gradient(to bottom, #000, #0006 40%, transparent); }
+/* Anchor the inverted feet to the contact plane; compress depth instead of
+   clipping a full-height upside-down duplicate under the character. */
+.hero-mascot-scene__reflection img { display: block; width: 100%; height: auto; transform: translateY(-100%) scaleY(-.55); transform-origin: center bottom; filter: blur(.6px); }
 .app-shell--catalog .catalog-layout { display: block; padding: 16px 0 28px; }
 .set-rail { display: none; }
 @media (min-width: 1100px) {
@@ -133,6 +138,7 @@ input, textarea { caret-color: #d5a8ff; }
   .app-shell--catalog .catalog-hero p { max-width: 235px; font-size: 13px; min-height: 40px; }
   .app-shell--catalog .hero-mascot-scene { position: absolute; top: 26px; right: -4px; width: 106px; min-height: 122px; opacity: 1; z-index: 0; }
   .hero-mascot-scene__figure { width: 106px; }
+  .hero-mascot-scene__figure::before { left: 0; width: 100%; }
   .app-shell--catalog .catalog-tools { background: transparent; }
   .app-shell--catalog .catalog-search input { font-size: 13px; }
   .app-shell--catalog .product-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
