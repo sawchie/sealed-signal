@@ -19,7 +19,8 @@ import {
 import { ProductImage } from "./ProductImage";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
-import { catalogPriceUpdatedAt } from "@/data/products";
+import { SaveHeart, HeartIcon } from "./SaveHeart";
+import { SAVED_PRODUCTS_KEY, emptySavedProducts, parseSavedProducts, type SavedProducts } from "@/lib/saved-products";
 
 type ViewMode = "grid" | "table";
 type QuickFilter =
@@ -189,15 +190,20 @@ function recommendationToneClass(recommendation: Recommendation | null) {
 function ProductCard({
   item,
   priority,
+  saved,
+  onToggle,
 }: {
   item: EvaluatedProduct;
   priority?: boolean;
+  saved: boolean;
+  onToggle: () => void;
 }) {
   const { product, recommendation } = item;
 
   return (
-    <a
-      className={`product-card ${recommendationToneClass(recommendation)}`}
+    <article className={`product-card ${recommendationToneClass(recommendation)}`}>
+    <SaveHeart name={product.name} saved={saved} onToggle={onToggle} />
+    <a className="product-card__link"
       href={`/products/${product.slug}`}
       aria-label={`Open details for ${product.name}`}
     >
@@ -243,13 +249,18 @@ function ProductCard({
         </div>
       </div>
     </a>
+    </article>
   );
 }
 
 function ProductTable({
   items,
+  savedSlugs,
+  onToggle,
 }: {
   items: EvaluatedProduct[];
+  savedSlugs: Set<string>;
+  onToggle: (slug: string) => void;
 }) {
   return (
     <div className="product-table-wrap">
@@ -260,7 +271,7 @@ function ProductTable({
             <th scope="col">MSRP</th>
             <th scope="col">Market</th>
             <th scope="col">Signal</th>
-            <th scope="col"><span className="sr-only">Details</span></th>
+            <th scope="col"><span className="sr-only">Save and details</span></th>
           </tr>
         </thead>
         <tbody>
@@ -293,7 +304,7 @@ function ProductTable({
                     {signalLabel(recommendation)}
                   </span>
                 </td>
-                <td><a href={`/products/${product.slug}`} aria-label={`Open details for ${product.name}`}>Open ↗</a></td>
+                <td><div className="table-save-actions"><SaveHeart name={product.name} saved={savedSlugs.has(product.slug)} onToggle={() => onToggle(product.slug)} /><a href={`/products/${product.slug}`} aria-label={`Open details for ${product.name}`}>Open ↗</a></div></td>
               </tr>
             );
           })}
@@ -354,6 +365,39 @@ export function CatalogApp({
   initialProducts: ProductWithMarketPrice[];
 }) {
   const products = initialProducts;
+  const [saved, setSaved] = useState<SavedProducts>(emptySavedProducts);
+  const [savedOnly, setSavedOnly] = useState(false);
+  const savedSwitchRef = useRef<HTMLButtonElement>(null);
+  const [saveMessage, setSaveMessage] = useState("");
+  const savedSlugs = useMemo(() => new Set(saved.slugs), [saved.slugs]);
+  const savedCount = products.filter(product => savedSlugs.has(product.slug)).length;
+  const catalogPriceUpdatedAt = products.reduce((latest, product) => product.marketPrice && product.marketPrice.updatedAt > latest ? product.marketPrice.updatedAt : latest, "");
+  useEffect(() => {
+    try {
+      const stored = parseSavedProducts(localStorage.getItem(SAVED_PRODUCTS_KEY));
+      // Browser preferences are unavailable during SSR; restore once after hydration.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setSaved(stored);
+      setSavedOnly(stored.openSaved && stored.slugs.some(slug => initialProducts.some(product => product.slug === slug)));
+    } catch { setSaveMessage("Browser storage is unavailable. Your saved items will last only for this visit."); }
+    const sync = (event: StorageEvent) => {
+      if (event.key === SAVED_PRODUCTS_KEY || event.key === null) setSaved(parseSavedProducts(event.newValue));
+    };
+    window.addEventListener("storage", sync);
+    return () => window.removeEventListener("storage", sync);
+  }, [initialProducts]);
+  const persistSaved = (next: SavedProducts, message: string) => {
+    setSaved(next);
+    try { localStorage.setItem(SAVED_PRODUCTS_KEY, JSON.stringify(next)); setSaveMessage(message); }
+    catch { setSaveMessage("Saved for this visit only. Browser storage is unavailable."); }
+  };
+  const toggleSaved = (slug: string) => {
+    let current = saved;
+    try { const raw = localStorage.getItem(SAVED_PRODUCTS_KEY); if (raw !== null) current = parseSavedProducts(raw); } catch { /* In-memory fallback. */ }
+    const removing = current.slugs.includes(slug);
+    if (removing && savedOnly) savedSwitchRef.current?.focus();
+    persistSaved({ ...current, slugs: removing ? current.slugs.filter(value => value !== slug) : [...current.slugs, slug] }, removing ? "Removed from saved items." : "Saved on this device.");
+  };
   const [query, setQuery] = useState("");
   const [quickFilter, setQuickFilter] = useState<QuickFilter>("all");
   const [category, setCategory] = useState("all");
@@ -470,6 +514,7 @@ export function CatalogApp({
 
     const filtered = evaluated.filter((item) => {
       const { product, estimate } = item;
+      if (savedOnly && !savedSlugs.has(product.slug)) return false;
       if (item.searchScore <= 0) return false;
       if (category !== "all" && product.category !== category) return false;
       if (setName !== "all" && product.setName !== setName) return false;
@@ -536,7 +581,7 @@ export function CatalogApp({
         }
       }
     });
-  }, [evaluated, category, setName, recommendation, numericFilters, quickFilter, sort]);
+  }, [evaluated, category, setName, recommendation, numericFilters, quickFilter, sort, savedOnly, savedSlugs]);
 
   const clearFilters = () => {
     setQuickFilter("all");
@@ -552,7 +597,7 @@ export function CatalogApp({
     recommendation !== "all" ||
     Object.values(numericFilters).some(Boolean);
 
-  const pageKey = JSON.stringify([query, quickFilter, category, setName, recommendation, numericFilters, sort]);
+  const pageKey = JSON.stringify([query, quickFilter, category, setName, recommendation, numericFilters, sort, savedOnly]);
   const shownCount = pageSize.key === pageKey ? pageSize.count : 48;
   const displayedProducts = visibleProducts.slice(0, shownCount);
 
@@ -714,14 +759,24 @@ export function CatalogApp({
           </aside>
 
           <section className="catalog-results" aria-labelledby="results-title">
+            <div className="saved-toolbar">
+              <div className="saved-switch" role="group" aria-label="Catalog list">
+                <button type="button" aria-pressed={!savedOnly} onClick={() => setSavedOnly(false)}>All products</button>
+                <button ref={savedSwitchRef} type="button" aria-pressed={savedOnly} onClick={() => setSavedOnly(true)}><HeartIcon /> Saved <span>{savedCount}</span></button>
+              </div>
+              {savedOnly && <label className="saved-preference"><input type="checkbox" checked={saved.openSaved} onChange={event => persistSaved({ ...saved, openSaved: event.target.checked }, "Opening preference saved.")} />Open to Saved next time</label>}
+            </div>
+            {savedOnly && <p className="saved-help">Saved on this browser only. Clearing site data removes this list.</p>}
+            <p className="sr-only" role="status">{saveMessage}</p>
+            {saveMessage.includes("unavailable") && <p className="saved-help">{saveMessage}</p>}
             <div className="results-toolbar">
               <div>
                 <h2 id="results-title">
-                  {query ? `Results for “${query}”` : "The sealed shelf"}
+                  {query ? `Results for “${query}”` : savedOnly ? "Your saved shelf" : "The sealed shelf"}
                 </h2>
                 <p aria-live="polite">
                   {visibleProducts.length} sealed {visibleProducts.length === 1 ? "product" : "products"}
-                  <span className="catalog-price-date"> · Prices updated <time dateTime={catalogPriceUpdatedAt}>{new Date(catalogPriceUpdatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</time></span>
+                  {catalogPriceUpdatedAt && <span className="catalog-price-date"> · Latest market update <time dateTime={catalogPriceUpdatedAt}>{new Date(catalogPriceUpdatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</time></span>}
                 </p>
               </div>
               <div className="toolbar-actions">
@@ -794,18 +849,20 @@ export function CatalogApp({
                       key={item.product.id}
                       item={item}
                       priority={index < 3}
+                      saved={savedSlugs.has(item.product.slug)}
+                      onToggle={() => toggleSaved(item.product.slug)}
                     />
                   ))}
                 </div>
               ) : (
-                <ProductTable items={displayedProducts} />
+                <ProductTable items={displayedProducts} savedSlugs={savedSlugs} onToggle={toggleSaved} />
               )
             ) : (
               <div className="empty-state">
-                <span aria-hidden="true">⌕</span>
-                <h3>No matching sealed products</h3>
-                <p>Try a set name, shorthand like “ETB,” or reset your filters.</p>
-                <button type="button" className="button button--quiet" onClick={() => { setQuery(""); clearFilters(); }}>
+                {savedOnly && !savedCount && <span aria-hidden="true"><HeartIcon /></span>}
+                <h3>{savedOnly && !savedCount ? "Your saved shelf is waiting" : "No matching sealed products"}</h3>
+                <p>{savedOnly && !savedCount ? "Tap the heart on a product to keep it here for your next visit." : "Try a set name, shorthand like “ETB,” or reset your filters."}</p>
+                <button type="button" className="button button--quiet" onClick={() => { setSavedOnly(false); setQuery(""); clearFilters(); }}>
                   Show all products
                 </button>
               </div>

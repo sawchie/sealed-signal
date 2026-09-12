@@ -7,6 +7,7 @@ import type {
 import { tcgplayerProductImage } from "@/data/tcgplayer-image-sources";
 import { expandedSeedProducts } from "@/data/expanded-products";
 import catalogImport from "./catalog-import.json";
+import retailReferences from "./retail-references.json";
 
 const TCGPLAYER_SNAPSHOT = "2026-08-01T12:00:00.000Z";
 const TCGINDEX_SNAPSHOT = "2026-08-22T06:00:00.000Z";
@@ -864,16 +865,19 @@ const originalProducts = [...productsWithImages, ...expandedSeedProducts]
 
 export const catalogPriceUpdatedAt = catalogImport.providerUpdatedAt;
 const originals = new Map(originalProducts.map(product => [product.id, product]));
+const verifiedRetail = new Map(retailReferences.flatMap(reference => Object.entries(reference.products).map(([id, cents]) => [Number(id), { cents: cents as number, source: { id: "reviewed-retail-reference", label: reference.sourceName, kind: "manual" as const, url: reference.sourceUrl } }] as const)));
 const importedProducts: ProductWithMarketPrice[] = catalogImport.items.map(item => {
   const previous = originals.get(item.id);
+  const retail = verifiedRetail.get(item.sourceProductId);
   return {
     id: item.id, slug: item.slug,
     aliases: [item.category === "Elite Trainer Box" ? "etb" : item.category === "Pokémon Center Elite Trainer Box" ? "pc etb" : ""].filter(Boolean),
     setName: item.setName, series: item.series, category: item.category,
-    releaseDate: item.releaseDate, msrpCents: item.msrpCents,
-    retailPriceSource: item.retailSourceUrl ? { id: "celadon-retail-reference", label: "Celadon Info MSRP reference", kind: "aggregate", url: item.retailSourceUrl } : null,
+    releaseDate: item.releaseDate,
     currency: "USD", notes: null, active: true,
     ...previous,
+    msrpCents: previous?.msrpCents ?? item.msrpCents ?? retail?.cents ?? null,
+    retailPriceSource: previous?.msrpCents != null ? previous.retailPriceSource : item.msrpCents != null && item.retailSourceUrl ? { id: "celadon-retail-reference", label: "Celadon Info MSRP reference", kind: "aggregate", url: item.retailSourceUrl } : retail?.source ?? null,
     // Keep established IDs, URLs, verified retail metadata and admin compatibility.
     // Name disambiguation follows the exact provider product ID, never fuzzy matching.
     name: item.name, shortName: item.shortName,

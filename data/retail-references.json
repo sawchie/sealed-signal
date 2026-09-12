@@ -1,0 +1,366 @@
+[
+  {
+    "sourceName": "PokeGuardian launch MSRP reference",
+    "sourceUrl": "https://www.pokeguardian.com/1153894_pokemon-tcg-scarlet-violet-product-line-up-partially-revealed-free-lechonk-pokemon-center-promo",
+    "checkedAt": "2026-09-12",
+    "products": { "476452": 16164, "478257": 5999, "478335": 4999, "478336": 4999, "478756": 5999, "478758": 5999 }
+  },
+  {
+    "sourceName": "PokeGuardian launch MSRP reference",
+    "sourceUrl": "https://www.pokeguardian.com/1248043_scarlet-violet-paldea-evolved-officially-revealed",
+    "checkedAt": "2026-09-12",
+    "products": { "493973": 5999, "493974": 4999, "493975": 16164, "496914": 2694, "496929": 2199, "496935": 5999 }
+  },
+  {
+    "sourceName": "PokeGuardian launch MSRP reference",
+    "sourceUrl": "https://www.pokeguardian.com/1428886_scarlet-violet-paradox-rift-officially-revealed",
+    "checkedAt": "2026-09-12",
+    "products": { "512801": 5999, "512809": 5999, "512813": 4999, "512815": 4999, "512820": 2694, "512821": 16164, "514068": 2199, "514070": 5999 }
+  },
+  {
+    "sourceName": "PokeGuardian launch MSRP reference",
+    "sourceUrl": "https://www.pokeguardian.com/1334579_scarlet-violet-obsidian-flames-officially-revealed-new-type-shifted-tera-pokemon-ex",
+    "checkedAt": "2026-09-12",
+    "products": { "501263": 2694, "501264": 4999, "501267": 5999 }
+  },
+  {
+    "sourceName": "Pokémon Center retail catalog",
+    "sourceUrl": "https://www.pokemoncenter.com/search/tyrantitar",
+    "checkedAt": "2026-09-12",
+    "products": { "501257": 16164, "501266": 5999, "501268": 2199 }
+  },
+  {
+    "sourceName": "PokeBeach launch MSRP reference",
+    "sourceUrl": "https://www.pokebeach.com/2022/11/crown-zenith-pricing-information-revealed",
+    "checkedAt": "2026-09-12",
+    "products": { "453470": 4999, "454246": 6499 }
+  },
+  {
+    "sourceName": "PokeBeach Target launch retail reference",
+    "sourceUrl": "https://www.pokebeach.com/2024/10/new-meddling-sparks-premium-collection-available-at-target",
+    "checkedAt": "2026-09-12",
+    "products": { "606605": 4999 }
+  },
+  {
+    "sourceName": "PokeGuardian launch MSRP reference",
+    "sourceUrl": "https://www.pokeguardian.com/945291_september-2022-set-sword-shield-lost-origin-officially-revealed",
+    "checkedAt": "2026-09-12",
+    "products": { "278819": 2394 }
+  },
+  {
+    "sourceName": "PokeGuardian launch MSRP reference",
+    "sourceUrl": "https://www.pokeguardian.com/1453663_roaring-moon-ex-box-iron-valiant-ex-box-revealed",
+    "checkedAt": "2026-09-12",
+    "products": { "516577": 2199, "516578": 2199 }
+  },
+  {
+    "sourceName": "PokeGuardian launch MSRP reference",
+    "sourceUrl": "https://www.pokeguardian.com/1419633_charizard-ex-premium-collection-revealed",
+    "checkedAt": "2026-09-12",
+    "products": { "516576": 3999 }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/paldean-fates-tin-shiny-great-tusk-ex",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "528057": 2899
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/paldean-fates-tin-shiny-iron-treads-ex",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "528058": 2899
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/iono-premium-tournament-collection",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "545403": 3999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/stacking-tin-treasures-of-ruin",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "616294": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/stacking-tin-paradox-pokemon",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "616295": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/stacking-tin-ogerpon",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "616296": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/lillie-premium-tournament-collection",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "626605": 3999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/shrouded-fable-mini-tin-zoroark-poltchageist",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "553010": 999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/shrouded-fable-mini-tin-dusknoir-dipplin",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "553023": 999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/psychic-stacking-tin",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "541168": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/metal-stacking-tin",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "541171": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/dragon-stacking-tin",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "541175": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/collector-chest-back-to-school-2024",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "549454": 2999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/vibrant-paldea-mini-tin-oricorio-dachsbun",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "554179": 999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/vibrant-paldea-mini-tin-espathra-ampharos",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "554180": 999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/vibrant-paldea-mini-tin-leafeon-arboliva",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "554181": 999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/vibrant-paldea-mini-tin-pachirisu-palafin",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "554182": 999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/vibrant-paldea-mini-tin-goomy-ceruledge",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "554183": 999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/collector-chest-fall-2024",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "575706": 2999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/lumiose-city-mini-tin-salamence",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "685575": 999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/lumiose-city-mini-tin-meganium",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "685576": 999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/lumiose-city-mini-tin-embroar",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "685577": 999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/lumiose-city-mini-tin-feraligatr",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "685578": 999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/lumiose-city-mini-tin-gallade",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "685579": 999
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/poke-ball-tins-q4-2025",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "688964": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/poke-ball-tins-q4-2025",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "688965": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/poke-ball-tins-q4-2025",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "688966": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/poke-ball-tins-q4-2025",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "688967": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/poke-ball-tins-q4-2025",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "688968": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/poke-ball-tin-q4-2024-assorted",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "587365": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/poke-ball-tin-q4-2024-assorted",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "587366": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/poke-ball-tin-q4-2024-assorted",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "587367": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/poke-ball-tin-q4-2024-assorted",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "587368": 1499
+    }
+  },
+  {
+    "sourceName": "Celadon Info MSRP reference",
+    "sourceUrl": "https://celadoninfo.com/us/products/poke-ball-tin-q4-2024-assorted",
+    "checkedAt": "2026-09-11",
+    "products": {
+      "587369": 1499
+    }
+  },
+  {
+    "sourceName": "PokéBeach launch-price reporting",
+    "sourceUrl": "https://www.pokebeach.com/2023/09/new-official-photos-of-upcoming-151-products",
+    "checkedAt": "2026-09-12",
+    "products": {
+      "502001": 1499,
+      "502004": 2499,
+      "502005": 11999,
+      "502006": 2199,
+      "502007": 2199,
+      "503313": 4999,
+      "522699": 999,
+      "522700": 999,
+      "522701": 999,
+      "522702": 999,
+      "522703": 999,
+      "522704": 999,
+      "522705": 999,
+      "522706": 999,
+      "522707": 999,
+      "522708": 999
+    }
+  },
+  {
+    "sourceName": "Pokémon Center retail catalog",
+    "sourceUrl": "https://www.pokemoncenter.com/search/Arceus",
+    "checkedAt": "2026-09-12",
+    "products": {
+      "256140": 4999,
+      "256141": 14364
+    }
+  }
+]

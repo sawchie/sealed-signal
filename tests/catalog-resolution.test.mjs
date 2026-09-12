@@ -5,6 +5,16 @@ import { resolvePublicProduct } from "../lib/catalog-resolution.ts";
 
 const bundled = { id: "seed", active: true };
 
+test("verified retail fills only empty persisted prices and preserves admin prices", () => {
+  const source = { id: "reviewed", url: "https://www.pokemoncenter.com/" };
+  const imported = { active: true, msrpCents: 4999, retailPriceSource: source };
+  const empty = { active: true, msrpCents: null, retailPriceSource: null };
+  assert.equal(resolvePublicProduct(empty, imported).msrpCents, 4999);
+  assert.equal(resolvePublicProduct(empty, imported).retailPriceSource, source);
+  const admin = { ...empty, msrpCents: 5500 };
+  assert.equal(resolvePublicProduct(admin, imported), admin);
+});
+
 test("an active persisted product overrides the bundled record", () => {
   const persisted = { id: "database", active: true };
   assert.equal(resolvePublicProduct(persisted, bundled), persisted);

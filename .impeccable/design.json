@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-12T02:38:33Z",
+  "generatedAt": "2026-09-12T04:40:00Z",
   "title": "Design System: PokeScratch",
   "extensions": {
     "shadows": [
@@ -14,6 +14,7 @@
     ]
   },
   "components": [
+    {"name":"Saved product heart","kind":"button","description":"Separate 44px product-save action; outline when unsaved, filled pink when saved.","html":"<button class=\"ds-heart\" type=\"button\" aria-pressed=\"true\" aria-label=\"Remove product from saved items\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M3 5h3V3h4v2h4V3h4v2h3v8h-3v3h-3v3h-3v2h-2v-2H7v-3H4v-3H3Z\"/></svg></button>","css":".ds-heart{display:inline-grid;place-items:center;width:44px;height:44px;padding:9px;color:#d1c5e0;background:#101421;border:1px solid #615571;border-radius:6px;cursor:pointer}.ds-heart svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5}.ds-heart[aria-pressed=true]{color:#ff96bd;background:#351a2a;border-color:#ea83ae}.ds-heart[aria-pressed=true] svg{fill:currentColor}.ds-heart:hover{border-color:#ffb7d2}.ds-heart:focus-visible{outline:2px solid #8be5ef;outline-offset:4px}"},
     {"name":"Quick filter","kind":"button","html":"<button class=\"ds-filter\">Booster boxes</button>","css":".ds-filter{background:#101321;color:#c8c4d6;border:1px solid #30334b;border-radius:5px;min-height:42px;padding:8px 13px;font:600 12px monospace}.ds-filter:hover{border-color:#b881f4}.ds-filter:focus-visible{outline:2px solid #8be5ef;outline-offset:4px}"},
     {"name":"Catalog search","kind":"input","html":"<input class=\"ds-search\" type=\"search\" aria-label=\"Search products\" placeholder=\"Search products…\">","css":".ds-search{height:50px;border:1px solid #45405c;border-radius:6px;background:#101321;color:#fff;padding:0 16px;font:14px sans-serif}.ds-search::placeholder{color:#aaa6bc}.ds-search:focus-visible{outline:2px solid #8be5ef;outline-offset:4px}"},
     {"name":"Navigation","kind":"nav","html":"<nav class=\"ds-nav\"><a href=\"/\">Catalog</a><a href=\"/admin\">Manage data</a></nav>","css":".ds-nav{display:flex;gap:12px}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;color:#c8c4d6;font:650 13px sans-serif;text-decoration:none}.ds-nav a:hover{color:white;text-decoration:underline}.ds-nav a:focus-visible{outline:2px solid #8be5ef;outline-offset:4px}"},

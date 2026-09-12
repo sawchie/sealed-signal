@@ -10,6 +10,9 @@ export function resolvePublicProduct(
 ): ProductWithMarketPrice | null {
   if (persisted) {
     if (!persisted.active) return null;
+    if (persisted.msrpCents === null && bundled?.msrpCents && bundled.retailPriceSource) {
+      persisted = { ...persisted, msrpCents: bundled.msrpCents, retailPriceSource: bundled.retailPriceSource };
+    }
     const newerQuote = bundled?.marketPrice && bundled.marketPrice.updatedAt > (persisted.marketPrice?.updatedAt ?? "");
     return newerQuote ? { ...persisted, marketPrice: bundled.marketPrice, imageUrl: persisted.imageUrl ?? bundled.imageUrl, retailPriceSource: persisted.retailPriceSource ?? bundled.retailPriceSource } : persisted;
   }

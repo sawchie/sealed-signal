@@ -9,12 +9,13 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return <InformationPage title="Privacy policy">
-    <p>Last updated: September 11, 2026.</p>
+    <p>Last updated: September 12, 2026.</p>
     <p>This policy applies to pokescratch.com. Contact <a href="mailto:hello@pokescratch.com">hello@pokescratch.com</a> with a privacy question or request.</p>
     <h2>Browsing the catalog</h2>
     <p>You can browse PokeScratch without creating a visitor account. Search terms, filters, and calculator inputs are handled in your browser by the current catalog interface; PokeScratch does not currently save them to a personal account or collection.</p>
     <p>Our hosting and security providers process technical request information, which can include your IP address, browser information, requested pages, and request times, to deliver the website, maintain reliability, and prevent abuse.</p>
     <h2>Cookies and advertising</h2>
+    <p>Saved products and your “Open to Saved next time” preference are stored locally in this browser, not in an online account or sent to our server as a saved list. You can remove items using their hearts or clear this website’s browser data to erase the list. Saved items do not sync between devices.</p>
     <p>The current website does not run Google AdSense advertising or Google Analytics. Its hosting and security services may set necessary cookies. For example, Cloudflare uses a security cookie called __cf_bm to help distinguish legitimate traffic from automated abuse. See <a href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/">Cloudflare’s cookie information</a>.</p>
     <p>If advertising or optional analytics are introduced, this policy will be updated to identify the providers, explain how information is used, and provide the applicable privacy choices before those features are enabled.</p>
     <h2>Messages you send</h2>

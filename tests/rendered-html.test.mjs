@@ -25,13 +25,13 @@ test("all guides and tools render complete crawlable public content", async () =
 
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 
-async function render(path = "/") {
+async function render(path = "/", options = {}) {
   const importUrl = new URL(workerUrl);
   importUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${Math.random()}`);
   const { default: worker } = await import(importUrl.href);
 
   return worker.fetch(
-    new Request(path.startsWith("https://") ? path : `http://localhost${path}`, { headers: { accept: "text/html" } }),
+    new Request(path.startsWith("https://") ? path : `http://localhost${path}`, { headers: { accept: "text/html" }, ...options }),
     {
       ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) },
       DB: undefined,
@@ -56,7 +56,7 @@ test("server-renders the resale catalog with honest price labeling", async () =>
   assert.match(html, /<title>Compare Pokémon TCG MSRP &amp; Resale \| PokeScratch<\/title>/i);
   assert.match(html, /Compare retail/i);
   assert.match(html, /Find your next pickup/i);
-  assert.match(html, /Prices updated/i);
+  assert.match(html, /Latest market update/i);
   assert.match(html, /name="google-site-verification" content="jdFlPWY8SbBX1yV3QyYEIdBePdE9PkerC7gzGrQR350"/);
   assert.match(html, new RegExp(catalogImport.providerUpdatedAt));
   assert.doesNotMatch(html, /Collector-built estimate desk|Check the shelf\. Know the signal/i);
@@ -79,9 +79,17 @@ test("server-renders the resale catalog with honest price labeling", async () =>
   assert.match(html, /hero-mascot-scene__reflection/);
   assert.doesNotMatch(html, /hero-mascot-scene__spark/);
   assert.match(html, /Browse by set/);
+  assert.match(html, /class="save-heart"/);
+  assert.match(html, /Save .* to saved items/);
+  assert.match(html, /aria-label="Catalog list"/);
   assert.match(html, /aria-label="Filter products by set"/);
   assert.doesNotMatch(html, /2× MSRP/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|live price feed/i);
+});
+
+test("daily refresh rejects unauthenticated callers", async () => {
+  const response = await render("/api/prices/refresh?group=2374", { method: "POST" });
+  assert.equal(response.status, 401);
 });
 
 test("server-renders public product SEO pages and structured data", async () => {

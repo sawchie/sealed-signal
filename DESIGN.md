@@ -10,6 +10,7 @@ colors:
   caution: "#ffd56c"
   negative: "#ff8fae"
   white: "#ffffff"
+  saved: "#ff96bd"
 typography:
   display:
     fontFamily: '"Space Grotesk Variable", ui-sans-serif, sans-serif'
@@ -47,6 +48,8 @@ The mascot uses the exact user-selected Concept 04 pixels, cropped, background-e
 
 Purple emphasizes the headline and selected controls; cyan identifies keyboard focus. Market numbers and badges use the same centralized green/yellow/red profitability state. Never recolor market figures independently of recommendation logic. Missing values remain muted, never zero.
 
+Saved pink identifies a collector’s chosen products independently of profitability. Unsaved hearts are muted outlines; saved hearts fill pink with a pale pixel highlight over a dark plum control. Selected All/Saved controls retain the catalog’s purple selection treatment.
+
 ## Typography
 
 Space Grotesk provides the display, names, and price figures. Compact existing monospace treatments remain on quick-filter and price labels. Names wrap without truncation; avoid redundant eyebrows repeating them. Mobile names grow to 17px and prices to 30px.
@@ -59,6 +62,8 @@ The desktop hero pairs copy with the right-hand mascot. Mobile uses a compact ma
 
 At widths of 1100px or more, the catalog adds a 188px sticky left rail of dynamically derived set-filter buttons, with a bounded scrolling list and an All sets reset. It shares the existing set state with dropdowns; search, sorting, quick filters, and advanced filters remain composed. Smaller screens retain the set dropdown and filter drawer.
 
+The All products / Saved switch sits above the results heading with a saved-item count. Its row wraps when space is constrained. In Saved, the opening-preference checkbox and browser-only storage explanation remain visible above the results.
+
 ## Elevation & Depth
 
 Cards are flat at rest with thin borders. Hover/focus adds a purple border, soft shadow, and slight lift. Product cutouts have a soft grounding shadow. Reduced motion removes image transitions and card lift. The filter drawer uses protected focus, Escape, and a dark backdrop.
@@ -70,7 +75,10 @@ Small 5–7px corners rather than pills. Images use contain-fit presentation. Pr
 ## Components
 
 - Header: purple outline mark, white wordmark, restrained native navigation; mobile retains Manage Data.
-- Product card: semantic detail link, dominant real image, complete title, optional non-repeated set label below, paired prices, one recommendation flag.
+- Product card: semantic detail link, dominant real image, complete title, optional non-repeated set label below, paired prices, one recommendation flag. A separate sibling save button occupies the upper-left corner; activating it does not open the detail page.
+- Save heart: authored stepped SVG in a 44×44px button with 6px corners, inset 8px from the card top and left. Outline, filled, hover and cyan keyboard-focus states remain distinct. The same control appears beside the table’s Open link. Accessible labels name the product/action; pressed state exposes whether it is saved.
+- Saved shelf: All products / Saved controls have a 44px minimum height. Saved composes with search, set, quick/advanced filters, sorting and grid/table views. Selections persist only in this browser; clearing site data removes them. “Open to Saved next time” is an explicit checkbox; an empty saved collection opens All products next visit. Storage failures disclose visit-only saving.
+- Saved empty state: flat navy bordered panel, 7px corners and a 32px pink outline heart. “Your saved shelf is waiting” explains the first action; “Show all products” returns to the full catalog and clears search/filters. Filtered-out saved items use the no-matches explanation without an icon. Removing an item in Saved returns keyboard focus to the Saved switch.
 - Search: 50px height, clear action, visible focus and strong contrast.
 - Filters: horizontal quick choices, scalable set dropdown, advanced drawer.
 - Load more: batches of 48; calculations/filtering use the complete catalog.
