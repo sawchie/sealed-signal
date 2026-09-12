@@ -76,3 +76,13 @@ Small 5–7px corners rather than pills. Images use contain-fit presentation. Pr
 ## Do's and Don'ts
 
 Keep photos and both prices dominant, sources on detail pages, update date near the results heading, and labels beside semantic colors. Do not add dashboard widgets, duplicated metadata, invented availability, or public methodology content. Preserve D1/admin behavior and product routes.
+
+## Collector guides and price-per-pack comparison
+
+These surfaces extend Arcade After Dark: Guides prioritize reading; the calculator prioritizes completing a comparison. The five-guide index uses divided text rows. Articles use a 74ch measure, clear sections, publication metadata, inline sources, and related links.
+
+Content typography uses rem values: headings `clamp(2rem, 4vw, 3rem)`, section headings `1.5rem`, body `1rem` with `1.75` line-height, metadata `.875rem`. Local readability steps are foreground `#f5f5ff`, secondary `#bfc6db`, placeholder `#9da8c2`, dividers `#30364b`, control borders `#505973`, and underlined links `#d2a2ff`.
+
+The calculator pairs labeled fieldsets, optional costs, inline validation, and tabular `2.5rem` purple cost-per-pack results. Incomplete results stay an em dash; cyan comparisons describe pack costs, not profitability. Differences and ties use displayed-cent precision. All inputs remain in browser memory.
+
+Content has a centered 1100px maximum width. At 700px, purchase panels stack and gutters become 16px. At 800px, native navigation becomes a Menu disclosure with Escape restoring summary focus. Product details add copy/correction actions and up to three real active same-set products without expanding browse cards.

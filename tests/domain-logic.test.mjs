@@ -1,5 +1,28 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { calculatePackCost, comparePackCosts, emptyPackInput } from "../lib/pack-comparison.ts";
+
+test("pack comparison includes checkout costs and displayed-cent ties", () => {
+  const cost = values => calculatePackCost({ ...emptyPackInput(), ...values });
+  const a = cost({ price: "30", shipping: "6", packs: "6" });
+  const b = cost({ price: "54", packs: "9" });
+  assert.equal(a.totalCents, 3600);
+  assert.equal(a.perPackCents, 600);
+  assert.deepEqual(comparePackCosts(cost({ price: "6.02", packs: "6" }), cost({ price: "6.03", packs: "6" })), { winner: "A", differenceCents: 1 });
+  assert.equal(comparePackCosts(a, b).winner, null);
+  assert.deepEqual(comparePackCosts(a, cost({ price: "63", packs: "9" })), { winner: "A", differenceCents: 100 });
+  assert.equal(cost({ price: "10", shipping: "2", tax: "1", discount: "3", packs: "2" }).perPackCents, 500);
+  assert.equal(cost({ price: "0", packs: "1" }).perPackCents, 0);
+  assert.equal(comparePackCosts(cost({ price: "1", packs: "3" }), cost({ price: "1", packs: "3" })).winner, null);
+});
+
+test("pack inputs reject blank required values, invalid money, and invalid pack counts", () => {
+  const cost = values => calculatePackCost({ ...emptyPackInput(), price: "30", packs: "6", ...values });
+  for (const packs of ["", "0", "-1", "1.5", "Infinity", "100001"]) assert.ok(cost({ packs }).errors.packs, packs);
+  for (const price of ["", "-1", "NaN", "1e3", "1.234", "Infinity", "1000001"]) assert.ok(cost({ price }).errors.price, price);
+  assert.ok(cost({ discount: "31" }).errors.discount);
+  assert.equal(comparePackCosts(calculatePackCost(emptyPackInput()), cost({})), null);
+});
 
 import {
   calculateProfitability,

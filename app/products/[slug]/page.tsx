@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 import { ProductDetailClient } from "@/app/components/ProductDetailClient";
+import { ProductExtras } from "@/app/components/ProductExtras";
 import { SiteFooter } from "@/app/components/SiteFooter";
 import { SiteHeader } from "@/app/components/SiteHeader";
 import { getSeedProductBySlug, seedProducts } from "@/data/products";
@@ -49,7 +50,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   if (!product) return { title: "Product not found" };
 
   const priceText = product.marketPrice
-    ? `market estimate ${formatMoney(product.marketPrice.amountCents)}`
+    ? `market snapshot ${formatMoney(product.marketPrice.amountCents)}`
     : "market estimate unavailable";
   return {
     title: `${product.name} Buy Check`,
@@ -82,6 +83,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <div className="app-shell app-shell--detail">
       <SiteHeader compact />
       <ProductDetailClient initialProduct={product} />
+      <ProductExtras product={product} />
       <SiteFooter />
       <script
         type="application/ld+json"

@@ -1,6 +1,27 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import catalogImport from "../data/catalog-import.json" with { type: "json" };
+import guides from "../data/guides.json" with { type: "json" };
+
+test("all guides and tools render complete crawlable public content", async () => {
+  for (const guide of guides) {
+    const response = await render(`/guides/${guide.slug}`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, /application\/ld\+json/);
+    assert.match(html, /September 12, 2026/);
+    assert.match(html, /href="\/tools\/price-per-pack"/);
+    assert.ok(guide.paragraphs.length >= 5);
+    assert.ok(html.includes(guide.title.replaceAll("&", "&amp;")));
+  }
+  for (const path of ["/guides", "/tools", "/tools/price-per-pack"]) assert.equal((await render(path)).status, 200);
+  assert.equal((await render("/guides/not-a-real-guide")).status, 404);
+  const tool = await (await render("/tools/price-per-pack")).text();
+  assert.match(tool, /Item price|Booster packs|Reset comparison/);
+  const product = await (await render("/products/destined-rivals-elite-trainer-box")).text();
+  assert.match(product, /Copy product link|Report a correction|More from/);
+  assert.match(product, /mailto:hello@pokescratch.com/);
+});
 
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 
@@ -127,5 +148,5 @@ test("sitemap lists the expanded catalog on the public domain", async () => {
   assert.equal(response.status, 200);
   const body = await response.text();
   assert.doesNotMatch(body, /localhost|\/methodology/);
-  assert.equal((body.match(/<loc>/g) ?? []).length, catalogImport.items.length + 4);
+  assert.equal((body.match(/<loc>/g) ?? []).length, catalogImport.items.length + 12);
 });

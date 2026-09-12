@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { seedProducts } from "@/data/products";
+import guides from "@/data/guides.json";
 
 type SitemapProduct = {
   slug: string;
@@ -48,7 +49,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const products = await getSitemapProducts();
   return [
     { url: baseUrl, changeFrequency: "daily", priority: 1 },
-    ...["about", "contact", "privacy"].map(path => ({ url: `${baseUrl}/${path}`, changeFrequency: "monthly" as const, priority: 0.4 })),
+    ...["about", "contact", "privacy", "guides", "tools", "tools/price-per-pack"].map(path => ({ url: `${baseUrl}/${path}`, changeFrequency: "monthly" as const, priority: 0.4 })),
+    ...guides.map(guide => ({ url: `${baseUrl}/guides/${guide.slug}`, lastModified: guide.published, changeFrequency: "monthly" as const, priority: 0.6 })),
     ...products.map((product) => ({
       url: `${baseUrl}/products/${product.slug}`,
       lastModified: product.lastModified,

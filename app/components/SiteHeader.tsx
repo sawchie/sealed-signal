@@ -1,3 +1,4 @@
+import { SiteNavigation } from "./SiteNavigation";
 type SiteHeaderProps = {
   compact?: boolean;
 };
@@ -21,12 +22,7 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
           </span>
         </a>
 
-        <nav className="site-nav" aria-label="Primary navigation">
-          {/* Native links preserve navigation through the production adapter. */}
-          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/">Catalog</a>
-          <a href="/admin">Manage data</a>
-        </nav>
+        <SiteNavigation />
       </div>
     </header>
   );
