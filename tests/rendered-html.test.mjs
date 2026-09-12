@@ -10,7 +10,7 @@ async function render(path = "/") {
   const { default: worker } = await import(importUrl.href);
 
   return worker.fetch(
-    new Request(`http://localhost${path}`, { headers: { accept: "text/html" } }),
+    new Request(path.startsWith("https://") ? path : `http://localhost${path}`, { headers: { accept: "text/html" } }),
     {
       ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) },
       DB: undefined,
@@ -18,6 +18,13 @@ async function render(path = "/") {
     { waitUntil() {}, passThroughOnException() {} },
   );
 }
+
+test("old public hostname permanently redirects and preserves path and query", async () => {
+  const response = await render("https://sealed-signal.tylerjsawchyn.chatgpt.site/products/destined-rivals-elite-trainer-box?ref=search");
+  assert.equal(response.status, 308);
+  assert.equal(response.headers.get("location"), "https://pokescratch.com/products/destined-rivals-elite-trainer-box?ref=search");
+  assert.equal((await render("https://pokescratch.com/")).status, 200);
+});
 
 test("server-renders the resale catalog with honest price labeling", async () => {
   const response = await render("/");

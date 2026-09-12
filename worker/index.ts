@@ -29,6 +29,13 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
+    // Consolidate the former public address without redirecting previews or local development.
+    if (url.hostname === "sealed-signal.tylerjsawchyn.chatgpt.site") {
+      url.protocol = "https:";
+      url.host = "pokescratch.com";
+      return Response.redirect(url.toString(), 308);
+    }
+
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];
       return handleImageOptimization(request, {
