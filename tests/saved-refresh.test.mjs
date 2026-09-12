@@ -13,7 +13,7 @@ test('workflow identity requires a valid RSA signature, not just matching claims
   const pair = await crypto.subtle.generateKey({ name: 'RSASSA-PKCS1-v1_5', modulusLength: 2048, publicExponent: new Uint8Array([1,0,1]), hash: 'SHA-256' }, true, ['sign','verify']);
   const jwk = { ...await crypto.subtle.exportKey('jwk', pair.publicKey), kid: 'test-key' };
   const originalFetch = globalThis.fetch;
-  globalThis.fetch = async url => { assert.equal(url, 'https://token.actions.githubusercontent.com/.well-known/jwks'); return Response.json({ keys: [jwk] }); };
+  globalThis.fetch = async (url, options) => { assert.equal(options.redirect, 'manual', 'Workers require manual redirect rejection'); assert.equal(url, 'https://token.actions.githubusercontent.com/.well-known/jwks'); return Response.json({ keys: [jwk] }); };
   try {
     const now = Math.floor(Date.now() / 1000);
     const claims = { iss: 'https://token.actions.githubusercontent.com', aud: REFRESH_AUDIENCE, repository_id: '1342934486', repository_owner_id: '319643758', repository: 'sawchie/sealed-signal', ref: 'refs/heads/main', workflow_ref: 'sawchie/sealed-signal/.github/workflows/refresh-prices.yml@refs/heads/main', event_name: 'workflow_dispatch', iat: now, nbf: now, exp: now + 300 };
@@ -77,7 +77,7 @@ test('daily refresh writes real schema safely, is idempotent, and preserves admi
   new Function('require', 'exports', compiled)(path => { assert.ok(dependencies[path], path); return dependencies[path]; }, exports);
   const originalFetch = globalThis.fetch;
   const observedAt = new Date(Date.now() - 3600000).toISOString();
-  globalThis.fetch = async url => url.endsWith('/last-updated.txt') ? new Response(observedAt) : Response.json({ results: rows });
+  globalThis.fetch = async (url, options) => { assert.equal(options.redirect, 'manual'); return url.endsWith('/last-updated.txt') ? new Response(observedAt) : Response.json({ results: rows }); };
   try {
     assert.equal((await exports.refreshPriceGroup(1)).nextOffset, 10);
     assert.equal((await exports.refreshPriceGroup(1, 10)).nextOffset, null);

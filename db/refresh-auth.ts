@@ -21,7 +21,7 @@ export async function isRefreshRequest(request: Request): Promise<boolean> {
     if (!validRefreshClaims(claims)) return deny("Repository, workflow, audience or time policy");
     stage = "public keys";
     if (!cachedKeys || cachedKeys.until < Date.now() || !cachedKeys.keys.some(key => key.kid === header.kid)) {
-      const response = await fetch("https://token.actions.githubusercontent.com/.well-known/jwks", { signal: AbortSignal.timeout(10000), redirect: "error" });
+      const response = await fetch("https://token.actions.githubusercontent.com/.well-known/jwks", { signal: AbortSignal.timeout(10000), redirect: "manual" });
       if (!response.ok) return deny(`Public key endpoint HTTP ${response.status}`);
       const body = await response.json() as { keys: (JsonWebKey & { kid: string })[] };
       if (!Array.isArray(body.keys)) return deny("Public key response shape");

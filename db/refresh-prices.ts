@@ -6,7 +6,7 @@ import { selectMarketCents, validateProviderTimestamp } from "../lib/refresh-val
 export const refreshGroups = [...new Set(catalog.items.map(item => item.sourceGroupId))];
 const headers = { "User-Agent": "PokeScratch/1.0 (daily price refresh; hello@pokescratch.com)" };
 async function provider(path: string) {
-  const response = await fetch(`https://tcgcsv.com/${path}`, { headers, signal: AbortSignal.timeout(20000), redirect: "error" });
+  const response = await fetch(`https://tcgcsv.com/${path}`, { headers, signal: AbortSignal.timeout(20000), redirect: "manual" });
   if (!response.ok) throw new Error(`Provider returned ${response.status}`);
   return response;
 }
