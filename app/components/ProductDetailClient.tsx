@@ -9,6 +9,8 @@ import { ProductImage } from "./ProductImage";
 import { ProductWatch } from "./ProductWatch";
 import { productRelease } from "@/lib/product-release";
 import { pricePerPackCents } from "@/lib/pack-comparison";
+import { AddToCollection } from "./AddToCollection";
+import { collectionProduct } from "@/lib/collection-product";
 
 export function ProductDetailClient({ initialProduct: product, facts, now }: { initialProduct: ProductWithMarketPrice; facts: ProductFacts | null; now: string }) {
   const release = productRelease(product, now);
@@ -95,6 +97,7 @@ export function ProductDetailClient({ initialProduct: product, facts, now }: { i
         </div>
         <div className="detail-metrics" aria-live="polite" aria-atomic="true"><div className="detail-metric detail-metric--profit"><span>Estimated net profit</span><strong className={tone}>{formatMoney(estimate?.profitCents, product.currency)}</strong></div><div className="detail-metric"><span>ROI after costs</span><strong className={tone}>{formatPercent(estimate?.roiPercent)}</strong></div><div className="detail-metric"><span>Net proceeds</span><strong>{formatMoney(estimate?.netProceedsCents, product.currency)}</strong></div></div>
         <ProductWatch slug={product.slug} name={product.name} marketCents={product.marketPrice?.amountCents ?? null} updatedAt={product.marketPrice?.updatedAt ?? null} now={now} />
+        <AddToCollection product={collectionProduct(product, facts?.packCount ?? null)} />
       </div>
     </section>
     <div className="detail-grid">

@@ -26,6 +26,8 @@ import { BROWSE_SESSION_KEY, categoryMatches, readCatalogState, writeCatalogStat
 import { priceFreshness } from "@/lib/buy-check";
 import { WatchAlerts } from "./WatchAlerts";
 import { productRelease, releaseMatches } from "@/lib/product-release";
+import { AddToCollection } from "./AddToCollection";
+import { collectionProduct } from "@/lib/collection-product";
 
 type ViewMode = "grid" | "table";
 type QuickFilter =
@@ -199,18 +201,21 @@ function ProductCard({
   saved,
   onToggle,
   returnTo,
+  packCount,
 }: {
   item: EvaluatedProduct;
   priority?: boolean;
   saved: boolean;
   onToggle: () => void;
   returnTo: string;
+  packCount: number | null;
 }) {
   const { product, recommendation } = item;
 
   return (
     <article className={`product-card ${recommendationToneClass(recommendation)}${item.release.upcoming ? " product-card--upcoming" : ""}`}>
     <SaveHeart name={product.name} saved={saved} onToggle={onToggle} />
+    <AddToCollection compact product={collectionProduct(product, packCount)} />
     <a className="product-card__link"
       href={`/products/${product.slug}?return=${encodeURIComponent(returnTo)}`}
       aria-label={`Open details for ${product.name}`}
@@ -268,6 +273,7 @@ function ProductTable({
   returnTo,
   showMetrics,
   now,
+  packCounts,
 }: {
   items: EvaluatedProduct[];
   savedSlugs: Set<string>;
@@ -275,6 +281,7 @@ function ProductTable({
   returnTo: string;
   showMetrics: boolean;
   now: string;
+  packCounts: Record<string, number | null>;
 }) {
   return (
     <div className="product-table-wrap">
@@ -320,7 +327,7 @@ function ProductTable({
                     {item.release.label ?? signalLabel(recommendation)}
                   </span>
                 </td>
-                <td><div className="table-save-actions"><SaveHeart name={product.name} saved={savedSlugs.has(product.slug)} onToggle={() => onToggle(product.slug)} /><a href={`/products/${product.slug}?return=${encodeURIComponent(returnTo)}`} aria-label={`Open details for ${product.name}`}>Open ↗</a></div></td>
+                <td><div className="table-save-actions"><SaveHeart name={product.name} saved={savedSlugs.has(product.slug)} onToggle={() => onToggle(product.slug)} /><AddToCollection compact product={collectionProduct(product, packCounts[product.id] ?? null)} /><a href={`/products/${product.slug}?return=${encodeURIComponent(returnTo)}`} aria-label={`Open details for ${product.name}`}>Open ↗</a></div></td>
               </tr>
             );
           })}
@@ -378,9 +385,11 @@ function RangeFields({
 export function CatalogApp({
   initialProducts,
   now,
+  packCounts,
 }: {
   initialProducts: ProductWithMarketPrice[];
   now: string;
+  packCounts: Record<string, number | null>;
 }) {
   const products = initialProducts;
   const [saved, setSaved] = useState<SavedProducts>(emptySavedProducts);
@@ -927,11 +936,12 @@ export function CatalogApp({
                       saved={savedSlugs.has(item.product.slug)}
                       onToggle={() => toggleSaved(item.product.slug)}
                       returnTo={returnTo}
+                      packCount={packCounts[item.product.id] ?? null}
                     />
                   ))}
                 </div>
               ) : (
-                <ProductTable items={displayedProducts} savedSlugs={savedSlugs} onToggle={toggleSaved} returnTo={returnTo} showMetrics={showTableMetrics} now={now} />
+                <ProductTable items={displayedProducts} savedSlugs={savedSlugs} onToggle={toggleSaved} returnTo={returnTo} showMetrics={showTableMetrics} now={now} packCounts={packCounts} />
               )
             ) : (
               <div className="empty-state">

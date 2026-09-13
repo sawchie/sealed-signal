@@ -95,6 +95,17 @@ body { background: #080b16; }
 .save-heart[aria-pressed="true"] svg { fill: currentColor; }
 .save-heart[aria-pressed="true"] .save-heart__shine { fill: #fff0f6; }
 .save-heart:hover { color: #ffb7d2; border-color: #ffb7d2; }
+.collection-plus { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 12px; border: 1px solid #615571; border-radius: 6px; color: #8be5ef; background: #101421; cursor: pointer; font: inherit; }
+.collection-plus svg { width: 22px; height: 22px; flex-shrink: 0; }
+.collection-plus:hover { border-color: #8be5ef; background: #15222f; }
+.collection-plus:focus-visible { outline: 2px solid #8be5ef; outline-offset: 3px; }
+.collection-plus:disabled { opacity: .55; cursor: not-allowed; }
+.collection-add--compact .collection-plus { width: 44px; padding: 10px; }
+.collection-add--compact .collection-plus { position: relative; }
+.collection-plus__count { position: absolute; bottom: -4px; right: -5px; min-width: 18px; padding: 1px 3px; border-radius: 4px; background: #8be5ef; color: #080b16; font-size: 11px; line-height: 1.3; font-weight: 700; }
+.product-card > .collection-add { position: absolute; top: 56px; left: 8px; z-index: 3; }
+.collection-add__message { display: block; color: #bfc6db; font-size: .875rem; margin-top: 8px; line-height: 1.5; }
+.collection-add__message:empty { display: none; }
 .saved-toolbar, .saved-switch, .table-save-actions { display: flex; align-items: center; gap: 12px; }
 .saved-toolbar { justify-content: flex-start; flex-wrap: wrap; column-gap: 28px; margin-bottom: 18px; }
 .buying-filter { display: flex; flex-wrap: wrap; gap: 6px; }

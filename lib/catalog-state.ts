@@ -37,5 +37,5 @@ export function categoryMatches(category: string, selection: string): boolean {
   return category === selection;
 }
 export function safeCatalogReturn(raw: string | null): string {
-  return raw && raw.length < 4000 && (raw === "/" || raw.startsWith("/?")) ? raw : "/";
+  return raw && raw.length < 4000 && (raw === "/" || raw === "/collection" || raw.startsWith("/?")) ? raw : "/";
 }

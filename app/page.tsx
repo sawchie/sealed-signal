@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CatalogApp } from "@/app/components/CatalogApp";
 import { publicCatalog } from "@/lib/public-catalog";
+import { productFacts } from "@/lib/product-facts";
 
 export const metadata: Metadata = {
   title: "Compare Pokémon TCG MSRP & Resale",
@@ -15,6 +16,6 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   const products = await publicCatalog();
   return (
-    <CatalogApp initialProducts={products} now={new Date().toISOString()} />
+    <CatalogApp initialProducts={products} packCounts={Object.fromEntries(products.map(product => [product.id, productFacts(product.id)?.packCount ?? null]))} now={new Date().toISOString()} />
   );
 }

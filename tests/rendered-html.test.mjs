@@ -27,6 +27,24 @@ test("all guides and tools render complete crawlable public content", async () =
 
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 
+test("collection is a private browser-local page and catalog additions remain separate from detail links", async () => {
+  const response = await render("/collection");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /My Collection/);
+  assert.match(html, /noindex/);
+  assert.match(html, /Loading your collection from this browser/);
+  assert.match(html, /Download backup/);
+  assert.doesNotMatch(html, /sealed-signal:collection/);
+  const home = await (await render("/")).text();
+  assert.match(home, /href="\/collection"/);
+  assert.match(home, /Add one .* to My Collection/);
+  assert.equal((home.match(/class="collection-plus"/g) ?? []).length, 48);
+  assert.match(home, /Save .* to saved items/);
+  const detail = await (await render("/products/destined-rivals-elite-trainer-box")).text();
+  assert.match(detail, /Add to collection/);
+});
+
 test("details show paired per-pack references only for verified pack counts", async () => {
   const html = await (await render("/products/destined-rivals-elite-trainer-box")).text();
   assert.match(html, /\$5\.55 \/ pack/);

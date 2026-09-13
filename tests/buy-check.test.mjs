@@ -53,6 +53,8 @@ test('catalog URL round-trips search, type, set, signal, sort, view, saved and p
   assert.equal(readCatalogState('?sort=invalid&count=Infinity').count, 48);
   for (const value of ['https://evil.test/', '//evil.test', '/products/abc', '/\\evil.test']) assert.equal(safeCatalogReturn(value), '/');
   assert.equal(safeCatalogReturn('/?q=151'), '/?q=151');
+  assert.equal(safeCatalogReturn('/collection'), '/collection');
+  assert.equal(safeCatalogReturn('/collection/../admin'), '/');
 });
 test('market target alerts require fresh exact-product quotes and valid targets', () => {
   const now = '2026-09-12T12:00:00Z';
