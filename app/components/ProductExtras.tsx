@@ -19,5 +19,22 @@ export async function ProductExtras({ product }: { product: ProductWithMarketPri
   }
   const etb = product.category.includes("Elite Trainer Box");
   const guide = etb ? "pokemon-center-etb-vs-regular" : "compare-price-per-pack";
-  return <section className={styles.productExtras} aria-labelledby="next-title"><h2 id="next-title">More for this pickup</h2><ProductActions name={product.name} slug={product.slug} /><p className={styles.related}><a href={`/guides/${guide}`}>{etb ? "Related guide: Pokémon Center ETBs and regular ETBs" : "Related guide: comparing price per pack"}</a></p>{related.length > 0 && <><h3>More from {product.setName}</h3><div className={styles.relatedProducts}>{related.slice(0, 3).map(p => <a key={p.id} href={`/products/${p.slug}`}><ProductImage src={p.imageUrl} alt={p.name} category={p.category} setName={p.setName} productName={p.name} /><span>{p.name}</span></a>)}</div></>}</section>;
+  return (
+    <section className={styles.productExtras} aria-labelledby="next-title">
+      <h2 id="next-title">More for this pickup</h2>
+      <ProductActions name={product.name} slug={product.slug} />
+      <p className={styles.related}><a href={`/guides/${guide}`}>{etb ? "Related guide: Pokémon Center ETBs and regular ETBs" : "Related guide: comparing price per pack"}</a></p>
+      {related.length > 0 && <>
+        <h3>More from {product.setName}</h3>
+        <div className={styles.relatedProducts}>
+          {related.slice(0, 3).map(p => (
+            <a key={p.id} href={`/products/${p.slug}`} aria-label={p.name}>
+              <ProductImage className={styles.relatedImage} src={p.imageUrl} alt="" category={p.category} setName={p.setName} productName={p.name} />
+              <span>{p.name}</span>
+            </a>
+          ))}
+        </div>
+      </>}
+    </section>
+  );
 }

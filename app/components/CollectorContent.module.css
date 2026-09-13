@@ -37,7 +37,15 @@
 .actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin: 24px 0; }
 .actions a { color: #d2a2ff; min-height: 44px; display: inline-flex; align-items: center; }
 .copyFallback { width: min(100%, 600px); min-height: 44px; background: #101421; color: white; border: 1px solid #505973; padding: 10px; }
-.relatedProducts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 20px 0; }
-.relatedProducts a { color: white; display: flex; align-items: center; gap: 14px; line-height: 1.5; }
-.relatedProducts img { width: 90px; height: 90px; object-fit: contain; }
+.productExtras h3 { margin: 28px 0 12px; color: #f5f5ff; font-size: 1.125rem; font-weight: 600; }
+.relatedProducts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; margin: 12px 0 24px; }
+.relatedProducts a { min-width: 0; display: grid; grid-template-columns: 96px minmax(0, 1fr); align-items: center; gap: 16px; padding: 12px; border: 1px solid #393449; border-radius: 8px; background: #101421; color: #f5f5ff; text-decoration: none; line-height: 1.45; }
+.relatedProducts a:hover { border-color: #b78cda; background: #171729; }
+.relatedProducts a:focus-visible { outline: 2px solid #8be5ef; outline-offset: 4px; }
+.relatedProducts a > span { min-width: 0; font-size: .9375rem; font-weight: 550; overflow-wrap: anywhere; }
+.relatedProducts .relatedImage { width: 96px; height: 112px; min-height: 0; background: transparent; }
+.relatedProducts .relatedImage img { display: block; width: 100%; height: 100%; padding: 4px; object-fit: contain; filter: none; }
+.relatedImage :global(.product-image__fallback) { padding: 8px; min-height: 0; }
+.relatedImage :global(.product-image__package), .relatedImage :global(.product-image__archive), .relatedImage :global(.product-image__set), .relatedImage :global(.product-image__pending) > span { display: none; }
+.relatedImage :global(.product-image__pending) { position: static; font-size: .7rem; text-align: center; }
 @media (max-width: 700px) { .main { padding: 28px 16px 48px; } .comparison { grid-template-columns: 1fr; gap: 24px; } .purchase { padding: 18px; } .relatedProducts { grid-template-columns: 1fr; } .productExtras { padding: 0 16px; } }
