@@ -19,7 +19,6 @@ export function ProductDetailClient({ initialProduct: product, facts, now }: { i
   const [targetProfit, setTargetProfit] = useState("10");
   const [targetRoi, setTargetRoi] = useState("20");
   const [salePrice, setSalePrice] = useState("");
-  const [imageExpanded, setImageExpanded] = useState(false);
   useEffect(() => {
     // Restore browser-only preferences once after hydration.
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -60,9 +59,8 @@ export function ProductDetailClient({ initialProduct: product, facts, now }: { i
   return <main className="detail-main">
     <nav className="breadcrumbs" aria-label="Breadcrumb"><a href={returnTo}>Back to your results</a><span aria-hidden="true">/</span><span>{product.setName ?? "Mixed set"}</span></nav>
     <section className="detail-hero detail-hero--buy-check">
-      <div className={`detail-visual${imageExpanded ? " is-expanded" : ""}`}>
+      <div className="detail-visual">
         <ProductImage src={product.imageUrl} alt={`${product.name} sealed product packaging`} category={product.category} setName={product.setName} productName={product.name} priority />
-        <button type="button" className="image-size-toggle" aria-expanded={imageExpanded} onClick={() => setImageExpanded(value => !value)}>{imageExpanded ? "Reduce image" : "Enlarge packaging"}</button>
       </div>
       <div className="detail-summary">
         <h1>{product.name}</h1>

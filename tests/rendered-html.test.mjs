@@ -19,6 +19,7 @@ test("all guides and tools render complete crawlable public content", async () =
   const tool = await (await render("/tools/price-per-pack")).text();
   assert.match(tool, /Item price|Booster packs|Reset comparison/);
   const product = await (await render("/products/destined-rivals-elite-trainer-box")).text();
+  assert.doesNotMatch(product, /Enlarge packaging|Reduce image|image-size-toggle/);
   assert.match(product, /Copy product link|Report a correction|More from/);
   assert.match(product, /mailto:hello@pokescratch.com/);
 });
