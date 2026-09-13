@@ -8,6 +8,7 @@ import { formatCompactDate, formatMoney, formatPercent } from "@/lib/format";
 import { ProductImage } from "./ProductImage";
 import { ProductWatch } from "./ProductWatch";
 import { productRelease } from "@/lib/product-release";
+import { pricePerPackCents } from "@/lib/pack-comparison";
 
 export function ProductDetailClient({ initialProduct: product, facts, now }: { initialProduct: ProductWithMarketPrice; facts: ProductFacts | null; now: string }) {
   const release = productRelease(product, now);
@@ -49,6 +50,10 @@ export function ProductDetailClient({ initialProduct: product, facts, now }: { i
   const presentation = getRecommendationPresentation(recommendation);
   const tone = `profitability--${presentation.tone}`;
   const retailComparison = calculateRetailComparison(product.marketPrice?.amountCents ?? null, product.msrpCents);
+  const packCount = facts?.packCount;
+  const hasPackCount = packCount != null && Number.isSafeInteger(packCount) && packCount > 0;
+  const retailPerPack = pricePerPackCents(product.msrpCents, packCount);
+  const marketPerPack = pricePerPackCents(product.marketPrice?.amountCents, packCount);
   const targetProfitCents = parseAmount(targetProfit);
   const targetRoiRate = parseAmount(targetRoi, { rate: true });
   const buyLimit = validation.assumptions && targetProfitCents !== null && targetRoiRate !== null ? maximumBuyPrice(expectedSale, validation.assumptions, targetProfitCents, targetRoiRate * 100) : null;
@@ -66,7 +71,11 @@ export function ProductDetailClient({ initialProduct: product, facts, now }: { i
         <h1>{product.name}</h1>
         <p className="detail-product-meta">{product.setName ?? "Mixed set"} · {product.category}{facts?.packCount ? ` · ${facts.packCount} packs` : ""}</p>
         {release.upcoming && <div className="release-notice"><strong>{release.label} · {release.date ? `Expected ${formatCompactDate(release.date)}` : "Release date TBD"}</strong><p>Not released yet. Presale market estimates can change sharply before launch; they are not a retail availability check or a guaranteed resale price. Missing prices are TBD.</p>{release.announcement && <a href={release.announcement.sourceUrl} target="_blank" rel="noreferrer">Product announcement and expected shipping date</a>}</div>}
-        <dl className="detail-reference-grid" aria-label="Reference prices"><div><dt>Reference retail</dt><dd>{release.upcoming && product.msrpCents === null ? "TBD" : formatMoney(product.msrpCents, product.currency)}</dd></div><div><dt>{release.upcoming ? "Presale market estimate" : "Market snapshot"}</dt><dd>{release.upcoming && !product.marketPrice ? "TBD" : formatMoney(product.marketPrice?.amountCents, product.currency)}</dd></div></dl>
+        <dl className="detail-reference-grid" aria-label="Reference prices">
+          <div><dt>Reference retail</dt><dd>{release.upcoming && product.msrpCents === null ? "TBD" : formatMoney(product.msrpCents, product.currency)}{hasPackCount && <small className="detail-per-pack">{retailPerPack === null ? "Per pack unavailable" : `${formatMoney(retailPerPack, product.currency)} / pack`}</small>}</dd></div>
+          <div><dt>{release.upcoming ? "Presale market estimate" : "Market snapshot"}</dt><dd>{release.upcoming && !product.marketPrice ? "TBD" : formatMoney(product.marketPrice?.amountCents, product.currency)}{hasPackCount && <small className="detail-per-pack">{marketPerPack === null ? "Per pack unavailable" : `${formatMoney(marketPerPack, product.currency)} / pack`}</small>}</dd></div>
+        </dl>
+        <p className="reference-context detail-pack-context">{hasPackCount ? <>Price per pack = box price ÷ <a href="#facts-title">{packCount} booster {packCount === 1 ? "pack" : "packs"}</a>. Before tax/shipping; no value deducted for promos or extras. Not a loose-pack quote.</> : <>Price per pack unavailable: <a href="#facts-title">pack count not verified</a>.</>}</p>
         <p className="reference-context">Historical MSRP or sourced retail reference—not an in-stock offer. <a href="#price-data">Source and date</a></p>
         <div className="detail-price-input">
           <label htmlFor="buy-price">Price you are paying ($)</label><input id="buy-price" value={purchasePrice} onChange={e => setPurchasePrice(e.target.value)} inputMode="decimal" maxLength={14} placeholder={product.msrpCents ? (product.msrpCents / 100).toFixed(2) : "Enter shelf price"} aria-invalid={purchaseInvalid} aria-describedby="detail-purchase-help" />

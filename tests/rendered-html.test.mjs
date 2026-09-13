@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import catalogImport from "../data/catalog-import.json" with { type: "json" };
 import guides from "../data/guides.json" with { type: "json" };
+import productFacts from "../data/product-facts.json" with { type: "json" };
 
 test("all guides and tools render complete crawlable public content", async () => {
   for (const guide of guides) {
@@ -25,6 +26,19 @@ test("all guides and tools render complete crawlable public content", async () =
 });
 
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+
+test("details show paired per-pack references only for verified pack counts", async () => {
+  const html = await (await render("/products/destined-rivals-elite-trainer-box")).text();
+  assert.match(html, /\$5\.55 \/ pack/);
+  assert.equal((html.match(/class="detail-per-pack"/g) ?? []).length, 2);
+  assert.match(html, /no value deducted for promos or extras/);
+  assert.match(html, /Not a loose-pack quote/);
+  const unknown = catalogImport.items.find(p => !productFacts[p.id]?.packCount);
+  assert.ok(unknown);
+  const unknownHtml = await (await render(`/products/${unknown.slug}`)).text();
+  assert.match(unknownHtml, /pack count not verified/);
+  assert.doesNotMatch(unknownHtml, /class="detail-per-pack"/);
+});
 
 test("buy checks describe informational pages, not incomplete Product rich results", async () => {
   const upcoming = catalogImport.items.find(p => p.sourceProductId === 712099);

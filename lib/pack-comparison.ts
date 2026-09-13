@@ -2,6 +2,12 @@ export type PackInput = { label: string; price: string; shipping: string; tax: s
 export type PackResult = { errors: Partial<Record<keyof PackInput, string>>; totalCents: number | null; perPackCents: number | null; packs: number | null };
 export const emptyPackInput = (): PackInput => ({ label: "", price: "", shipping: "0", tax: "0", discount: "0", packs: "" });
 
+/** Keep fractional cents until formatting; unknown prices/counts are never zero. */
+export function pricePerPackCents(priceCents: number | null | undefined, packCount: number | null | undefined): number | null {
+  if (priceCents == null || !Number.isSafeInteger(priceCents) || priceCents < 0 || packCount == null || !Number.isSafeInteger(packCount) || packCount <= 0) return null;
+  return priceCents / packCount;
+}
+
 export function calculatePackCost(input: PackInput): PackResult {
   const errors: PackResult["errors"] = {};
   const cents: Record<string, number> = {};
@@ -17,7 +23,7 @@ export function calculatePackCost(input: PackInput): PackResult {
   const total = cents.price + cents.shipping + cents.tax - cents.discount;
   if (total < 0) errors.discount = "Discount cannot exceed the item price, shipping, and tax combined.";
   if (Object.keys(errors).length) return { errors, totalCents: null, perPackCents: null, packs: null };
-  return { errors, totalCents: total, perPackCents: total / packs, packs };
+  return { errors, totalCents: total, perPackCents: pricePerPackCents(total, packs), packs };
 }
 
 export function comparePackCosts(a: PackResult, b: PackResult) {

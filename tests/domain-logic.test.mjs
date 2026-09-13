@@ -1,6 +1,15 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { calculatePackCost, comparePackCosts, emptyPackInput } from "../lib/pack-comparison.ts";
+import { calculatePackCost, comparePackCosts, emptyPackInput, pricePerPackCents } from "../lib/pack-comparison.ts";
+
+test("per-pack reference prices use verified whole counts and preserve unknowns", () => {
+  assert.equal(pricePerPackCents(4999, 9), 4999 / 9);
+  assert.equal(pricePerPackCents(14400, 36), 400);
+  assert.equal(pricePerPackCents(499, 1), 499);
+  assert.equal(pricePerPackCents(0, 6), 0);
+  for (const count of [null, undefined, 0, -1, 1.5, NaN, Infinity]) assert.equal(pricePerPackCents(4999, count), null);
+  for (const price of [null, undefined, -1, NaN, Infinity, 49.99]) assert.equal(pricePerPackCents(price, 9), null);
+});
 
 test("pack comparison includes checkout costs and displayed-cent ties", () => {
   const cost = values => calculatePackCost({ ...emptyPackInput(), ...values });

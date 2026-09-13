@@ -209,6 +209,8 @@ input, textarea { caret-color: #d5a8ff; }
 .detail-summary h1 { margin-bottom: 8px; }
 .detail-hero--buy-check .detail-reference-grid { margin: 18px 0 8px; }
 .detail-hero--buy-check .detail-reference-grid dd { font-size: 1.75rem; font-weight: 650; }
+.detail-reference-grid .detail-per-pack { display: block; margin-top: .375rem; color: #bfc6db; font-family: var(--font-sans); font-size: .875rem; font-weight: 500; line-height: 1.5; font-variant-numeric: tabular-nums; }
+.detail-pack-context { margin: 0 0 .5rem; }
 .detail-hero--buy-check #detail-purchase-help { margin-left: 0; }
 .detail-price-input { margin-top: 20px; }
 .detail-price-input > label { display: block; font-size: 1rem; color: #f5f5ff; font-weight: 600; margin-bottom: 8px; }
