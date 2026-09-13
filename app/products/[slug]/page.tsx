@@ -79,12 +79,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
   catch { historyUnavailable = true; }
   if (product.marketPrice && !history.some(row => row.observedAt === product.marketPrice!.updatedAt && row.provider === product.marketPrice!.source.id)) history.push({ amountCents: product.marketPrice.amountCents, observedAt: product.marketPrice.updatedAt, source: product.marketPrice.source.label, sourceUrl: product.marketPrice.source.url ?? null, provider: product.marketPrice.source.id, currency: product.marketPrice.currency });
 
+  // Informational buy checks are not purchasable offers or product reviews.
+  // Only opt into Product rich results once genuine qualifying data exists.
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.name,
-    category: product.category,
-    releaseDate: product.releaseDate ?? undefined,
+    "@type": "WebPage",
+    name: `${product.name} Buy Check`,
+    url: new URL(`/products/${product.slug}`, process.env.NEXT_PUBLIC_SITE_URL ?? "https://pokescratch.com").href,
+    description: "Retail references, market snapshots, and fee-adjusted resale estimates. Not an in-stock offer.",
     image: product.imageUrl ?? undefined,
   };
 
@@ -97,7 +99,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <SiteFooter />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
     </div>
   );

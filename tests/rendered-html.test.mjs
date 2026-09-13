@@ -26,6 +26,26 @@ test("all guides and tools render complete crawlable public content", async () =
 
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 
+test("buy checks describe informational pages, not incomplete Product rich results", async () => {
+  const upcoming = catalogImport.items.find(p => p.sourceProductId === 712099);
+  const missingImage = catalogImport.items.find(p => p.sourceProductId === 712109);
+  for (const slug of ["destined-rivals-elite-trainer-box", upcoming.slug, missingImage.slug]) {
+    const response = await render(`/products/${slug}`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    const blocks = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)]
+      .map(match => JSON.parse(match[1]));
+    const page = blocks.find(block => block["@type"] === "WebPage");
+    assert.ok(page, "Informational page metadata remains available to crawlers");
+    assert.equal(page.url, `https://pokescratch.com/products/${slug}`);
+    assert.match(page.name, /Buy Check$/);
+    assert.match(page.description, /Not an in-stock offer/);
+    assert.doesNotMatch(JSON.stringify(blocks), /"@type":"(?:Product|Offer|AggregateOffer|Review|AggregateRating)"/);
+    assert.match(html, /rel="canonical"/);
+    assert.match(html, /Price you are paying/);
+  }
+});
+
 test("upcoming products render presale context, exact provenance, and missing-price TBD", async () => {
   const product = catalogImport.items.find(p => p.sourceProductId === 712099);
   const html = await (await render(`/products/${product.slug}`)).text();
