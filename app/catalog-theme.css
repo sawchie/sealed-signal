@@ -312,3 +312,11 @@ input[aria-invalid="true"] { border-color: #ff8fae !important; }
   .app-shell--catalog .price-pair strong, .app-shell--catalog .price-pair > div:last-child strong { font-size: clamp(18px, 5.4vw, 24px); overflow-wrap: anywhere; }
   .app-shell--catalog .detail-arrow { display: none; }
 }
+/* Release context stays quiet; it is not an investment signal. */
+.presale-caption { display: block; color: var(--text-muted, #b7b0c9); font-size: .75rem; }
+.release-notice { margin: 1rem 0; padding: 1rem; border: 1px solid #625375; border-radius: 8px; background: #171426; color: #ded5ed; }
+.release-notice strong { color: #e1b4ff; }
+.release-notice p { margin: .5rem 0; max-width: 65ch; font-size: .9rem; }
+.release-notice a { font-size: .85rem; }
+.release-filter { max-width: 100%; }
+.product-card--upcoming .price-pair__market strong { color: #dcb1ff; }

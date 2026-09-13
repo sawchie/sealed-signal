@@ -8,6 +8,7 @@ import { tcgplayerProductImage } from "@/data/tcgplayer-image-sources";
 import { expandedSeedProducts } from "@/data/expanded-products";
 import catalogImport from "./catalog-import.json";
 import retailReferences from "./retail-references.json";
+import announcements from "./announced-products.json";
 
 const TCGPLAYER_SNAPSHOT = "2026-08-01T12:00:00.000Z";
 const TCGINDEX_SNAPSHOT = "2026-08-22T06:00:00.000Z";
@@ -871,7 +872,7 @@ const importedProducts: ProductWithMarketPrice[] = catalogImport.items.map(item 
   const retail = verifiedRetail.get(item.sourceProductId);
   return {
     id: item.id, slug: item.slug,
-    aliases: [item.category === "Elite Trainer Box" ? "etb" : item.category === "Pokémon Center Elite Trainer Box" ? "pc etb" : ""].filter(Boolean),
+    aliases: [item.category === "Elite Trainer Box" ? "etb" : item.category === "Pokémon Center Elite Trainer Box" ? "pc etb" : "", ...(item.id in announcements ? [item.setName === "Delta Reign" ? "Delta Rain" : "30th anniversary"] : [])].filter(Boolean),
     setName: item.setName, series: item.series, category: item.category,
     releaseDate: item.releaseDate,
     currency: "USD", notes: null, active: true,
@@ -885,7 +886,7 @@ const importedProducts: ProductWithMarketPrice[] = catalogImport.items.map(item 
     marketPrice: item.marketCents === null ? previous?.marketPrice ?? null : {
       productId: item.id, amountCents: item.marketCents, currency: "USD",
       source: { id: "tcgplayer-tcgcsv", label: "TCGplayer via TCGCSV", kind: "aggregate", url: item.sourceUrl },
-      updatedAt: catalogPriceUpdatedAt,
+      updatedAt: "marketUpdatedAt" in item && typeof item.marketUpdatedAt === "string" ? item.marketUpdatedAt : catalogPriceUpdatedAt,
     },
   };
 });

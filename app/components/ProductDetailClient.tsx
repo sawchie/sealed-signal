@@ -7,8 +7,10 @@ import type { ProductFacts } from "@/lib/product-facts";
 import { formatCompactDate, formatMoney, formatPercent } from "@/lib/format";
 import { ProductImage } from "./ProductImage";
 import { ProductWatch } from "./ProductWatch";
+import { productRelease } from "@/lib/product-release";
 
 export function ProductDetailClient({ initialProduct: product, facts, now }: { initialProduct: ProductWithMarketPrice; facts: ProductFacts | null; now: string }) {
+  const release = productRelease(product, now);
   const [purchasePrice, setPurchasePrice] = useState("");
   const [costs, setCosts] = useState<CostFields>(defaultCostFields);
   const [remember, setRemember] = useState(false);
@@ -65,7 +67,8 @@ export function ProductDetailClient({ initialProduct: product, facts, now }: { i
       <div className="detail-summary">
         <h1>{product.name}</h1>
         <p className="detail-product-meta">{product.setName ?? "Mixed set"} · {product.category}{facts?.packCount ? ` · ${facts.packCount} packs` : ""}</p>
-        <dl className="detail-reference-grid" aria-label="Reference prices"><div><dt>Reference retail</dt><dd>{formatMoney(product.msrpCents, product.currency)}</dd></div><div><dt>Market snapshot</dt><dd>{formatMoney(product.marketPrice?.amountCents, product.currency)}</dd></div></dl>
+        {release.upcoming && <div className="release-notice"><strong>{release.label} · {release.date ? `Expected ${formatCompactDate(release.date)}` : "Release date TBD"}</strong><p>Not released yet. Presale market estimates can change sharply before launch; they are not a retail availability check or a guaranteed resale price. Missing prices are TBD.</p>{release.announcement && <a href={release.announcement.sourceUrl} target="_blank" rel="noreferrer">Product announcement and expected shipping date</a>}</div>}
+        <dl className="detail-reference-grid" aria-label="Reference prices"><div><dt>Reference retail</dt><dd>{release.upcoming && product.msrpCents === null ? "TBD" : formatMoney(product.msrpCents, product.currency)}</dd></div><div><dt>{release.upcoming ? "Presale market estimate" : "Market snapshot"}</dt><dd>{release.upcoming && !product.marketPrice ? "TBD" : formatMoney(product.marketPrice?.amountCents, product.currency)}</dd></div></dl>
         <p className="reference-context">Historical MSRP or sourced retail reference—not an in-stock offer. <a href="#price-data">Source and date</a></p>
         <div className="detail-price-input">
           <label htmlFor="buy-price">Price you are paying ($)</label><input id="buy-price" value={purchasePrice} onChange={e => setPurchasePrice(e.target.value)} inputMode="decimal" maxLength={14} placeholder={product.msrpCents ? (product.msrpCents / 100).toFixed(2) : "Enter shelf price"} aria-invalid={purchaseInvalid} aria-describedby="detail-purchase-help" />
@@ -80,7 +83,7 @@ export function ProductDetailClient({ initialProduct: product, facts, now }: { i
         </details>
         <p className="cost-summary">{validation.assumptions ? `${costs.feeRate}% + ${formatMoney(validation.assumptions.fixedSellingFeeCents)} fees · ${formatMoney(validation.assumptions.sellerShippingCostCents)} shipping · ${costs.includeTax ? `${costs.taxRate}% purchase tax` : "purchase tax excluded"}` : "Calculation paused. Correct the selling-cost errors above."}</p>
         <div className={`detail-signal signal--${recommendation?.toLowerCase().replace(" ", "-") ?? "unpriced"} ${tone}`} aria-live="polite">
-          <span><small>{purchasePrice.trim() ? "Your price check" : "At reference retail"}{salePrice.trim() ? " · custom resale" : ""}</small><strong>{invalid ? "CHECK INPUTS" : presentation.label}</strong></span>
+          <span><small>{release.upcoming ? "Presale scenario only" : purchasePrice.trim() ? "Your price check" : "At reference retail"}{salePrice.trim() ? " · custom resale" : ""}</small><strong>{invalid ? "CHECK INPUTS" : presentation.label}</strong></span>
           <p>{invalid ? "Correct the highlighted input before relying on this estimate." : recommendation ? "Resale classification after the active costs—not a verdict on its value to your collection." : !expectedSale ? "Market estimate unavailable. You can enter your own resale scenario below." : "Enter a purchase price to complete the check."}</p>
         </div>
         <div className="detail-metrics" aria-live="polite" aria-atomic="true"><div className="detail-metric detail-metric--profit"><span>Estimated net profit</span><strong className={tone}>{formatMoney(estimate?.profitCents, product.currency)}</strong></div><div className="detail-metric"><span>ROI after costs</span><strong className={tone}>{formatPercent(estimate?.roiPercent)}</strong></div><div className="detail-metric"><span>Net proceeds</span><strong>{formatMoney(estimate?.netProceedsCents, product.currency)}</strong></div></div>

@@ -3301,5 +3301,428 @@
       1000
     ],
     "asset": "/product-images/catalog/702507.webp"
+  },
+  {
+    "productId": "tcg-712093",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/712093_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      918
+    ],
+    "asset": "/product-images/catalog/712093.webp"
+  },
+  {
+    "productId": "tcg-712094",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/712094_in_1000x1000.jpg",
+    "sourceDimensions": [
+      729,
+      1000
+    ],
+    "asset": "/product-images/catalog/712094.webp"
+  },
+  {
+    "productId": "tcg-712097",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/712097_in_1000x1000.jpg",
+    "sourceDimensions": [
+      681,
+      1000
+    ],
+    "asset": "/product-images/catalog/712097.webp"
+  },
+  {
+    "productId": "tcg-712099",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/712099_in_1000x1000.jpg",
+    "sourceDimensions": [
+      547,
+      1000
+    ],
+    "asset": "/product-images/catalog/712099.webp"
+  },
+  {
+    "productId": "tcg-712101",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/712101_in_1000x1000.jpg",
+    "sourceDimensions": [
+      744,
+      1000
+    ],
+    "asset": "/product-images/catalog/712101.webp"
+  },
+  {
+    "productId": "tcg-712102",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/712102_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      953
+    ],
+    "asset": "/product-images/catalog/712102.webp"
+  },
+  {
+    "productId": "tcg-712104",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/712104_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      953
+    ],
+    "asset": "/product-images/catalog/712104.webp"
+  },
+  {
+    "productId": "tcg-712106",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/712106_in_1000x1000.jpg",
+    "sourceDimensions": [
+      543,
+      1000
+    ],
+    "asset": "/product-images/catalog/712106.webp"
+  },
+  {
+    "productId": "tcg-712107",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/712107_in_1000x1000.jpg",
+    "sourceDimensions": [
+      543,
+      1000
+    ],
+    "asset": "/product-images/catalog/712107.webp"
+  },
+  {
+    "productId": "tcg-712108",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/712108_in_1000x1000.jpg",
+    "sourceDimensions": [
+      543,
+      1000
+    ],
+    "asset": "/product-images/catalog/712108.webp"
+  },
+  {
+    "productId": "tcg-712110",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/712110_in_1000x1000.jpg",
+    "sourceDimensions": [
+      543,
+      1000
+    ],
+    "asset": "/product-images/catalog/712110.webp"
+  },
+  {
+    "productId": "tcg-712112",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/712112_in_1000x1000.jpg",
+    "sourceDimensions": [
+      556,
+      1000
+    ],
+    "asset": "/product-images/catalog/712112.webp"
+  },
+  {
+    "productId": "tcg-696613",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/696613_in_1000x1000.jpg",
+    "sourceDimensions": [
+      497,
+      1000
+    ],
+    "asset": "/product-images/catalog/696613.webp"
+  },
+  {
+    "productId": "tcg-704143",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704143_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      953
+    ],
+    "asset": "/product-images/catalog/704143.webp"
+  },
+  {
+    "productId": "tcg-704144",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704144_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      1000
+    ],
+    "asset": "/product-images/catalog/704144.webp"
+  },
+  {
+    "productId": "tcg-704145",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704145_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      918
+    ],
+    "asset": "/product-images/catalog/704145.webp"
+  },
+  {
+    "productId": "tcg-704146",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704146_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      918
+    ],
+    "asset": "/product-images/catalog/704146.webp"
+  },
+  {
+    "productId": "tcg-704148",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704148_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      919
+    ],
+    "asset": "/product-images/catalog/704148.webp"
+  },
+  {
+    "productId": "tcg-704149",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704149_in_1000x1000.jpg",
+    "sourceDimensions": [
+      763,
+      1000
+    ],
+    "asset": "/product-images/catalog/704149.webp"
+  },
+  {
+    "productId": "tcg-704150",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704150_in_1000x1000.jpg",
+    "sourceDimensions": [
+      763,
+      1000
+    ],
+    "asset": "/product-images/catalog/704150.webp"
+  },
+  {
+    "productId": "tcg-704152",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704152_in_1000x1000.jpg",
+    "sourceDimensions": [
+      494,
+      1000
+    ],
+    "asset": "/product-images/catalog/704152.webp"
+  },
+  {
+    "productId": "tcg-704153",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704153_in_1000x1000.jpg",
+    "sourceDimensions": [
+      918,
+      1000
+    ],
+    "asset": "/product-images/catalog/704153.webp"
+  },
+  {
+    "productId": "tcg-704155",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704155_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      891
+    ],
+    "asset": "/product-images/catalog/704155.webp"
+  },
+  {
+    "productId": "tcg-704168",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704168_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      891
+    ],
+    "asset": "/product-images/catalog/704168.webp"
+  },
+  {
+    "productId": "tcg-704169",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704169_in_1000x1000.jpg",
+    "sourceDimensions": [
+      728,
+      1000
+    ],
+    "asset": "/product-images/catalog/704169.webp"
+  },
+  {
+    "productId": "tcg-704171",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704171_in_1000x1000.jpg",
+    "sourceDimensions": [
+      682,
+      1000
+    ],
+    "asset": "/product-images/catalog/704171.webp"
+  },
+  {
+    "productId": "tcg-704176",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704176_in_1000x1000.jpg",
+    "sourceDimensions": [
+      641,
+      1000
+    ],
+    "asset": "/product-images/catalog/704176.webp"
+  },
+  {
+    "productId": "tcg-704177",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704177_in_1000x1000.jpg",
+    "sourceDimensions": [
+      642,
+      1000
+    ],
+    "asset": "/product-images/catalog/704177.webp"
+  },
+  {
+    "productId": "tcg-704178",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704178_in_1000x1000.jpg",
+    "sourceDimensions": [
+      641,
+      1000
+    ],
+    "asset": "/product-images/catalog/704178.webp"
+  },
+  {
+    "productId": "tcg-704179",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704179_in_1000x1000.jpg",
+    "sourceDimensions": [
+      641,
+      1000
+    ],
+    "asset": "/product-images/catalog/704179.webp"
+  },
+  {
+    "productId": "tcg-704180",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704180_in_1000x1000.jpg",
+    "sourceDimensions": [
+      641,
+      1000
+    ],
+    "asset": "/product-images/catalog/704180.webp"
+  },
+  {
+    "productId": "tcg-704181",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704181_in_1000x1000.jpg",
+    "sourceDimensions": [
+      641,
+      1000
+    ],
+    "asset": "/product-images/catalog/704181.webp"
+  },
+  {
+    "productId": "tcg-704182",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704182_in_1000x1000.jpg",
+    "sourceDimensions": [
+      641,
+      1000
+    ],
+    "asset": "/product-images/catalog/704182.webp"
+  },
+  {
+    "productId": "tcg-704183",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704183_in_1000x1000.jpg",
+    "sourceDimensions": [
+      641,
+      1000
+    ],
+    "asset": "/product-images/catalog/704183.webp"
+  },
+  {
+    "productId": "tcg-704184",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704184_in_1000x1000.jpg",
+    "sourceDimensions": [
+      641,
+      1000
+    ],
+    "asset": "/product-images/catalog/704184.webp"
+  },
+  {
+    "productId": "tcg-704185",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704185_in_1000x1000.jpg",
+    "sourceDimensions": [
+      641,
+      1000
+    ],
+    "asset": "/product-images/catalog/704185.webp"
+  },
+  {
+    "productId": "tcg-704187",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704187_in_1000x1000.jpg",
+    "sourceDimensions": [
+      983,
+      1000
+    ],
+    "asset": "/product-images/catalog/704187.webp"
+  },
+  {
+    "productId": "tcg-704188",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704188_in_1000x1000.jpg",
+    "sourceDimensions": [
+      983,
+      1000
+    ],
+    "asset": "/product-images/catalog/704188.webp"
+  },
+  {
+    "productId": "tcg-704189",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704189_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      819
+    ],
+    "asset": "/product-images/catalog/704189.webp"
+  },
+  {
+    "productId": "tcg-704190",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704190_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      586
+    ],
+    "asset": "/product-images/catalog/704190.webp"
+  },
+  {
+    "productId": "tcg-704191",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704191_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      586
+    ],
+    "asset": "/product-images/catalog/704191.webp"
+  },
+  {
+    "productId": "tcg-704192",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704192_in_1000x1000.jpg",
+    "sourceDimensions": [
+      547,
+      1000
+    ],
+    "asset": "/product-images/catalog/704192.webp"
+  },
+  {
+    "productId": "tcg-704193",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704193_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      709
+    ],
+    "asset": "/product-images/catalog/704193.webp"
+  },
+  {
+    "productId": "tcg-704194",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/704194_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      709
+    ],
+    "asset": "/product-images/catalog/704194.webp"
+  },
+  {
+    "productId": "tcg-673436",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/673436_in_1000x1000.jpg",
+    "sourceDimensions": [
+      876,
+      1000
+    ],
+    "asset": "/product-images/catalog/673436.webp"
+  },
+  {
+    "productId": "tcg-688712",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/688712_in_1000x1000.jpg",
+    "sourceDimensions": [
+      876,
+      1000
+    ],
+    "asset": "/product-images/catalog/688712.webp"
+  },
+  {
+    "productId": "tcg-695400",
+    "source": "https://tcgplayer-cdn.tcgplayer.com/product/695400_in_1000x1000.jpg",
+    "sourceDimensions": [
+      1000,
+      980
+    ],
+    "asset": "/product-images/catalog/695400.webp"
   }
 ]

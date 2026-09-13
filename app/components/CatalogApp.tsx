@@ -25,6 +25,7 @@ import { SAVED_PRODUCTS_KEY, emptySavedProducts, parseSavedProducts, type SavedP
 import { BROWSE_SESSION_KEY, categoryMatches, readCatalogState, writeCatalogState } from "@/lib/catalog-state";
 import { priceFreshness } from "@/lib/buy-check";
 import { WatchAlerts } from "./WatchAlerts";
+import { productRelease, releaseMatches } from "@/lib/product-release";
 
 type ViewMode = "grid" | "table";
 type QuickFilter =
@@ -62,6 +63,7 @@ type EvaluatedProduct = {
   estimate: ProductProfitEstimate | null;
   recommendation: Recommendation | null;
   searchScore: number;
+  release: ReturnType<typeof productRelease>;
 };
 
 const initialNumericFilters: NumericFilters = {
@@ -207,7 +209,7 @@ function ProductCard({
   const { product, recommendation } = item;
 
   return (
-    <article className={`product-card ${recommendationToneClass(recommendation)}`}>
+    <article className={`product-card ${recommendationToneClass(recommendation)}${item.release.upcoming ? " product-card--upcoming" : ""}`}>
     <SaveHeart name={product.name} saved={saved} onToggle={onToggle} />
     <a className="product-card__link"
       href={`/products/${product.slug}?return=${encodeURIComponent(returnTo)}`}
@@ -224,7 +226,7 @@ function ProductCard({
         />
         <span className={`signal ${signalClass(recommendation)}`}>
           <span className="signal__dot" aria-hidden="true" />
-          {signalLabel(recommendation)}
+          {item.release.label ?? signalLabel(recommendation)}
         </span>
       </div>
 
@@ -242,14 +244,14 @@ function ProductCard({
         <div className="price-pair">
           <div>
             <span>Reference retail</span>
-            <strong>{formatMoney(product.msrpCents, product.currency)}</strong>
+            <strong>{product.msrpCents === null && item.release.upcoming ? "TBD" : formatMoney(product.msrpCents, product.currency)}</strong>
           </div>
           <div className="price-pair__market">
-            <span>Market estimate</span>
+            <span>{item.release.upcoming ? "Presale market" : "Market estimate"}</span>
             <strong>
               {product.marketPrice
                 ? formatMoney(product.marketPrice.amountCents, product.currency)
-                : "Unavailable"}
+                : item.release.upcoming ? "TBD" : "Unavailable"}
             </strong>
           </div>
         </div>
@@ -309,13 +311,13 @@ function ProductTable({
                     </span>
                   </div>
                 </td>
-                <td>{formatMoney(product.msrpCents, product.currency)}</td>
-                <td>{formatMoney(product.marketPrice?.amountCents, product.currency)}</td>
+                <td>{product.msrpCents === null && item.release.upcoming ? "TBD" : formatMoney(product.msrpCents, product.currency)}</td>
+                <td>{product.marketPrice ? formatMoney(product.marketPrice.amountCents, product.currency) : item.release.upcoming ? "TBD" : "Unavailable"}{item.release.upcoming && <small className="presale-caption">Presale estimate</small>}</td>
                 {showMetrics && <><td>{formatMoney(item.estimate?.profitCents, product.currency)}</td><td>{item.estimate ? `${item.estimate.roiPercent}%` : "Unavailable"}</td><td>{priceFreshness(product.marketPrice?.updatedAt, now)}</td></>}
                 <td>
                   <span className={`signal signal--small ${signalClass(recommendation)}`}>
                     <span className="signal__dot" aria-hidden="true" />
-                    {signalLabel(recommendation)}
+                    {item.release.label ?? signalLabel(recommendation)}
                   </span>
                 </td>
                 <td><div className="table-save-actions"><SaveHeart name={product.name} saved={savedSlugs.has(product.slug)} onToggle={() => onToggle(product.slug)} /><a href={`/products/${product.slug}?return=${encodeURIComponent(returnTo)}`} aria-label={`Open details for ${product.name}`}>Open ↗</a></div></td>
@@ -422,6 +424,7 @@ export function CatalogApp({
   const [category, setCategory] = useState("all");
   const quickFilter = quickFilters.find(filter => quickCategories[filter.id] === category)?.id;
   const [setName, setSetName] = useState("all");
+  const [release, setRelease] = useState("all");
   const [recommendation, setRecommendation] = useState("all");
   const [numericFilters, setNumericFilters] = useState(initialNumericFilters);
   const [sort, setSort] = useState<SortKey>("relevance");
@@ -437,10 +440,10 @@ export function CatalogApp({
   useEffect(() => {
     const restore = () => {
       const state = readCatalogState(window.location.search);
-      setQuery(state.query); setCategory(state.category); setSetName(state.setName); setRecommendation(state.recommendation);
+      setQuery(state.query); setCategory(state.category); setSetName(state.setName); setRecommendation(state.recommendation); setRelease(state.release ?? "all");
       setNumericFilters(state.numeric); setSort(state.sort as SortKey); setView(window.matchMedia("(max-width: 680px)").matches ? "grid" : state.view);
       if (window.location.search) setSavedOnly(state.savedOnly);
-      setPageSize({ key: JSON.stringify([state.query, state.category, state.setName, state.recommendation, state.numeric, state.sort, state.savedOnly]), count: state.count });
+      setPageSize({ key: JSON.stringify([state.query, state.category, state.setName, state.recommendation, state.numeric, state.sort, state.savedOnly, state.release ?? "all"]), count: state.count });
       try { const previous = JSON.parse(sessionStorage.getItem(BROWSE_SESSION_KEY) ?? "null"); if (previous?.url === `${location.pathname}${location.search}` && Number.isFinite(previous.y)) restoreScroll.current = Math.max(0, previous.y); } catch { /* URL state still works without storage. */ }
       setBrowseReady(true);
     };
@@ -514,6 +517,7 @@ export function CatalogApp({
 
   const evaluated = useMemo(() => {
     return products.map<EvaluatedProduct>((product) => {
+      const release = productRelease(product, now);
       let estimate: ProductProfitEstimate | null = null;
 
       try {
@@ -530,14 +534,15 @@ export function CatalogApp({
 
       return {
         product,
+        release,
         estimate,
-        recommendation: estimate
+        recommendation: estimate && !release.upcoming
           ? getRecommendation({ profitCents: estimate.profitCents, roiPercent: estimate.roiPercent })
           : null,
         searchScore: scoreSearch(product, query),
       };
     });
-  }, [products, assumptions, query]);
+  }, [products, assumptions, query, now]);
 
   const visibleProducts = useMemo(() => {
     const msrpMin = parseFilter(numericFilters.msrpMin);
@@ -555,6 +560,7 @@ export function CatalogApp({
       if (item.searchScore <= 0) return false;
       if (!categoryMatches(product.category, category)) return false;
       if (setName !== "all" && product.setName !== setName) return false;
+      if (!releaseMatches(item.release.upcoming, release)) return false;
       if (recommendation !== "all" && item.recommendation !== recommendation) return false;
 
       return (
@@ -609,11 +615,12 @@ export function CatalogApp({
         }
       }
     });
-  }, [evaluated, category, setName, recommendation, numericFilters, sort, savedOnly, savedSlugs, query]);
+  }, [evaluated, category, setName, recommendation, numericFilters, sort, savedOnly, savedSlugs, query, release]);
 
   const clearFilters = () => {
     setCategory("all");
     setSetName("all");
+    setRelease("all");
     setRecommendation("all");
     setNumericFilters(initialNumericFilters);
   };
@@ -621,13 +628,14 @@ export function CatalogApp({
   const hasAdvancedFilters =
     category !== "all" ||
     setName !== "all" ||
+    release !== "all" ||
     recommendation !== "all" ||
     Object.values(numericFilters).some(Boolean);
 
-  const pageKey = JSON.stringify([query, category, setName, recommendation, numericFilters, sort, savedOnly]);
+  const pageKey = JSON.stringify([query, category, setName, recommendation, numericFilters, sort, savedOnly, release]);
   const shownCount = pageSize.key === pageKey ? pageSize.count : 48;
   const displayedProducts = visibleProducts.slice(0, shownCount);
-  const returnTo = writeCatalogState({ query, category, setName, recommendation, numeric: numericFilters, sort, view, savedOnly, count: shownCount });
+  const returnTo = writeCatalogState({ query, category, setName, release, recommendation, numeric: numericFilters, sort, view, savedOnly, count: shownCount });
   useEffect(() => {
     if (!browseReady) return;
     window.history.replaceState(window.history.state, "", returnTo);
@@ -638,6 +646,7 @@ export function CatalogApp({
     return () => { cancelAnimationFrame(frame); window.removeEventListener("pagehide", savePosition); document.removeEventListener("click", savePosition, true); };
   }, [returnTo, browseReady]);
   const activeFilters = [
+    ...(release !== "all" ? [{ label: release === "upcoming" ? "Upcoming releases" : "Released products", clear: () => setRelease("all") }] : []),
     ...(category !== "all" ? [{ label: quickFilters.find(f => quickCategories[f.id] === category)?.label ?? category, clear: () => setCategory("all") }] : []),
     ...(setName !== "all" ? [{ label: setName, clear: () => setSetName("all") }] : []),
     ...(recommendation !== "all" ? [{ label: signalLabel(recommendation as Recommendation), clear: () => setRecommendation("all") }] : []),
@@ -808,6 +817,7 @@ export function CatalogApp({
                 </p>
               </div>
               <div className="toolbar-actions">
+                <label className="sort-field release-filter"><span className="sr-only">Filter by release status</span><select value={release} onChange={event => setRelease(event.target.value)}><option value="all">All releases</option><option value="upcoming">Upcoming / preorder</option><option value="released">Released products</option></select></label>
                 <label className="sort-field catalog-set-select">
                   <span className="sr-only">Filter by Pokémon set</span>
                   <select value={setName} onChange={event => setSetName(event.target.value)}>

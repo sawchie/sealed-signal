@@ -47,7 +47,7 @@ test('category groups and exact selections have one meaning', () => {
   assert.ok(categoryMatches('Mini Tin', 'group:tin'));
 });
 test('catalog URL round-trips search, type, set, signal, sort, view, saved and page count', () => {
-  const state = { ...readCatalogState(''), query: '151 etb', category: 'group:etb', setName: '151', recommendation: 'BUY', sort: 'roi-desc', view: 'table', savedOnly: true, count: 144 };
+  const state = { ...readCatalogState(''), query: '151 etb', category: 'group:etb', setName: '151', release: 'upcoming', recommendation: 'BUY', sort: 'roi-desc', view: 'table', savedOnly: true, count: 144 };
   state.numeric.profitMin = '-5';
   assert.deepEqual(readCatalogState(writeCatalogState(state).slice(1)), state);
   assert.equal(readCatalogState('?sort=invalid&count=Infinity').count, 48);

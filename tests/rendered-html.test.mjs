@@ -25,6 +25,21 @@ test("all guides and tools render complete crawlable public content", async () =
 
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 
+test("upcoming products render presale context, exact provenance, and missing-price TBD", async () => {
+  const product = catalogImport.items.find(p => p.sourceProductId === 712099);
+  const html = await (await render(`/products/${product.slug}`)).text();
+  assert.match(html, /PREORDER/);
+  assert.match(html, /Presale market estimate/);
+  assert.match(html, /TBD/);
+  assert.match(html, /Not released yet/);
+  assert.match(html, /2026-11-06/);
+  assert.match(html, /Product announcement and expected shipping date/);
+  const fallback = catalogImport.items.find(p => p.sourceProductId === 712109);
+  const fallbackHtml = await (await render(`/products/${fallback.slug}`)).text();
+  assert.match(fallbackHtml, /product-image__fallback/);
+  assert.doesNotMatch(fallbackHtml, /src="null"/);
+});
+
 async function render(path = "/", options = {}) {
   const importUrl = new URL(workerUrl);
   importUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${Math.random()}`);

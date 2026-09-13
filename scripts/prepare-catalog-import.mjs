@@ -91,6 +91,11 @@ for (const p of candidates) {
     marketCents: market ? Math.round(market.marketPrice * 100) : null,
   });
 }
+// The separately reviewed upcoming catalog permits TBD prices/photos. Preserve it
+// when rebuilding the stricter released-product import, including quote dates.
+const announced = JSON.parse(await read('data/announced-products.json'));
+const prior = JSON.parse(await read('data/catalog-import.json'));
+for (const item of prior.items) if (announced[item.id] && !items.some(p => p.id === item.id)) items.push(item);
 const result = { provider: 'TCGplayer via TCGCSV', providerUpdatedAt, retrievedAt: new Date().toISOString(), items };
 await writeFile(new URL('data/catalog-import.json', root), JSON.stringify(result, null, 2) + '\n');
 await writeFile(new URL('.catalog-cache/import-audit.json', root), JSON.stringify({ excluded, matchedRetail: items.filter(p=>p.msrpCents!==null).map(p=>({id:p.id,name:p.name,msrp:p.msrpCents,url:p.retailSourceUrl})), missingRetail:items.filter(p=>p.msrpCents===null).map(p=>({id:p.id,name:p.name})), missingMarket:items.filter(p=>p.marketCents===null).map(p=>({id:p.id,name:p.name})) }, null, 2));
