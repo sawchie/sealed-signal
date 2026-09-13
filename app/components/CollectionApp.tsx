@@ -38,6 +38,9 @@ function Gain({ value }: { value: number | null }) {
 }
 
 function ValueHistory({ points }: { points: CollectionSnapshot[] }) {
+  const [observationsOpen, setObservationsOpen] = useState(false);
+  const observationsId = useId();
+  const observationsToggle = useRef<HTMLButtonElement>(null);
   const quoted = (p: CollectionSnapshot) => p.units === 0 || p.pricedUnits > 0;
   const label = (p: CollectionSnapshot) => quoted(p) ? `${formatMoney(p.marketCents)}${p.pricedUnits < p.units ? " (partial)" : ""}` : "Market estimate unavailable";
   const max = Math.max(...points.map(p => p.marketCents), 1);
@@ -54,7 +57,13 @@ function ValueHistory({ points }: { points: CollectionSnapshot[] }) {
         <text x="40" y="196">{formatCompactDate(points[0].at)}</text><text x="720" y="196" textAnchor="end">{formatCompactDate(points.at(-1)!.at)}</text>
       </svg>
     </>}
-    {!!points.length && <details className={styles.historyRecords}><summary>View observations</summary><div className={styles.tableScroll}><table><caption className="sr-only">Collection value observations</caption><thead><tr><th>Date</th><th>Market subtotal</th><th>Priced units</th><th>Owned units</th></tr></thead><tbody>{[...points].reverse().map(p => <tr key={p.at}><td>{formatCompactDate(p.at)}</td><td>{label(p)}</td><td>{p.pricedUnits} / {p.units}</td><td>{p.units}</td></tr>)}</tbody></table></div></details>}
+    {!!points.length && <div className={styles.historyRecords} role="presentation" onKeyDown={event => { if (event.key === "Escape" && observationsOpen) { event.preventDefault(); setObservationsOpen(false); observationsToggle.current?.focus(); } }}>
+      <button ref={observationsToggle} type="button" aria-expanded={observationsOpen} aria-controls={observationsId} onClick={() => setObservationsOpen(open => !open)}>
+        <svg viewBox="0 0 16 16" aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="m5 3 5 5-5 5" /></svg>{observationsOpen ? "Hide observations" : "View observations"}
+      </button>
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- The bounded table region must be focusable for keyboard scrolling. */}
+      <div id={observationsId} hidden={!observationsOpen} className={styles.tableScroll} role="region" aria-label="Collection value observations" tabIndex={0}><table><caption className="sr-only">Collection value observations</caption><thead><tr><th scope="col">Date</th><th scope="col">Market subtotal</th><th scope="col">Priced units</th><th scope="col">Owned units</th></tr></thead><tbody>{[...points].reverse().map(p => <tr key={p.at}><td>{formatCompactDate(p.at)}</td><td>{label(p)}</td><td>{p.pricedUnits} / {p.units}</td><td>{p.units}</td></tr>)}</tbody></table></div>
+    </div>}
   </section>;
 }
 

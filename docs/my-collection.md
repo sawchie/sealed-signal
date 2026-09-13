@@ -34,6 +34,8 @@ Use an **Info** icon for calculation or storage explanations: hover, focus with 
 
 ## History and its limits
 
+**View observations / Hide observations** expands and collapses the table within the page, moving the list down rather than covering it. Escape closes it and returns focus to the toggle. Long tables scroll inside their bounded region; the overview keeps a separate gap above the collection list.
+
 **Value history**, beside the title on desktop and below it on mobile, observes the collection when you visit or edit this page. There is no background portfolio tracking, historical backfill, or continuous live market feed. Adds, sales, corrections, holdings changes, and quote coverage can all move the chart; it is not investment return.
 
 Purchase and sale dates use your local calendar. Snapshot timestamps and daily grouping use UTC: the latest changed observation replaces that UTC day’s prior observation, and up to 365 daily observations are retained. A comparison chart needs at least two observations; until then it asks you to return another day instead of inventing a curve. **View observations** opens the values-and-coverage table. Missing quotes produce chart gaps, not zero values.

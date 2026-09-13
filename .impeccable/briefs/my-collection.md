@@ -16,6 +16,8 @@ My Collection is first in the left site navigation. A compact utility row holds 
 
 ## Layout and components
 
+Observations now use an explicit View/Hide button with expanded state and Escape-to-close focus return. The bounded table stays in normal flow rather than an absolute overlay. The overview reserves 36px above the ledger on desktop and 28px on mobile; expanded history does not stretch the price tiles. Verified open/close by click and keyboard, mobile width 390px without page overflow, and 77 passing tests.
+
 Latest refinement: title and Backup/Add purchase actions lead the page. The overview below pairs left-hand value history with six totals in a right-hand three-by-two grid; mobile stacks history above two-column totals. Browser-local guidance moved inside Backup. Paid / unit is a bordered inline decimal field, saving on blur/Enter, cancelling with Escape, validating non-negative amounts, and retaining unknown costs as blank. Writes reuse the current locked store record to preserve quantities/dates and recalculate held and sold gains.
 
 - A centered container (maximum 1440px) uses six compact summary columns, a two-part header, and a ledger with a 248px sidebar. Flat dividers and aligned figures make records the primary working area.
