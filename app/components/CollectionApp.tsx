@@ -63,8 +63,29 @@ function LotRow({ lot, state, product }: { lot: CollectionLot; state: Collection
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
   const [remove, setRemove] = useState(false);
+  const [costDraft, setCostDraft] = useState<string | null>(null);
+  const [costError, setCostError] = useState("");
+  const costSaving = useRef(false);
+  const costHelpId = useId();
   const owned = ownedQuantity(state, lot);
   const sold = lot.quantity - owned;
+  async function saveInlineCost() {
+    if (costDraft === null || costSaving.current) return;
+    const raw = costDraft.trim();
+    const cents = raw ? parseAmount(raw) : null;
+    if (raw && cents === null) { setCostError("Enter a non-negative dollar amount with up to two decimals, or leave blank if unknown."); return; }
+    if (cents === lot.unitCostCents) { setCostDraft(null); setCostError(""); return; }
+    costSaving.current = true; setBusy(true); setCostError(""); setMessage("");
+    try {
+      const ok = await changeCollection(latest => {
+        const current = latest.lots.find(row => row.id === lot.id);
+        if (!current) throw new Error("This purchase no longer exists. Refresh your collection.");
+        return updateCollectionLot(latest, lot.id, { quantity: current.quantity, acquiredOn: current.acquiredOn, unitCostCents: cents });
+      });
+      if (ok) { setCostDraft(null); setMessage("Paid per unit saved."); }
+      else setCostError("Price not saved. Check the collection message above, then try again.");
+    } finally { costSaving.current = false; setBusy(false); }
+  }
   async function submit(event: FormEvent<HTMLFormElement>, kind: "edit" | "sale") {
     event.preventDefault(); setError(""); setMessage(""); setBusy(true);
     const data = new FormData(event.currentTarget);
@@ -79,7 +100,10 @@ function LotRow({ lot, state, product }: { lot: CollectionLot; state: Collection
   return <article className={styles.lot}>
     <div className={styles.lotTop}><ProductImage src={product?.imageUrl ?? lot.imageUrl} alt={`${lot.name} packaging`} category={lot.category} setName={lot.setName} productName={lot.name} className={styles.thumb} />
       <div className={styles.identity}>{product ? <a href={`/products/${lot.slug}?return=%2Fcollection`}>{lot.name}</a> : <strong>{lot.name}</strong>}<p>{lot.setName ?? "Mixed / unverified set"} · {formatCompactDate(lot.acquiredOn)}</p>{!product && <p>Not in the current catalog. Your record is preserved; current prices are unavailable.</p>}<span className={owned ? styles.owned : styles.sold}>{owned} owned{sold ? ` · ${sold} sold` : ""}</span></div>
-      <dl className={styles.rowPrices}><div><dt>Paid / unit</dt><dd>{lot.unitCostCents === null ? "—" : formatMoney(lot.unitCostCents)}</dd></div><div><dt>Market / unit</dt><dd>{product?.marketCents == null ? "—" : formatMoney(product.marketCents)}</dd></div><div><dt>Value</dt><dd>{owned ? formatMoney(product?.marketCents == null ? null : product.marketCents * owned) : "—"}</dd></div><div><dt>Est. gain</dt><dd><Gain value={collectionGain(product?.marketCents == null ? null : product.marketCents * owned, lot.unitCostCents, owned)} /></dd></div></dl>
+      <dl className={styles.rowPrices}><div><dt>Paid / unit</dt><dd><span className={styles.inlineCost}><span aria-hidden="true">$</span><input aria-label={`Paid per unit for ${lot.name}`} aria-describedby={costHelpId} aria-invalid={!!costError} inputMode="decimal" autoComplete="off" placeholder="Unknown" disabled={busy}
+        value={costDraft ?? (lot.unitCostCents === null ? "" : (lot.unitCostCents / 100).toFixed(2))}
+        onChange={e => { setCostDraft(e.target.value); setCostError(""); setMessage(""); }} onBlur={saveInlineCost}
+        onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); e.currentTarget.blur(); } if (e.key === "Escape") { e.preventDefault(); setCostDraft(null); setCostError(""); } }} /></span></dd></div><div><dt>Market / unit</dt><dd>{product?.marketCents == null ? "—" : formatMoney(product.marketCents)}</dd></div><div><dt>Value</dt><dd>{owned ? formatMoney(product?.marketCents == null ? null : product.marketCents * owned) : "—"}</dd></div><div><dt>Est. gain</dt><dd><Gain value={collectionGain(product?.marketCents == null ? null : product.marketCents * owned, lot.unitCostCents, owned)} /></dd></div></dl>
     </div>
     <details className={styles.manageRow}><summary aria-label={`Manage ${lot.name}`}>Manage</summary>
     <div className={styles.rowActions}>
@@ -101,6 +125,7 @@ function LotRow({ lot, state, product }: { lot: CollectionLot; state: Collection
       {!sold && <div>{remove ? <><span>Remove this purchase record?</span><button onClick={async () => { if (await changeCollection(state => removeCollectionLot(state, lot.id))) setRemove(false); }}>Confirm removal</button><button onClick={() => setRemove(false)}>Cancel</button></> : <button onClick={() => setRemove(true)}>Remove mistaken entry</button>}</div>}
     </div>
     </details>
+    <p id={costHelpId} className={costError ? styles.error : styles.costHint} role={costError ? "alert" : undefined}>{costError || `Paid per unit saves on Enter or when you leave the field. Escape cancels. Blank means unknown.${sold ? " Updating this purchase cost also recalculates its recorded sale profit." : ""}`}</p>
     {error && <p role="alert" className={styles.error}>{error}</p>}<p role="status" className={styles.feedback}>{message}</p>
   </article>;
 }
@@ -147,17 +172,17 @@ export function CollectionApp({ products }: { products: CollectionProduct[] }) {
     catch { setMessage("Could not read your backup. Browser storage is unavailable."); }
   }
   return <main className={styles.main}>
-    <div className={styles.utility}>
-      <span className={styles.localLabel}>On this browser <Info label="browser storage">No account or cloud sync. Clearing site data removes your collection. Download backups regularly; they contain your private purchase and sale records.</Info></span>
-      <details className={styles.backupMenu}><summary>Backup</summary><div className={styles.backupPanel}><button onClick={backup} disabled={!ready}>Download backup</button><details><summary>Restore backup</summary><label>Choose a PokeScratch JSON backup<input type="file" accept="application/json,.json" onChange={async e => { setPending(null); setImportConfirm(false); const file = e.target.files?.[0]; if (!file) return; try { if (file.size > MAX_COLLECTION_BACKUP_BYTES) throw new Error("Backup is too large."); setPending(parseCollection(await file.text())); setMessage(""); } catch (error) { setMessage(error instanceof Error ? error.message : "Invalid backup."); } }} /></label>{pending && <div><p>{pending.lots.length} purchase records · {pending.sales.length} sales. Restoring replaces this browser’s collection; it does not merge it.</p><label><input type="checkbox" checked={importConfirm} onChange={e => setImportConfirm(e.target.checked)} />I have backed up my current collection and want to replace it.</label><button disabled={!importConfirm} onClick={async () => { if (await changeCollection(() => pending, true)) { setPending(null); setImportConfirm(false); setMessage("Backup restored."); } }}>Replace with this backup</button><button onClick={() => setPending(null)}>Cancel</button></div>}</details></div></details>
-      <button className={styles.primary} onClick={() => setAddOpen(!addOpen)} aria-expanded={addOpen} aria-controls="collection-add-purchase">+ Add purchase</button>
-    </div>
     <header className={styles.header}>
       <div><h1>My Collection</h1><p>{ready ? `${totals.ownedUnits} owned · ${totals.distinctProducts} products · USD` : "Your sealed collection"} <Info label="collection totals">Totals cover all held units, not just filtered rows. Sold units are excluded. “—” means the cost or quote needed for a calculation is unknown.</Info></p></div>
-      <ValueHistory points={state.snapshots} />
+    <div className={styles.utility}>
+      <details className={styles.backupMenu}><summary>Backup</summary><div className={styles.backupPanel}><p>Your collection stays in this browser, without an account or cloud sync. Clearing site data removes it. Keep a backup of your private purchase and sale records.</p><button onClick={backup} disabled={!ready}>Download backup</button><details><summary>Restore backup</summary><label>Choose a PokeScratch JSON backup<input type="file" accept="application/json,.json" onChange={async e => { setPending(null); setImportConfirm(false); const file = e.target.files?.[0]; if (!file) return; try { if (file.size > MAX_COLLECTION_BACKUP_BYTES) throw new Error("Backup is too large."); setPending(parseCollection(await file.text())); setMessage(""); } catch (error) { setMessage(error instanceof Error ? error.message : "Invalid backup."); } }} /></label>{pending && <div><p>{pending.lots.length} purchase records · {pending.sales.length} sales. Restoring replaces this browser’s collection; it does not merge it.</p><label><input type="checkbox" checked={importConfirm} onChange={e => setImportConfirm(e.target.checked)} />I have backed up my current collection and want to replace it.</label><button disabled={!importConfirm} onClick={async () => { if (await changeCollection(() => pending, true)) { setPending(null); setImportConfirm(false); setMessage("Backup restored."); } }}>Replace with this backup</button><button onClick={() => setPending(null)}>Cancel</button></div>}</details></div></details>
+      <button className={styles.primary} onClick={() => setAddOpen(!addOpen)} aria-expanded={addOpen} aria-controls="collection-add-purchase">+ Add purchase</button>
+    </div>
     </header>
     {error && <p role="alert" className={styles.error}>{error}</p>}<p className={styles.feedback} role="status">{message}</p>
     {!ready ? <p role="status">Loading your collection from this browser…</p> : <>
+      <div className={styles.overview}>
+      <ValueHistory points={state.snapshots} />
       <dl className={styles.totals} aria-label="Owned collection totals">
         <div><dt>Market <Info label="market value">{totals.pricedUnits} of {totals.ownedUnits} units quoted. Gross market estimate, not guaranteed cash-out proceeds. Quote sources and dates are on each product page.</Info></dt><dd>{totals.ownedUnits ? moneyOrUnknown(totals.marketCents, totals.pricedUnits) : "$0.00"}</dd>{totals.pricedUnits < totals.ownedUnits && <small>Partial · {totals.pricedUnits}/{totals.ownedUnits} quoted</small>}</div>
         <div><dt>Paid <Info label="paid cost">Actual purchase cost for held units. {totals.costedUnits} of {totals.ownedUnits} units have a recorded cost. Unknown costs are never assumed to be zero.</Info></dt><dd>{totals.ownedUnits ? moneyOrUnknown(totals.paidCents, totals.costedUnits) : "$0.00"}</dd>{totals.costedUnits < totals.ownedUnits && <small>Partial · {totals.costedUnits}/{totals.ownedUnits} costed</small>}</div>
@@ -166,6 +191,7 @@ export function CollectionApp({ products }: { products: CollectionProduct[] }) {
         <div><dt>Packs <Info label="verified packs">{totals.packKnownUnits} of {totals.ownedUnits} units have verified pack counts. Promos, accessories and unknown contents are not counted.</Info></dt><dd>{totals.knownPacks.toLocaleString()}</dd>{totals.packKnownUnits < totals.ownedUnits && <small>Partial · verified only</small>}</div>
         <div><dt>Paid / pack <Info label="paid per pack">Paid cost divided by verified booster packs. Uses only {totals.packCostPacks} packs with a recorded cost. No value deducted for promos or extras.</Info></dt><dd>{costPerPack === null ? "—" : formatMoney(costPerPack)}</dd></div>
       </dl>
+      </div>
       {addOpen && <section id="collection-add-purchase" className={styles.addPurchase}><div className={styles.sectionHeading}><h2>Add a purchase</h2><button onClick={() => setAddOpen(false)}>Close</button></div><form onSubmit={add} className={styles.form}><label className={styles.wide}>Product<select name="product" required defaultValue=""><option value="" disabled>Choose an exact product</option>{[...products].sort((a, b) => a.name.localeCompare(b.name)).map(p => <option key={p.slug} value={p.slug}>{p.name}</option>)}</select></label><label>Quantity<input name="quantity" type="number" min="1" max="10000" defaultValue="1" required /></label><label>Paid per unit ($)<input name="cost" inputMode="decimal" placeholder="Leave blank if unknown" /></label><label>Purchase date<input name="date" type="date" max={day()} defaultValue={day()} required /></label><p>Record what you actually paid, including purchase tax and inbound shipping if known. Plus-button additions start with an unknown cost and today’s date; edit those after adding.</p><button type="submit" disabled={adding || blocked}>Add purchase</button></form></section>}
       <div className={styles.collectionLayout}>
         <div className={styles.holdings}>

@@ -28,6 +28,20 @@ const add = (state = emptyCollection(), overrides = {}, id = 'lot-1', quantity =
 const sale = { id: 'sale-1', lotId: 'lot-1', quantity: 1, proceedsCents: 10001, feesCents: 1001, soldOn: '2026-09-12' };
 const parse = value => parseCollection(JSON.stringify(value), now);
 
+test('editing an unknown unit cost updates gains without changing quantities, dates, or sales', () => {
+  const state = recordCollectionSale(add(emptyCollection(), {}, 'lot-1', 3, null), sale, now);
+  const lot = state.lots[0];
+  const updated = updateCollectionLot(state, lot.id, { quantity: lot.quantity, acquiredOn: lot.acquiredOn, unitCostCents: 6025 }, now);
+  assert.equal(updated.lots[0].quantity, 3);
+  assert.equal(updated.lots[0].acquiredOn, lot.acquiredOn);
+  assert.deepEqual(updated.sales, state.sales);
+  assert.equal(summarizeCollection(updated, [product]).paidCents, 12050);
+  assert.equal(collectionGain(sale.proceedsCents, updated.lots[0].unitCostCents, sale.quantity, sale.feesCents), 2975);
+  const unknown = updateCollectionLot(updated, lot.id, { quantity: lot.quantity, acquiredOn: lot.acquiredOn, unitCostCents: null }, now);
+  assert.equal(summarizeCollection(unknown, [product]).costedUnits, 0);
+  assert.throws(() => updateCollectionLot(updated, lot.id, { quantity: lot.quantity, acquiredOn: lot.acquiredOn, unitCostCents: -1 }, now));
+});
+
 test('empty and valid backups round-trip; unknown cost is not replaced by MSRP', () => {
   assert.deepEqual(parseCollection(null), emptyCollection());
   const state = add(emptyCollection(), {}, 'unknown', 2, null);

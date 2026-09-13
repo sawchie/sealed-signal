@@ -16,6 +16,8 @@ My Collection is first in the left site navigation. A compact utility row holds 
 
 ## Layout and components
 
+Latest refinement: title and Backup/Add purchase actions lead the page. The overview below pairs left-hand value history with six totals in a right-hand three-by-two grid; mobile stacks history above two-column totals. Browser-local guidance moved inside Backup. Paid / unit is a bordered inline decimal field, saving on blur/Enter, cancelling with Escape, validating non-negative amounts, and retaining unknown costs as blank. Writes reuse the current locked store record to preserve quantities/dates and recalculate held and sold gains.
+
 - A centered container (maximum 1440px) uses six compact summary columns, a two-part header, and a ledger with a 248px sidebar. Flat dividers and aligned figures make records the primary working area.
 - Totals are Market, Paid, Retail, Est. gain, Packs, and Paid / pack. Neutral figures are white; gains are signed green for positive and red for negative, with zero/unknown neutral. Market, actual paid cost, and reference retail stay distinct. Essential partial-coverage labels remain visible beside totals; unknown inputs never become zero-valued holdings or fabricated gain.
 - Rows align a small packaging image, identity/owned quantity, Paid / unit, Market / unit, held Value, and Est. gain. Row gain is held market value minus recorded cost before selling costs. Sale profit uses actual proceeds minus recorded fees/shipping and sold purchase cost; realized and estimated results are not combined.

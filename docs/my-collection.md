@@ -4,6 +4,8 @@ My Collection is a browser-local inventory ledger of sealed products you own, wh
 
 ## Add and manage purchases
 
+- **Paid / unit is editable directly in each purchase row.** Enter a cost and press Enter, Tab, or click elsewhere to save; Escape cancels the draft. Blank means unknown, while zero means free. Totals and gains recalculate on save. Correcting the cost of a partly sold purchase also updates its sale-profit calculation.
+
 - Use a product’s **plus** to add one owned unit. Each addition starts with today’s local date and an unknown paid price; open My Collection, then the row’s **Manage → Edit purchase**, to correct those details. A heart still watches a product without adding ownership.
 - Press **+ Add purchase** to open the purchase form; press it again or **Close** to hide the form. Choose an exact catalog product, quantity, paid price per unit, and purchase date. Include purchase tax and inbound shipping in your unit cost if you want them counted. Leave an unknown cost blank; enter zero only when it was actually free.
 - Record separate purchases for different costs or dates. Matching unsold purchases with the same product, cost, and date may combine into one record.
@@ -17,6 +19,8 @@ Open **Manage → Mark sold** on a held purchase. Enter units sold, total gross 
 Sold units are removed from owned totals, not deleted. **Sold** retains the sale history with Sold for, Fees + shipping, and Sale profit when purchase cost is known. **Undo sale** returns those units to Owned. Sales cannot exceed purchased units or predate the purchase; future purchase and sale dates are rejected.
 
 ## Understand the numbers
+
+The title sits at the top with Backup and Add purchase. Below it, value history occupies the left half and the six totals form a compact block on the right; the collection list follows immediately. On mobile these sections stack. Browser-only storage guidance is inside Backup rather than above the title.
 
 - The six compact totals are **Market**, **Paid**, **Retail**, **Est. gain**, **Packs**, and **Paid / pack**. Ordinary figures are white; signed gains are green when positive, red when negative, and neutral at zero or when unknown.
 - **Market** is current available catalog market price multiplied by units still held. It is not a guaranteed cash-out value. Quote dates and provenance remain on each product page. **Retail** uses catalog MSRP/retail references, not your spending; **Paid** uses only actual paid amounts entered for held units.
