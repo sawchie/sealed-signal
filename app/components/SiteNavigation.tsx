@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-const links = [["/", "Catalog"], ["/collection", "My Collection"], ["/guides", "Guides"], ["/tools", "Tools"], ["/about", "About"]];
+const links = [["/collection", "My Collection"], ["/", "Catalog"], ["/guides", "Guides"], ["/tools", "Tools"], ["/about", "About"]];
 export function SiteNavigation() {
   const pathname = usePathname();
   const items = links.map(([href, label]) => <a key={href} href={href} aria-current={pathname === href || (href !== "/" && pathname.startsWith(`${href}/`)) ? "page" : undefined}>{label}</a>);

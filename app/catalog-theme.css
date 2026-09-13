@@ -8,7 +8,9 @@ body { background: #080b16; }
 .app-shell--catalog .empty-state p { max-width: 42ch; color: #bfc6db; }
 .app-shell--catalog .empty-state .button { min-height: 44px; border-color: #9f6fd0; color: #ecdfff; background: #281b3d; }
 .site-header { position: relative; background: #080b16; box-shadow: none; border-color: #28283d; }
-.site-header__inner { width: 100%; max-width: 1440px; min-height: 78px; padding-inline: 32px; }
+.site-header__inner { width: 100%; max-width: 1440px; min-height: 78px; padding-inline: 32px; justify-content: flex-start; gap: 44px; }
+.site-nav { margin-left: 0; margin-right: auto; }
+.mobile-navigation { margin-left: auto; }
 .brand__name { font-size: 24px; }
 .brand__mark { width: 32px; height: 32px; background: transparent; border: 0; box-shadow: none; }
 .brand__mark svg { width: 29px; height: 29px; fill: none; stroke: #c58aff; stroke-width: 2; }

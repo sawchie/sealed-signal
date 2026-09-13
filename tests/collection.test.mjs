@@ -1,5 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { collectionGain, gainTone } from '../lib/collection-gain.ts';
+
+test('gain signs match held spreads and realized sales without treating missing cost as zero', () => {
+  assert.equal(collectionGain(15000, 4800, 2), 5400);
+  assert.equal(collectionGain(15000, 4800, 2, 1000), 4400);
+  assert.equal(collectionGain(5000, 6000, 1, 500), -1500);
+  assert.equal(collectionGain(5000, null, 1), null);
+  assert.equal(collectionGain(null, 5000, 1), null);
+  assert.equal(collectionGain(0, 5000, 0), null);
+  assert.equal(gainTone(5400), 'positive');
+  assert.equal(gainTone(-1500), 'negative');
+  assert.equal(gainTone(0), 'neutral');
+  assert.equal(gainTone(null), 'neutral');
+});
 import {
   emptyCollection, parseCollection, ownedQuantity, addCollectionLot, updateCollectionLot,
   removeCollectionLot, recordCollectionSale, undoCollectionSale, summarizeCollection, recordCollectionSnapshot,

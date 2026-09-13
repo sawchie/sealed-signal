@@ -1,10 +1,10 @@
 # My Collection — surface brief
 
-Mode: **Operate**. Target: `/collection`, with ownership entry points in the catalog and product detail. Status: scoped implementation complete, September 13, 2026.
+Mode: **Operate**. Target: `/collection`, with ownership entry points in the catalog and product detail. Approved expression: **Inventory ledger**. Status: scoped redesign complete, September 13, 2026.
 
 ## Scope and authority
 
-This is an ordinary extension of PokeScratch’s existing Arcade After Dark collector world: navy ground, restrained purple/cyan accents, real product packaging, and clear financial labels. The collection is a quiet working ledger within that world, not a new global design direction. `PRODUCT.md` supplies product commitments; the built components and styles supply this surface’s implementation truth.
+The approved Inventory ledger redesign keeps PokeScratch’s navy collector world and real product packaging, with quiet white figures, restrained cool controls, and signed gain colors. It changes this surface’s composition, not the global visual direction. `PRODUCT.md` supplies product commitments; the built components and styles supply this surface’s implementation truth. Collection state, validation, and browser-local storage behavior are unchanged.
 
 This brief records local composition and behavior only. It does not replace or refresh root `DESIGN.md` or `.impeccable/design.json`; their reported drift remains outside this change’s authority.
 
@@ -12,17 +12,18 @@ This brief records local composition and behavior only. It does not replace or r
 
 Collectors record exact sealed products, quantities, actual paid costs, and sales, then inspect held value with explicit data coverage. Hearts continue to mean watch/save; the separate plus means add one owned unit. No MSRP is silently entered as a purchase cost.
 
-The page order is: title and shortcuts; browser-storage warning and backup controls; three held-value totals; pack and cost/sales summaries; collapsed purchase form; purchase views and filters; records; recorded-value history. “Manage purchases” jumps directly to the working records beneath the summaries. “Browse & add products” returns to the catalog. Product names lead to their exact detail page with `/collection` as return context.
+My Collection is first in the left site navigation. A compact utility row holds browser-local context, Backup, and + Add purchase. A roomy header pairs the title and owned counts with real value history. Six compact totals precede the working ledger; Owned / All purchases / Sold, search, and set filtering sit directly above records. Packs by set and sales totals occupy the supporting right sidebar. Product names lead to their exact detail page with `/collection` as return context.
 
 ## Layout and components
 
-- A centered container (maximum 1320px) uses three summary columns and two analytical columns on desktop. Dividers and restrained dark rows organize the page without adding dashboard decoration.
-- Purchase rows align packaging, identity/owned quantity, and three price fields. Below 900px the price fields move beneath identity. Below 650px the header, totals, analytics, and forms stack; page gutters reduce to 16px. Search, filters, and record actions wrap.
-- Controls have a 44px minimum height, visible cyan keyboard focus, persistent labels, and native disclosure behavior. Selected collection views use a restrained purple treatment and `aria-pressed`; save feedback uses status regions and failures use alerts.
-- “Add a purchase,” “Edit purchase,” “Mark sold,” and “Restore backup” disclose detailed forms only when needed. Removal requires a separate confirmation; restore requires a checked acknowledgement and explicit replacement action.
-- The three principal values stay distinct: market estimate, reference retail, and recorded purchase cost. Coverage text stays adjacent to totals. Missing costs, quotes, or verified contents remain unavailable/unknown, not zero.
-- Sold quantities leave held totals but remain in All purchases and Sales history. The record’s owned/sold labels do not depend on color alone.
-- The history chart appears after at least two observations and has a corresponding values-and-coverage table. Missing quote observations create gaps, not zero-value points. Its explanatory copy must remain: this is visit/edit history, not an investment-return chart.
+- A centered container (maximum 1440px) uses six compact summary columns, a two-part header, and a ledger with a 248px sidebar. Flat dividers and aligned figures make records the primary working area.
+- Totals are Market, Paid, Retail, Est. gain, Packs, and Paid / pack. Neutral figures are white; gains are signed green for positive and red for negative, with zero/unknown neutral. Market, actual paid cost, and reference retail stay distinct. Essential partial-coverage labels remain visible beside totals; unknown inputs never become zero-valued holdings or fabricated gain.
+- Rows align a small packaging image, identity/owned quantity, Paid / unit, Market / unit, held Value, and Est. gain. Row gain is held market value minus recorded cost before selling costs. Sale profit uses actual proceeds minus recorded fees/shipping and sold purchase cost; realized and estimated results are not combined.
+- Below 1150px totals use three columns, row labels become visible, and row figures move beneath identity. Below 800px the sidebar moves below the ledger. Below 600px totals use two columns, header and forms stack, row figures use a two-by-two grid, and page gutters reduce to 16px.
+- Buttons and form controls use 44px minimum heights and visible cyan keyboard focus. Collection views have an understated underline and `aria-pressed`. Info explanations work by hover, focus, or tap and dismiss with Escape or blur; essential partial coverage is not hidden in them. Save feedback uses status regions and failures use alerts.
+- + Add purchase toggles a form with a Close action. Each row’s Manage disclosure reveals Edit purchase, Mark sold when held, and mistaken-entry removal when eligible. Backup is a compact disclosure containing download and restore. Removal still requires confirmation; restore still requires acknowledgement and explicit replacement.
+- Sold quantities leave held totals but remain in All purchases and Sold. Owned/sold labels and signed gains do not depend on color alone.
+- Value history sits beside the title on desktop, uses only recorded observations, and exposes a View observations table. With fewer than two observations it shows an honest first-snapshot/return-another-day state, never a decorative curve. Missing quotes create gaps. The Info explanation identifies visit/edit history, not investment return.
 
 ## Source boundaries
 
@@ -33,16 +34,16 @@ The page order is: title and shortcuts; browser-storage warning and backup contr
 - `lib/collection.ts`: validated versioned records, integer-cent calculations, quantities, sale protection, coverage, and bounded UTC observations.
 - `lib/collection-store.ts`: browser-local persistence, cross-tab synchronization, locked reread-before-write, recoverable errors.
 - `lib/collection-product.ts`: catalog adapter; only USD retail/market quotes enter collection valuation. Verified pack counts come from product facts, never category guesses.
+- `lib/collection-gain.ts`: shared held-spread/sale-profit arithmetic and positive, negative, or neutral display tone.
 
 Catalog administration, product IDs/URLs, market sourcing, recommendation thresholds, and the global visual system are not owned by this surface. No accounts, cloud sync, or background portfolio tracking are implied.
 
 ## Acceptance evidence
 
-The completion review’s sole navigation finding was resolved with the visible “Manage purchases” shortcut. The scoped finish handoff reports 75 passing automated tests and desktop/mobile browser verification. Required reviewed captures:
+The `ledger_finish_reviewer` critic approved scoped ship with no material fixes. The completion handoff reports 76 passing automated tests, lint, typecheck, and production build, plus desktop/mobile browser checks. A browser sale check confirmed $124 proceeds minus $10 recorded fees and $60 purchase cost displays +$54 sale profit. Opened and validated captures:
 
-- `.impeccable/review/collection/desktop-final.png`
-- `.impeccable/review/collection/mobile-final.png`
-- `.impeccable/review/collection/desktop-purchase.png`
-- `.impeccable/review/collection/mobile-sale.png`
+- `.impeccable/review/collection-ledger/desktop.png`
+- `.impeccable/review/collection-ledger/mobile.png`
+- `.impeccable/review/collection-ledger/mobile-sale.png`
 
-The additional `.impeccable/review/collection/mobile-catalog.png` capture covers separate mobile heart/plus entry points. Future changes should preserve accessible operation, honest partial coverage, retained sales, and explicit backup replacement before pursuing visual refinements.
+Only one genuine observation was available in the reviewed browser state, so the actual history curve was source-reviewed rather than visually verified with multiple observations; no fake curve was inserted. The design detector was attempted but its output pipe failed, so this handoff does not claim a clean detector result. Preserve accessible operation, honest partial coverage, retained sales, and explicit backup replacement in future work.
