@@ -141,7 +141,7 @@ body { background: #080b16; }
 @media (min-width: 1100px) {
   .app-shell--catalog .price-pair strong, .app-shell--catalog .price-pair > div:last-child strong { font-size: clamp(20px, 1.6vw, 24px); }
 }
-.app-shell--catalog .product-card__visual > .signal { top: 10px; right: 10px; font-size: 9px; border-radius: 4px; padding: 6px 8px; box-shadow: none; }
+.app-shell--catalog .product-card__signal { position: absolute; top: 10px; right: 10px; font-size: 9px; border-radius: 4px; padding: 6px 8px; box-shadow: none; }
 .app-shell--catalog .catalog-load-more { display: flex; gap: 10px; margin: 28px auto 0; min-height: 48px; background: #211534; border: 1px solid #8051ac; color: #f8f4ff; }
 .app-shell--catalog .catalog-load-more span { color: #bbb1cd; }
 .catalog-update { padding: 18px 0 26px; border-top: 1px solid #2b2b40; color: #b9b5c9; font-size: 12px; }
@@ -314,18 +314,22 @@ input[aria-invalid="true"] { border-color: #ff8fae !important; }
   .assumption-grid .saved-preference { grid-column: 1 / -1; }
 }
 @media (max-width: 600px) {
-  .app-shell--catalog .product-card__link { display: grid; grid-template-columns: clamp(120px, 38vw, 168px) minmax(0, 1fr); min-height: 196px; align-items: stretch; }
-  .app-shell--catalog .product-card__visual { height: 100%; min-height: 0; border: 0; border-radius: 0; }
-  .app-shell--catalog .product-card__visual .product-image { position: absolute; inset: 0; min-height: 0; }
-  .app-shell--catalog .product-card__visual .product-image img { padding: 54px 8px 34px; }
-  .app-shell--catalog .product-card > .collection-add { top: 8px; left: 60px; }
-  .app-shell--catalog .product-card__visual .signal { top: auto; bottom: 8px; right: 6px; left: 6px; justify-content: center; font-size: 10px; padding: 5px 3px; max-width: none; }
-  .app-shell--catalog .product-card__body { min-width: 0; padding: 14px 12px 14px 16px; text-align: left; justify-content: flex-start; }
+  .app-shell--catalog .product-card__link { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: 252px; align-items: stretch; }
+  .app-shell--catalog .product-card__visual { height: 100%; min-height: 0; border: 0; border-right: 1px solid #30334b; border-radius: 0; }
+  .app-shell--catalog .product-card__visual .product-image { position: absolute; inset: 0 0 60px; height: calc(100% - 60px); min-height: 0; }
+  .app-shell--catalog .product-card__visual .product-image img { padding: 12px 8px; }
+  .app-shell--catalog .product-card > .save-heart { top: auto; bottom: 8px; left: 8px; width: calc(25% - 12px); height: 44px; }
+  .app-shell--catalog .product-card > .collection-add { top: auto; bottom: 8px; left: calc(25% + 4px); width: calc(25% - 12px); }
+  .app-shell--catalog .product-card > .collection-add .collection-plus { width: 100%; height: 44px; }
+  .app-shell--catalog .product-card__body { min-width: 0; padding: 12px; text-align: left; justify-content: flex-start; }
+  .app-shell--catalog .product-card__signal { position: static; align-self: flex-start; margin: 0 0 10px; font-size: 10px; padding: 6px 8px; max-width: 100%; white-space: normal; line-height: 1.3; }
   .app-shell--catalog .product-card__identity { display: block; min-height: 0; flex: 0 0 auto; }
-  .app-shell--catalog .product-card__identity h2 { font-size: 14px; line-height: 1.4; text-align: left; text-wrap: wrap; }
-  .app-shell--catalog .price-pair { grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 12px; padding-top: 10px; text-align: left; }
+  .app-shell--catalog .product-card__identity h2 { font-size: 15px; line-height: 1.4; text-align: left; text-wrap: wrap; }
+  .app-shell--catalog .price-pair { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 12px; padding: 0 10px; border: 1px solid #3b3b59; border-radius: 6px; background: #0c1020; text-align: right; }
+  .app-shell--catalog .price-pair > div { padding: 8px 0; }
+  .app-shell--catalog .price-pair > div:last-child { padding: 8px 0; border-top: 1px solid #30334b; }
   .app-shell--catalog .price-pair span { font-size: 11px; line-height: 1.35; }
-  .app-shell--catalog .price-pair strong, .app-shell--catalog .price-pair > div:last-child strong { font-size: 21px; margin-top: 3px; overflow-wrap: anywhere; }
+  .app-shell--catalog .price-pair strong, .app-shell--catalog .price-pair > div:last-child strong { font-size: 21px; margin-top: 3px; white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
   .app-shell--catalog .detail-arrow { display: none; }
 }
 /* Release context stays quiet; it is not an investment signal. */

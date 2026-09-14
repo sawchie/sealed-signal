@@ -41,6 +41,9 @@ test("collection is a private browser-local page and catalog additions remain se
   assert.match(home, /Add one .* to My Collection/);
   assert.equal((home.match(/class="collection-plus"/g) ?? []).length, 48);
   assert.match(home, /Save .* to saved items/);
+  assert.equal((home.match(/class="signal product-card__signal /g) ?? []).length, 48);
+  assert.equal((home.match(/class="product-card__body">\s*<span class="signal product-card__signal /g) ?? []).length, 48,
+    "Each card has one buying signal before the name, independently positioned for mobile and desktop");
   const detail = await (await render("/products/destined-rivals-elite-trainer-box")).text();
   assert.match(detail, /Add to collection/);
 });

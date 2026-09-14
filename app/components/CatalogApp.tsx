@@ -229,13 +229,13 @@ function ProductCard({
           productName={product.name}
           priority={priority}
         />
-        <span className={`signal ${signalClass(recommendation)}`}>
-          <span className="signal__dot" aria-hidden="true" />
-          {item.release.label ?? signalLabel(recommendation)}
-        </span>
       </div>
 
       <div className="product-card__body">
+        <span className={`signal product-card__signal ${signalClass(recommendation)}`}>
+          <span className="signal__dot" aria-hidden="true" />
+          {item.release.label ?? signalLabel(recommendation)}
+        </span>
         <div className="product-card__identity">
           <div>
             <h2>{product.name}</h2>
