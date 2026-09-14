@@ -54,7 +54,7 @@ Only one genuine observation was available in the reviewed browser state, so the
 
 ## Mobile refinement — September 13, 2026
 
-**Catalog correction:** The user rejected the full-width mobile image stage. Preserve compact horizontal catalog cards: packaging left, identity and paired prices right. The subsequent correction changes only catalog CSS, restoring that layout and removing the identity's flex expansion that separated the name from its prices. My Collection remains as refined below. Production compilation passed; the local browser connection failed during this follow-up, so do not claim new visual verification for the catalog correction.
+**Catalog correction:** The user rejected the full-width mobile image stage. Preserve compact horizontal catalog cards: packaging left, identity farther right, and retail stacked above market in the right column. The subsequent correction changes only catalog CSS, restoring that layout and removing the identity's flex expansion that separated the name from its prices. My Collection remains as refined below. The local browser connection failed during this follow-up, so do not claim new visual verification for the catalog correction.
 
 The user's clarified scope preserves every catalog-card field and action. Mobile catalog changes repair the narrow image column with a full-width packaging stage and left-aligned identity/prices; simplification is limited to My Collection.
 
