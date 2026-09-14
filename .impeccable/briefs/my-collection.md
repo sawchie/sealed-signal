@@ -51,3 +51,11 @@ The `ledger_finish_reviewer` critic approved scoped ship with no material fixes.
 - `.impeccable/review/collection-ledger/mobile-sale.png`
 
 Only one genuine observation was available in the reviewed browser state, so the actual history curve was source-reviewed rather than visually verified with multiple observations; no fake curve was inserted. The design detector was attempted but its output pipe failed, so this handoff does not claim a clean detector result. Preserve accessible operation, honest partial coverage, retained sales, and explicit backup replacement in future work.
+
+## Mobile refinement — September 13, 2026
+
+The user's clarified scope preserves every catalog-card field and action. Mobile catalog changes repair the narrow image column with a full-width packaging stage and left-aligned identity/prices; simplification is limited to My Collection.
+
+Two bounded critics ran sequentially: one hierarchy critique (28/40), then one evidence check confirming the inherited image min-height and narrow column. Applied their image-hierarchy and progressive-disclosure recommendations without changing data or calculations. The detector completed with zero findings after one output-truncation retry.
+
+Collection keeps all six totals and four row values. Consolidated definitions and purchase dates into accessible information buttons, removed repeated save instructions from visible rows, enlarged mobile thumbnails, and placed Manage below the numbers. Mobile history is expandable; desktop history remains visible. Unknown-cost and partial-coverage warnings remain explicit. Browser checks covered 320px, 390px and 1440px, editable paid costs, history/observations opening and closing, and viewport-safe help bubbles. Temporary QA purchases were removed through the normal UI. The shared footer now wraps on narrow screens.

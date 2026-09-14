@@ -1244,6 +1244,7 @@ img {
 
 .site-footer__links {
   display: flex;
+  flex-wrap: wrap;
   gap: 18px;
   font-weight: 650;
 }

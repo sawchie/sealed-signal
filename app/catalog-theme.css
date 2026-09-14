@@ -314,14 +314,16 @@ input[aria-invalid="true"] { border-color: #ff8fae !important; }
   .assumption-grid .saved-preference { grid-column: 1 / -1; }
 }
 @media (max-width: 600px) {
-  .app-shell--catalog .product-card__link { display: grid; grid-template-columns: 112px minmax(0, 1fr); align-items: center; min-height: 190px; }
-  .app-shell--catalog .product-card__visual { height: 190px; border: 0; }
-  .app-shell--catalog .product-card__visual .product-image img { padding: 36px 8px 34px; }
-  .app-shell--catalog .product-card__visual .signal { top: auto; bottom: 8px; right: auto; left: 6px; font-size: 9px; padding: 6px; max-width: 106px; }
-  .app-shell--catalog .product-card__body { padding: 14px 12px; }
-  .app-shell--catalog .price-pair { gap: 8px; }
-  .app-shell--catalog .price-pair span { font-size: 9px; }
-  .app-shell--catalog .price-pair strong, .app-shell--catalog .price-pair > div:last-child strong { font-size: clamp(18px, 5.4vw, 24px); overflow-wrap: anywhere; }
+  .app-shell--catalog .product-card__link { display: flex; flex-direction: column; min-height: 0; }
+  .app-shell--catalog .product-card__visual { height: 240px; min-height: 0; border: 0; border-radius: 0; }
+  .app-shell--catalog .product-card__visual .product-image img { padding: 58px 20px 8px; }
+  .app-shell--catalog .product-card > .collection-add { top: 8px; left: 60px; }
+  .app-shell--catalog .product-card__visual .signal { top: 16px; bottom: auto; right: 10px; left: auto; font-size: 10px; padding: 6px 8px; max-width: calc(100% - 124px); }
+  .app-shell--catalog .product-card__body { padding: 14px 16px 16px; text-align: left; }
+  .app-shell--catalog .product-card__identity { display: block; min-height: 0; }
+  .app-shell--catalog .price-pair { gap: 12px; }
+  .app-shell--catalog .price-pair span { font-size: 12px; }
+  .app-shell--catalog .price-pair strong, .app-shell--catalog .price-pair > div:last-child strong { font-size: clamp(22px, 6vw, 28px); overflow-wrap: anywhere; }
   .app-shell--catalog .detail-arrow { display: none; }
 }
 /* Release context stays quiet; it is not an investment signal. */
