@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: '37 21 * * *'
   workflow_dispatch:
+    inputs:
+      exchange_only:
+        description: 'Refresh only currency exchange rates'
+        type: boolean
+        default: false
 permissions:
   contents: read
   id-token: write
@@ -18,5 +23,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Refresh currency exchange rates
+        run: node scripts/daily-exchange-refresh.mjs
       - name: Refresh exact-product market quotes
+        if: ${{ !cancelled() && inputs.exchange_only != true }}
         run: node scripts/daily-price-refresh.mjs

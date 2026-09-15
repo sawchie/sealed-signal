@@ -14,9 +14,7 @@ import {
   getRecommendationPresentation,
   RECOMMENDATIONS,
 } from "@/lib/domain";
-import {
-  formatMoney,
-} from "@/lib/format";
+import { useCurrency } from "./CurrencyProvider";
 import { ProductImage } from "./ProductImage";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
@@ -211,6 +209,7 @@ function ProductCard({
   packCount: number | null;
 }) {
   const { product, recommendation } = item;
+  const { formatMoney } = useCurrency();
 
   return (
     <article className={`product-card ${recommendationToneClass(recommendation)}${item.release.upcoming ? " product-card--upcoming" : ""}`}>
@@ -283,6 +282,7 @@ function ProductTable({
   now: string;
   packCounts: Record<string, number | null>;
 }) {
+  const { formatMoney } = useCurrency();
   return (
     <div className="product-table-wrap">
       <table className="product-table">
@@ -350,14 +350,15 @@ function RangeFields({
   maxKey: keyof NumericFilters;
   filters: NumericFilters;
   onChange: (key: keyof NumericFilters, value: string) => void;
-  suffix: "$" | "%";
+  suffix: "USD" | "%";
 }) {
+  const rangeLabel = suffix === "USD" ? `${label} (USD)` : label;
   return (
     <fieldset className="range-filter">
-      <legend>{label}</legend>
+      <legend>{rangeLabel}</legend>
       <label>
-        <span className="sr-only">Minimum {label}</span>
-        <span>{suffix === "$" ? "$" : ""}</span>
+        <span className="sr-only">Minimum {rangeLabel}</span>
+        <span>{suffix === "USD" ? "$" : ""}</span>
         <input
           value={filters[minKey]}
           onChange={(event) => onChange(minKey, event.target.value)}
@@ -368,8 +369,8 @@ function RangeFields({
       </label>
       <span aria-hidden="true">–</span>
       <label>
-        <span className="sr-only">Maximum {label}</span>
-        <span>{suffix === "$" ? "$" : ""}</span>
+        <span className="sr-only">Maximum {rangeLabel}</span>
+        <span>{suffix === "USD" ? "$" : ""}</span>
         <input
           value={filters[maxKey]}
           onChange={(event) => onChange(maxKey, event.target.value)}
@@ -392,6 +393,7 @@ export function CatalogApp({
   packCounts: Record<string, number | null>;
 }) {
   const products = initialProducts;
+  const { formatMoney } = useCurrency();
   const [saved, setSaved] = useState<SavedProducts>(emptySavedProducts);
   const [savedOnly, setSavedOnly] = useState(false);
   const savedSwitchRef = useRef<HTMLButtonElement>(null);
@@ -780,7 +782,7 @@ export function CatalogApp({
               maxKey="msrpMax"
               filters={numericFilters}
               onChange={(key, value) => setNumericFilters((current) => ({ ...current, [key]: value }))}
-              suffix="$"
+              suffix="USD"
             />
             <RangeFields
               label="Market price"
@@ -788,7 +790,7 @@ export function CatalogApp({
               maxKey="marketMax"
               filters={numericFilters}
               onChange={(key, value) => setNumericFilters((current) => ({ ...current, [key]: value }))}
-              suffix="$"
+              suffix="USD"
             />
             <RangeFields
               label="Estimated profit"
@@ -796,7 +798,7 @@ export function CatalogApp({
               maxKey="profitMax"
               filters={numericFilters}
               onChange={(key, value) => setNumericFilters((current) => ({ ...current, [key]: value }))}
-              suffix="$"
+              suffix="USD"
             />
             <RangeFields
               label="ROI"

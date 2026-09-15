@@ -3,7 +3,8 @@
 import { useEffect, useId, useMemo, useRef, useState, type FormEvent } from "react";
 import { addCollectionLot, localCalendarDay, MAX_COLLECTION_BACKUP_BYTES, ownedQuantity, parseCollection, recordCollectionSale, recordCollectionSnapshot, removeCollectionLot, summarizeCollection, undoCollectionSale, updateCollectionLot, type CollectionLot, type CollectionProduct, type CollectionSnapshot, type CollectionState } from "@/lib/collection";
 import { changeCollection, storedCollectionBackup, useCollection } from "@/lib/collection-store";
-import { formatCompactDate, formatMoney } from "@/lib/format";
+import { formatCompactDate, formatMoney as sourceMoney } from "@/lib/format";
+import { useCurrency } from "./CurrencyProvider";
 import { parseAmount } from "@/lib/buy-check";
 import { collectionGain, gainTone } from "@/lib/collection-gain";
 import { ProductImage } from "./ProductImage";
@@ -18,7 +19,6 @@ const amount = (data: FormData, key: string, optional = false) => {
   return value;
 };
 const numeric = (data: FormData, key: string) => Number(data.get(key));
-const moneyOrUnknown = (value: number, covered: number) => covered ? formatMoney(value) : "Unavailable";
 
 function Info({ label, children }: { label: string; children: React.ReactNode }) {
   const id = useId();
@@ -34,10 +34,12 @@ function Info({ label, children }: { label: string; children: React.ReactNode })
 }
 
 function Gain({ value }: { value: number | null }) {
+  const { formatMoney } = useCurrency();
   return <span className={styles[gainTone(value)]}>{value === null ? "—" : `${value > 0 ? "+" : value < 0 ? "−" : ""}${formatMoney(Math.abs(value))}`}</span>;
 }
 
 function ValueHistory({ points }: { points: CollectionSnapshot[] }) {
+  const { formatMoney, currency } = useCurrency();
   const [historyOpen, setHistoryOpen] = useState(false);
   const historyContentId = useId();
   const [observationsOpen, setObservationsOpen] = useState(false);
@@ -59,6 +61,7 @@ function ValueHistory({ points }: { points: CollectionSnapshot[] }) {
         <text x="40" y="196">{formatCompactDate(points[0].at)}</text><text x="720" y="196" textAnchor="end">{formatCompactDate(points.at(-1)!.at)}</text>
       </svg>
     </>}
+    {currency !== "USD" && <p className="currency-history-note">History uses the current exchange rate, not historical FX.</p>}
     {!!points.length && <div className={styles.historyRecords} role="presentation" onKeyDown={event => { if (event.key === "Escape" && observationsOpen) { event.preventDefault(); setObservationsOpen(false); observationsToggle.current?.focus(); } }}>
       <button ref={observationsToggle} type="button" aria-expanded={observationsOpen} aria-controls={observationsId} onClick={() => setObservationsOpen(open => !open)}>
         <svg viewBox="0 0 16 16" aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="m5 3 5 5-5 5" /></svg>{observationsOpen ? "Hide observations" : "View observations"}
@@ -71,6 +74,7 @@ function ValueHistory({ points }: { points: CollectionSnapshot[] }) {
 }
 
 function LotRow({ lot, state, product }: { lot: CollectionLot; state: CollectionState; product?: CollectionProduct }) {
+  const { formatMoney, currency } = useCurrency();
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
@@ -112,24 +116,24 @@ function LotRow({ lot, state, product }: { lot: CollectionLot; state: Collection
   return <article className={styles.lot}>
     <div className={styles.lotTop}><ProductImage src={product?.imageUrl ?? lot.imageUrl} alt={`${lot.name} packaging`} category={lot.category} setName={lot.setName} productName={lot.name} className={styles.thumb} />
       <div className={styles.identity}>{product ? <a href={`/products/${lot.slug}?return=%2Fcollection`}>{lot.name}</a> : <strong>{lot.name}</strong>}{lot.setName && !lot.name.toLowerCase().includes(lot.setName.toLowerCase()) && <p>{lot.setName}</p>}{!product && <p>Not in the current catalog. Your record is preserved; current prices are unavailable.</p>}<span className={styles.quantityLine}><span className={owned ? styles.owned : styles.sold}>{owned} owned{sold ? ` · ${sold} sold` : ""}</span><Info label={`purchase details for ${lot.name}`}>{lot.setName ?? "Mixed / unverified set"} · Purchased {formatCompactDate(lot.acquiredOn)}. Paid is per unit; Value and Est. gain cover held units before selling costs. Enter or leave the field to save; Escape cancels. Blank means unknown.{sold ? " Cost corrections also update this purchase’s recorded sale profit." : ""}</Info></span></div>
-      <dl className={styles.rowPrices}><div><dt>Paid / unit</dt><dd><span className={styles.inlineCost}><span aria-hidden="true">$</span><input aria-label={`Paid per unit for ${lot.name}`} aria-describedby={costHelpId} aria-invalid={!!costError} inputMode="decimal" autoComplete="off" placeholder="—" disabled={busy}
-        value={costDraft ?? (lot.unitCostCents === null ? "" : formatMoney(lot.unitCostCents).replace(/^\$/, ""))}
+      <dl className={styles.rowPrices}><div><dt>Paid / unit (USD)</dt><dd><span className={styles.inlineCost}><span aria-hidden="true">$</span><input aria-label={`Paid per unit for ${lot.name} (USD)`} aria-describedby={costHelpId} aria-invalid={!!costError} inputMode="decimal" autoComplete="off" placeholder="—" disabled={busy}
+        value={costDraft ?? (lot.unitCostCents === null ? "" : sourceMoney(lot.unitCostCents).replace(/^\$/, ""))}
         onChange={e => { setCostDraft(e.target.value); setCostError(""); setMessage(""); }} onBlur={saveInlineCost}
-        onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); e.currentTarget.blur(); } if (e.key === "Escape") { e.preventDefault(); setCostDraft(null); setCostError(""); } }} /></span></dd></div><div><dt>Market / unit</dt><dd>{product?.marketCents == null ? "—" : formatMoney(product.marketCents)}</dd></div><div><dt>Value</dt><dd>{owned ? formatMoney(product?.marketCents == null ? null : product.marketCents * owned) : "—"}</dd></div><div><dt>Est. gain</dt><dd><Gain value={collectionGain(product?.marketCents == null ? null : product.marketCents * owned, lot.unitCostCents, owned)} /></dd></div></dl>
+        onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); e.currentTarget.blur(); } if (e.key === "Escape") { e.preventDefault(); setCostDraft(null); setCostError(""); } }} /></span>{currency !== "USD" && lot.unitCostCents !== null && <small className="currency-cost-equivalent">≈ {formatMoney(lot.unitCostCents)} {currency}</small>}</dd></div><div><dt>Market / unit</dt><dd>{product?.marketCents == null ? "—" : formatMoney(product.marketCents)}</dd></div><div><dt>Value</dt><dd>{owned ? formatMoney(product?.marketCents == null ? null : product.marketCents * owned) : "—"}</dd></div><div><dt>Est. gain</dt><dd><Gain value={collectionGain(product?.marketCents == null ? null : product.marketCents * owned, lot.unitCostCents, owned)} /></dd></div></dl>
     </div>
     <details className={styles.manageRow}><summary aria-label={`Manage ${lot.name}`}>Manage</summary>
     <div className={styles.rowActions}>
       <details><summary>Edit purchase</summary><form key={`${lot.quantity}:${lot.unitCostCents}:${lot.acquiredOn}`} onSubmit={e => submit(e, "edit")} className={styles.form}>
         <label>Total units acquired<input name="quantity" type="number" min={Math.max(1, sold)} max="10000" step="1" defaultValue={lot.quantity} required /></label>
-        <label>Paid per unit ($)<input name="cost" inputMode="decimal" placeholder="Unknown" defaultValue={lot.unitCostCents === null ? "" : (lot.unitCostCents / 100).toFixed(2)} /></label>
+        <label>Paid per unit (USD)<input name="cost" inputMode="decimal" placeholder="Unknown" defaultValue={lot.unitCostCents === null ? "" : (lot.unitCostCents / 100).toFixed(2)} /></label>
         <label>Purchase date<input name="date" type="date" max={day()} defaultValue={lot.acquiredOn} required /></label>
         <p>Include purchase tax and inbound shipping in your paid amount if you want them included in your cost basis. Leave blank if unknown. Use a separate purchase for a different unit cost.</p>
         <button type="submit" disabled={busy}>Save purchase</button>
       </form></details>
       {!!owned && <details><summary>Mark sold</summary><form onSubmit={e => submit(e, "sale")} className={styles.form}>
         <label>Units sold<input name="quantity" type="number" min="1" max={owned} defaultValue="1" required /></label>
-        <label>Total sale proceeds ($)<input name="proceeds" inputMode="decimal" placeholder="For all units sold" required /></label>
-        <label>Total fees + seller shipping ($)<input name="fees" inputMode="decimal" defaultValue="0" required /></label>
+        <label>Total sale proceeds (USD)<input name="proceeds" inputMode="decimal" placeholder="For all units sold" required /></label>
+        <label>Total fees + seller shipping (USD)<input name="fees" inputMode="decimal" defaultValue="0" required /></label>
         <label>Sale date<input name="date" type="date" min={lot.acquiredOn} max={day()} defaultValue={day()} required /></label>
         <p>Record actual proceeds, including shipping collected. Costs are deducted once; don’t enter an already-net payout as gross proceeds.</p>
         <button type="submit" disabled={busy}>Record sale</button>
@@ -143,6 +147,8 @@ function LotRow({ lot, state, product }: { lot: CollectionLot; state: Collection
 }
 
 export function CollectionApp({ products }: { products: CollectionProduct[] }) {
+  const { formatMoney, currency } = useCurrency();
+  const moneyOrUnknown = (value: number, covered: number) => covered ? formatMoney(value) : "Unavailable";
   const { state, ready, error, blocked } = useCollection();
   const [tab, setTab] = useState("owned");
   const [query, setQuery] = useState("");
@@ -185,7 +191,7 @@ export function CollectionApp({ products }: { products: CollectionProduct[] }) {
   }
   return <main className={styles.main}>
     <header className={styles.header}>
-      <div><h1>My Collection</h1><p>{ready ? `${totals.ownedUnits} owned · ${totals.distinctProducts} ${totals.distinctProducts === 1 ? "product" : "products"} · USD` : "Your sealed collection"} <Info label="collection totals">All totals cover held units, not filtered rows or sold stock. Market is the current gross estimate, not guaranteed proceeds. Paid is your recorded cost; Retail is the catalog reference, not an available offer. Est. gain is Market minus Paid where both are known, before selling costs. Packs uses verified counts; Paid / pack uses only packs with known costs, without deducting promos. Partial labels mark incomplete coverage. “—” means unknown. All amounts are USD.</Info></p></div>
+      <div><h1>My Collection</h1><p>{ready ? `${totals.ownedUnits} owned · ${totals.distinctProducts} ${totals.distinctProducts === 1 ? "product" : "products"} · ${currency}` : "Your sealed collection"} <Info label="collection totals">All totals cover held units, not filtered rows or sold stock. Market is the current gross estimate, not guaranteed proceeds. Paid is your recorded cost; Retail is the catalog reference, not an available offer. Est. gain is Market minus Paid where both are known, before selling costs. Packs uses verified counts; Paid / pack uses only packs with known costs, without deducting promos. Partial labels mark incomplete coverage. “—” means unknown. Totals use your selected display currency. Enter purchase and sale amounts in USD; stored records never change when you switch currency.</Info></p></div>
     <div className={styles.utility}>
       <details className={styles.backupMenu}><summary>Backup</summary><div className={styles.backupPanel}><p>Your collection stays in this browser, without an account or cloud sync. Clearing site data removes it. Keep a backup of your private purchase and sale records.</p><button onClick={backup} disabled={!ready}>Download backup</button><details><summary>Restore backup</summary><label>Choose a PokeScratch JSON backup<input type="file" accept="application/json,.json" onChange={async e => { setPending(null); setImportConfirm(false); const file = e.target.files?.[0]; if (!file) return; try { if (file.size > MAX_COLLECTION_BACKUP_BYTES) throw new Error("Backup is too large."); setPending(parseCollection(await file.text())); setMessage(""); } catch (error) { setMessage(error instanceof Error ? error.message : "Invalid backup."); } }} /></label>{pending && <div><p>{pending.lots.length} purchase records · {pending.sales.length} sales. Restoring replaces this browser’s collection; it does not merge it.</p><label><input type="checkbox" checked={importConfirm} onChange={e => setImportConfirm(e.target.checked)} />I have backed up my current collection and want to replace it.</label><button disabled={!importConfirm} onClick={async () => { if (await changeCollection(() => pending, true)) { setPending(null); setImportConfirm(false); setMessage("Backup restored."); } }}>Replace with this backup</button><button onClick={() => setPending(null)}>Cancel</button></div>}</details></div></details>
       <button className={styles.primary} onClick={() => setAddOpen(!addOpen)} aria-expanded={addOpen} aria-controls="collection-add-purchase">+ Add purchase</button>
@@ -196,15 +202,15 @@ export function CollectionApp({ products }: { products: CollectionProduct[] }) {
       <div className={styles.overview}>
       <ValueHistory points={state.snapshots} />
       <dl className={styles.totals} aria-label="Owned collection totals">
-        <div><dt>Market</dt><dd>{totals.ownedUnits ? moneyOrUnknown(totals.marketCents, totals.pricedUnits) : "$0.00"}</dd>{totals.pricedUnits < totals.ownedUnits && <small>Partial · {totals.pricedUnits}/{totals.ownedUnits} quoted</small>}</div>
-        <div><dt>Paid</dt><dd>{totals.ownedUnits ? moneyOrUnknown(totals.paidCents, totals.costedUnits) : "$0.00"}</dd>{totals.costedUnits < totals.ownedUnits && <small>Partial · {totals.costedUnits}/{totals.ownedUnits} costed</small>}</div>
-        <div><dt>Retail</dt><dd>{totals.ownedUnits ? moneyOrUnknown(totals.retailCents, totals.retailUnits) : "$0.00"}</dd>{totals.retailUnits < totals.ownedUnits && <small>Partial · {totals.retailUnits}/{totals.ownedUnits} covered</small>}</div>
+        <div><dt>Market</dt><dd>{totals.ownedUnits ? moneyOrUnknown(totals.marketCents, totals.pricedUnits) : formatMoney(0)}</dd>{totals.pricedUnits < totals.ownedUnits && <small>Partial · {totals.pricedUnits}/{totals.ownedUnits} quoted</small>}</div>
+        <div><dt>Paid</dt><dd>{totals.ownedUnits ? moneyOrUnknown(totals.paidCents, totals.costedUnits) : formatMoney(0)}</dd>{totals.costedUnits < totals.ownedUnits && <small>Partial · {totals.costedUnits}/{totals.ownedUnits} costed</small>}</div>
+        <div><dt>Retail</dt><dd>{totals.ownedUnits ? moneyOrUnknown(totals.retailCents, totals.retailUnits) : formatMoney(0)}</dd>{totals.retailUnits < totals.ownedUnits && <small>Partial · {totals.retailUnits}/{totals.ownedUnits} covered</small>}</div>
         <div><dt>Est. gain</dt><dd><Gain value={!totals.ownedUnits ? 0 : totals.unrealizedUnits ? totals.unrealizedCents : null} /></dd>{totals.unrealizedUnits < totals.ownedUnits && <small>Partial · {totals.unrealizedUnits}/{totals.ownedUnits}</small>}</div>
         <div><dt>Packs</dt><dd>{totals.knownPacks.toLocaleString()}</dd>{totals.packKnownUnits < totals.ownedUnits && <small>Partial · verified only</small>}</div>
         <div><dt>Paid / pack</dt><dd>{costPerPack === null ? "—" : formatMoney(costPerPack)}</dd></div>
       </dl>
       </div>
-      {addOpen && <section id="collection-add-purchase" className={styles.addPurchase}><div className={styles.sectionHeading}><h2>Add a purchase</h2><button onClick={() => setAddOpen(false)}>Close</button></div><form onSubmit={add} className={styles.form}><label className={styles.wide}>Product<select name="product" required defaultValue=""><option value="" disabled>Choose an exact product</option>{[...products].sort((a, b) => a.name.localeCompare(b.name)).map(p => <option key={p.slug} value={p.slug}>{p.name}</option>)}</select></label><label>Quantity<input name="quantity" type="number" min="1" max="10000" defaultValue="1" required /></label><label>Paid per unit ($)<input name="cost" inputMode="decimal" placeholder="Leave blank if unknown" /></label><label>Purchase date<input name="date" type="date" max={day()} defaultValue={day()} required /></label><p>Record what you actually paid, including purchase tax and inbound shipping if known. Plus-button additions start with an unknown cost and today’s date; edit those after adding.</p><button type="submit" disabled={adding || blocked}>Add purchase</button></form></section>}
+      {addOpen && <section id="collection-add-purchase" className={styles.addPurchase}><div className={styles.sectionHeading}><h2>Add a purchase</h2><button onClick={() => setAddOpen(false)}>Close</button></div><form onSubmit={add} className={styles.form}><label className={styles.wide}>Product<select name="product" required defaultValue=""><option value="" disabled>Choose an exact product</option>{[...products].sort((a, b) => a.name.localeCompare(b.name)).map(p => <option key={p.slug} value={p.slug}>{p.name}</option>)}</select></label><label>Quantity<input name="quantity" type="number" min="1" max="10000" defaultValue="1" required /></label><label>Paid per unit (USD)<input name="cost" inputMode="decimal" placeholder="Leave blank if unknown" /></label><label>Purchase date<input name="date" type="date" max={day()} defaultValue={day()} required /></label><p>Record what you actually paid, including purchase tax and inbound shipping if known. Plus-button additions start with an unknown cost and today’s date; edit those after adding.</p><button type="submit" disabled={adding || blocked}>Add purchase</button></form></section>}
       <div className={styles.collectionLayout}>
         <div className={styles.holdings}>
           <div id="collection-purchases" tabIndex={-1} className={styles.browse}>
@@ -222,7 +228,7 @@ export function CollectionApp({ products }: { products: CollectionProduct[] }) {
               <button onClick={async () => { if (await changeCollection(state => undoCollectionSale(state, sale.id))) setMessage("Sale undone. Units returned to Owned."); }}>Undo sale</button>
             </article>; })}
           </section> : <section aria-label="Collection purchases">
-            {!!lots.length && <div className={styles.ledgerHeader} aria-hidden="true"><span>Product / qty</span><span>Paid / unit</span><span>Market / unit</span><span>Value</span><span>Est. gain</span><span /></div>}
+            {!!lots.length && <div className={styles.ledgerHeader} aria-hidden="true"><span>Product / qty</span><span>Paid / unit (USD)</span><span>Market / unit</span><span>Value</span><span>Est. gain</span><span /></div>}
             {!lots.length && <p>No matching purchases. Try All purchases or clear your filters.</p>}
             {lots.map(lot => <LotRow key={lot.id} lot={lot} state={state} product={catalog.get(lot.slug)} />)}
           </section>}

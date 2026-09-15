@@ -125,6 +125,14 @@ export const marketPriceSnapshots = sqliteTable(
 );
 
 export type ProductRow = typeof products.$inferSelect;
+/** One last-known-good daily display-conversion snapshot; independent of market quotes. */
+export const exchangeRates = sqliteTable("exchange_rates", {
+  base: text("base").primaryKey(),
+  rateDate: text("rate_date").notNull(),
+  checkedAt: text("checked_at").notNull(),
+  ratesJson: text("rates_json").notNull(),
+});
+
 export type NewProductRow = typeof products.$inferInsert;
 export type ProductAliasRow = typeof productAliases.$inferSelect;
 export type MarketPriceSnapshotRow = typeof marketPriceSnapshots.$inferSelect;

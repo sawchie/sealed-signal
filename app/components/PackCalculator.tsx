@@ -2,12 +2,13 @@
 import { useEffect, useState } from "react";
 import { calculatePackCost, comparePackCosts, emptyPackInput, type PackInput } from "@/lib/pack-comparison";
 import styles from "./CollectorContent.module.css";
+import { useCurrency } from "./CurrencyProvider";
 
-const money = (cents: number) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(cents / 100);
 const fields = [{ key: "price", label: "Item price", required: true }, { key: "packs", label: "Booster packs", required: true }, { key: "shipping", label: "Shipping" }, { key: "tax", label: "Tax amount" }, { key: "discount", label: "Discount" }] as const;
 
 export type PackCatalogChoice = { slug: string; name: string; priceCents: number | null; packs: number | null; setName: string | null; sourceUrl: string | null };
 export function PackCalculator({ products = [] }: { products?: PackCatalogChoice[] }) {
+  const { formatMoney: money, currency } = useCurrency();
   const [inputs, setInputs] = useState([emptyPackInput(), emptyPackInput()]);
   const [selected, setSelected] = useState(["", ""]);
   const [shareMessage, setShareMessage] = useState("");
@@ -37,7 +38,7 @@ export function PackCalculator({ products = [] }: { products?: PackCatalogChoice
   const comparison = comparePackCosts(results[0], results[1]);
   function update(index: number, key: keyof PackInput, value: string) { setInputs(current => current.map((input, i) => i === index ? { ...input, [key]: value } : input)); }
   return <>
-    <p className={styles.intro}>Compare the cost of opening packs. Enter the exact pack count and checkout costs for each product. All amounts are USD.</p>
+    <p className={styles.intro}>Compare the cost of opening packs. Enter costs in USD and the exact pack count for each product. Results are shown in {currency}.</p>
     <div className={styles.comparison}>
       {inputs.map((input, index) => <fieldset key={index} className={styles.purchase}>
         <legend>Product {index === 0 ? "A" : "B"}</legend>
@@ -47,7 +48,7 @@ export function PackCalculator({ products = [] }: { products?: PackCatalogChoice
         <div className={styles.fields}>{fields.map(field => {
           const id = `purchase-${index}-${field.key}`;
           const error = touched[id] ? results[index].errors[field.key] : undefined;
-          return <label key={field.key} className={styles.label} htmlFor={id}>{field.label}{!("required" in field) && <span> (optional)</span>}
+          return <label key={field.key} className={styles.label} htmlFor={id}>{field.label}{field.key !== "packs" && " (USD)"}{!("required" in field) && <span> (optional)</span>}
             <input id={id} value={input[field.key]} inputMode={field.key === "packs" ? "numeric" : "decimal"} maxLength={12} aria-invalid={!!error} aria-describedby={error ? `${id}-error` : undefined} onBlur={() => setTouched(current => ({ ...current, [id]: true }))} onChange={e => update(index, field.key, e.target.value)} />
             {error && <span id={`${id}-error`} className={styles.error}>{error}</span>}
           </label>;
@@ -55,7 +56,7 @@ export function PackCalculator({ products = [] }: { products?: PackCatalogChoice
         <div className={styles.result} aria-live="polite" aria-atomic="true"><span>Cost per pack</span><strong>{results[index].perPackCents === null ? "—" : money(results[index].perPackCents!)}</strong><span>{results[index].totalCents === null ? "Enter a valid price and pack count." : `${money(results[index].totalCents!)} total · ${results[index].packs} packs`}</span></div>
       </fieldset>)}
     </div>
-    <p className={styles.verdict} role="status">{comparison ? comparison.winner ? `Product ${comparison.winner} costs ${money(comparison.differenceCents)} less per pack.` : "Same cost per pack at displayed cents." : "Complete both products to compare their cost per pack."}</p>
+    <p className={styles.verdict} role="status">{comparison ? comparison.winner ? money(comparison.differenceCents) === money(0) ? `Product ${comparison.winner} costs slightly less per pack; the difference rounds to zero in ${currency}.` : `Product ${comparison.winner} costs ${money(comparison.differenceCents)} less per pack.` : "Same cost per pack at USD-cent precision." : "Complete both products to compare their cost per pack."}</p>
     {selected.every(Boolean) && products.find(p => p.slug === selected[0])?.setName !== products.find(p => p.slug === selected[1])?.setName && <p className="comparison-warning">Different sets selected. A lower pack cost does not mean equivalent contents or collectibility.</p>}
     <p>Pack content, set, edition, language, and condition still matter. This comparison does not predict pulls or assign a resale value to promos and accessories.</p>
     <div className="inline-actions"><button className="button button--secondary" onClick={() => { setInputs([emptyPackInput(), emptyPackInput()]); setSelected(["", ""]); setTouched({}); setShareMessage(""); history.replaceState(history.state, "", "/tools/price-per-pack"); }}>Reset comparison</button>

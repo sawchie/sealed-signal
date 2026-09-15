@@ -1,6 +1,25 @@
 /* Concept 01: Arcade After Dark. Product photography carries the page. */
 :root { --font-display: "Space Grotesk Variable", ui-sans-serif, sans-serif; }
 body { background: #080b16; }
+.currency-switcher { display: flex; align-items: center; gap: 2px; position: relative; flex-shrink: 0; }
+.currency-switcher select { width: 82px; min-height: 44px; padding: 8px; color: #f5f5ff; background: #101421; border: 1px solid #505973; border-radius: 5px; font: inherit; font-size: 14px; }
+.currency-info > summary { display: grid; place-items: center; list-style: none; width: 44px; height: 44px; padding: 0; cursor: pointer; color: #bfc6db; }
+.currency-info > summary::-webkit-details-marker { display: none; }
+.currency-info > summary svg { width: 20px; height: 20px; }
+.currency-info__panel { position: absolute; top: calc(100% + 8px); right: 0; z-index: 30; width: min(320px, calc(100vw - 48px)); padding: 16px; border: 1px solid #505973; border-radius: 6px; background: #101421; color: #f5f5ff; font-size: 14px; line-height: 1.5; text-align: left; }
+.currency-info__panel p { margin: 10px 0 0; }
+.currency-switcher .currency-info__panel a { display: inline; padding: 0; color: #d2a2ff; text-decoration: underline; }
+.currency-warning { color: #ffd56c; font-size: 13px; }
+.currency-history-note, .currency-cost-equivalent { color: #bfc6db; font-size: 12px; line-height: 1.5; }
+.currency-cost-equivalent { display: block; margin-top: 4px; }
+.currency-switcher :is(select, summary):focus-visible { outline: 2px solid #8be5ef; outline-offset: 3px; }
+@media (max-width: 800px) {
+  .mobile-navigation .currency-switcher { flex-wrap: wrap; border-top: 1px solid #30364b; margin-top: 8px; padding-top: 8px; }
+  .mobile-navigation .currency-info > summary { padding: 0; background: transparent; border: 0; }
+  .mobile-navigation .currency-info__panel { position: static; width: 100%; margin-top: 8px; }
+  .mobile-navigation nav { max-height: calc(100dvh - 120px); overflow-y: auto; }
+  .mobile-navigation .currency-info[open] { width: 100%; }
+}
 .app-shell--catalog .empty-state { min-height: 280px; padding: 32px 24px; border: 1px solid #505973; border-radius: 7px; background: #101421; color: #f5f5ff; }
 .app-shell--catalog .empty-state > span { border: 0; border-radius: 0; background: transparent; color: #ff96bd; }
 .app-shell--catalog .empty-state > span svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 1.6; }

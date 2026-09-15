@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import { PRICE_WATCH_KEY, parsePriceWatches, watchReached, type PriceWatches } from "@/lib/price-watch";
-import { formatMoney } from "@/lib/format";
+import { useCurrency } from "./CurrencyProvider";
 type WatchProduct = { slug: string; name: string; marketCents: number | null; updatedAt: string | null };
 export function WatchAlerts({ products, now }: { products: WatchProduct[]; now: string }) {
+  const { formatMoney } = useCurrency();
   const [watches, setWatches] = useState<PriceWatches>({});
   const [checkedAt, setCheckedAt] = useState(now);
   useEffect(() => {

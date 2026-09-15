@@ -27,6 +27,20 @@ test("all guides and tools render complete crawlable public content", async () =
 
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 
+test("currency selection is available with dated rates and an authenticated-only refresh", async () => {
+  const home = await (await render("/")).text();
+  assert.match(home, /Display currency/);
+  assert.match(home, /CAD — Canadian dollar/);
+  const response = await render("/api/exchange-rates");
+  assert.equal(response.status, 200);
+  const rates = await response.json();
+  assert.equal(rates.base, "USD");
+  assert.equal(rates.rates.USD, 1);
+  assert.ok(rates.date && rates.checkedAt);
+  assert.equal(Object.keys(rates.rates).length, 8);
+  assert.equal((await render("/api/prices/refresh?exchange=1", { method: "POST" })).status, 401);
+});
+
 test("collection is a private browser-local page and catalog additions remain separate from detail links", async () => {
   const response = await render("/collection");
   assert.equal(response.status, 200);

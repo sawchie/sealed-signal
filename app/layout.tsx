@@ -3,6 +3,7 @@ import "@fontsource-variable/space-grotesk";
 import "./globals.css";
 import "./neon-override.css";
 import "./catalog-theme.css";
+import { CurrencyProvider } from "./components/CurrencyProvider";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pokescratch.com";
 
@@ -60,7 +61,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><CurrencyProvider>{children}</CurrencyProvider></body>
     </html>
   );
 }

@@ -15,6 +15,13 @@
       "when": 1788220868692,
       "tag": "0001_dazzling_gorilla_man",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1789483294092,
+      "tag": "0002_talented_next_avengers",
+      "breakpoints": true
     }
   ]
 }
