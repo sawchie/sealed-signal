@@ -81,13 +81,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   // Informational buy checks are not purchasable offers or product reviews.
   // Only opt into Product rich results once genuine qualifying data exists.
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pokescratch.com";
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: `${product.name} Buy Check`,
-    url: new URL(`/products/${product.slug}`, process.env.NEXT_PUBLIC_SITE_URL ?? "https://pokescratch.com").href,
+    url: new URL(`/products/${product.slug}`, siteUrl).href,
     description: "Retail references, market snapshots, and fee-adjusted resale estimates. Not an in-stock offer.",
-    image: product.imageUrl ?? undefined,
+    image: product.imageUrl ? new URL(product.imageUrl, siteUrl).href : undefined,
   };
 
   return (

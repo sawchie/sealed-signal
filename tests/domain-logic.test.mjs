@@ -1,6 +1,16 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { calculatePackCost, comparePackCosts, emptyPackInput, pricePerPackCents } from "../lib/pack-comparison.ts";
+import { latestSitemapDate } from "../lib/sitemap-dates.ts";
+
+test("sitemap dates use real past updates and reject future or invalid dates", () => {
+  const now = Date.parse("2026-09-20T12:00:00Z");
+  assert.equal(latestSitemapDate(["2026-09-12", "2026-09-19T18:00:00.000Z", "2026-09-15"], now), "2026-09-19T18:00:00.000Z");
+  assert.equal(latestSitemapDate(["2026-09-19T23:00:00-05:00", "2026-09-20T02:00:00Z"], now), "2026-09-19T23:00:00-05:00");
+  assert.equal(latestSitemapDate(["2026-11-06", "2026-02-30", "not a date", "09/12/2026", null, undefined], now), undefined);
+  assert.equal(latestSitemapDate(["2026-11-06", "2026-09-18"], now), "2026-09-18");
+  assert.equal(latestSitemapDate([], now), undefined);
+});
 
 test("per-pack reference prices use verified whole counts and preserve unknowns", () => {
   assert.equal(pricePerPackCents(4999, 9), 4999 / 9);

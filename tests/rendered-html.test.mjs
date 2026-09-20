@@ -78,7 +78,7 @@ test("details show paired per-pack references only for verified pack counts", as
 test("buy checks describe informational pages, not incomplete Product rich results", async () => {
   const upcoming = catalogImport.items.find(p => p.sourceProductId === 712099);
   const missingImage = catalogImport.items.find(p => p.sourceProductId === 712109);
-  for (const slug of ["destined-rivals-elite-trainer-box", upcoming.slug, missingImage.slug]) {
+  for (const slug of ["destined-rivals-elite-trainer-box", "pokemon-151-pokemon-center-elite-trainer-box", upcoming.slug, missingImage.slug]) {
     const response = await render(`/products/${slug}`);
     assert.equal(response.status, 200);
     const html = await response.text();
@@ -87,6 +87,7 @@ test("buy checks describe informational pages, not incomplete Product rich resul
     const page = blocks.find(block => block["@type"] === "WebPage");
     assert.ok(page, "Informational page metadata remains available to crawlers");
     assert.equal(page.url, `https://pokescratch.com/products/${slug}`);
+    if (page.image) assert.match(page.image, /^https:\/\//);
     assert.match(page.name, /Buy Check$/);
     assert.match(page.description, /Not an in-stock offer/);
     assert.doesNotMatch(JSON.stringify(blocks), /"@type":"(?:Product|Offer|AggregateOffer|Review|AggregateRating)"/);
@@ -255,4 +256,7 @@ test("sitemap lists the expanded catalog on the public domain", async () => {
   const body = await response.text();
   assert.doesNotMatch(body, /localhost|\/methodology/);
   assert.equal((body.match(/<loc>/g) ?? []).length, catalogImport.items.length + 12);
+  for (const [, date] of body.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)) {
+    assert.ok(Number.isFinite(Date.parse(date)) && Date.parse(date) <= Date.now(), `Invalid or future lastmod: ${date}`);
+  }
 });
