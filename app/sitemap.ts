@@ -51,7 +51,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const products = await getSitemapProducts();
   return [
     { url: baseUrl, changeFrequency: "daily", priority: 1 },
-    ...["about", "contact", "privacy", "guides", "tools", "tools/price-per-pack"].map(path => ({ url: `${baseUrl}/${path}`, changeFrequency: "monthly" as const, priority: 0.4 })),
+    ...["about", "contact", "privacy", "guides", "tools", "tools/price-per-pack", "tools/pack-planner"].map(path => ({ url: `${baseUrl}/${path}`, changeFrequency: "monthly" as const, priority: 0.4 })),
     ...guides.map(guide => ({ url: `${baseUrl}/guides/${guide.slug}`, lastModified: latestSitemapDate([guide.updated, guide.published]), changeFrequency: "monthly" as const, priority: 0.6 })),
     ...products.map((product) => ({
       url: `${baseUrl}/products/${product.slug}`,

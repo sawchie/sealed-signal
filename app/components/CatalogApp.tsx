@@ -677,6 +677,7 @@ export function CatalogApp({
             <p>
               Retail vs. TCGplayer market prices for sealed Pokémon. Check the gap before you buy.
             </p>
+            <a className="catalog-planner-link" href="/tools/pack-planner">Opening packs? Plan what fits your budget.</a>
 
             <section className="catalog-tools" aria-label="Catalog controls">
               <label className="catalog-search">

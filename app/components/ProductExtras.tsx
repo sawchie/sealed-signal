@@ -23,6 +23,7 @@ export async function ProductExtras({ product }: { product: ProductWithMarketPri
     <section className={styles.productExtras} aria-labelledby="next-title">
       <h2 id="next-title">More for this pickup</h2>
       <ProductActions name={product.name} slug={product.slug} />
+      {product.setName && <p className={styles.related}><a href={`/tools/pack-planner?set=${encodeURIComponent(product.setName)}`}>Plan an opening with {product.setName}</a></p>}
       <p className={styles.related}><a href={`/guides/${guide}`}>{etb ? "Related guide: Pokémon Center ETBs and regular ETBs" : "Related guide: comparing price per pack"}</a></p>
       {related.length > 0 && <>
         <h3>More from {product.setName}</h3>

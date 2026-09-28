@@ -7,6 +7,26 @@ import announcements from '../data/announced-products.json' with { type: 'json' 
 import { productRelease, releaseMatches } from '../lib/product-release.ts';
 import { collectorNotes } from '../data/collector-notes.ts';
 import { setGuides } from '../data/set-guides.ts';
+import { planOpening, plannerAmount } from '../lib/pack-planner.ts';
+
+test('opening planner respects whole boxes, order tax, shipping and a hard budget', () => {
+  assert.deepEqual(planOpening(15000, 2500, 6, 1000, 1000), { boxes: 5, packs: 30, spendCents: 14750, remainingCents: 250, perPackCents: 14750 / 30 });
+  assert.deepEqual(planOpening(2000, 2500, 6), { boxes: 0, packs: 0, spendCents: 0, remainingCents: 2000, perPackCents: null });
+  assert.equal(planOpening(100, 100, 1, 0, 1).boxes, 1); // sub-cent tax rounds down
+  assert.equal(planOpening(0, 100, 1, 500).boxes, 0);
+  for (const args of [[1000, null, 6], [1000, 0, 6], [1000, 10, null], [1000, -1, 6], [NaN, 10, 6], [1000, 10, 1.5], [1000, 10, 6, 0, 10001]]) assert.equal(planOpening(...args), null);
+  assert.equal(plannerAmount('12.34'), 1234);
+  for (const value of ['', 'abc', '-2', '1e3', '12.345', '10001']) assert.equal(plannerAmount(value), null);
+  for (const budget of [0, 99, 100, 5999, 15000, 1000000]) {
+    for (const price of [1, 99, 4999]) {
+      const result = planOpening(budget, price, 9, 299, 825);
+      assert.ok(result.spendCents <= budget);
+      assert.equal(result.spendCents + result.remainingCents, budget);
+      const next = (result.boxes + 1) * price;
+      assert.ok(next + Math.round(next * .0825) + 299 > budget);
+    }
+  }
+});
 
 test('collector notes cover unique exact products with valid alternatives and primary-source coverage', () => {
   assert.ok(collectorNotes.length >= 14);

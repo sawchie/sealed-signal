@@ -59,14 +59,26 @@ test("mobile detail disclosures retain calculations, factual context, and source
 
 test("editorial ownership is private and honest; query product pages retain clean canonical", async () => {
   const about = await (await render("/about")).text();
-  assert.match(about, /not a fictional collector/);
+  assert.match(about, /public pen name/);
   assert.match(about, /AI-assisted drafting/);
-  assert.match(about, /Not every catalog entry/);
+  assert.match(about, /college project/);
   const html = await (await render("/products/sams-club-pokemon-151-mini-tin-four-pack?return=/?list%3Dall")).text();
   assert.match(html, /rel="canonical" href="https:\/\/pokescratch.com\/products\/sams-club-pokemon-151-mini-tin-four-pack"/);
 });
 
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+
+test("Pack Planner serves useful scenarios, provenance, canonical and unknown-set fallback", async () => {
+  const response = await render('/tools/pack-planner?set=Destined%20Rivals');
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const text of ['Pack Planner', 'Opening budget', 'Destined Rivals', 'Total spend', 'Left over', 'Contents &amp; sources', 'Shortlist only', 'not in-stock deals']) assert.ok(html.includes(text), text);
+  assert.match(html, /rel="canonical" href="https:\/\/pokescratch.com\/tools\/pack-planner"/);
+  assert.match(html, /href="\/products\//);
+  assert.equal((await render('/tools/pack-planner?set=not-a-set')).status, 200);
+  const home = await (await render('/tools')).text();
+  assert.match(home, /href="\/tools\/pack-planner"/);
+});
 
 test("every curated product has a public note and relevant guide, with honest missing data", async () => {
   const home = await (await render("/?list=all")).text();
@@ -321,7 +333,7 @@ test("sitemap lists the expanded catalog on the public domain", async () => {
   assert.equal(response.status, 200);
   const body = await response.text();
   assert.doesNotMatch(body, /localhost|\/methodology/);
-  assert.equal((body.match(/<loc>/g) ?? []).length, catalogImport.items.length + 15);
+  assert.equal((body.match(/<loc>/g) ?? []).length, catalogImport.items.length + 16);
   for (const [, date] of body.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)) {
     assert.ok(Number.isFinite(Date.parse(date)) && Date.parse(date) <= Date.now(), `Invalid or future lastmod: ${date}`);
   }

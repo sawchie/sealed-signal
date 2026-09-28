@@ -374,3 +374,5 @@ input[aria-invalid="true"] { border-color: #ff8fae !important; }
   .detail-disclosure__body { padding: 0 16px 16px; }
   .detail-summary .detail-reference-grid small { font-size: .875rem; }
 }
+.catalog-planner-link { display: inline-flex; align-items: center; min-height: 44px; margin: 0 0 10px; color: #d2a2ff; font-size: .9375rem; text-underline-offset: 4px; }
+.catalog-planner-link:focus-visible { outline: 2px solid #8be5ef; outline-offset: 3px; }
