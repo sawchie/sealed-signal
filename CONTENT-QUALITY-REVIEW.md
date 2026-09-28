@@ -35,6 +35,18 @@ Additional browser check: changing the guide comparison from USD to CAD updates 
 - AdSense also displays an account-activation/payment-information reminder. Personal payment details were not entered or changed; account activation may still require the owner even after site approval.
 - Apex ads.txt serves HTTP 200 with the correct publisher record; HTTP redirects to HTTPS. AdSense currently says Not found, so its crawler status has not been reconciled with the reachable file.
 - www currently resolves to old Vercel addresses and returns DEPLOYMENT_NOT_FOUND. Sites binding prepared; DNS access unavailable because the Vercel browser session is logged out and no authenticated DNS tool is connected. This is NOT claimed fixed.
+- Final checks: no manual actions or security issues; HTTPS has no critical issues; merchant listings has zero invalid items (the old optional-field rows each affect zero items). The 404 example is nonexistent `/page`, with no current application link found. The robots exclusion is `/admin`, which should remain private.
+
+## Published release and submissions
+
+- Public Site version **41**, source **25fa23880514903e5cd78c037a419bfd5f1629b2**, deployment **appgdep_6ab9be7172f88191b8ee42010752e859** succeeded. Source backed up in GitHub and the Sites repository. Built from a clean export of that exact commit.
+- Live apex verification: new guide content and organizational byline visible, correct ads.txt publisher record, sitemap contains **494** URLs, query-bearing product serves its clean canonical.
+- Fresh production browser session at 390px: all seven detail groups start closed; buy check opens/closes; no horizontal overflow or browser errors. A historical local hot-reload hydration warning in the earlier mixed-session log was not reproduced in this clean production session.
+- Google confirmed **“Sitemap submitted successfully.”** Search Console may still display its previous 491-page discovery count until processing completes.
+- AdSense confirmed **“Review requested.”** No approval or change to ad serving is claimed. The old table status and ads.txt crawler status may lag.
+- Search Console canonical-duplicate validation confirmed **“Validation Started”** on September 27 after checking the live clean canonical. Intentional private/canonical exclusions and the nonexistent `/page` URL were not incorrectly submitted as bugs to fix.
+
+Content-quality confidence: **8/10, subjective**, not an AdSense approval probability. The strongest remaining limitation is that original research covers a curated subset rather than every product; sustained genuine readership and Google's review cannot be manufactured in a code release.
 
 ## Remaining domain action
 
