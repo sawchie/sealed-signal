@@ -10,6 +10,23 @@
 .list p { color: #bfc6db; max-width: 70ch; margin: 8px 0 0; }
 .topic { color: #bfc6db; font-size: .875rem; display: block; margin-top: 9px; }
 .reading { max-width: 74ch; }
+.reading li { line-height: 1.7; margin: 12px 0; }
+.guideContents { display: grid; gap: 10px; border-block: 1px solid #393449; padding: 16px 0; margin: 28px 0; }
+.guideContents a { padding: 5px 0; }
+.guideComparison { margin-top: 36px; }
+.comparisonScroll { overflow-x: auto; border: 1px solid #393449; border-radius: 7px; }
+.comparisonScroll:focus-visible { outline: 2px solid #8be5ef; outline-offset: 3px; }
+.comparisonScroll table { border-collapse: collapse; width: 100%; min-width: 580px; font-size: .875rem; text-align: left; }
+.comparisonScroll caption { padding: 14px; color: #bfc6db; text-align: left; }
+.comparisonScroll th, .comparisonScroll td { padding: 15px 12px; border-top: 1px solid #393449; vertical-align: top; }
+.comparisonScroll thead { background: #101421; }
+.comparisonScroll tbody th { width: 40%; font-weight: 500; }
+.comparisonScroll strong { white-space: nowrap; color: #f5f5ff; font-variant-numeric: tabular-nums; }
+.comparisonScroll small { display: block; color: #bfc6db; line-height: 1.5; font-weight: 400; margin-top: 6px; }
+.sourceLink { display: inline-block; padding: 8px 0; font-size: .8125rem; }
+.collectorNote { max-width: 85ch; line-height: 1.7; }
+.collectorNote h2 { font-size: 1.35rem; margin: 22px 0 8px; }
+.collectorNote a { color: #d2a2ff; text-underline-offset: 4px; }
 .reading p { margin: 0 0 20px; }
 .reading a, .main > p a, .related a { color: #d2a2ff; text-decoration: underline; text-underline-offset: 4px; }
 .meta { color: #bfc6db; font-size: .875rem; margin: 20px 0 32px; }

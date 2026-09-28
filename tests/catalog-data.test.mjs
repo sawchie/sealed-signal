@@ -5,6 +5,26 @@ import catalog from '../data/catalog-import.json' with { type: 'json' };
 import references from '../data/retail-references.json' with { type: 'json' };
 import announcements from '../data/announced-products.json' with { type: 'json' };
 import { productRelease, releaseMatches } from '../lib/product-release.ts';
+import { collectorNotes } from '../data/collector-notes.ts';
+import { setGuides } from '../data/set-guides.ts';
+
+test('collector notes cover unique exact products with valid alternatives and primary-source coverage', () => {
+  assert.ok(collectorNotes.length >= 14);
+  assert.equal(new Set(collectorNotes.map(n => n.productId)).size, collectorNotes.length);
+  assert.ok(collectorNotes.filter(n => new URL(n.sourceUrl).hostname === 'www.pokemon.com').length >= 12);
+  for (const note of collectorNotes) {
+    assert.ok(catalog.items.some(p => p.id === note.productId), note.productId);
+    assert.ok(catalog.items.some(p => p.id === note.alternativeId), note.alternativeId);
+    assert.ok(setGuides.some(g => g.slug === note.guide));
+    assert.ok(note.fit.length > 80 && note.distinction.length > 80 && note.skip.length > 80);
+    assert.ok(Date.parse(note.reviewed) <= Date.now());
+    assert.equal(new URL(note.sourceUrl).protocol, 'https:');
+  }
+  for (const guide of setGuides) {
+    assert.ok(guide.sections.length >= 4);
+    assert.ok(guide.productIds.every(id => collectorNotes.some(n => n.productId === id)));
+  }
+});
 
 test('reviewed retail references target unique real products with positive sourced prices', () => {
   const seen = new Set();

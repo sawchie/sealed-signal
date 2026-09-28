@@ -359,3 +359,18 @@ input[aria-invalid="true"] { border-color: #ff8fae !important; }
 .release-notice a { font-size: .85rem; }
 .release-filter { max-width: 100%; }
 .product-card--upcoming .price-pair__market strong { color: #dcb1ff; }
+.detail-disclosure { min-width: 0; border: 1px solid #393449; border-radius: 7px; background: #101421; }
+.detail-disclosure > summary { padding: 16px 20px; min-height: 52px; cursor: pointer; color: #f5f5ff; font-size: 1rem; font-weight: 600; }
+.detail-disclosure > summary:hover { color: #d2a2ff; }
+.detail-disclosure > summary:focus-visible { outline: 2px solid #8be5ef; outline-offset: 3px; }
+.detail-disclosure__body { padding: 0 20px 20px; min-width: 0; }
+.detail-disclosure .detail-panel { border: 0; border-radius: 0; background: transparent; padding: 0; }
+.detail-disclosure [id] { scroll-margin-top: 24px; }
+.detail-summary > .detail-disclosure { margin: 20px 0; }
+@media (max-width: 700px) {
+  .detail-grid { gap: 12px; }
+  .detail-stack { gap: 12px; }
+  .detail-disclosure > summary { padding: 16px; }
+  .detail-disclosure__body { padding: 0 16px 16px; }
+  .detail-summary .detail-reference-grid small { font-size: .875rem; }
+}

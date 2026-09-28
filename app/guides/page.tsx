@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import guides from "@/data/guides.json";
+import { guides } from "@/lib/guides";
 import { SiteHeader } from "@/app/components/SiteHeader";
 import { SiteFooter } from "@/app/components/SiteFooter";
 import styles from "@/app/components/CollectorContent.module.css";

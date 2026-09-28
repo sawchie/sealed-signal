@@ -3,6 +3,7 @@ import test from "node:test";
 import catalogImport from "../data/catalog-import.json" with { type: "json" };
 import guides from "../data/guides.json" with { type: "json" };
 import productFacts from "../data/product-facts.json" with { type: "json" };
+import { collectorNotes } from "../data/collector-notes.ts";
 
 test("all guides and tools render complete crawlable public content", async () => {
   for (const guide of guides) {
@@ -11,6 +12,8 @@ test("all guides and tools render complete crawlable public content", async () =
     const html = await response.text();
     assert.match(html, /application\/ld\+json/);
     assert.match(html, /September 12, 2026/);
+    assert.match(html, /September 27, 2026/);
+    assert.match(html, /PokeScratch Editorial/);
     assert.match(html, /href="\/tools\/price-per-pack"/);
     assert.ok(guide.paragraphs.length >= 5);
     assert.ok(html.includes(guide.title.replaceAll("&", "&amp;")));
@@ -25,7 +28,67 @@ test("all guides and tools render complete crawlable public content", async () =
   assert.match(product, /mailto:hello@pokescratch.com/);
 });
 
+test("set guides add sourced decisions, real dated comparisons, and links to exact products", async () => {
+  for (const slug of ["151-sealed-buying-guide", "prismatic-evolutions-format-guide", "destined-rivals-format-guide"]) {
+    const response = await render(`/guides/${slug}`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, /hypothetical/i);
+    assert.match(html, /Compare the exact boxes/);
+    assert.match(html, /Specification sources/);
+    assert.match(html, /2026-09-27/);
+    assert.match(html, /<table/);
+    assert.match(html, /Sources &amp; dates/);
+    assert.ok((html.match(/scope="row"/g) ?? []).length >= 4);
+    assert.match(html, /not live offers/);
+    assert.match(html, /not firsthand opening tests/);
+  }
+  const guide = await (await render("/guides/151-sealed-buying-guide")).text();
+  assert.match(guide, /Unverified/);
+  assert.match(guide, /Per-pack unavailable/);
+});
+
+test("mobile detail disclosures retain calculations, factual context, and source anchors in HTML", async () => {
+  const html = await (await render("/products/destined-rivals-elite-trainer-box")).text();
+  assert.ok((html.match(/class="detail-disclosure"/g) ?? []).length >= 7);
+  assert.doesNotMatch(html, /<details[^>]*class="detail-disclosure"[^>]*\sopen[=> ]/);
+  for (const text of ["Buy check", "Price sources", "Contents &amp; release", "Recorded market history", "Where this box fits", "When to pass", "Not a loose-pack quote"]) assert.ok(html.includes(text), text);
+  assert.match(html, /id="facts-title"/);
+  assert.match(html, /id="price-data"/);
+});
+
+test("editorial ownership is private and honest; query product pages retain clean canonical", async () => {
+  const about = await (await render("/about")).text();
+  assert.match(about, /not a fictional collector/);
+  assert.match(about, /AI-assisted drafting/);
+  assert.match(about, /Not every catalog entry/);
+  const html = await (await render("/products/sams-club-pokemon-151-mini-tin-four-pack?return=/?list%3Dall")).text();
+  assert.match(html, /rel="canonical" href="https:\/\/pokescratch.com\/products\/sams-club-pokemon-151-mini-tin-four-pack"/);
+});
+
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+
+test("every curated product has a public note and relevant guide, with honest missing data", async () => {
+  const home = await (await render("/?list=all")).text();
+  // Public legacy slugs may differ from the import; links in each guide are authoritative.
+  for (const note of collectorNotes) {
+    const item = catalogImport.items.find(p => p.id === note.productId);
+    const guide = await (await render(`/guides/${note.guide}`)).text();
+    const links = [...guide.matchAll(/href="(\/products\/[^"#]+)"[^>]*>([^<]+)<\/a>/g)];
+    const name = item.name.replaceAll("&", "&amp;");
+    const link = links.find(([, , title]) => title === name);
+    assert.ok(link, `Missing product link for ${note.productId}`);
+    const response = await render(link[1]);
+    assert.equal(response.status, 200, note.productId);
+    const html = await response.text();
+    assert.match(html, /Where this box fits/);
+    assert.match(html, /When to pass/);
+    assert.ok(html.includes(note.sourceUrl.replaceAll("&", "&amp;")));
+  }
+  assert.match(home, /PokeScratch/);
+  const bundleGuide = await (await render("/guides/etb-vs-booster-bundle")).text();
+  assert.match(bundleGuide, /Destined Rivals Booster Bundle/);
+});
 
 test("currency selection is available with dated rates and an authenticated-only refresh", async () => {
   const home = await (await render("/")).text();
@@ -131,6 +194,9 @@ test("old public hostname permanently redirects and preserves path and query", a
   assert.equal(response.status, 308);
   assert.equal(response.headers.get("location"), "https://pokescratch.com/products/destined-rivals-elite-trainer-box?ref=search");
   assert.equal((await render("https://pokescratch.com/")).status, 200);
+  const www = await render("https://www.pokescratch.com/ads.txt");
+  assert.equal(www.status, 308);
+  assert.equal(www.headers.get("location"), "https://pokescratch.com/ads.txt");
 });
 
 test("server-renders the resale catalog with honest price labeling", async () => {
@@ -255,7 +321,7 @@ test("sitemap lists the expanded catalog on the public domain", async () => {
   assert.equal(response.status, 200);
   const body = await response.text();
   assert.doesNotMatch(body, /localhost|\/methodology/);
-  assert.equal((body.match(/<loc>/g) ?? []).length, catalogImport.items.length + 12);
+  assert.equal((body.match(/<loc>/g) ?? []).length, catalogImport.items.length + 15);
   for (const [, date] of body.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)) {
     assert.ok(Number.isFinite(Date.parse(date)) && Date.parse(date) <= Date.now(), `Invalid or future lastmod: ${date}`);
   }

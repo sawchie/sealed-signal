@@ -10,6 +10,8 @@ import { resolvePublicProduct } from "@/lib/catalog-resolution";
 import { formatMoney } from "@/lib/format";
 import { productFacts } from "@/lib/product-facts";
 import { PriceHistory } from "@/app/components/PriceHistory";
+import { DetailDisclosure } from "@/app/components/DetailDisclosure";
+import { CollectorNote } from "@/app/components/CollectorNote";
 import type { PriceObservation } from "@/lib/price-history";
 
 type ProductPageProps = {
@@ -95,7 +97,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <div className="app-shell app-shell--detail">
       <SiteHeader compact />
       <ProductDetailClient initialProduct={product} facts={productFacts(product.id)} now={new Date().toISOString()} />
-      <div className="detail-history-wrap"><PriceHistory observations={history} currency={product.currency} unavailable={historyUnavailable} /></div>
+      <div className="detail-history-wrap"><DetailDisclosure title="Recorded market history"><PriceHistory observations={history} currency={product.currency} unavailable={historyUnavailable} /></DetailDisclosure></div>
+      <CollectorNote productId={product.id} />
       <ProductExtras product={product} />
       <SiteFooter />
       <script

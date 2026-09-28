@@ -30,7 +30,7 @@ const worker = {
     const url = new URL(request.url);
 
     // Consolidate the former public address without redirecting previews or local development.
-    if (url.hostname === "sealed-signal.tylerjsawchyn.chatgpt.site") {
+    if (url.hostname === "sealed-signal.tylerjsawchyn.chatgpt.site" || url.hostname === "www.pokescratch.com") {
       url.protocol = "https:";
       url.host = "pokescratch.com";
       return Response.redirect(url.toString(), 308);
